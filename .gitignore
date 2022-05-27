@@ -5,6 +5,7 @@ __pycache__/
 
 #Dependencies
 /node_modules
+node_modules/
 
 # C extensions
 *.so

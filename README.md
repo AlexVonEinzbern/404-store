@@ -1,5 +1,5 @@
 # 404-store
-DS2 proyect
+DS2 project
 
 ## Available Scripts
 

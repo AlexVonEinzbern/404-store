@@ -7,26 +7,34 @@ user_schema = userSchema()
 users_schema = userSchema(many=True)
 
 
-@app.route('/', methods=['GET'])
-def home():
-    return "Hola"
+# @app.route('/', methods=['GET'])
+# def home():
+#     return "Hola"
 
-@app.route('/createUser', methods=['POST'])
-def createUser():
-    id_user = request.json['id_user']
-    name_user = request.json['name_user']
-    _password = request.json['_password']
+@app.route('/categoria1', methods=['GET'])
+def categoria1():
+    return "Categoria 1"
 
-    new_user = user(id_user=id_user, name_user=name_user, _password=_password)
-    db.session.add(new_user)
-    db.session.commit()
-    return user_schema.jsonify(new_user)
+@app.route('/categoria2', methods=['GET'])
+def categoria2():
+    return "Categoria 2"
+
+# @app.route('/createUser', methods=['POST'])
+# def createUser():
+#     id_user = request.json['id_user']
+#     name_user = request.json['name_user']
+#     _password = request.json['_password']
+
+#     new_user = user(id_user=id_user, name_user=name_user, _password=_password)
+#     db.session.add(new_user)
+#     db.session.commit()
+#     return user_schema.jsonify(new_user)
 
 
-@app.route('/getUsers', methods=['GET'])
-def getUsers():
-    users = user.query.all()
-    return users_schema.jsonify(users)
+# @app.route('/getUsers', methods=['GET'])
+# def getUsers():
+#     users = user.query.all()
+#     return users_schema.jsonify(users)
 
 #@app.route('/createPeer', methods=['POST'])
 #def createPeer():

@@ -1,5 +1,7 @@
 import React from "react";
 import "../styles/categoria.css"
+
+
 function Categoria(props){
    return(
 

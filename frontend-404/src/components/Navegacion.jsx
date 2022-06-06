@@ -1,6 +1,6 @@
 import React from "react";
 import '../styles/Navegacion.css'
-
+import URI from "../config.js"
 
 function Navegacion (props) {
     return (
@@ -43,13 +43,11 @@ function Navegacion (props) {
                             <a href="" className="categoria2">{props.categoria2}</a> 
                         </li>
                     </ul>
- 
                 </div>
-                
+
             </div>
+
         </div>
-
-
     )
 }
 

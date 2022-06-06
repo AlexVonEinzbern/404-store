@@ -1,6 +1,8 @@
 import React from "react";
 import Destacado from "./Destacado";
-import "../styles/BannerDestacados.css"
+import "../styles/BannerDestacados.css";
+
+import URI from "../config.js"
 
 function BannerDestacados(props){
     return(

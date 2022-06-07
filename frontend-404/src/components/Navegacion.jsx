@@ -1,7 +1,7 @@
 import React from "react";
+//import {Box,Grid} from '@material-ui/core'
+import NavBar from "./NavBar";
 import '../styles/Navegacion.css'
-<<<<<<< Updated upstream
-//import URI from "../config.js"
 
 async function Navegacion (props) {
 
@@ -9,11 +9,7 @@ async function Navegacion (props) {
     
     const categoria1 = await fetch (`${URI}categoria1`);
     const categoria2 = await fetch (`${URI}categoria2`);
-=======
-import URI from "../config.js"
-import {Box,Grid} from '@material-ui/core'
-import NavBar from "./NavBar";
->>>>>>> Stashed changes
+
 
     return (
         <div className="ContenedorNav">

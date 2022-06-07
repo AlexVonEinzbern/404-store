@@ -1,14 +1,9 @@
 import React from "react";
 import '../styles/Destacado.css'
-<<<<<<< Updated upstream
+//import {Box,Grid} from '@material-ui/core'
 
 
-function Destacado(props){
-=======
-import {Box,Grid} from '@material-ui/core'
-
-const Destacado= (props) =>{
->>>>>>> Stashed changes
+const Destacado = (props) =>{
 
     return(
         <div className="contenedorDestacado">

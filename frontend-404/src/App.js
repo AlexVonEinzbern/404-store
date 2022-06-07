@@ -3,7 +3,7 @@ import './App.css';
 import BannerDestacados from './components/BannerDestacados';
 import Panel from './components/Panel';
 import Navegacion from './components/Navegacion';
-import MenuCategorias from './components/MenuCategorias';
+//import MenuCategorias from './components/MenuCategorias';
 
 function App() { 
   return (

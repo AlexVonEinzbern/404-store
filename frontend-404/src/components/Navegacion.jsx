@@ -3,12 +3,12 @@ import React from "react";
 import NavBar from "./NavBar";
 import '../styles/Navegacion.css'
 
-async function Navegacion (props) {
+function Navegacion (props) {
 
-    const URI = process.env.REACT_APP_URI;
+    //const URI = process.env.REACT_APP_URI;
     
-    const categoria1 = await fetch (`${URI}categoria1`);
-    const categoria2 = await fetch (`${URI}categoria2`);
+    //const categoria1 = await fetch (`${URI}categoria1`);
+    //const categoria2 = await fetch (`${URI}categoria2`);
 
 
     return (
@@ -24,10 +24,10 @@ async function Navegacion (props) {
                 <div className="ContenedorCategorias">
                     <ul className="Categorias">
                         <li >
-                            <a href={categoria1} className="categoria1">{props.categoria1}</a>
+                            <a href='/#' className="categoria1">{props.categoria1}</a>
                         </li>
                         <li>
-                            <a href={categoria2} className="categoria2">{props.categoria2}</a> 
+                            <a href='/#' className="categoria2">{props.categoria2}</a> 
                         </li>
                     </ul>
                 </div>

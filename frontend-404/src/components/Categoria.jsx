@@ -6,7 +6,7 @@ function Categoria(props){
    return(
 
        <div className="categoria">
-            <ul className="subcategorias"><p>{props.nombre}</p>
+            <ul className="subcategorias"> <p>{props.nombre}</p>
                 <li className="subcategoria">{props.subcategoria1}</li>
                 <li className="subcategoria">{props.subcategoria2}</li>
                 <li className="subcategoria">{props.subcategoria3}</li>

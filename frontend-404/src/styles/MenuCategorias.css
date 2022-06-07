@@ -1,15 +1,21 @@
 .ContenedorCategoria{
-    max-width: 1920px;
+
     width: 100%;
     margin: auto;
     background-color: rgba(0,0,0,0.64);
     position: fixed;
+    top: 144px;
+    
+
 }
 
 
 .categorias{
     width: fit-content;
     margin: auto    ;
+    color: rgb(255, 255, 255);
+}
 
-    color: #fff;
+.categorias{
+    display: flex;
 }

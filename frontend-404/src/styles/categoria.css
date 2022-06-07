@@ -1,13 +1,9 @@
-.subcategoria{
-    padding: 0px 36px;
-    padding: 24px;
+.categoria{
+    margin: 24px;
 }
-
-
 p{
     font-family: Roboto;
     font-weight: bold ;
-    margin-bottom: 24px;
     font-size: 24px;
 }
 
@@ -21,9 +17,5 @@ li{
 .subcategorias li{
     list-style: none;
     font-weight: 500;
-    padding: 2px;
-}
-
-.categoria{
-    margin: 24px;
+    padding: 3px;
 }

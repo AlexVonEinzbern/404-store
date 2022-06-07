@@ -1,9 +1,16 @@
-.ContenedorBannerDestacados{
-    font-family: Roboto,sans-serif;
-    display: grid;
-    gap: 20px;
-    margin:auto;
-    max-width:min-content;
-    grid-template-columns: repeat(4,1fr);
+    .ContenedorBannerDestacados{
+        font-family: Roboto,sans-serif;
+        display: grid;
+        grid-gap: 20px;
+        margin:auto;
 
-}
+
+    }
+
+    @media only screen and (min-width: 1280px) {
+        .extra{
+            display: none;
+        }
+      }
+    
+    

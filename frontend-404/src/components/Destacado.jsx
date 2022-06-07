@@ -1,17 +1,27 @@
 import React from "react";
 import '../styles/Destacado.css'
+<<<<<<< Updated upstream
 
 
 function Destacado(props){
+=======
+import {Box,Grid} from '@material-ui/core'
+
+const Destacado= (props) =>{
+>>>>>>> Stashed changes
 
     return(
         <div className="contenedorDestacado">
-            <img className="imagen" src={require(`../imagenesProductos/destacados/${props.genero}/${props.categoria}${props.genero}.png`)} alt="imagen" />
-            <p className="nombreCategoria">
-                {props.categoria} {props.genero}
-            </p>
+
+                <div className="ContenedorImagen">
+                    <img className="imagen" src={require(`../imagenesProductos/destacados/${props.genero}/${props.categoria}${props.genero}.png`)} alt="imagen" />
+                </div>
+                <div className="ContenedorNombreCategoria">
+                    <p className="nombreCategoria"> {props.categoria} {props.genero}</p>
+                </div>
+
         </div>
-    )
+    ) 
 }
 
 export default Destacado

@@ -14,10 +14,10 @@ function App() {
                     categoria1="HOMBRES"
                     categoria2="MUJERES"
                     textoLogin="Iniciar Sesion"> 
-        </Navegacion>
+        </Navegacion> 
 
         
-
+{/* 
         <MenuCategorias className="Hombres" 
                         nombreCategoria1="ROPA EXTERIOR"
                         categoria1Subcategoria1="Camisas"
@@ -40,44 +40,20 @@ function App() {
                         categoria3Subcategoria1="Prendas superiores"
                         categoria3Subcategoria2="Prendas inferiores"
                         categoria3Subcategoria3="Accesorios"
- NavInferior  nombreCategoria4="ROPA EXTERIOR"
+
+ 
+                        nombreCategoria4="ROPA EXTERIOR"
                         categoria4Subcategoria1="Gorras"
                         categoria4Subcategoria2="Relojes"
                         categoria4Subcategoria3="Correas"
                         categoria4Subcategoria4="Calzado"
                         categoria4Subcategoria5="Billeteras">           
-        </MenuCategorias>
+        </MenuCategorias>  */}
 
+        <div>
+            <Panel genero="Mujer"></Panel>
+        </div>
                     
-        <div className='banenerMujeres'>
-            <BannerDestacados genero="Mujer"
-                              categoria1="Interior" 
-                              categoria2="Deportivo" 
-                              categoria3="Camiseta" 
-                              categoria4="Accesorio" >
-            </BannerDestacados>
-        </div>
-
-        <div className='banenerMujeres'>
-            <BannerDestacados genero="Mujer"
-                              categoria1="Interior" 
-                              categoria2="Deportivo" 
-                              categoria3="Camiseta" 
-                              categoria4="Accesorio" >
-            </BannerDestacados>
-        </div>
-
-
-        <div className='banenerMujeres'>
-            <BannerDestacados genero="Mujer"
-                              categoria1="Interior" 
-                              categoria2="Deportivo" 
-                              categoria3="Camiseta" 
-                              categoria4="Accesorio" >
-            </BannerDestacados>
-        </div>
-
-
         <div className='banenerMujeres'>
             <BannerDestacados genero="Mujer"
                               categoria1="Interior" 
@@ -90,6 +66,7 @@ function App() {
         <div>
             <Panel genero="Hombre"></Panel>
         </div>
+
         <div className='banenerHombres'>
             <BannerDestacados genero="Hombre"
                               categoria1="Calzado" 
@@ -97,13 +74,7 @@ function App() {
                               categoria3="Deportivo" 
                               categoria4="Interior" >
             </BannerDestacados>
-        </div>
-
-        <div>
-            <Panel genero="Mujer"></Panel>
-        </div>
-
-        
+        </div>        
     </div>
   );
 }

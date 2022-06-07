@@ -1,11 +1,8 @@
 *{
   margin: 0;
   padding:0;
-  font-size: 18px;
-  font-family: Lato,
-}
+  font-size: 18px;}
 
-.banenerMujeres{
-  padding-top: 48px;
+.App{
+  width: 100%;
 }
-

@@ -1,0 +1,122 @@
+*{
+    margin: 0%;
+    padding: 0%;
+
+}
+
+.nav{
+    display: flex;
+    justify-content: space-between;
+    height: fit-content;
+    align-items: center;
+    height: 100%;
+
+}
+
+.header{
+    height: 100%
+}
+a{
+    text-decoration: none;
+    color: black;
+}
+
+.logo{
+    width: 72px;
+    
+}
+
+.nav-izq{
+display: flex;
+height: fit-content;
+align-items: center;
+}
+
+.barra-busqueda{
+    display: flex;
+    align-items: center;
+    height: fit-content ;
+    
+    
+}
+
+.barra{
+    height: 36px;
+    width: 400px;
+    justify-content: center;
+    margin-left: 50px;
+    border: none;
+    border-bottom: 1px solid #000;
+
+}
+
+.lupa{
+    width: 48px;
+    height: 48px;
+    margin-left:20px;
+}
+
+.contenedor-lupa{
+    height: fit-content;
+}
+
+.contenedor-logo{
+    height: fit-content;
+}
+.nav-item{
+    height: fit-content;
+}
+
+.nav-der{
+    display: flex;
+    height: fit-content;
+    align-items: center;
+    }
+
+    .contenedor-login{
+        display:flex;
+        align-items: center;
+        gap: 10px;
+        margin-right: 60px;
+    }
+
+.logo-login{
+    width: 36px;
+    height: 36px;
+}
+
+.logo-carrito{
+    width: 36px;
+    height: 36px;
+}
+
+@media only screen and (max-width: 1280px) {
+    .barra{
+        height: 36px;;
+    }
+
+    .contenedor-login{
+
+        margin-right: 30px;  
+    }
+
+    .lupa{
+        display: none;
+    }
+  }
+
+
+
+@media only screen and (max-width: 1024px) {
+    .barra{
+        height: 36px;
+        width: 250px;
+    }
+
+    .contenedor-login{
+        margin-right: 12px;
+    }
+
+  }
+
+  

@@ -11,20 +11,16 @@ function NavBar(){
 
                 <ul className="nav-izq">
                     <li className="nav-item">
-                        <a href="/#" className="contenedor-logo"> 
+                        <a href="/#" className="contenedor-logo" > 
                             <img src={require(`../imagenesProductos/logos/LogoCorp.png`)} alt="" className="logo"/>
                         </a>
                     </li>
                     <li className="barra-busqueda">
                         <input type="text" name="" id="" placeholder="Que esta buscando?" className="barra"/>
-
-                        <a href="/#" className="contenedor-lupa">
                             <img src={require('../imagenesProductos/logos/LogoLupa.png')} alt="" className="lupa" />
-                        </a>
                     </li>
                 </ul>
                 
-
                 <ul className="nav-der">
                     <li className="nav-item">
 

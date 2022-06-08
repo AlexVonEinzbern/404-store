@@ -2,21 +2,28 @@
 import './App.css';
 import BannerDestacados from './components/BannerDestacados';
 import Panel from './components/Panel';
-import Navegacion from './components/Navegacion';
+import Navegacion from './components/Navegacion'
+import{
+    BrowserRouter as Router,
+    Routes,
+    Route,
+    Link
+   }from"react-router-dom";
+import Home from './components/Home';
+
 //import MenuCategorias from './components/MenuCategorias';
 
 function App() { 
   return (
     <div className="App">
 
+        <Router>
 
         <Navegacion className="Navegacion"
                     categoria1="HOMBRES"
                     categoria2="MUJERES"
                     textoLogin="Iniciar Sesion"> 
         </Navegacion> 
-
-        
 {/* 
         <MenuCategorias className="Hombres" 
                         nombreCategoria1="ROPA EXTERIOR"
@@ -49,32 +56,22 @@ function App() {
                         categoria4Subcategoria4="Calzado"
                         categoria4Subcategoria5="Billeteras">           
         </MenuCategorias>  */}
+        
+        <Routes>
 
-        <div>
-            <Panel genero="Mujer"></Panel>
-        </div>
-                    
-        <div className='banenerMujeres'>
-            <BannerDestacados genero="Mujer"
-                              categoria1="Interior" 
-                              categoria2="Deportivo" 
-                              categoria3="Camiseta" 
-                              categoria4="Accesorio" >
-            </BannerDestacados>
-        </div>
+            <Route path='/' element={<Home></Home>}>
+            </Route>
 
-        <div>
-            <Panel genero="Hombre"></Panel>
-        </div>
+            
 
-        <div className='banenerHombres'>
-            <BannerDestacados genero="Hombre"
-                              categoria1="Calzado" 
-                              NavInferior        categoria2="Camiseta" 
-                              categoria3="Deportivo" 
-                              categoria4="Interior" >
-            </BannerDestacados>
-        </div>        
+
+
+        </Routes>
+
+            
+            
+        </Router>
+              
     </div>
   );
 }

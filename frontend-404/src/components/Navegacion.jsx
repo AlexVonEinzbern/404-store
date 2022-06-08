@@ -24,10 +24,10 @@ function Navegacion (props) {
                 <div className="ContenedorCategorias">
                     <ul className="Categorias">
                         <li >
-                            <a href='/hola' className="categoria1">{props.categoria1}</a>
+                            <a href='/hombre' className="categoria1">{props.categoria1}</a>
                         </li>
                         <li>
-                            <a href='/#' className="categoria2">{props.categoria2}</a> 
+                            <a href='/mujer' className="categoria2">{props.categoria2}</a> 
                         </li>
                     </ul>
                 </div>

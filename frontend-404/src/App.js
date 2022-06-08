@@ -7,9 +7,11 @@ import{
     BrowserRouter as Router,
     Routes,
     Route,
-    Link
+    LinkHombre
    }from"react-router-dom";
 import Home from './components/Home';
+import { BannerNuevaColecion} from './components/BannerNuevaColeccion';
+import { BannerNuevaColecionMujer} from './components/BannerNuevaColeccionMujer';
 
 //import MenuCategorias from './components/MenuCategorias';
 
@@ -62,9 +64,12 @@ function App() {
             <Route path='/' element={<Home></Home>}>
             </Route>
 
-            
 
+            <Route path='Hombre' element={<BannerNuevaColecion genero="Hombre" ></BannerNuevaColecion>}>
+            </Route>
 
+            <Route path='Mujer' element={<BannerNuevaColecionMujer genero="Mujer" ></BannerNuevaColecionMujer>}>
+            </Route>
 
         </Routes>
 

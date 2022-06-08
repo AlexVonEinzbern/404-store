@@ -11,7 +11,7 @@ function NavBar(){
 
                 <ul className="nav-izq">
                     <li className="nav-item">
-                        <a href="/#" className="contenedor-logo" > 
+                        <a href="/" className="contenedor-logo" > 
                             <img src={require(`../imagenesProductos/logos/LogoCorp.png`)} alt="" className="logo"/>
                         </a>
                     </li>

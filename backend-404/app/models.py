@@ -208,8 +208,8 @@ class Venta(db.Model):
     id_cliente_registrado = db.Column(db.Integer, db.ForeignKey('clienteregistrado.id_cliente_registrado'))
     id_metodo             = db.Column(db.Integer, db.ForeignKey('metodopago.id_metodo'))
 
-    metodopago = db.relationship('MetodoPago', back_populates = 'venta')
-    factura = db.relationship('Factura', back_populates = 'venta')
+    metodopago      = db.relationship('MetodoPago', back_populates = 'venta')
+    factura         = db.relationship('Factura', back_populates = 'venta')
     productovendido = db.relationship('Productosvendidos', secondary = venta_productosvendidos)
 
     def __repr__(self):

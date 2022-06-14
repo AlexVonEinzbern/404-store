@@ -1,10 +1,7 @@
 from os import name
 from flask import request
 from flask import current_app as app
-from .models import db, user, userSchema
-
-user_schema = userSchema()
-users_schema = userSchema(many=True)
+from .models import *
 
 
 # @app.route('/', methods=['GET'])

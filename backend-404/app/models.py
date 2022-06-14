@@ -1,12 +1,73 @@
 """Data models"""
 
 from . import db, ma
-from flask_security import Security, SQLAlchemyUserDatastore, UserMixin, RoleMixin, login_required
-import bcrypt
+
+clienteregistrado_reporte = db.Table(
+    'association_clienteregistrado_reporte',
+    db.Model.metadata,
+    db.Column('clienteregistrado_id', db.ForeignKey('clienteregistrado.id_cliente_registrado')),
+    db.Column('reporte_id', db.ForeignKey('reporte.id_reporte')),
+    )
+
+clientenoregistrado_reporte = db.Table(
+    'association_clientenoregistrado_reporte',
+    db.Model.metadata,
+    db.Column('clientenoregistrado_id', db.ForeignKey('clientenoregistrado.id_cliente_noregistrado')),
+    db.Column('reporte_id', db.ForeignKey('reporte.id_reporte')),
+    )
+
+producto_reporte = db.Table(
+    'association_producto_reporte',
+    db.Model.metadata,
+    db.Column('producto_id', db.ForeignKey('producto.id_producto')),
+    db.Column('reporte_id', db.ForeignKey('reporte.id_reporte')),
+    )
+
+producto_productosvendidos = db.Table(
+    'association_producto_productosvendidos',
+    db.Model.metadata,
+    db.Column('producto_id', db.ForeignKey('producto.id_producto')),
+    db.Column('productosvendidos_id', db.ForeignKey('productosvendidos.id_productos_vendidos')),
+    )
+
+venta_productosvendidos = db.Table(
+    'association_venta_productosvendidos',
+    db.Model.metadata,
+    db.Column('venta_id', db.ForeignKey('venta.id_venta')),
+    db.Column('productosvendidos_id', db.ForeignKey('productosvendidos.id_productos_vendidos')),
+    )
+
+class Reporte(db.Model):
+    """docstring for Reporte"""
+    __tablename__ = 'reporte'
+    id_reporte = db.Column(db.Integer, primary_key=True)
+
+    def __repr__(self):
+        return 'New report added'
+
+class ReporteSchema(ma.Schema):
+    class Meta:
+        fields = ('id_reporte',)
+
+class ProductosVendidos(db.Model):
+    """docstring for ProductosVendidos"""
+    __tablename__ = "productosvendidos"
+    id_productos_vendidos = db.Column(db.Integer, primary_key=True)
+    id_producto           = db.Column(db.Integer,db.ForeignKey('producto.id_producto'))
+    id_venta              = db.Column(db.Integer, db.ForeignKey('venta.id_venta'))
+    producto              = db.relationship('Producto', backref='producto')
+    venta                 = db.relationship('Venta', backref='venta')
+
+    def __repr__(self):
+        return 'New product sale added'
+
+class ProductosVendidosSchema(ma.Schema):
+    class Meta:
+        fields = ('id_productos_vendidos', ' id_producto', 'id_venta',)
 
 class Producto(db.Model):
     """docstring for Producto"""
-
+    __tablename__ = "producto"
     id_producto            = db.Column(db.Integer, primary_key=True)
     name_producto          = db.Column(db.String(50), unique=True, nullable=False)
     categoria_producto     = db.Column(db.String(50), unique=True, nullable=False)
@@ -18,34 +79,41 @@ class Producto(db.Model):
     stock_vendido_producto = db.Column(db.Integer, unique=True, nullable=False)
     precio_producto        = db.Column(db.Float, unique=True, nullable=False)
 
+    productoimagen  = db.relationship('ProductoImagen')
+    reporte         = db.relationship('Reporte', secondary = producto_reporte)
+    productovendido = db.relationship('Productosvendidos', secondary = producto_productosvendidos)
+
     def __repr__(self):
         return '<product {} has been added>'.format(self.name_producto)
 
 class ProductoSchema(ma.Schema):
+
+    reportes = ma.Nested(ReporteSchema, many=True)
+    productosvendidos = ma.Nested(ProductosVendidosSchema, many=True)
+
     class Meta:
         fields = ('id_producto', 'name_producto', 'categoria_producto', 'subcategoria_producto', 
             'descripcion_producto', 'talla_producto', 'calificacion_producto', 'stock_producto', 
-            'stock_vendido_producto', 'precio_producto')
+            'stock_vendido_producto', 'precio_producto',)
 
 class ProductoImagen(db.Model):
     """docstring for ProductoImagen"""
-
+    __tablename__ = "productoimagen"
     id_url_imagen       = db.Column(db.Integer, primary_key=True)
     url_imagen_producto = db.Column(db.String(200), unique=True, nullable=False)
     color_imagen_hex    = db.Column(db.String(10), nullable=False)
-    id_producto         = db.Column(db.Integer, db.ForeingKey('producto.id_producto'))
-    producto            = db.relationship('Producto', backref='productoImagenes')
+    id_producto         = db.Column(db.Integer, db.ForeignKey('producto.id_producto'))
 
     def __repr__(self):
         return '<Url image added>'
 
 class ProductoImagenSchema(ma.Schema):
     class Meta:
-        fields = ('id_url_imagen', 'url_imagen_producto', 'color_imagen_hex', 'id_producto')
+        fields = ('id_url_imagen', 'url_imagen_producto', 'color_imagen_hex', 'id_producto',)
 
-class ClienteRegistrado(db.Model, UserMixin):
+class ClienteRegistrado(db.Model):
     """docstring for ClienteRegistrado"""
-
+    __tablename__ = "clienteregistrado"
     id_cliente_registrado        = db.Column(db.Integer, primary_key=True)
     name_cliente_registrado      = db.Column(db.String(50), unique=True, nullable=False)
     cedula_cliente_registrado    = db.Column(db.Integer, unique=True, nullable=False)
@@ -57,45 +125,46 @@ class ClienteRegistrado(db.Model, UserMixin):
     password_cliente_registrado  = db.Column(db.String(128), unique=True, nullable=False)
     username_cliente_registrado  = db.Column(db.String(15), unique=True, nullable=False)
     telefono_cliente_registrado  = db.Column(db.Integer)
-
-    @property
-    def password(self):
-        raise AttributeError('password not readable')
-    @password.setter
-    def password(self, password):
-        self.password_cliente_registrado = bcrypt.hashpw('password', bcrypt.gensalt())
-
-    #You should add a verify password function inline with the bcrypt technolgy you implement:
-    #def verify_password(self, password)
-    #    return some_check_hash_func(self.password_cliente_registrado, password)
+    
+    metodoPago = db.relationship('MetodoPago')
+    venta      = db.relationship('Venta')
+    reporte    = db.relationship('Reporte', secondary = clienteregistrado_reporte)
 
     def __repr__(self):
         return '<client {} has been added>'.format(self.name_cliente_registrado)
 
 class ClienteRegistradoSchema(ma.Schema):
+
+    reportes = ma.Nested(ReporteSchema, many=True)
+
     class Meta:
         fields = ('id_cliente_registrado', 'name_cliente_registrado', 'cedula_cliente_registrado',
             'edad_cliente_registrado', 'email_cliente_registrado', 'direccion_cliente_registrado',
             'ip_cliente_registrado', 'numero_visitas_registrado', 'password_cliente_registrado',
-            'username_cliente_registrado', 'telefono_cliente_registrado')
+            'username_cliente_registrado', 'telefono_cliente_registrado',)
 
 class ClienteNoRegistrado(db.Model):
     """docstring for ClienteNoRegistrado"""
-
+    __tablename__ = "clientenoregistrado"
     id_cliente_noregistrado     = db.Column(db.Integer, primary_key=True)
     ip_cliente_noregistrado     = db.Column(db.String(15), unique=True, nullable=False)
     numero_visitas_noregistrado = db.Column(db.Integer, unique=True, nullable=False)
+
+    reporte = db.relationship('Reporte', secondary = clientenoregistrado_reporte)
 
     def __repr__(self):
         return 'Non regis client added'
 
 class ClienteNoRegistradoSchema(ma.Schema):
+
+    reportes = ma.Nested(ReporteSchema, many=True)
+
     class Meta:
-        fields = ('id_cliente_noregistrado', 'ip_cliente_noregistrado', 'numero_visitas_noregistrado')
+        fields = ('id_cliente_noregistrado', 'ip_cliente_noregistrado', 'numero_visitas_noregistrado',)
         
 class Administrador(db.Model):
     """docstring for Administrador"""
-    
+    __tablename__ = "administrador"
     id_administrador        = db.Column(db.Integer, primary_key=True)
     name_administrador      = db.Column(db.String(50), unique=True, nullable=False)
     username_administrador  = db.Column(db.String(15), unique=True, nullable=False)
@@ -105,17 +174,6 @@ class Administrador(db.Model):
     cedula_administrador    = db.Column(db.Integer, unique=True, nullable=False)
     email_administrador     = db.Column(db.String(50), unique=True, nullable=False)
 
-    @property
-    def password(self):
-        raise AttributeError('password not readable')
-    @password.setter
-    def password(self, password):
-        self.password_administrador = bcrypt.hashpw('password', bcrypt.gensalt())
-
-    #You should add a verify password function inline with the bcrypt technolgy you implement:
-    #def verify_password(self, password)
-    #    return some_check_hash_func(self.password_cliente_registrado, password)
-
     def __repr__(self):
         return '<Admin {} has been added>'.format(self.name_administrador)
 
@@ -123,67 +181,57 @@ class AdministradorSchema(ma.Schema):
     class Meta:
         fields = ('id_administrador', 'name_administrador', 'username_administrador', 
             'password_administrador', 'telefono_administrador', 'direccion_administrador', 
-            'cedula_administrador', 'email_administrador')
+            'cedula_administrador', 'email_administrador',)
 
 class MetodoPago(db.Model):
     """docstring for MetodoPago"""
-    
+    __tablename__ = "metodopago"
     id_metodo             = db.Column(db.Integer, primary_key=True)
     name_metodo           = db.Column(db.String(50), unique=True, nullable=False)
-    id_cliente_registrado = db.Column(db.Integer, db.ForeingKey('clienteRegistrado.id_cliente_registrado'))
-    clienteRegistrado     = db.relationship('ClienteRegistrado', backref='metodospagos')
+    id_cliente_registrado = db.Column(db.Integer, db.ForeignKey('clienteregistrado.id_cliente_registrado'))
+    
+    venta = db.relationship('Venta', back_populates = 'metodopago')
 
     def __repr__(self):
         return '<payment method {} added>'.format(self.name_metodo)
 
 class MetodoPagoSchema(ma.Schema):
     class Meta:
-        fields = ('id_metodo', 'name_metodo', 'id_cliente_registrado')
+        fields = ('id_metodo', 'name_metodo', 'id_cliente_registrado',)
 
 class Venta(db.Model):
     """docstring for Venta"""
-
+    __tablename__ = "venta"
     id_venta              = db.Column(db.Integer, primary_key=True)
     fecha_venta           = db.Column(db.DateTime, unique=True, nullable=False)
     total_venta           = db.Column(db.Float, unique=True, nullable=False)
-    id_cliente_registrado = db.Column(db.Integer, db.ForeingKey('cliente.id_cliente_registrado'))
-    id_metodo             = db.Column(db.Integer, db.ForeingKey('metodo.id_metodo'))
-    cliente               = db.relationship('ClienteRegistrado', backref='clienteRegistrado')
-    metodo                = db.relationship('MetodoPago', backref='metodospagos')
+    id_cliente_registrado = db.Column(db.Integer, db.ForeignKey('clienteregistrado.id_cliente_registrado'))
+    id_metodo             = db.Column(db.Integer, db.ForeignKey('metodopago.id_metodo'))
+
+    metodopago = db.relationship('MetodoPago', back_populates = 'venta')
+    factura = db.relationship('Factura', back_populates = 'venta')
+    productovendido = db.relationship('Productosvendidos', secondary = venta_productosvendidos)
 
     def __repr__(self):
         return 'New sale added'
 
 class VentaSchema(ma.Schema):
+
+    productosvendidos = ma.Nested(ProductosVendidosSchema, many=True)
+
     class Meta:
-        fields = ('id_venta', 'fecha_venta', 'total_venta', 'id_cliente_registrado', 'id_metodo')
-
-class ProductosVendidos(db.Model):
-    """docstring for ProductosVendidos"""
-    
-    id_productos_vendidos = db.Column(db.Integer, primary_key=True)
-    id_producto           = db.Column(db.Integer,db.ForeingKey('producto.id_producto'))
-    id_venta              = db.Column(db.Integer, db.ForeingKey('venta.id_venta'))
-    producto              = db.relationship('Producto', backref='productosVendidos')
-    venta                 = db.relationship('Venta', backref='productosVenta')
-
-    def __repr__(self):
-        return 'New product sale added'
-
-class ProductosVendidosSchema(ma.Schema):
-    class Meta:
-        fields = ('id_productos_vendidos', ' id_producto', 'id_venta')
+        fields = ('id_venta', 'fecha_venta', 'total_venta', 'id_cliente_registrado', 'id_metodo',)
 
 class Factura(db.Model):
     """docstring for Factura"""
-   
+    __tablename__ = "factura"
     id_factura = db.Column(db.Integer, primary_key=True)
-    id_venta   = db.Column(db.Integer, db.ForeingKey('venta.id_venta'))
-    venta      = db.relationship('Venta', backref='facturaVenta')
+    id_venta   = db.Column(db.Integer, db.ForeignKey('venta.id_venta'))
+    venta      = db.relationship('Venta', back_populates='factura')
 
     def __repr__(self):
         return 'New bill added'
         
 class FacturaSchema(ma.Schema):
     class Meta:
-        fields = ('id_factura', 'id_venta')
+        fields = ('id_factura', 'id_venta',)

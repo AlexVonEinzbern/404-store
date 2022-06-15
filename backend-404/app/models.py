@@ -70,18 +70,18 @@ class Producto(db.Model):
     __tablename__ = "producto"
     id_producto            = db.Column(db.Integer, primary_key=True)
     name_producto          = db.Column(db.String(50), unique=True, nullable=False)
-    categoria_producto     = db.Column(db.String(50), unique=True, nullable=False)
-    subcategoria_producto  = db.Column(db.String(50), unique=True, nullable=False)
+    categoria_producto     = db.Column(db.String(50), nullable=False)
+    subcategoria_producto  = db.Column(db.String(50), nullable=False)
     descripcion_producto   = db.Column(db.String(200), unique=True, nullable=False)
-    talla_producto         = db.Column(db.String(5), unique=True, nullable=False)
-    calificacion_producto  = db.Column(db.Integer, unique=True)
-    stock_producto         = db.Column(db.Integer, unique=True, nullable=False)
-    stock_vendido_producto = db.Column(db.Integer, unique=True, nullable=False)
-    precio_producto        = db.Column(db.Float, unique=True, nullable=False)
+    talla_producto         = db.Column(db.String(5), nullable=False)
+    calificacion_producto  = db.Column(db.Integer)
+    stock_producto         = db.Column(db.Integer, nullable=False)
+    stock_vendido_producto = db.Column(db.Integer, nullable=False)
+    precio_producto        = db.Column(db.Float, nullable=False)
 
     productoimagen  = db.relationship('ProductoImagen')
     reporte         = db.relationship('Reporte', secondary = producto_reporte)
-    productovendido = db.relationship('Productosvendidos', secondary = producto_productosvendidos)
+    productovendido = db.relationship('ProductosVendidos', secondary = producto_productosvendidos)
 
     def __repr__(self):
         return '<product {} has been added>'.format(self.name_producto)
@@ -115,13 +115,13 @@ class ClienteRegistrado(db.Model):
     """docstring for ClienteRegistrado"""
     __tablename__ = "clienteregistrado"
     id_cliente_registrado        = db.Column(db.Integer, primary_key=True)
-    name_cliente_registrado      = db.Column(db.String(50), unique=True, nullable=False)
+    name_cliente_registrado      = db.Column(db.String(50), nullable=False)
     cedula_cliente_registrado    = db.Column(db.Integer, unique=True, nullable=False)
-    edad_cliente_registrado      = db.Column(db.Integer, unique=True, nullable=False)
+    edad_cliente_registrado      = db.Column(db.Integer, nullable=False)
     email_cliente_registrado     = db.Column(db.String(50), unique=True, nullable=False)
     direccion_cliente_registrado = db.Column(db.String(50))
     ip_cliente_registrado        = db.Column(db.String(15), unique=True, nullable=False)
-    numero_visitas_registrado    = db.Column(db.Integer, unique=True, nullable=False)
+    numero_visitas_registrado    = db.Column(db.Integer, nullable=False)
     password_cliente_registrado  = db.Column(db.String(128), unique=True, nullable=False)
     username_cliente_registrado  = db.Column(db.String(15), unique=True, nullable=False)
     telefono_cliente_registrado  = db.Column(db.Integer)
@@ -148,7 +148,7 @@ class ClienteNoRegistrado(db.Model):
     __tablename__ = "clientenoregistrado"
     id_cliente_noregistrado     = db.Column(db.Integer, primary_key=True)
     ip_cliente_noregistrado     = db.Column(db.String(15), unique=True, nullable=False)
-    numero_visitas_noregistrado = db.Column(db.Integer, unique=True, nullable=False)
+    numero_visitas_noregistrado = db.Column(db.Integer, nullable=False)
 
     reporte = db.relationship('Reporte', secondary = clientenoregistrado_reporte)
 
@@ -166,7 +166,7 @@ class Administrador(db.Model):
     """docstring for Administrador"""
     __tablename__ = "administrador"
     id_administrador        = db.Column(db.Integer, primary_key=True)
-    name_administrador      = db.Column(db.String(50), unique=True, nullable=False)
+    name_administrador      = db.Column(db.String(50), nullable=False)
     username_administrador  = db.Column(db.String(15), unique=True, nullable=False)
     password_administrador  = db.Column(db.String(128), unique=True, nullable=False)
     telefono_administrador  = db.Column(db.Integer)
@@ -203,14 +203,14 @@ class Venta(db.Model):
     """docstring for Venta"""
     __tablename__ = "venta"
     id_venta              = db.Column(db.Integer, primary_key=True)
-    fecha_venta           = db.Column(db.DateTime, unique=True, nullable=False)
-    total_venta           = db.Column(db.Float, unique=True, nullable=False)
+    fecha_venta           = db.Column(db.DateTime, nullable=False)
+    total_venta           = db.Column(db.Float, nullable=False)
     id_cliente_registrado = db.Column(db.Integer, db.ForeignKey('clienteregistrado.id_cliente_registrado'))
     id_metodo             = db.Column(db.Integer, db.ForeignKey('metodopago.id_metodo'))
 
     metodopago      = db.relationship('MetodoPago', back_populates = 'venta')
     factura         = db.relationship('Factura', back_populates = 'venta')
-    productovendido = db.relationship('Productosvendidos', secondary = venta_productosvendidos)
+    productovendido = db.relationship('ProductosVendidos', secondary = venta_productosvendidos)
 
     def __repr__(self):
         return 'New sale added'

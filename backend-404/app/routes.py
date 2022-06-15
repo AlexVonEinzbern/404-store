@@ -1,18 +1,11 @@
-from os import name
 from flask import request
 from flask import current_app as app
 from .models import *
 
-
-# @app.route('/', methods=['GET'])
-# def home():
-#     return "Hola"
-
-productoschema = ProductoSchema()
+producto_schema = ProductoSchema()
 @app.route('/crearProducto', methods=['POST'])
 def crearProducto():
 
-    #id_producto            = request.json['id_producto']       
     name_producto          = request.json['name_producto']
     categoria_producto     = request.json['categoria_producto']
     subcategoria_producto  = request.json['subcategoria_producto']
@@ -23,7 +16,7 @@ def crearProducto():
     stock_vendido_producto = request.json['stock_vendido_producto']
     precio_producto        = request.json['precio_producto']
 
-    new_producto = Producto(#id_producto=id_producto, 
+    new_producto = Producto(
         name_producto=name_producto, 
         categoria_producto=categoria_producto,
         subcategoria_producto=subcategoria_producto,
@@ -37,12 +30,12 @@ def crearProducto():
     db.session.add(new_producto)
     db.session.commit()
 
-    return productoschema.jsonify(new_producto)
+    return producto_schema.jsonify(new_producto)
 
 @app.route('/obtenerProducto/<id_producto>', methods=['GET'])
 def obtenerProducto(id_producto):
-    producto = Producto.query.filter_by(id_producto=id_producto)
-    return productoschema.jsonify(producto)
+    producto = Producto.query.filter_by(id_producto=id_producto).first()
+    return producto_schema.jsonify(producto)
 
 productos_schema = ProductoSchema(many=True)
 @app.route('/obtenerProductos', methods=['GET'])

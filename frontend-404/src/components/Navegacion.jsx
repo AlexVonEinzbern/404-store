@@ -28,17 +28,14 @@ export default function Navegacion() {
   //ide del menu
   const menuId = 'primary-search-account-menu';
   //renderiza el menu
-  const [MenuCategoriasViseble, setMenuCategoriasVisible] = useState(false)
+  const [showMenu, setShowMenu] = useState(false)
   const [categoriasMenu,SetcategoriasMenu]=useState(todasLasCategorias[1])
-
-  const hacerMenuVisible = () => {
-    setMenuCategoriasVisible(true)
+  const seeMenu = () => {
+    setShowMenu(true)
   }
-  const hacerMenuInvisible = () => {
-    setMenuCategoriasVisible(false)
-
+  const hideMenu = () => {
+    setShowMenu(false)
   }
-
 
 
   return (
@@ -65,19 +62,19 @@ export default function Navegacion() {
               
               BotonesNavegacion.map((btn => {
                 return (
-                 <div key= {btn.id+1} className={classes.contBtnMenu}
+                 <div key= {btn.ubicacion} className={classes.contBtnMenu}
                   >
                     <Button 
                   variant="text" 
                   color="inherit"
                   noombre='1'
                   onMouseEnter={()=>{
-                    hacerMenuVisible();
-                    SetcategoriasMenu(todasLasCategorias[btn.id]);
+                    seeMenu();
+                    SetcategoriasMenu(todasLasCategorias[btn.ubicacion]);
                   }}
 
-                  onMouseLeave={hacerMenuInvisible}
-                  key={btn.id}
+                  onMouseLeave={hideMenu}
+                  key={btn.ubicacion}
                   >
                     {btn.nombre}
                   </Button>
@@ -122,8 +119,8 @@ export default function Navegacion() {
 
       </AppBar>
 
-      <div className={classes.fantasma} onMouseEnter={hacerMenuVisible}onMouseLeave={hacerMenuInvisible}>
-            {MenuCategoriasViseble && <MenuDesplagable categorias={categoriasMenu} onMouseEnter={hacerMenuVisible}></MenuDesplagable>}
+      <div className={classes.fantasma} onMouseEnter={seeMenu}onMouseLeave={hideMenu}>
+            {showMenu && <MenuDesplagable categorias={categoriasMenu} onMouseEnter={seeMenu}></MenuDesplagable>}
       </div>
     </ThemeProvider>
   );

@@ -9,12 +9,12 @@ export  const BotonesNavegacion=[
 
     {
         nombre:'Hombre',
-        id:0,
+        ubicacion:0, //ubicacion del boton en la barras de navegacion
         ruta:''
     },
     {
         nombre:'Mujer',
-        id:1,
+        ubicacion:1, //ubicacion del boton en la barras de navegacion
         ruta:''
     },
 

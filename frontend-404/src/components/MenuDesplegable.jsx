@@ -6,7 +6,7 @@ import { useState } from "react";
 import { makeStyles } from "@material-ui/styles";
 import { alpha } from "@material-ui/core";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
 
     contMenu:{
     display: 'flex',

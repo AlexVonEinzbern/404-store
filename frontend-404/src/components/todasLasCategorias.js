@@ -1,6 +1,7 @@
-import { CategoriasHombre } from "./categoriasHombres";
-import { CategoriasMujeres } from "./categoriasMejeres";
+
+import CategoriasMujeres from "./categoriasMejeres.json"
 import { CategoriasNiños } from "./categoriasNiños";
+import CategoriasHombre from "./categoriasHombres.json"
 
 
 export const todasLasCategorias=[

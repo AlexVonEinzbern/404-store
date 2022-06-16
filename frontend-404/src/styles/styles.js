@@ -5,6 +5,8 @@ import { alpha } from "@material-ui/core";
 export const useStyles = makeStyles((theme) => ({
 
   Navegacion:{
+    position:'fixed',
+    top:0
 
   },
   fantasma:{
@@ -12,17 +14,19 @@ export const useStyles = makeStyles((theme) => ({
     height:'fitContent',
     with:'fitContent',
     position:'relative',
-    top:'-15px'
+    top:'-15px',
+
     
   },
 
 
   botonesNavegacion:{
-    
+    position:'inherit',
     fontWeight:'bold',
     margin:'auto',
     display:'flex',
-    height:'100%'
+    height:'100%',
+    left:'vh'
     
   },
 
@@ -39,6 +43,12 @@ export const useStyles = makeStyles((theme) => ({
     justifyContent: 'right'
     
     },
+
+  barraInferior:{ 
+
+    margin:'0 30px'
+
+  },
     contenedor: {
     },
 

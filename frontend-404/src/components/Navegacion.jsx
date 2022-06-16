@@ -53,7 +53,7 @@ export default function Navegacion() {
 
 
 
-        <Toolbar>
+        <Toolbar className={classes.barraInferior}>
           {/* logo */}
           <Typography className={classes.title} variant="h6" noWrap ><b>404-STORE</b></Typography>
         
@@ -84,6 +84,7 @@ export default function Navegacion() {
             }
 
           </div>
+          
           <div className={classes.sectionDesktop}>
 
             <div className={classes.search}>
@@ -117,11 +118,16 @@ export default function Navegacion() {
           </div>
         </Toolbar>  
 
-      </AppBar>
+      
 
       <div className={classes.fantasma} onMouseEnter={seeMenu}onMouseLeave={hideMenu}>
-            {showMenu && <MenuDesplagable categorias={categoriasMenu} onMouseEnter={seeMenu}></MenuDesplagable>}
+      {showMenu && <MenuDesplagable categorias={categoriasMenu} onMouseEnter={seeMenu} className={classes.MenuDesplagable}></MenuDesplagable>}
       </div>
+
+      </AppBar>
+
+      
+      
     </ThemeProvider>
   );
 }

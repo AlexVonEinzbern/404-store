@@ -61,9 +61,9 @@ def crearProductoImagen():
 
     return producto_imagen_schema.jsonify(new_producto_imagen)
 
-@app.route('/obtenerProductoImagen/<id_url_imagen>', methods=['GET'])
-def obtenerProductoImagen(id_url_imagen):
-    productoimagen = ProductoImagen.query.filter_by(id_url_imagen=id_url_imagen).first()
+@app.route('/obtenerProductoImagen/<id_producto>', methods=['GET'])
+def obtenerProductoImagen(id_producto):
+    productoimagen = ProductoImagen.query.filter_by(id_producto = id_producto).first()
     return producto_imagen_schema.jsonify(productoimagen)
 
 

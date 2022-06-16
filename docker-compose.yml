@@ -15,7 +15,7 @@ services:
   backend:
     build: 
       context: .
-      dockerfile: backend-404/DockerFile
+      dockerfile: backend-404/Dockerfile
     env_file:
       - backend-404/.env
     depends_on:

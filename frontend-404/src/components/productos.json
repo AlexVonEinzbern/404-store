@@ -1,0 +1,975 @@
+[
+    {
+        "Hombre": [
+            {
+                "nombreCategoria": "Ropa exterior",
+                "subcategorias": [
+                    {
+                        "nombreSubcategoria": "Camisas",
+                        "productos": [
+                            {
+                                "id_producto": "por ahora pongan un ide cualquiera",
+                                "name_producto": "Camiseta Henley California",
+                                "descripcion_producto": "Camisa mela para que las nenas lo miren como si no fuera feo xD",
+                                "talla_producto": "XXXL",
+                                "calificacion_producto": "5",
+                                "stock_producto": "pongan un numero cualquiera (50 para todas esta bien)",
+                                "precio_producto": "No se pasen de lanza pues (tomen los precios de gef)",
+                                "productoimagen": "la url de la imagen con su extension EJEMPLO: Hombre/RopaExterior/Camisas/Camiseta-Henley-California.jpg"
+                            },
+                            {
+                                "id_producto": "",
+                                "name_producto": "",
+                                "categoria_producto": "",
+                                "subcategoria_producto": "",
+                                "descripcion_producto": "",
+                                "talla_producto": "",
+                                "calificacion_producto": "",
+                                "stock_producto": "",
+                                "stock_vendido_producto": "",
+                                "precio_producto": "",
+                                "productoimagen": ""
+                            }
+                        ]
+                    },
+                    {
+                        "nombreSubcategoria": "Camisetas",
+                        "productos": [
+                            {
+                                "id_producto": "",
+                                "name_producto": "",
+                                "categoria_producto": "",
+                                "subcategoria_producto": "",
+                                "descripcion_producto": "",
+                                "talla_producto": "",
+                                "calificacion_producto": "",
+                                "stock_producto": "",
+                                "stock_vendido_producto": "",
+                                "precio_producto": "",
+                                "productoimagen": ""
+                            },
+                            {
+                                "id_producto": "",
+                                "name_producto": "",
+                                "categoria_producto": "",
+                                "subcategoria_producto": "",
+                                "descripcion_producto": "",
+                                "talla_producto": "",
+                                "calificacion_producto": "",
+                                "stock_producto": "",
+                                "stock_vendido_producto": "",
+                                "precio_producto": "",
+                                "productoimagen": ""
+                            }
+                        ]
+                    },
+                    {
+                        "nombreSubcategoria": "Jeans",
+                        "productos": [
+                            {
+                                "id_producto": "",
+                                "name_producto": "",
+                                "categoria_producto": "",
+                                "subcategoria_producto": "",
+                                "descripcion_producto": "",
+                                "talla_producto": "",
+                                "calificacion_producto": "",
+                                "stock_producto": "",
+                                "stock_vendido_producto": "",
+                                "precio_producto": "",
+                                "productoimagen": ""
+                            },
+                            {
+                                "id_producto": "",
+                                "name_producto": "",
+                                "categoria_producto": "",
+                                "subcategoria_producto": "",
+                                "descripcion_producto": "",
+                                "talla_producto": "",
+                                "calificacion_producto": "",
+                                "stock_producto": "",
+                                "stock_vendido_producto": "",
+                                "precio_producto": "",
+                                "productoimagen": ""
+                            }
+                        ]
+                    },
+                    {
+                        "nombreSubcategoria": "Pantalones",
+                        "productos": [
+                            {
+                                "id_producto": "",
+                                "name_producto": "",
+                                "categoria_producto": "",
+                                "subcategoria_producto": "",
+                                "descripcion_producto": "",
+                                "talla_producto": "",
+                                "calificacion_producto": "",
+                                "stock_producto": "",
+                                "stock_vendido_producto": "",
+                                "precio_producto": "",
+                                "productoimagen": ""
+                            },
+                            {
+                                "id_producto": "",
+                                "name_producto": "",
+                                "categoria_producto": "",
+                                "subcategoria_producto": "",
+                                "descripcion_producto": "",
+                                "talla_producto": "",
+                                "calificacion_producto": "",
+                                "stock_producto": "",
+                                "stock_vendido_producto": "",
+                                "precio_producto": "",
+                                "productoimagen": ""
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "nombreCategoria": "Ropa interior",
+                "subcategorias": [
+                    {
+                        "nombreSubcategoria": "Pijamas",
+                        "productos": [
+                            {
+                                "id_producto": "",
+                                "name_producto": "",
+                                "categoria_producto": "",
+                                "subcategoria_producto": "",
+                                "descripcion_producto": "",
+                                "talla_producto": "",
+                                "calificacion_producto": "",
+                                "stock_producto": "",
+                                "stock_vendido_producto": "",
+                                "precio_producto": "",
+                                "productoimagen": ""
+                            },
+                            {
+                                "id_producto": "",
+                                "name_producto": "",
+                                "categoria_producto": "",
+                                "subcategoria_producto": "",
+                                "descripcion_producto": "",
+                                "talla_producto": "",
+                                "calificacion_producto": "",
+                                "stock_producto": "",
+                                "stock_vendido_producto": "",
+                                "precio_producto": "",
+                                "productoimagen": ""
+                            }
+                        ]
+                    },
+                    {
+                        "nombreSubcategoria": "Boxers",
+                        "productos": [
+                            {
+                                "id_producto": "",
+                                "name_producto": "",
+                                "categoria_producto": "",
+                                "subcategoria_producto": "",
+                                "descripcion_producto": "",
+                                "talla_producto": "",
+                                "calificacion_producto": "",
+                                "stock_producto": "",
+                                "stock_vendido_producto": "",
+                                "precio_producto": "",
+                                "productoimagen": ""
+                            },
+                            {
+                                "id_producto": "",
+                                "name_producto": "",
+                                "categoria_producto": "",
+                                "subcategoria_producto": "",
+                                "descripcion_producto": "",
+                                "talla_producto": "",
+                                "calificacion_producto": "",
+                                "stock_producto": "",
+                                "stock_vendido_producto": "",
+                                "precio_producto": "",
+                                "productoimagen": ""
+                            }
+                        ]
+                    },
+                    {
+                        "nombreSubcategoria": "Camisetas",
+                        "productos": [
+                            {
+                                "id_producto": "",
+                                "name_producto": "",
+                                "categoria_producto": "",
+                                "subcategoria_producto": "",
+                                "descripcion_producto": "",
+                                "talla_producto": "",
+                                "calificacion_producto": "",
+                                "stock_producto": "",
+                                "stock_vendido_producto": "",
+                                "precio_producto": "",
+                                "productoimagen": ""
+                            },
+                            {
+                                "id_producto": "",
+                                "name_producto": "",
+                                "categoria_producto": "",
+                                "subcategoria_producto": "",
+                                "descripcion_producto": "",
+                                "talla_producto": "",
+                                "calificacion_producto": "",
+                                "stock_producto": "",
+                                "stock_vendido_producto": "",
+                                "precio_producto": "",
+                                "productoimagen": ""
+                            }
+                        ]
+                    },
+                    {
+                        "nombreSubcategoria": "Medias",
+                        "productos": [
+                            {
+                                "id_producto": "",
+                                "name_producto": "",
+                                "categoria_producto": "",
+                                "subcategoria_producto": "",
+                                "descripcion_producto": "",
+                                "talla_producto": "",
+                                "calificacion_producto": "",
+                                "stock_producto": "",
+                                "stock_vendido_producto": "",
+                                "precio_producto": "",
+                                "productoimagen": ""
+                            },
+                            {
+                                "id_producto": "",
+                                "name_producto": "",
+                                "categoria_producto": "",
+                                "subcategoria_producto": "",
+                                "descripcion_producto": "",
+                                "talla_producto": "",
+                                "calificacion_producto": "",
+                                "stock_producto": "",
+                                "stock_vendido_producto": "",
+                                "precio_producto": "",
+                                "productoimagen": ""
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "nombreCategoria": "Ropa deportiva",
+                "subcategorias": [
+                    {
+                        "nombreSubcategoria": "Prendas superiores",
+                        "productos": [
+                            {
+                                "id_producto": "",
+                                "name_producto": "",
+                                "categoria_producto": "",
+                                "subcategoria_producto": "",
+                                "descripcion_producto": "",
+                                "talla_producto": "",
+                                "calificacion_producto": "",
+                                "stock_producto": "",
+                                "stock_vendido_producto": "",
+                                "precio_producto": "",
+                                "productoimagen": ""
+                            },
+                            {
+                                "id_producto": "",
+                                "name_producto": "",
+                                "categoria_producto": "",
+                                "subcategoria_producto": "",
+                                "descripcion_producto": "",
+                                "talla_producto": "",
+                                "calificacion_producto": "",
+                                "stock_producto": "",
+                                "stock_vendido_producto": "",
+                                "precio_producto": "",
+                                "productoimagen": ""
+                            }
+                        ]
+                    },
+                    {
+                        "nombreSubcategoria": "Prendas inferiores",
+                        "productos": [
+                            {
+                                "id_producto": "",
+                                "name_producto": "",
+                                "categoria_producto": "",
+                                "subcategoria_producto": "",
+                                "descripcion_producto": "",
+                                "talla_producto": "",
+                                "calificacion_producto": "",
+                                "stock_producto": "",
+                                "stock_vendido_producto": "",
+                                "precio_producto": "",
+                                "productoimagen": ""
+                            },
+                            {
+                                "id_producto": "",
+                                "name_producto": "",
+                                "categoria_producto": "",
+                                "subcategoria_producto": "",
+                                "descripcion_producto": "",
+                                "talla_producto": "",
+                                "calificacion_producto": "",
+                                "stock_producto": "",
+                                "stock_vendido_producto": "",
+                                "precio_producto": "",
+                                "productoimagen": ""
+                            }
+                        ]
+                    },
+                    {
+                        "nombreSubcategoria": "Accesorios",
+                        "productos": [
+                            {
+                                "id_producto": "",
+                                "name_producto": "",
+                                "categoria_producto": "",
+                                "subcategoria_producto": "",
+                                "descripcion_producto": "",
+                                "talla_producto": "",
+                                "calificacion_producto": "",
+                                "stock_producto": "",
+                                "stock_vendido_producto": "",
+                                "precio_producto": "",
+                                "productoimagen": ""
+                            },
+                            {
+                                "id_producto": "",
+                                "name_producto": "",
+                                "categoria_producto": "",
+                                "subcategoria_producto": "",
+                                "descripcion_producto": "",
+                                "talla_producto": "",
+                                "calificacion_producto": "",
+                                "stock_producto": "",
+                                "stock_vendido_producto": "",
+                                "precio_producto": "",
+                                "productoimagen": ""
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "nombreCategoria": "Accesorios",
+                "subcategorias": [
+                    {
+                        "nombreSubcategoria": "Billeteras",
+                        "productos": [
+                            {
+                                "id_producto": "",
+                                "name_producto": "",
+                                "categoria_producto": "",
+                                "subcategoria_producto": "",
+                                "descripcion_producto": "",
+                                "talla_producto": "",
+                                "calificacion_producto": "",
+                                "stock_producto": "",
+                                "stock_vendido_producto": "",
+                                "precio_producto": "",
+                                "productoimagen": ""
+                            },
+                            {
+                                "id_producto": "",
+                                "name_producto": "",
+                                "categoria_producto": "",
+                                "subcategoria_producto": "",
+                                "descripcion_producto": "",
+                                "talla_producto": "",
+                                "calificacion_producto": "",
+                                "stock_producto": "",
+                                "stock_vendido_producto": "",
+                                "precio_producto": "",
+                                "productoimagen": ""
+                            }
+                        ]
+                    },
+                    {
+                        "nombreSubcategoria": "Correas",
+                        "productos": [
+                            {
+                                "id_producto": "",
+                                "name_producto": "",
+                                "categoria_producto": "",
+                                "subcategoria_producto": "",
+                                "descripcion_producto": "",
+                                "talla_producto": "",
+                                "calificacion_producto": "",
+                                "stock_producto": "",
+                                "stock_vendido_producto": "",
+                                "precio_producto": "",
+                                "productoimagen": ""
+                            },
+                            {
+                                "id_producto": "",
+                                "name_producto": "",
+                                "categoria_producto": "",
+                                "subcategoria_producto": "",
+                                "descripcion_producto": "",
+                                "talla_producto": "",
+                                "calificacion_producto": "",
+                                "stock_producto": "",
+                                "stock_vendido_producto": "",
+                                "precio_producto": "",
+                                "productoimagen": ""
+                            }
+                        ]
+                    },
+                    {
+                        "nombreSubcategoria": "Gorras",
+                        "productos": [
+                            {
+                                "id_producto": "",
+                                "name_producto": "",
+                                "categoria_producto": "",
+                                "subcategoria_producto": "",
+                                "descripcion_producto": "",
+                                "talla_producto": "",
+                                "calificacion_producto": "",
+                                "stock_producto": "",
+                                "stock_vendido_producto": "",
+                                "precio_producto": "",
+                                "productoimagen": ""
+                            },
+                            {
+                                "id_producto": "",
+                                "name_producto": "",
+                                "categoria_producto": "",
+                                "subcategoria_producto": "",
+                                "descripcion_producto": "",
+                                "talla_producto": "",
+                                "calificacion_producto": "",
+                                "stock_producto": "",
+                                "stock_vendido_producto": "",
+                                "precio_producto": "",
+                                "productoimagen": ""
+                            }
+                        ]
+                    },
+                    {
+                        "nombreSubcategoria": "Relojes",
+                        "productos": [
+                            {
+                                "id_producto": "",
+                                "name_producto": "",
+                                "categoria_producto": "",
+                                "subcategoria_producto": "",
+                                "descripcion_producto": "",
+                                "talla_producto": "",
+                                "calificacion_producto": "",
+                                "stock_producto": "",
+                                "stock_vendido_producto": "",
+                                "precio_producto": "",
+                                "productoimagen": ""
+                            },
+                            {
+                                "id_producto": "",
+                                "name_producto": "",
+                                "categoria_producto": "",
+                                "subcategoria_producto": "",
+                                "descripcion_producto": "",
+                                "talla_producto": "",
+                                "calificacion_producto": "",
+                                "stock_producto": "",
+                                "stock_vendido_producto": "",
+                                "precio_producto": "",
+                                "productoimagen": ""
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "Mujer": [
+            {
+                "nombreCategoria": "Ropa exterior",
+                "subcategorias": [
+                    {
+                        "nombreSubcategoria": "Camisas",
+                        "productos": [
+                            {
+                                "id_producto": "",
+                                "name_producto": "",
+                                "categoria_producto": "",
+                                "subcategoria_producto": "",
+                                "descripcion_producto": "",
+                                "talla_producto": "",
+                                "calificacion_producto": "",
+                                "stock_producto": "",
+                                "stock_vendido_producto": "",
+                                "precio_producto": "",
+                                "productoimagen": ""
+                            },
+                            {
+                                "id_producto": "",
+                                "name_producto": "",
+                                "categoria_producto": "",
+                                "subcategoria_producto": "",
+                                "descripcion_producto": "",
+                                "talla_producto": "",
+                                "calificacion_producto": "",
+                                "stock_producto": "",
+                                "stock_vendido_producto": "",
+                                "precio_producto": "",
+                                "productoimagen": ""
+                            }
+                        ]
+                    },
+                    {
+                        "nombreSubcategoria": "Camisetas",
+                        "productos": [
+                            {
+                                "id_producto": "",
+                                "name_producto": "",
+                                "categoria_producto": "",
+                                "subcategoria_producto": "",
+                                "descripcion_producto": "",
+                                "talla_producto": "",
+                                "calificacion_producto": "",
+                                "stock_producto": "",
+                                "stock_vendido_producto": "",
+                                "precio_producto": "",
+                                "productoimagen": ""
+                            },
+                            {
+                                "id_producto": "",
+                                "name_producto": "",
+                                "categoria_producto": "",
+                                "subcategoria_producto": "",
+                                "descripcion_producto": "",
+                                "talla_producto": "",
+                                "calificacion_producto": "",
+                                "stock_producto": "",
+                                "stock_vendido_producto": "",
+                                "precio_producto": "",
+                                "productoimagen": ""
+                            }
+                        ]
+                    },
+                    {
+                        "nombreSubcategoria": "Jeans",
+                        "productos": [
+                            {
+                                "id_producto": "",
+                                "name_producto": "",
+                                "categoria_producto": "",
+                                "subcategoria_producto": "",
+                                "descripcion_producto": "",
+                                "talla_producto": "",
+                                "calificacion_producto": "",
+                                "stock_producto": "",
+                                "stock_vendido_producto": "",
+                                "precio_producto": "",
+                                "productoimagen": ""
+                            },
+                            {
+                                "id_producto": "",
+                                "name_producto": "",
+                                "categoria_producto": "",
+                                "subcategoria_producto": "",
+                                "descripcion_producto": "",
+                                "talla_producto": "",
+                                "calificacion_producto": "",
+                                "stock_producto": "",
+                                "stock_vendido_producto": "",
+                                "precio_producto": "",
+                                "productoimagen": ""
+                            }
+                        ]
+                    },
+                    {
+                        "nombreSubcategoria": "Joger",
+                        "productos": [
+                            {
+                                "id_producto": "",
+                                "name_producto": "",
+                                "categoria_producto": "",
+                                "subcategoria_producto": "",
+                                "descripcion_producto": "",
+                                "talla_producto": "",
+                                "calificacion_producto": "",
+                                "stock_producto": "",
+                                "stock_vendido_producto": "",
+                                "precio_producto": "",
+                                "productoimagen": ""
+                            },
+                            {
+                                "id_producto": "",
+                                "name_producto": "",
+                                "categoria_producto": "",
+                                "subcategoria_producto": "",
+                                "descripcion_producto": "",
+                                "talla_producto": "",
+                                "calificacion_producto": "",
+                                "stock_producto": "",
+                                "stock_vendido_producto": "",
+                                "precio_producto": "",
+                                "productoimagen": ""
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "nombreCategoria": "Ropa interior",
+                "subcategorias": [
+                    {
+                        "nombreSubcategoria": "Pijama",
+                        "productos": [
+                            {
+                                "id_producto": "",
+                                "name_producto": "",
+                                "categoria_producto": "",
+                                "subcategoria_producto": "",
+                                "descripcion_producto": "",
+                                "talla_producto": "",
+                                "calificacion_producto": "",
+                                "stock_producto": "",
+                                "stock_vendido_producto": "",
+                                "precio_producto": "",
+                                "productoimagen": ""
+                            },
+                            {
+                                "id_producto": "",
+                                "name_producto": "",
+                                "categoria_producto": "",
+                                "subcategoria_producto": "",
+                                "descripcion_producto": "",
+                                "talla_producto": "",
+                                "calificacion_producto": "",
+                                "stock_producto": "",
+                                "stock_vendido_producto": "",
+                                "precio_producto": "",
+                                "productoimagen": ""
+                            }
+                        ]
+                    },
+                    {
+                        "nombreSubcategoria": "Panties",
+                        "productos": [
+                            {
+                                "id_producto": "",
+                                "name_producto": "",
+                                "categoria_producto": "",
+                                "subcategoria_producto": "",
+                                "descripcion_producto": "",
+                                "talla_producto": "",
+                                "calificacion_producto": "",
+                                "stock_producto": "",
+                                "stock_vendido_producto": "",
+                                "precio_producto": "",
+                                "productoimagen": ""
+                            },
+                            {
+                                "id_producto": "",
+                                "name_producto": "",
+                                "categoria_producto": "",
+                                "subcategoria_producto": "",
+                                "descripcion_producto": "",
+                                "talla_producto": "",
+                                "calificacion_producto": "",
+                                "stock_producto": "",
+                                "stock_vendido_producto": "",
+                                "precio_producto": "",
+                                "productoimagen": ""
+                            }
+                        ]
+                    },
+                    {
+                        "nombreSubcategoria": "Brassier",
+                        "productos": [
+                            {
+                                "id_producto": "",
+                                "name_producto": "",
+                                "categoria_producto": "",
+                                "subcategoria_producto": "",
+                                "descripcion_producto": "",
+                                "talla_producto": "",
+                                "calificacion_producto": "",
+                                "stock_producto": "",
+                                "stock_vendido_producto": "",
+                                "precio_producto": "",
+                                "productoimagen": ""
+                            },
+                            {
+                                "id_producto": "",
+                                "name_producto": "",
+                                "categoria_producto": "",
+                                "subcategoria_producto": "",
+                                "descripcion_producto": "",
+                                "talla_producto": "",
+                                "calificacion_producto": "",
+                                "stock_producto": "",
+                                "stock_vendido_producto": "",
+                                "precio_producto": "",
+                                "productoimagen": ""
+                            }
+                        ]
+                    },
+                    {
+                        "nombreSubcategoria": "Medias",
+                        "productos": [
+                            {
+                                "id_producto": "",
+                                "name_producto": "",
+                                "categoria_producto": "",
+                                "subcategoria_producto": "",
+                                "descripcion_producto": "",
+                                "talla_producto": "",
+                                "calificacion_producto": "",
+                                "stock_producto": "",
+                                "stock_vendido_producto": "",
+                                "precio_producto": "",
+                                "productoimagen": ""
+                            },
+                            {
+                                "id_producto": "",
+                                "name_producto": "",
+                                "categoria_producto": "",
+                                "subcategoria_producto": "",
+                                "descripcion_producto": "",
+                                "talla_producto": "",
+                                "calificacion_producto": "",
+                                "stock_producto": "",
+                                "stock_vendido_producto": "",
+                                "precio_producto": "",
+                                "productoimagen": ""
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "nombreCategoria": "Ropa deportiva",
+                "subcategorias": [
+                    {
+                        "nombreSubcategoria": "Prendas superiores",
+                        "productos": [
+                            {
+                                "id_producto": "",
+                                "name_producto": "",
+                                "categoria_producto": "",
+                                "subcategoria_producto": "",
+                                "descripcion_producto": "",
+                                "talla_producto": "",
+                                "calificacion_producto": "",
+                                "stock_producto": "",
+                                "stock_vendido_producto": "",
+                                "precio_producto": "",
+                                "productoimagen": ""
+                            },
+                            {
+                                "id_producto": "",
+                                "name_producto": "",
+                                "categoria_producto": "",
+                                "subcategoria_producto": "",
+                                "descripcion_producto": "",
+                                "talla_producto": "",
+                                "calificacion_producto": "",
+                                "stock_producto": "",
+                                "stock_vendido_producto": "",
+                                "precio_producto": "",
+                                "productoimagen": ""
+                            }
+                        ]
+                    },
+                    {
+                        "nombreSubcategoria": "Prendas inferiores",
+                        "productos": [
+                            {
+                                "id_producto": "",
+                                "name_producto": "",
+                                "categoria_producto": "",
+                                "subcategoria_producto": "",
+                                "descripcion_producto": "",
+                                "talla_producto": "",
+                                "calificacion_producto": "",
+                                "stock_producto": "",
+                                "stock_vendido_producto": "",
+                                "precio_producto": "",
+                                "productoimagen": ""
+                            },
+                            {
+                                "id_producto": "",
+                                "name_producto": "",
+                                "categoria_producto": "",
+                                "subcategoria_producto": "",
+                                "descripcion_producto": "",
+                                "talla_producto": "",
+                                "calificacion_producto": "",
+                                "stock_producto": "",
+                                "stock_vendido_producto": "",
+                                "precio_producto": "",
+                                "productoimagen": ""
+                            }
+                        ]
+                    },
+                    {
+                        "nombreSubcategoria": "accesorios",
+                        "productos": [
+                            {
+                                "id_producto": "",
+                                "name_producto": "",
+                                "categoria_producto": "",
+                                "subcategoria_producto": "",
+                                "descripcion_producto": "",
+                                "talla_producto": "",
+                                "calificacion_producto": "",
+                                "stock_producto": "",
+                                "stock_vendido_producto": "",
+                                "precio_producto": "",
+                                "productoimagen": ""
+                            },
+                            {
+                                "id_producto": "",
+                                "name_producto": "",
+                                "categoria_producto": "",
+                                "subcategoria_producto": "",
+                                "descripcion_producto": "",
+                                "talla_producto": "",
+                                "calificacion_producto": "",
+                                "stock_producto": "",
+                                "stock_vendido_producto": "",
+                                "precio_producto": "",
+                                "productoimagen": ""
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "nombreCategoria": "Accesorios",
+                "subcategorias": [
+                    {
+                        "nombreSubcategoria": "Bisuterias",
+                        "productos": [
+                            {
+                                "id_producto": "",
+                                "name_producto": "",
+                                "categoria_producto": "",
+                                "subcategoria_producto": "",
+                                "descripcion_producto": "",
+                                "talla_producto": "",
+                                "calificacion_producto": "",
+                                "stock_producto": "",
+                                "stock_vendido_producto": "",
+                                "precio_producto": "",
+                                "productoimagen": ""
+                            },
+                            {
+                                "id_producto": "",
+                                "name_producto": "",
+                                "categoria_producto": "",
+                                "subcategoria_producto": "",
+                                "descripcion_producto": "",
+                                "talla_producto": "",
+                                "calificacion_producto": "",
+                                "stock_producto": "",
+                                "stock_vendido_producto": "",
+                                "precio_producto": "",
+                                "productoimagen": ""
+                            }
+                        ]
+                    },
+                    {
+                        "nombreSubcategoria": "Correas",
+                        "productos": [
+                            {
+                                "id_producto": "",
+                                "name_producto": "",
+                                "categoria_producto": "",
+                                "subcategoria_producto": "",
+                                "descripcion_producto": "",
+                                "talla_producto": "",
+                                "calificacion_producto": "",
+                                "stock_producto": "",
+                                "stock_vendido_producto": "",
+                                "precio_producto": "",
+                                "productoimagen": ""
+                            },
+                            {
+                                "id_producto": "",
+                                "name_producto": "",
+                                "categoria_producto": "",
+                                "subcategoria_producto": "",
+                                "descripcion_producto": "",
+                                "talla_producto": "",
+                                "calificacion_producto": "",
+                                "stock_producto": "",
+                                "stock_vendido_producto": "",
+                                "precio_producto": "",
+                                "productoimagen": ""
+                            }
+                        ]
+                    },
+                    {
+                        "nombreSubcategoria": "Bolsos",
+                        "productos": [
+                            {
+                                "id_producto": "",
+                                "name_producto": "",
+                                "categoria_producto": "",
+                                "subcategoria_producto": "",
+                                "descripcion_producto": "",
+                                "talla_producto": "",
+                                "calificacion_producto": "",
+                                "stock_producto": "",
+                                "stock_vendido_producto": "",
+                                "precio_producto": "",
+                                "productoimagen": ""
+                            },
+                            {
+                                "id_producto": "",
+                                "name_producto": "",
+                                "categoria_producto": "",
+                                "subcategoria_producto": "",
+                                "descripcion_producto": "",
+                                "talla_producto": "",
+                                "calificacion_producto": "",
+                                "stock_producto": "",
+                                "stock_vendido_producto": "",
+                                "precio_producto": "",
+                                "productoimagen": ""
+                            }
+                        ]
+                    },
+                    {
+                        "nombreSubcategoria": "Cuidado personal",
+                        "productos": [
+                            {
+                                "id_producto": "",
+                                "name_producto": "",
+                                "categoria_producto": "",
+                                "subcategoria_producto": "",
+                                "descripcion_producto": "",
+                                "talla_producto": "",
+                                "calificacion_producto": "",
+                                "stock_producto": "",
+                                "stock_vendido_producto": "",
+                                "precio_producto": "",
+                                "productoimagen": ""
+                            },
+                            {
+                                "id_producto": "",
+                                "name_producto": "",
+                                "categoria_producto": "",
+                                "subcategoria_producto": "",
+                                "descripcion_producto": "",
+                                "talla_producto": "",
+                                "calificacion_producto": "",
+                                "stock_producto": "",
+                                "stock_vendido_producto": "",
+                                "precio_producto": "",
+                                "productoimagen": ""
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+]

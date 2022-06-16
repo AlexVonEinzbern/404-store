@@ -29,7 +29,8 @@ export default function Navegacion() {
   const menuId = 'primary-search-account-menu';
   //renderiza el menu
   const [showMenu, setShowMenu] = useState(false)
-  const [categoriasMenu,SetcategoriasMenu]=useState(todasLasCategorias[1])
+  const [categoriasMenu,SetcategoriasMenu]=useState([])
+
   const seeMenu = () => {
     setShowMenu(true)
   }
@@ -50,16 +51,13 @@ export default function Navegacion() {
           <div color="inherit" >   |  </div>
           <Button color="inherit" > Iniciar Sesion</Button>
         </Toolbar>
-
-
-
+        
         <Toolbar className={classes.barraInferior}>
           {/* logo */}
           <Typography className={classes.title} variant="h6" noWrap ><b>404-STORE</b></Typography>
         
           <div color="secondary" className={classes.botonesNavegacion } >
-            {
-              
+            {  
               BotonesNavegacion.map((btn => {
                 return (
                  <div key= {btn.ubicacion} className={classes.contBtnMenu}
@@ -74,6 +72,7 @@ export default function Navegacion() {
                   }}
 
                   onMouseLeave={hideMenu}
+                  onClick={hideMenu}
                   key={btn.ubicacion}
                   >
                     {btn.nombre}
@@ -82,7 +81,6 @@ export default function Navegacion() {
                 )
               }))
             }
-
           </div>
           
           <div className={classes.sectionDesktop}>

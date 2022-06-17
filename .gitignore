@@ -3,6 +3,9 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+#Data
+data.json
+
 #Dependencies
 /node_modules
 node_modules/

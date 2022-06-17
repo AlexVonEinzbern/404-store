@@ -1,3 +1,5 @@
+aniso8601==9.0.1
+attrs==21.4.0
 bcrypt==3.2.0
 blinker==1.4
 certifi==2021.10.8
@@ -17,15 +19,19 @@ Flask-SQLAlchemy==2.5.1
 Flask-WTF==1.0.1
 greenlet==1.1.2
 idna==3.2
+importlib-resources==5.8.0
 itsdangerous==2.0.1
 Jinja2==3.0.2
+jsonschema==4.6.0
 MarkupSafe==2.0.1
 marshmallow==3.13.0
 marshmallow-sqlalchemy==0.26.1
 passlib==1.7.4
 psycopg2==2.9.1
 pycparser==2.21
+pyrsistent==0.18.1
 python-dotenv==0.19.1
+pytz==2022.1
 requests==2.26.0
 six==1.16.0
 SQLAlchemy==1.4.25
@@ -33,3 +39,4 @@ urllib3==1.26.7
 waitress==2.1.1
 Werkzeug==2.0.2
 WTForms==3.0.1
+zipp==3.8.0

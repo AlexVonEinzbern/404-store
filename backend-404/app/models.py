@@ -68,16 +68,17 @@ class ProductosVendidosSchema(ma.Schema):
 class Producto(db.Model):
     """docstring for Producto"""
     __tablename__ = "producto"
-    id_producto            = db.Column(db.Integer, primary_key=True)
-    name_producto          = db.Column(db.String(50), unique=True, nullable=False)
-    categoria_producto     = db.Column(db.String(50), nullable=False)
-    subcategoria_producto  = db.Column(db.String(50), nullable=False)
-    descripcion_producto   = db.Column(db.String(200), unique=True, nullable=False)
-    talla_producto         = db.Column(db.String(5), nullable=False)
-    calificacion_producto  = db.Column(db.Integer)
-    stock_producto         = db.Column(db.Integer, nullable=False)
-    stock_vendido_producto = db.Column(db.Integer, nullable=False)
-    precio_producto        = db.Column(db.Float, nullable=False)
+    id_producto               = db.Column(db.Integer, primary_key=True)
+    name_producto             = db.Column(db.String(50), unique=True, nullable=False)
+    categoria_producto        = db.Column(db.String(50), nullable=False)
+    subcategoria_producto     = db.Column(db.String(50), nullable=False)
+    sub_subcategoria_producto = db.Column(db.String(50), nullable=False)
+    descripcion_producto      = db.Column(db.String(500), unique=True, nullable=False)
+    talla_producto            = db.Column(db.String(5), nullable=False)
+    calificacion_producto     = db.Column(db.Integer)
+    stock_producto            = db.Column(db.Integer, nullable=False)
+    stock_vendido_producto    = db.Column(db.Integer, nullable=False)
+    precio_producto           = db.Column(db.Float, nullable=False)
 
     productoimagen  = db.relationship('ProductoImagen')
     reporte         = db.relationship('Reporte', secondary = producto_reporte)
@@ -93,8 +94,8 @@ class ProductoSchema(ma.Schema):
 
     class Meta:
         fields = ('id_producto', 'name_producto', 'categoria_producto', 'subcategoria_producto', 
-            'descripcion_producto', 'talla_producto', 'calificacion_producto', 'stock_producto', 
-            'stock_vendido_producto', 'precio_producto',)
+            'sub_subcategoria_producto', 'descripcion_producto', 'talla_producto', 
+            'calificacion_producto', 'stock_producto', 'stock_vendido_producto', 'precio_producto',)
 
 class ProductoImagen(db.Model):
     """docstring for ProductoImagen"""

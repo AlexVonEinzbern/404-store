@@ -6,26 +6,28 @@ producto_schema = ProductoSchema()
 @app.route('/crearProducto', methods=['POST'])
 def crearProducto():
 
-    name_producto          = request.json['name_producto']
-    categoria_producto     = request.json['categoria_producto']
-    subcategoria_producto  = request.json['subcategoria_producto']
-    descripcion_producto   = request.json['descripcion_producto']
-    talla_producto         = request.json['talla_producto']
-    calificacion_producto  = request.json['calificacion_producto']
-    stock_producto         = request.json['stock_producto']
-    stock_vendido_producto = request.json['stock_vendido_producto']
-    precio_producto        = request.json['precio_producto']
+    name_producto             = request.json['name_producto']
+    categoria_producto        = request.json['categoria_producto']
+    subcategoria_producto     = request.json['subcategoria_producto']
+    sub_subcategoria_producto = request.json['sub_subcategoria_producto']
+    descripcion_producto      = request.json['descripcion_producto']
+    talla_producto            = request.json['talla_producto']
+    calificacion_producto     = request.json['calificacion_producto']
+    stock_producto            = request.json['stock_producto']
+    stock_vendido_producto    = request.json['stock_vendido_producto']
+    precio_producto           = request.json['precio_producto']
 
     new_producto = Producto(
-        name_producto          = name_producto, 
-        categoria_producto     = categoria_producto,
-        subcategoria_producto  = subcategoria_producto,
-        descripcion_producto   = descripcion_producto,
-        talla_producto         = talla_producto,
-        calificacion_producto  = calificacion_producto,
-        stock_producto         = stock_producto,
-        stock_vendido_producto = stock_vendido_producto,
-        precio_producto        = precio_producto)
+        name_producto             = name_producto, 
+        categoria_producto        = categoria_producto,
+        subcategoria_producto     = subcategoria_producto,
+        sub_subcategoria_producto = sub_subcategoria_producto,
+        descripcion_producto      = descripcion_producto,
+        talla_producto            = talla_producto,
+        calificacion_producto     = calificacion_producto,
+        stock_producto            = stock_producto,
+        stock_vendido_producto    = stock_vendido_producto,
+        precio_producto           = precio_producto)
 
     db.session.add(new_producto)
     db.session.commit()

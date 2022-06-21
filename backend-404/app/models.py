@@ -70,9 +70,9 @@ class Producto(db.Model):
     __tablename__ = "producto"
     id_producto               = db.Column(db.Integer, primary_key=True)
     name_producto             = db.Column(db.String(50), unique=True, nullable=False)
+    genero_producto           = db.Column(db.String(50), nullable=False)
     categoria_producto        = db.Column(db.String(50), nullable=False)
     subcategoria_producto     = db.Column(db.String(50), nullable=False)
-    sub_subcategoria_producto = db.Column(db.String(50), nullable=False)
     descripcion_producto      = db.Column(db.String(500), unique=True, nullable=False)
     talla_producto            = db.Column(db.String(5), nullable=False)
     calificacion_producto     = db.Column(db.Integer)
@@ -93,8 +93,8 @@ class ProductoSchema(ma.Schema):
     productosvendidos = ma.Nested(ProductosVendidosSchema, many=True)
 
     class Meta:
-        fields = ('id_producto', 'name_producto', 'categoria_producto', 'subcategoria_producto', 
-            'sub_subcategoria_producto', 'descripcion_producto', 'talla_producto', 
+        fields = ('id_producto', 'name_producto', 'genero_producto', 'categoria_producto', 
+            'subcategoria_producto', 'descripcion_producto', 'talla_producto', 
             'calificacion_producto', 'stock_producto', 'stock_vendido_producto', 'precio_producto',)
 
 class ProductoImagen(db.Model):

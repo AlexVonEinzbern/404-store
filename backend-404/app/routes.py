@@ -7,9 +7,9 @@ producto_schema = ProductoSchema()
 def crearProducto():
 
     name_producto             = request.json['name_producto']
+    genero_producto           = request.json['genero_producto']
     categoria_producto        = request.json['categoria_producto']
     subcategoria_producto     = request.json['subcategoria_producto']
-    sub_subcategoria_producto = request.json['sub_subcategoria_producto']
     descripcion_producto      = request.json['descripcion_producto']
     talla_producto            = request.json['talla_producto']
     calificacion_producto     = request.json['calificacion_producto']
@@ -19,9 +19,9 @@ def crearProducto():
 
     new_producto = Producto(
         name_producto             = name_producto, 
+        genero_producto           = genero_producto,
         categoria_producto        = categoria_producto,
         subcategoria_producto     = subcategoria_producto,
-        sub_subcategoria_producto = sub_subcategoria_producto,
         descripcion_producto      = descripcion_producto,
         talla_producto            = talla_producto,
         calificacion_producto     = calificacion_producto,

@@ -1,0 +1,64 @@
+[
+	{
+		"name_producto": "Pantalon morado",
+    	"categoria_producto": "femenino",
+    	"subcategoria_producto": "Pantalon",
+    	"sub_subcategoria_producto": "eqeqqfqrqw",
+    	"descripcion_producto": "es un pantalon morado para dama",
+    	"talla_producto": "28",
+    	"calificacion_producto": "5",
+    	"stock_producto": "19",
+    	"stock_vendido_producto": "1",
+    	"precio_producto": "92000"
+	},
+
+	{
+		"name_producto": "Buzo amarillo",
+    	"categoria_producto": "femenino",
+    	"subcategoria_producto": "Buzos",
+    	"sub_subcategoria_producto": "faaafafsfsf",
+    	"descripcion_producto": "es un buso amarillo para dama",
+    	"talla_producto": "S",
+    	"calificacion_producto": "4",
+    	"stock_producto": "9",
+    	"stock_vendido_producto": "1",
+    	"precio_producto": "112000"
+	},
+    
+	{
+		"name_producto": "Camisa azul",
+    	"categoria_producto": "masculino",
+    	"subcategoria_producto": "Camizas",
+    	"sub_subcategoria_producto": "qrqfgrwryjwthw",
+    	"descripcion_producto": "es una camisa azul formal para hombre",
+    	"talla_producto": "M",
+    	"calificacion_producto": "5",
+    	"stock_producto": "19",
+    	"stock_vendido_producto": "1",
+    	"precio_producto": "72000"
+	},
+	{
+		"name_producto": "Camisa gris",
+    	"categoria_producto": "masculino",
+    	"subcategoria_producto": "Camisa",
+    	"sub_subcategoria_producto": "gnoerihgperigwh",
+    	"descripcion_producto": "es una camisa gri formal para hombre",
+    	"talla_producto": "L",
+    	"calificacion_producto": "5",
+    	"stock_producto": "9",
+    	"stock_vendido_producto": "1",
+    	"precio_producto": "82000"
+	},
+	{
+		"name_producto": "Camiseta negra",
+    	"categoria_producto": "masculino",
+    	"subcategoria_producto": "Camisetas",
+    	"sub_subcategoria_producto": "wekyojewoyj4o3y3jh",
+    	"descripcion_producto": "es una camineta negra deportiva para hombre",
+    	"talla_producto": "M",
+    	"calificacion_producto": "5",
+    	"stock_producto": "19",
+    	"stock_vendido_producto": "1",
+    	"precio_producto": "82000"
+	}
+]

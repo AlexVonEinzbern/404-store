@@ -52,7 +52,7 @@ export const Body = () => {
                 titulo="ROPA PARA TODA LA FMILIA"
                 subtitulo='panita lleve lo que necesite, no se asare, aqui le fiamos y le cobramos cuando petro diga'></SeparadorCompra>
                 <Carril cantidad='2' genero='hombre' titulo='Hombres'></Carril>
-                <Carril cantidad='3' genero='mujer' titulo='Mujeres'></Carril>
+                <Carril cantidad='4' genero='mujer' titulo='Mujeres'></Carril>
 
                 <SeparadorTexto 
                 titulo="POR AQUI HAY MAS ROPITA BRO"

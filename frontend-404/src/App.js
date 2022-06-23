@@ -5,6 +5,7 @@ import { Body } from './components/Body';
 import Footer from "./components/Footer";
 import { tema } from './styles/tema';
 import { ThemeProvider } from '@material-ui/core';
+import { PresentacionGenero } from './components/Presentacion';
 
 function App() {
   return (
@@ -12,7 +13,7 @@ function App() {
 
       <div>
         <Navegacion></Navegacion>
-        <Body></Body>
+        <PresentacionGenero></PresentacionGenero>
       </div>
 
     </ThemeProvider>

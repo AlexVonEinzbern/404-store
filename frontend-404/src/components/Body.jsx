@@ -2,191 +2,64 @@ import React from "react";
 import { makeStyles, Typography, Grid } from "@material-ui/core";
 import { Banner } from "./Banner";
 import { TarjetaProducto } from "./TarjetaProducto";
+import { SeparadorCompra, SeparadorTexto } from "./Separador";
+import  productos from './productos.json'
+import { Carril } from "./CarrilProductos";
 
+const useStyle = makeStyles((theme) => ({
 
-const useStyle= makeStyles((theme)=>({
-
-    division:{
-        backgroundColor:'#eee',
-        height:'64px',
-        display:'flex'
+    division: {
+        backgroundColor: '#eee',
+        height: '64px',
+        display: 'flex'
     },
 
-    aviso:{
-       
-     
-     margin:'auto',
-     width:'auto',
+    aviso: {
+
+
+        margin: 'auto',
+        width: 'auto',
 
     },
-    
 
-    cont:{
+
+    cont: {
         margin: '96px 48px'
+    },
+
+    tituloBanner: {
+        fontSize: '36px'
     }
-
-
 
 }))
 
 
-export const  Body=()=> {
+export const Body = () => {
 
-    const classes=useStyle();
+    const classes = useStyle();
 
-    return(
+    return (
 
         <div className={classes.cont}>
 
-        <div className={classes.division}>
-                <div className={classes.aviso}>
-                    Soy un separador por favor dejame aqui, solo quiero dar forma al diseño
-                </div>
-            </div>
-
-        <div className={classes.body}>
-            
-            <Banner genero='Mujer'></Banner>
-           
 
 
-            <div className={classes.division}>
-                <div className={classes.aviso}>
-                    Soy un separador por favor dejame aqui, solo quiero dar forma al diseño
-                </div>
-            </div><div className={classes.division}>
-                <div className={classes.aviso}>
-                    Soy un separador por favor dejame aqui, solo quiero dar forma al diseño
-                </div>
-            </div><div className={classes.division}>
-                <div className={classes.aviso}>
-                    Soy un separador por favor dejame aqui, solo quiero dar forma al diseño
-                </div>
-            </div><div className={classes.division}>
-                <div className={classes.aviso}>
-                    Soy un separador por favor dejame aqui, solo quiero dar forma al diseño
-                </div>
-            </div>
+            <div className={classes.body}>
 
-            <Grid container spacing={2}>
+                <Banner genero='Mujer'></Banner>
 
-            <Grid
-                  item
-                  md={4}
-                >
-                    <TarjetaProducto genero='Mujer'></TarjetaProducto>
-                    
-                </Grid>
+                <SeparadorCompra 
+                titulo="ROPA PARA TODA LA FMILIA"
+                subtitulo='panita lleve lo que necesite, no se asare, aqui le fiamos y le cobramos cuando petro diga'></SeparadorCompra>
+                <Carril cantidad='2' genero='hombre' titulo='Hombres'></Carril>
+                <Carril cantidad='3' genero='mujer' titulo='Mujeres'></Carril>
+
+                <SeparadorTexto 
+                titulo="POR AQUI HAY MAS ROPITA BRO"
+                subtitulo='panita lleve lo que necesite, no se asare, aqui le fiamos y le cobramos cuando petro diga'></SeparadorTexto>
 
 
-                <Grid
-                  item
-                  md={4}
-                >
-                    <TarjetaProducto genero='Mujer'></TarjetaProducto>
-                </Grid>
-
-                <Grid
-                  item
-                  md={4}
-                >
-                    <TarjetaProducto genero='Mujer'></TarjetaProducto>
-                </Grid>
-
-            </Grid>
-
-
-
-            <div className={classes.division}>
-                <div className={classes.aviso}>
-                    Soy un separador por favor dejame aqui, solo quiero dar forma al diseño
-                </div>
-            </div><div className={classes.division}>
-                <div className={classes.aviso}>
-                    Soy un separador por favor dejame aqui, solo quiero dar forma al diseño
-                </div>
-            </div>
-
-
-
-
-
-            <Grid container spacing={2}>
-                <Grid
-                  item
-                  md={6}
-                >
-                    <TarjetaProducto genero='Mujer'></TarjetaProducto>
-                </Grid>
-
-
-
-                <Grid
-                  item
-                  md={6}
-                  
-                >
-                    <TarjetaProducto genero='Mujer'></TarjetaProducto>
-
-                </Grid>
-            </Grid>
-
-
-
-      
-
-                <div className={classes.division}>
-                <div className={classes.aviso}>
-                    Soy un separador por favor dejame aqui, solo quiero dar forma al diseño
-                </div>
-            </div><div className={classes.division}>
-                <div className={classes.aviso}>
-                    Soy un separador por favor dejame aqui, solo quiero dar forma al diseño
-                </div>
-            </div>
-
-
-
-
-                <Grid container spacing={2}>
-
-
-                <Grid
-                  item
-                  md={4}
-                >
-                    <TarjetaProducto genero='Mujer'></TarjetaProducto>
-                    
-                </Grid>
-
-
-                <Grid
-                  item
-                  md={4}
-                >
-                    <TarjetaProducto genero='Mujer'></TarjetaProducto>
-                </Grid>
-
-                <Grid
-                  item
-                  md={4}
-                >
-                    <TarjetaProducto genero='Mujer'></TarjetaProducto>
-                </Grid>
-            </Grid>
-
-            <div className={classes.division}>
-                <div className={classes.aviso}>
-                    Soy un separador por favor dejame aqui, solo quiero dar forma al diseño
-                </div>
-            </div><div className={classes.division}>
-                <div className={classes.aviso}>
-                    Soy un separador por favor dejame aqui, solo quiero dar forma al diseño
-                </div>
-            </div>
-
-
-            <Banner genero='Mujer'></Banner>
+                <Banner genero='Mujer'></Banner>
 
             </div>
 

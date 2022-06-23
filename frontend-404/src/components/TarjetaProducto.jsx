@@ -48,7 +48,7 @@ const useStyle = makeStyles(()=>({
 
 
 }))
-export const TarjetaProducto =()=>{
+export const TarjetaProducto =(props)=>{
 
     const classes=useStyle();
     
@@ -60,10 +60,10 @@ export const TarjetaProducto =()=>{
 
                 <div className={classes.txtProd}>
 
-                    <div variant="h4" color="initial" className={classes.nombre}>  Nike mela  </div>
-                    <div variant="h4" color="initial" className={classes.categoria}> yo que le diga, comprela</div>   
+                    <div variant="h4" color="initial" className={classes.nombre}>  {props.nombre}  </div>
+                    <div variant="h4" color="initial" className={classes.categoria}> {props.categoria}</div>   
                 </div>
-                <div variant="h4" color="initial" className={classes.txtProd}> $250.000</div>
+                <div variant="h4" color="initial" className={classes.txtProd}> {props.precio}</div>
                 
             </div>
 

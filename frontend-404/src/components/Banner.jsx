@@ -1,30 +1,60 @@
 import React from "react";
-import { makeStyles } from "@material-ui/core";
+import { makeStyles, Button } from "@material-ui/core";
 
-const  useStyle=makeStyles((theme)=>({
+const useStyle = makeStyles((theme) => ({
 
-    contImgBanner:{
-        width:'500px'
+    contImgBanner: {
+        width: '500px'
     },
-    imgBanner:{
-        width:'100%',
-        objectFit:'cover',
-        height:'700px'
+    imgBanner: {
+        width: '100%',
+        objectFit: 'cover',
+        height: '700px'
+    },
+    boton: {
+
+        position: 'absolute',
+        top: '70%',
+        left: '70%',
+        color: '#fff',
+        fontSize: '36px',
+        textAlign: 'center',
+        backgroundColor: '#ab003c',
+        borderRadius: '0'
+    },
+
+    cont:{
+        position:'relative'
     }
+
+
 
 }))
 
 
 
 
-export const Banner=(props) =>{
+export const Banner = (props) => {
 
-    const classes=useStyle()
+    const classes = useStyle()
 
-return(
+    return (
+        <div className={classes.cont}>
 
-    <div className={classes.ContImgBanner}>
-        <img src={require(`../img/Banner/Banner${props.genero}.jpg`)} alt="" className={classes.imgBanner}/>
-    </div>
-)
+            <div className={classes.ContImgBanner}>
+                <img src={require(`../img/Banner/Banner${props.genero}.jpg`)} alt="" className={classes.imgBanner} />
+            </div>
+
+            <Button variant="text" color="default" className={classes.boton}>
+                VER COLECCION
+            </Button>
+
+        </div>
+
+
+
+
+
+
+    )
 }

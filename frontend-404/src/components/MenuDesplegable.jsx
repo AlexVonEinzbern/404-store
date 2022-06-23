@@ -13,6 +13,7 @@ const useStyles = makeStyles(() => ({
     margin: 'auto',
     width: 'auto',
     justifyContent: 'center',
+    backgroundColor:''
 
  
     },

@@ -14,7 +14,7 @@
                                 "talla_producto": "XXXL",
                                 "calificacion_producto": "5",
                                 "stock_producto": "pongan un numero cualquiera (50 para todas esta bien)",
-                                "precio_producto": "No se pasen de lanza pues (tomen los precios de gef)",
+                                "precio_producto": 42000,
                                 "productoimagen": "la url de la imagen con su extension EJEMPLO: Hombre/RopaExterior/Camisas/Camiseta-Henley-California.jpg"
                             },
                             {
@@ -33,14 +33,14 @@
                         "nombreSubcategoria": "Camisetas",
                         "productos": [
                             {
-                                "id_producto": "",
-                                "name_producto": "",
-                                "descripcion_producto": "",
-                                "talla_producto": "",
-                                "calificacion_producto": "",
-                                "stock_producto": "",
-                                "precio_producto": "",
-                                "productoimagen": ""
+                                "id_producto": "por ahora pongan un ide cualquiera",
+                                "name_producto": "Camiseta Henley California",
+                                "descripcion_producto": "Camisa mela para que las nenas lo miren como si no fuera feo xD",
+                                "talla_producto": "XXXL",
+                                "calificacion_producto": "5",
+                                "stock_producto": "pongan un numero cualquiera (50 para todas esta bien)",
+                                "precio_producto": 42000,
+                                "productoimagen": "la url de la imagen con su extension EJEMPLO: Hombre/RopaExterior/Camisas/Camiseta-Henley-California.jpg"
                             },
                             {
                                 "id_producto": "",
@@ -106,6 +106,7 @@
                     }
                 ]
             },
+
             {
                 "nombreCategoria": "Ropa interior",
                 "subcategorias": [

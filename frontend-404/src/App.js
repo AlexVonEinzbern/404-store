@@ -2,14 +2,20 @@
 import './App.css';
 import Navegacion from './components/Navegacion';
 import { Body } from './components/Body';
-import Footer from "./components/Footer"
+import Footer from "./components/Footer";
+import { tema } from './styles/tema';
+import { ThemeProvider } from '@material-ui/core';
 
 function App() {
   return (
-    <div>
-      <Navegacion></Navegacion>
-      <Body></Body>
-    </div>
+    <ThemeProvider theme={tema}>
+
+      <div>
+        <Navegacion></Navegacion>
+        <Body></Body>
+      </div>
+
+    </ThemeProvider>
 
   );
 }

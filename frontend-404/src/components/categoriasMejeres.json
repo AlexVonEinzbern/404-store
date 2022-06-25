@@ -27,8 +27,8 @@
         "id":"RopaDeportiva",
         "nombre":"ROPA DEPORTIVA",
         "categorias":[
-            "Prendas Superiores",
-            "Prendas Inferiores",
+            "PrendasSuperiores",
+            "PrendasInferiores",
             "Accesorios"
         ]
     },

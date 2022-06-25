@@ -15,7 +15,9 @@ const useStyles = makeStyles((theme) => ({
         fontSize: '48px',
         textAlign: 'center',
         height: 'auto',
-        margin: '30px 30px'
+        margin: '30px 30px',
+        textTransform: 'uppercase'
+
 
     },
     subtittle: {

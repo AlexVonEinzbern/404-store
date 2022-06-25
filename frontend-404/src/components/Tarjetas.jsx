@@ -38,7 +38,8 @@ const useStyle = makeStyles((theme) => ({
         backgroundColor:'rgba(0,0,0,0.4)',
         padding:'2% 0px',
         justifyContent:'space-around',
-        width:'100%'
+        width:'100%',
+        textTransform:'uppercase'
     }
 
 
@@ -129,14 +130,6 @@ const TarjetaSubcategoria = (props) => {
 }
 
 
-
-
-
-
-
-
-
-
 const useStyle2 = makeStyles(()=>({
 
     
@@ -166,15 +159,26 @@ const useStyle2 = makeStyles(()=>({
 
     txtProd:{
         
-        margin:'20px 20px'
-    },
+        margin:'20px 20px',
 
+    
+    },
+      
     nombre:{
-        fontWeight:'bold'
+        fontWeight:'bold',
+        textTransform: 'lowercase',
+        "&:first-letter":{
+            textTransform:'uppercase'
+        }
+    
     },
 
     categoria:{
-        opacity:'0.7'
+        opacity:'0.7',
+        textTransform: 'lowercase',
+        "&:first-letter":{
+            textTransform:'uppercase'
+        }
     }
 
 
@@ -183,6 +187,8 @@ const useStyle2 = makeStyles(()=>({
 
 
 }))
+
+
 const TarjetaProducto =(props)=>{
 
     const classes=useStyle2();

@@ -3,8 +3,9 @@ import { makeStyles, Typography, Grid } from "@material-ui/core";
 import { Banner } from "./Banner";
 import { TarjetaProducto } from "./Tarjetas";
 import { SeparadorCompra, SeparadorTexto } from "./Separador";
-import  productos from './productos.json'
+import productos from './productos.json'
 import { Carril } from "./CarrilProductos";
+import { PresentacionCategoria,PresentacionGenero,PresentacionSubcategoria} from "./Presentacion";
 
 const useStyle = makeStyles((theme) => ({
 
@@ -48,18 +49,35 @@ export const Body = () => {
 
                 <Banner genero='Mujer'></Banner>
 
-                <SeparadorCompra 
-                titulo="ROPA PARA TODA LA FMILIA"
-                subtitulo='panita lleve lo que necesite, no se asare, aqui le fiamos y le cobramos cuando petro diga'></SeparadorCompra>
-                <Carril cantidad='2' genero='hombre' titulo='Hombres'></Carril>
-                <Carril cantidad='4' genero='mujer' titulo='Mujeres'></Carril>
+                <SeparadorCompra
+                    titulo="ROPA PARA TODA LA FMILIA"
+                    subtitulo='panita lleve lo que necesite, no se asare, aqui le fiamos y le cobramos cuando petro diga'></SeparadorCompra>
+                <Carril cantidad='2' genero='MUJER' titulo='Mujeres'></Carril>
 
-                <SeparadorTexto 
-                titulo="POR AQUI HAY MAS ROPITA BRO"
-                subtitulo='panita lleve lo que necesite, no se asare, aqui le fiamos y le cobramos cuando petro diga'></SeparadorTexto>
-
+                <SeparadorTexto
+                    titulo="POR AQUI HAY MAS ROPITA BRO"
+                    subtitulo='panita lleve lo que necesite, no se asare, aqui le fiamos y le cobramos cuando petro diga'></SeparadorTexto>
 
                 <Banner genero='Mujer'></Banner>
+
+
+                <PresentacionGenero genero='HOMBRE'></PresentacionGenero>
+                <PresentacionGenero genero='MUJER'></PresentacionGenero>
+
+                <PresentacionCategoria
+                    genero='HOMBRE'
+                    subtitulo='Lleva lo mejor en Ropa para Estar afuera'
+                    idCategoria='RopaExterior'
+                ></PresentacionCategoria>
+
+                <PresentacionCategoria
+                    genero='MUJER'
+                    subtitulo='Lleva lo mejor en Ropa para Estar afuera'
+                    idCategoria='RopaExterior'
+                ></PresentacionCategoria>
+
+                <PresentacionSubcategoria genero='MUJER' subCategoria='medias'></PresentacionSubcategoria>
+                <PresentacionSubcategoria genero='MUJER' subCategoria='camisas'></PresentacionSubcategoria>
 
             </div>
 

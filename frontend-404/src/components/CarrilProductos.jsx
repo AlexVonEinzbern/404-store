@@ -1,8 +1,9 @@
 import React from "react";
 import { Grid } from "@material-ui/core";
-import productos from './productos.json'
+import productosJson from './ProductosJson.json'
 import { TarjetaProducto } from "./Tarjetas";
 import { makeStyles } from "@material-ui/styles";
+
 
 
 const useStyle = makeStyles((theme) => ({
@@ -37,35 +38,35 @@ export const Carril = (props) => {
 
     const classes = useStyle()
 
-    const elegirProductos = (cantidad) => {
-        const subCategoria = []
+    const elegirProductos = () => {
 
+        const productos = []
+        const categorias= []
+        let i=0
 
-        if (props.genero==='hombre') {
+        if (props.genero==='MUJER') {
 
-            for (let i = 0; i < cantidad; i++) {
+            while (productos.length < props.cantidad){
 
-                const producto = productos[0].Hombre[0].subcategorias[i]
-                subCategoria.push(producto)
-    
+                if (productosJson[i].genero_producto=='MUJER' && !categorias.includes(productosJson[i].categoria_producto)) {
+
+                    productos.push(productosJson[i])
+                    categorias.push(productosJson[i].categoria_producto)
+                    
+                }
+
+                i++
+
+                
             }
-            return subCategoria
-            
-        }
-
-        if (props.genero==='mujer') {
-
-            for (let i = 0; i < cantidad; i++) {
-
-                const producto = productos[0].Mujer[0].subcategorias[i]
-                subCategoria.push(producto)
-    
             }
-            return subCategoria
             
+
+        return productos
+
         } 
 
-    }
+    
 
 
     return (
@@ -83,7 +84,7 @@ export const Carril = (props) => {
             </Grid>
 
 
-            {elegirProductos(props.cantidad).map((producto) =>{
+            {elegirProductos().map((prod) =>{
 
 
                 return (
@@ -92,10 +93,12 @@ export const Carril = (props) => {
                         md={12/props.cantidad}
                     >
                         <TarjetaProducto 
-                        nombre={producto.productos[0].name_producto}
-                        precio={producto.productos[0].precio_producto}
-                        categoria={producto.nombreSubcategoria+" para "+props.genero}
+                        nombre={prod.name_producto}
+                        precio={prod.precio_producto}
+                        categoria={prod.categoria_producto}
                         ></TarjetaProducto>
+
+
                     </Grid>
                 )
 

@@ -8,10 +8,8 @@
             "Camisas",
             "Camisetas",
             "Jeans",
-            "Pantalones",
-            "Joggers/Sudaderas",
-            "Bermudas",
-            "Buzos/Chaquetas"
+            "Pantalones"
+
         ]
     
     },
@@ -21,8 +19,8 @@
         "id":"RopaInterior",
         "nombre":"ROPA INTERIOR",
         "categorias":[
-            "Pijamas/Relax",
-            "Bóxer",
+            "Pijamas",
+            "Boxers",
             "Camisetas",
             "Medias"
         ]
@@ -30,10 +28,10 @@
 
     {
         "id":"RopaDeportiva",
-        "nombre":"Rop Deportiva",
+        "nombre":"ROPA DEPORTIVA",
         "categorias":[
-            "Prendas Superiores",
-            "Prendas Inferiores",
+            "PrendasSuperiores",
+            "PrendasInferiores",
             "Accesorios"
         ]
     },
@@ -45,8 +43,8 @@
             "Billeteras",
             "Correas",
             "Gorras",
-            "Relojesl",
-            "Otros Accesorios"
+            "Relojes"
+
         ]
     }
 

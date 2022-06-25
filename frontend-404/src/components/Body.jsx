@@ -1,7 +1,7 @@
 import React from "react";
 import { makeStyles, Typography, Grid } from "@material-ui/core";
 import { Banner } from "./Banner";
-import { TarjetaProducto } from "./TarjetaProducto";
+import { TarjetaProducto } from "./Tarjetas";
 import { SeparadorCompra, SeparadorTexto } from "./Separador";
 import  productos from './productos.json'
 import { Carril } from "./CarrilProductos";

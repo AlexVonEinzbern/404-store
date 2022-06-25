@@ -1,7 +1,7 @@
 import React from "react";
 import { Grid } from "@material-ui/core";
-import productos from './productos2.json'
-import { TarjetaProducto } from "./TarjetaProducto";
+import productos from './productos.json'
+import { TarjetaProducto } from "./Tarjetas";
 import { makeStyles } from "@material-ui/styles";
 
 
@@ -45,7 +45,7 @@ export const Carril = (props) => {
 
             for (let i = 0; i < cantidad; i++) {
 
-                const producto = productos[i]
+                const producto = productos[0].Hombre[0].subcategorias[i]
                 subCategoria.push(producto)
     
             }
@@ -57,7 +57,7 @@ export const Carril = (props) => {
 
             for (let i = 0; i < cantidad; i++) {
 
-                const producto = productos[i]
+                const producto = productos[0].Mujer[0].subcategorias[i]
                 subCategoria.push(producto)
     
             }
@@ -92,13 +92,12 @@ export const Carril = (props) => {
                         md={12/props.cantidad}
                     >
                         <TarjetaProducto 
-                        nombre={producto.name_producto}
-                        precio={producto.precio_producto}
-                        categoria={producto.subcategoria_producto+" para "+props.genero}
+                        nombre={producto.productos[0].name_producto}
+                        precio={producto.productos[0].precio_producto}
+                        categoria={producto.nombreSubcategoria+" para "+props.genero}
                         ></TarjetaProducto>
                     </Grid>
                 )
-
 
             })}
 

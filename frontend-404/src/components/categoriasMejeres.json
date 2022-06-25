@@ -5,12 +5,10 @@
         "nombre":"ROPA EXTERIOR",
         "categorias":[
             "Camisas",
-            "Camisetas/Polos",
+            "Camisetas",
             "Jeans",
-            "Joggers/Sudaderas",
-            "Shorts/Bermudas",
-            "Faldas/Vestidos",
-            "Buzos/Chaquetas"
+            "Pantalones"
+            
         ]
     },
 
@@ -20,14 +18,14 @@
         "categorias":[
             "Pijamas",
             "Panties",
-            "Brassier/Tops",
+            "Tops",
             "Medias"
         ]
     },
 
     {
         "id":"RopaDeportiva",
-        "nombre":"Rop Deportiva",
+        "nombre":"ROPA DEPORTIVA",
         "categorias":[
             "Prendas Superiores",
             "Prendas Inferiores",

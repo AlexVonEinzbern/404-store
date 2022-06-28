@@ -48,7 +48,7 @@ export const Carril = (props) => {
 
             while (productos.length < props.cantidad){
 
-                if (productosJson[i].genero_producto=='MUJER' && !categorias.includes(productosJson[i].categoria_producto)) {
+                if (productosJson[i].genero_producto==='MUJER' && !categorias.includes(productosJson[i].categoria_producto)) {
 
                     productos.push(productosJson[i])
                     categorias.push(productosJson[i].categoria_producto)
@@ -91,11 +91,13 @@ export const Carril = (props) => {
                     <Grid
                         item
                         md={12/props.cantidad}
+                        key={prod.id_producto+1}
                     >
                         <TarjetaProducto 
                         nombre={prod.name_producto}
                         precio={prod.precio_producto}
                         categoria={prod.categoria_producto}
+                        key={prod.id_producto}
                         ></TarjetaProducto>
 
 

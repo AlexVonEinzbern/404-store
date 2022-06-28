@@ -5,12 +5,19 @@ import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import InputBase from '@material-ui/core/InputBase';
 import Badge from '@material-ui/core/Badge';
+
+
+
 import SearchIcon from '@material-ui/icons/Search';
+
+
 import { ThemeProvider, Button } from '@material-ui/core';
 import { tema } from '../styles/tema';
 import { useStyles } from '../styles/styles';
-import { FavoriteBorder, FavoriteOutlined, LocalMallOutlined, ShoppingBasketOutlined, ShoppingCart } from '@material-ui/icons';
+import { FavoriteBorder, LocalMallOutlined } from '@material-ui/icons';
 import { MenuDesplagable } from './MenuDesplegable';
+
+
 import { BotonesNavegacion } from './botonesDeNavegacion';
 import { todasLasCategorias } from './todasLasCategorias';
 
@@ -21,6 +28,7 @@ export default function Navegacion() {
   const classes = useStyles();
   //guarda el estado del menu
   //ide del menu
+
   //renderiza el menu
   const [showMenu, setShowMenu] = useState(false)
   const [categoriasMenu,SetcategoriasMenu]=useState([])

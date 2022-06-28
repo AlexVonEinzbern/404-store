@@ -1,13 +1,11 @@
 import React from "react";
 import { makeStyles, Typography, Grid } from "@material-ui/core";
 import { Banner } from "./Banner";
-import { TarjetaProducto } from "./Tarjetas";
+
 import { SeparadorCompra, SeparadorTexto } from "./Separador";
 import productos from './productos.json'
 import { Carril } from "./CarrilProductos";
-import { PresentacionCategoria,PresentacionGenero,PresentacionSubcategoria} from "./Presentacion";
-import { Routes,Route } from "react-router-dom";
-
+import { PresentacionCategoria, PresentacionGenero, PresentacionSubcategoria } from "./Presentacion";
 
 const useStyle = makeStyles((theme) => ({
 
@@ -32,6 +30,10 @@ const useStyle = makeStyles((theme) => ({
 
     tituloBanner: {
         fontSize: '36px'
+    },
+    perro:{
+
+
     }
 
 }))
@@ -43,34 +45,27 @@ export const Body = () => {
 
     return (
 
-        <Routes>
-            <Route path="/">
-            <div className={classes.cont}>
+        <div className={classes.cont}>
+
+
+
             <div className={classes.body}>
 
                 <Banner genero='Mujer'></Banner>
 
                 <SeparadorCompra
                     titulo="ROPA PARA TODA LA FMILIA"
-                    subtitulo='panita lleve lo que necesite, no se asare, aqui le fiamos y le cobramos cuando petro diga'>
-
-                </SeparadorCompra>
-
-                <Carril cantidad='4' genero='MUJER' titulo='Mujeres'></Carril>
+                    subtitulo='panita lleve lo que necesite, no se asare, aqui le fiamos y le cobramos cuando petro diga'></SeparadorCompra>
+                <Carril cantidad='2' genero='MUJER' titulo='Mujeres'></Carril>
 
                 <SeparadorTexto
                     titulo="POR AQUI HAY MAS ROPITA BRO"
-                    subtitulo='panita lleve lo que necesite, no se asare, aqui le fiamos y le cobramos cuando petro diga'>
-                </SeparadorTexto>
+                    subtitulo='panita lleve lo que necesite, no se asare, aqui le fiamos y le cobramos cuando petro diga'></SeparadorTexto>
 
                 <Banner genero='Mujer'></Banner>
 
-                <Carril cantidad='4' genero='MUJER' titulo='Mujeres'></Carril>
-                <Carril cantidad='2' genero='MUJER' titulo='Mujeres'></Carril>
-                <Carril cantidad='2' genero='MUJER' titulo='Mujeres'></Carril>
 
-                
-                {/* <PresentacionGenero genero='HOMBRE'></PresentacionGenero>
+                <PresentacionGenero genero='HOMBRE'></PresentacionGenero>
                 <PresentacionGenero genero='MUJER'></PresentacionGenero>
 
                 <PresentacionCategoria
@@ -86,14 +81,12 @@ export const Body = () => {
                 ></PresentacionCategoria>
 
                 <PresentacionSubcategoria genero='MUJER' subCategoria='medias'></PresentacionSubcategoria>
-                <PresentacionSubcategoria genero='MUJER' subCategoria='camisas'></PresentacionSubcategoria> */}
+                <PresentacionSubcategoria genero='MUJER' subCategoria='camisas'></PresentacionSubcategoria>
+
+
 
             </div>
 
         </div>
-            </Route>
-        </Routes>
-
-        
     )
 }

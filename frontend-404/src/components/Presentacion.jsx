@@ -1,11 +1,11 @@
 import React from "react";
 import { Grid } from "@material-ui/core";
 import { TarjetaCategoria, TarjetaProducto, TarjetaSubcategoria } from "./Tarjetas";
-import productos from './productos2.json'
+
 import { SeparadorTexto } from "./Separador";
 import { makeStyles } from "@material-ui/styles";
 import { todasLasCategorias } from "./todasLasCategorias";
-import { useState } from "react";
+
 import productosJson from './ProductosJson.json'
 
 
@@ -26,12 +26,12 @@ const PresentacionGenero = (props) => {
 
         let indiceGenero = 0
 
-        if (props.genero == 'HOMBRE') {
+        if (props.genero === 'HOMBRE') {
             indiceGenero = 0
             return indiceGenero
         }
 
-        if (props.genero == 'MUJER') {
+        if (props.genero === 'MUJER') {
             indiceGenero = 1
             return indiceGenero
         }
@@ -57,11 +57,12 @@ const PresentacionGenero = (props) => {
 
                         return (
 
-                            <Grid item md={6}>
+                            <Grid item md={6} key={categoria.id}>
                                 <TarjetaCategoria
                                     cat={categoria.nombre}
                                     genero={props.genero}
                                     categoria={categoria.id}
+                                    key={categoria.id+'1'}
                                 >
                                 </TarjetaCategoria>
                             </Grid>)
@@ -76,7 +77,6 @@ const PresentacionCategoria = (props) => {
     const classes = useStyles()
 
     const subCategorias = todasLasCategorias
-    const categoria = ''
 
 
     const elegirCategoria = () => {
@@ -84,11 +84,11 @@ const PresentacionCategoria = (props) => {
         let categoriaElegida = {}
 
 
-        if (props.genero == 'HOMBRE') {
+        if (props.genero === 'HOMBRE') {
 
             for (let cat = 0; subCategorias[0].length; cat++) {
 
-                if (subCategorias[0][cat].id == props.idCategoria) {
+                if (subCategorias[0][cat].id === props.idCategoria) {
                     categoriaElegida = {
 
                         sub: subCategorias[0][cat].categorias,
@@ -100,11 +100,11 @@ const PresentacionCategoria = (props) => {
 
         }
 
-        if (props.genero == 'MUJER') {
+        if (props.genero === 'MUJER') {
 
             for (let cat = 0; subCategorias[0].length; cat++) {
 
-                if (subCategorias[1][cat].id == props.idCategoria) {
+                if (subCategorias[1][cat].id === props.idCategoria) {
                     categoriaElegida = {
 
                         sub: subCategorias[1][cat].categorias,
@@ -133,12 +133,13 @@ const PresentacionCategoria = (props) => {
                     elegirCategoria().sub.map((subcat) => {
 
                         return (
-                            <Grid item md={6}>
+                            <Grid item md={6} key={subcat}>
                                 <TarjetaSubcategoria
                                     genero={props.genero}
                                     idCategoria={props.idCategoria}
                                     subcategoria={subcat}
                                     nombre={subcat}
+                                    key={subcat}
                                 >
                                 </TarjetaSubcategoria>
                             </Grid>
@@ -166,7 +167,7 @@ const PresentacionSubcategoria = (props) => {
         const prod = []
         for (let i = 0; i < productosJson.length; i++) {
 
-            if (productosJson[i].genero_producto == props.genero && productosJson[i].subcategoria_producto == props.subCategoria)
+            if (productosJson[i].genero_producto === props.genero && productosJson[i].subcategoria_producto === props.subCategoria)
                 prod.push(productosJson[i])
         }
         return prod
@@ -183,8 +184,13 @@ const PresentacionSubcategoria = (props) => {
                     elegirProductos().map((producto) => {
 
                         return (
-                            <Grid item md={3}>
-                                <TarjetaProducto nombre={producto.name_producto} precio={producto.precio_producto} categoria={producto.subcategoria_producto+' para '+ producto.genero_producto}></TarjetaProducto>
+                            <Grid item md={3} key={producto.id_producto}>
+                                <TarjetaProducto 
+                                nombre={producto.name_producto} 
+                                precio={producto.precio_producto} 
+                                categoria={producto.subcategoria_producto+' para '+ producto.genero_producto } 
+                                key ={producto.id_producto}
+                                ></TarjetaProducto>
 
                             </Grid>
 

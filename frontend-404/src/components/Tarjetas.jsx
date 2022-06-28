@@ -1,7 +1,5 @@
 import React from "react";
 import { makeStyles, Button } from "@material-ui/core";
-import { SeparadorTexto } from "./Separador";
-import { PinDropSharp } from "@material-ui/icons";
 
 const useStyle = makeStyles((theme) => ({
 
@@ -33,7 +31,6 @@ const useStyle = makeStyles((theme) => ({
         color:'#fff',
         fontSize:'60px',
         textAlign:'center',
-        width:'',
         fontWeight:'bold',
         backgroundColor:'rgba(0,0,0,0.4)',
         padding:'2% 0px',
@@ -195,7 +192,7 @@ const TarjetaProducto =(props)=>{
     
     return (
         <div className={classes.contTarProd}>
-                <img src={require('../img/Banner/BannerMujer.jpg')} className={classes.imgTarProd} />
+                <img src={require('../img/Banner/BannerMujer.jpg')} className={classes.imgTarProd} alt='hey'/>
 
             <div className={classes.contTexeProd}>
 

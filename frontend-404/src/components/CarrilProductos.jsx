@@ -38,7 +38,7 @@ export const Carril = (props) => {
 
     const classes = useStyle()
 
-    const elegirProductos = () => {
+    const elegirCategorias = () => {
 
         const productos = []
         const categorias= []
@@ -84,7 +84,7 @@ export const Carril = (props) => {
             </Grid>
 
 
-            {elegirProductos().map((prod) =>{
+            {elegirCategorias().map((prod) =>{
 
 
                 return (

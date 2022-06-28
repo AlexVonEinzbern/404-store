@@ -34,7 +34,10 @@ const useStyles = makeStyles(() => ({
         width:'maxContent'},
 
     cat:{
-        justifyContent:'start'
+        justifyContent:'start',
+        padding:'0',
+    
+
     }
 
   }));

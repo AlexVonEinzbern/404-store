@@ -14,11 +14,6 @@ function App() {
       <div>
         <Navegacion></Navegacion>
         <Body></Body>
-       
-
-
-        
-
       </div>
     </ThemeProvider>
 

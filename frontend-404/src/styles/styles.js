@@ -21,12 +21,15 @@ export const useStyles = makeStyles((theme) => ({
 
 
   botonesNavegacion:{
-    position:'inherit',
+    position:'absolute',
     fontWeight:'bold',
-    margin:'auto',
+    width:'100%',
     display:'flex',
-    height:'100%',
-    left:'vh'
+    justifyContent:'center',
+
+    
+
+  
     
   },
 
@@ -40,13 +43,21 @@ export const useStyles = makeStyles((theme) => ({
     height:'30px',
     minHeight:'30px',
     display: 'flex',
-    justifyContent: 'right'
+    justifyContent:'right',
+    margin:0,
+    padding:0,
+    padding:'0 48px'
     
+
     },
 
   barraInferior:{ 
+    padding:0,
+    margin:0,
+    margin:'0 48px',
+    justifyContent: 'space-between',
+    
 
-    margin:'0 30px'
 
   },
     contenedor: {

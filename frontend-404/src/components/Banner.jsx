@@ -20,7 +20,10 @@ const useStyle = makeStyles((theme) => ({
         fontSize: '36px',
         textAlign: 'center',
         backgroundColor: '#ab003c',
-        borderRadius: '0'
+        borderRadius: '10px',
+        "&:hover":{
+            backgroundColor: 'black'
+        }
     },
 
     cont:{

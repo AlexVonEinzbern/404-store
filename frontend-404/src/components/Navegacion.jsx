@@ -5,17 +5,12 @@ import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import InputBase from '@material-ui/core/InputBase';
 import Badge from '@material-ui/core/Badge';
-import MenuItem from '@material-ui/core/MenuItem';
-import Menu from '@material-ui/core/Menu';
-import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
-import AccountCircle from '@material-ui/icons/AccountCircle';
 import { ThemeProvider, Button } from '@material-ui/core';
 import { tema } from '../styles/tema';
 import { useStyles } from '../styles/styles';
 import { FavoriteBorder, FavoriteOutlined, LocalMallOutlined, ShoppingBasketOutlined, ShoppingCart } from '@material-ui/icons';
 import { MenuDesplagable } from './MenuDesplegable';
-import { CategoriasMujeres } from './categoriasMejeres';
 import { BotonesNavegacion } from './botonesDeNavegacion';
 import { todasLasCategorias } from './todasLasCategorias';
 
@@ -26,7 +21,6 @@ export default function Navegacion() {
   const classes = useStyles();
   //guarda el estado del menu
   //ide del menu
-  const menuId = 'primary-search-account-menu';
   //renderiza el menu
   const [showMenu, setShowMenu] = useState(false)
   const [categoriasMenu,SetcategoriasMenu]=useState([])
@@ -65,7 +59,6 @@ export default function Navegacion() {
                     <Button 
                   variant="text" 
                   color="inherit"
-                  noombre='1'
                   onMouseEnter={()=>{
                     seeMenu();
                     SetcategoriasMenu(todasLasCategorias[btn.ubicacion]);
@@ -119,7 +112,7 @@ export default function Navegacion() {
       
 
       <div className={classes.fantasma} onMouseEnter={seeMenu}onMouseLeave={hideMenu}>
-      {showMenu && <MenuDesplagable categorias={categoriasMenu} onMouseEnter={seeMenu} className={classes.MenuDesplagable}></MenuDesplagable>}
+      {showMenu && <MenuDesplagable categorias={categoriasMenu} className={classes.MenuDesplagable}></MenuDesplagable>}
       </div>
 
       </AppBar>

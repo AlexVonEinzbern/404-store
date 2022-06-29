@@ -124,8 +124,8 @@ class ClienteRegistrado(db.Model):
     edad_cliente_registrado      = db.Column(db.Integer, nullable=False)
     email_cliente_registrado     = db.Column(db.String(50), unique=True, nullable=False)
     direccion_cliente_registrado = db.Column(db.String(50))
-    ip_cliente_registrado        = db.Column(db.String(15), unique=True, nullable=False)
-    numero_visitas_registrado    = db.Column(db.Integer, nullable=False)
+    #ip_cliente_registrado        = db.Column(db.String(15), unique=True, nullable=False)
+    #numero_visitas_registrado    = db.Column(db.Integer, nullable=False)
     password_cliente_registrado  = db.Column(db.String(128), unique=True, nullable=False)
     username_cliente_registrado  = db.Column(db.String(15), unique=True, nullable=False)
     telefono_cliente_registrado  = db.Column(db.Integer)
@@ -144,8 +144,14 @@ class ClienteRegistradoSchema(ma.Schema):
     class Meta:
         fields = ('id_cliente_registrado', 'name_cliente_registrado', 'cedula_cliente_registrado',
             'edad_cliente_registrado', 'email_cliente_registrado', 'direccion_cliente_registrado',
-            'ip_cliente_registrado', 'numero_visitas_registrado', 'password_cliente_registrado',
-            'username_cliente_registrado', 'telefono_cliente_registrado',)
+            'password_cliente_registrado', 'username_cliente_registrado', 'telefono_cliente_registrado',)
+    
+    ##                  FUTUROS CAMBIOS A ESTA TABLA          
+    # class Meta:
+    #     fields = ('id_cliente_registrado', 'name_cliente_registrado', 'cedula_cliente_registrado',
+    #         'edad_cliente_registrado', 'email_cliente_registrado', 'direccion_cliente_registrado',
+    #         'ip_cliente_registrado', 'numero_visitas_registrado', 'password_cliente_registrado',
+    #         'username_cliente_registrado', 'telefono_cliente_registrado',)
 
 class ClienteNoRegistrado(db.Model):
     """docstring for ClienteNoRegistrado"""

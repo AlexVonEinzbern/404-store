@@ -51,6 +51,36 @@ def obtenerProductos():
     return productos_schema.jsonify(productos)
 
 
+cliente_registrado_schema = ClienteRegistradoSchema()
+@app.route('/crearClienteRegistrado', methods=['POST'])
+def crearClienteRegistrado():
+
+    name_cliente_registrado      = request.json['name_cliente_registrado']
+    cedula_cliente_registrado    = request.json['cedula_cliente_registrado']
+    edad_cliente_registrado      = request.json['edad_cliente_registrado']
+    email_cliente_registrado     = request.json['email_cliente_registrado']
+    direccion_cliente_registrado = request.json['direccion_cliente_registrado']
+    password_cliente_registrado  = request.json['password_cliente_registrado']
+    username_cliente_registrado  = request.json['username_cliente_registrado']
+    telefono_cliente_registrado  = request.json['telefono_cliente_registrado']
+
+    new_cliente = ClienteRegistrado(
+        name_cliente_registrado = name_cliente_registrado,
+        cedula_cliente_registrado = cedula_cliente_registrado,
+        edad_cliente_registrado = edad_cliente_registrado,
+        email_cliente_registrado = email_cliente_registrado,
+        direccion_cliente_registrado = direccion_cliente_registrado,
+        password_cliente_registrado = password_cliente_registrado,
+        username_cliente_registrado  = username_cliente_registrado,
+        telefono_cliente_registrado = telefono_cliente_registrado
+    )
+
+    db.session.add(new_cliente)
+    db.session.commit()
+
+    return cliente_registrado_schema.jsonify(new_cliente)
+
+
 ##                      FUTUROS CAMBIOS
 ##================================================================
 

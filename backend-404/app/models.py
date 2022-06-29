@@ -69,18 +69,20 @@ class Producto(db.Model):
     """docstring for Producto"""
     __tablename__ = "producto"
     id_producto               = db.Column(db.Integer, primary_key=True)
-    name_producto             = db.Column(db.String(50), unique=True, nullable=False)
+    name_producto             = db.Column(db.String(50), nullable=False)
     genero_producto           = db.Column(db.String(50), nullable=False)
     categoria_producto        = db.Column(db.String(50), nullable=False)
     subcategoria_producto     = db.Column(db.String(50), nullable=False)
-    descripcion_producto      = db.Column(db.String(500), unique=True, nullable=False)
+    descripcion_producto      = db.Column(db.String(500), nullable=False)
     talla_producto            = db.Column(db.String(5), nullable=False)
     calificacion_producto     = db.Column(db.Integer)
     stock_producto            = db.Column(db.Integer, nullable=False)
     stock_vendido_producto    = db.Column(db.Integer, nullable=False)
     precio_producto           = db.Column(db.Float, nullable=False)
+    url_imagen_producto       = db.Column(db.String(200), unique=True, nullable=False)
+    color_imagen_hex          = db.Column(db.String(10), nullable=False)
 
-    productoimagen  = db.relationship('ProductoImagen')
+    #productoimagen  = db.relationship('ProductoImagen')
     reporte         = db.relationship('Reporte', secondary = producto_reporte)
     productovendido = db.relationship('ProductosVendidos', secondary = producto_productosvendidos)
 
@@ -95,22 +97,23 @@ class ProductoSchema(ma.Schema):
     class Meta:
         fields = ('id_producto', 'name_producto', 'genero_producto', 'categoria_producto', 
             'subcategoria_producto', 'descripcion_producto', 'talla_producto', 
-            'calificacion_producto', 'stock_producto', 'stock_vendido_producto', 'precio_producto',)
+            'calificacion_producto', 'stock_producto', 'stock_vendido_producto', 'precio_producto',
+            'url_imagen_producto', 'color_imagen_hex',)
 
-class ProductoImagen(db.Model):
-    """docstring for ProductoImagen"""
-    __tablename__ = "productoimagen"
-    id_url_imagen       = db.Column(db.Integer, primary_key=True)
-    url_imagen_producto = db.Column(db.String(200), unique=True, nullable=False)
-    color_imagen_hex    = db.Column(db.String(10), nullable=False)
-    id_producto         = db.Column(db.Integer, db.ForeignKey('producto.id_producto'))
+# class ProductoImagen(db.Model):
+#     """docstring for ProductoImagen"""
+#     __tablename__ = "productoimagen"
+#     id_url_imagen       = db.Column(db.Integer, primary_key=True)
+#     url_imagen_producto = db.Column(db.String(200), unique=True, nullable=False)
+#     color_imagen_hex    = db.Column(db.String(10), nullable=False)
+#     id_producto         = db.Column(db.Integer, db.ForeignKey('producto.id_producto'))
 
-    def __repr__(self):
-        return '<Url image added>'
+#     def __repr__(self):
+#         return '<Url image added>'
 
-class ProductoImagenSchema(ma.Schema):
-    class Meta:
-        fields = ('id_url_imagen', 'url_imagen_producto', 'color_imagen_hex', 'id_producto',)
+# class ProductoImagenSchema(ma.Schema):
+#     class Meta:
+#         fields = ('id_url_imagen', 'url_imagen_producto', 'color_imagen_hex', 'id_producto',)
 
 class ClienteRegistrado(db.Model):
     """docstring for ClienteRegistrado"""

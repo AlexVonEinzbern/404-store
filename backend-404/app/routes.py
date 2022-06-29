@@ -16,6 +16,8 @@ def crearProducto():
     stock_producto            = request.json['stock_producto']
     stock_vendido_producto    = request.json['stock_vendido_producto']
     precio_producto           = request.json['precio_producto']
+    url_imagen_producto       = request.json['url_imagen_producto']
+    color_imagen_hex          = request.json['color_imagen_hex'] 
 
     new_producto = Producto(
         name_producto             = name_producto, 
@@ -27,7 +29,10 @@ def crearProducto():
         calificacion_producto     = calificacion_producto,
         stock_producto            = stock_producto,
         stock_vendido_producto    = stock_vendido_producto,
-        precio_producto           = precio_producto)
+        precio_producto           = precio_producto,
+        url_imagen_producto       = url_imagen_producto,
+        color_imagen_hex          = color_imagen_hex
+        )
 
     db.session.add(new_producto)
     db.session.commit()
@@ -45,29 +50,39 @@ def obtenerProductos():
     productos = Producto.query.all()
     return productos_schema.jsonify(productos)
 
-producto_imagen_schema = ProductoImagenSchema()
-@app.route('/crearProductoImagen', methods=['POST'])
-def crearProductoImagen():
 
-    url_imagen_producto = request.json['url_imagen_producto']
-    color_imagen_hex    = request.json['color_imagen_hex']
-    id_producto         = request.json['id_producto']
+##                      FUTUROS CAMBIOS
+##================================================================
 
-    new_producto_imagen = ProductoImagen(
-        url_imagen_producto = url_imagen_producto,
-        color_imagen_hex    = color_imagen_hex,
-        id_producto         = id_producto
-        )
-    db.session.add(new_producto_imagen)
-    db.session.commit()
+# producto_imagen_schema = ProductoImagenSchema()
+# @app.route('/crearProductoImagen', methods=['POST'])
+# def crearProductoImagen():
 
-    return producto_imagen_schema.jsonify(new_producto_imagen)
+#     url_imagen_producto = request.json['url_imagen_producto']
+#     color_imagen_hex    = request.json['color_imagen_hex']
+#     id_producto         = request.json['id_producto']
 
-@app.route('/obtenerProductoImagen/<id_producto>', methods=['GET'])
-def obtenerProductoImagen(id_producto):
-    productoimagen = ProductoImagen.query.filter_by(id_producto = id_producto).first()
-    return producto_imagen_schema.jsonify(productoimagen)
+#     new_producto_imagen = ProductoImagen(
+#         url_imagen_producto = url_imagen_producto,
+#         color_imagen_hex    = color_imagen_hex,
+#         id_producto         = id_producto
+#         )
+#     db.session.add(new_producto_imagen)
+#     db.session.commit()
 
+#     return producto_imagen_schema.jsonify(new_producto_imagen)
+
+# @app.route('/obtenerProductoImagen/<id_producto>', methods=['GET'])
+# def obtenerProductoImagen(id_producto):
+#     productoimagen = ProductoImagen.query.filter_by(id_producto = id_producto).first()
+#     return producto_imagen_schema.jsonify(productoimagen)
+
+
+
+
+
+##                      GUIA
+##================================================================
 
 
 # @app.route('/createUser', methods=['POST'])

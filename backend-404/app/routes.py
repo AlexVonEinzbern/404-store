@@ -80,6 +80,11 @@ def crearClienteRegistrado():
 
     return cliente_registrado_schema.jsonify(new_cliente)
 
+@app.route('/obtenerClienteRegistrado/<username_cliente_registrado>', methods=['GET'])
+def obtenerClienteRegistrado(username_cliente_registrado):
+    cliente_registrado = ClienteRegistrado.query.filter_by(username_cliente_registrado=username_cliente_registrado).first()
+    return cliente_registrado_schema.jsonify(cliente_registrado)
+
 
 ##                      FUTUROS CAMBIOS
 ##================================================================

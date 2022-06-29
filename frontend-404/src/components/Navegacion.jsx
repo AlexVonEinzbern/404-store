@@ -8,6 +8,8 @@ import Badge from '@material-ui/core/Badge';
 
 
 
+
+
 import SearchIcon from '@material-ui/icons/Search';
 
 
@@ -64,20 +66,34 @@ export default function Navegacion() {
                 return (
                  <div key= {btn.ubicacion} className={classes.contBtnMenu}
                   >
-                    <Button 
+
+     
+
+                  <a href={btn.ruta}> 
+
+                  <Button 
                   variant="text" 
                   color="inherit"
                   onMouseEnter={()=>{
                     seeMenu();
                     SetcategoriasMenu(todasLasCategorias[btn.ubicacion]);
+                    
                   }}
 
+                  
+
                   onMouseLeave={hideMenu}
-                  onClick={hideMenu}
+                  
                   key={btn.ubicacion}
                   >
                     {btn.nombre}
                   </Button>
+                  
+                  </a>
+                  
+                 
+                  
+                    
                  </div> 
                 )
               }))

@@ -45,7 +45,6 @@ export const useStyles = makeStyles((theme) => ({
     display: 'flex',
     justifyContent:'right',
     margin:0,
-    padding:0,
     padding:'0 48px'
     
 
@@ -53,7 +52,6 @@ export const useStyles = makeStyles((theme) => ({
 
   barraInferior:{ 
     padding:0,
-    margin:0,
     margin:'0 48px',
     justifyContent: 'space-between',
     

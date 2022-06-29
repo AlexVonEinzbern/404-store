@@ -10,12 +10,12 @@ export  const BotonesNavegacion=[
     {
         nombre:'Hombre',
         ubicacion:0, //ubicacion del boton en la barras de navegacion
-        ruta:''
+        ruta:'hombre'
     },
     {
-        nombre:'Mujer',
+        nombre:'mujer',
         ubicacion:1, //ubicacion del boton en la barras de navegacion
-        ruta:''
+        ruta:'mujer'
     },
 
 ]

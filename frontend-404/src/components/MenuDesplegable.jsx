@@ -74,10 +74,12 @@ export const MenuDesplagable = (props) => {
             {
                 categorias.map((i) => {
                     return (
-                        <div key={i.id} className={classes.MenuDespCat}>                
-                            <Button variant="text" color="default" key={categorias.nombre}>
+                        <div key={i.id} className={classes.MenuDespCat}>   
+                    
+                            <Button variant="text" color="default" key={categorias.nombre}> 
                             <Typography variant="h6" color="initial" onClick={hideMenu} className={classes.cat}> {i.nombre}</Typography >
                             </Button >
+
                             <ButtonGroup variant="outlined" color="default" size="small" aria-label="" orientation='vertical' >
                             {
                                   getCategorias(i.categorias)

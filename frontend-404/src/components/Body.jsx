@@ -1,9 +1,9 @@
 import React from "react";
-import { makeStyles, Typography, Grid } from "@material-ui/core";
+import { makeStyles} from "@material-ui/core";
 import { Banner } from "./Banner";
 
 import { SeparadorCompra, SeparadorTexto } from "./Separador";
-import productos from './productos.json'
+
 import { Carril } from "./CarrilProductos";
 import { PresentacionCategoria, PresentacionGenero, PresentacionSubcategoria } from "./Presentacion";
 

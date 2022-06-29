@@ -1,5 +1,5 @@
 
-import CategoriasMujeres from "./categoriasMejeres.json"
+import CategoriasMujeres from "./categoriasMujeres.json"
 
 import CategoriasHombre from "./categoriasHombres.json"
 

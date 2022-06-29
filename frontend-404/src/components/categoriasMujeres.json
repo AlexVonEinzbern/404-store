@@ -1,29 +1,26 @@
-
 [
 
     {
         "id":"RopaExterior",
-        "genero":"hombre",
+        "genero":"mujer",
         "nombre":"ROPA EXTERIOR",
         "categorias":[
             "Camisas",
             "Camisetas",
             "Jeans",
             "Pantalones"
-
+            
         ]
-    
     },
-    
 
     {
         "id":"RopaInterior",
         "nombre":"ROPA INTERIOR",
-        "genero":"hombre",
+        "genero":"mujer",
         "categorias":[
             "Pijamas",
-            "Boxers",
-            "Camisetas",
+            "Panties",
+            "Tops",
             "Medias"
         ]
     },
@@ -31,7 +28,7 @@
     {
         "id":"RopaDeportiva",
         "nombre":"ROPA DEPORTIVA",
-        "genero":"hombre",
+        "genero":"mujer",
         "categorias":[
             "PrendasSuperiores",
             "PrendasInferiores",
@@ -42,16 +39,14 @@
     {
         "id":"Accesorios",
         "nombre":"ACCESORIOS",
-        "genero":"hombre",
+        "genero":"mujer",
         "categorias":[
-            "Billeteras",
+            "Bisutería",
             "Correas",
-            "Gorras",
-            "Relojes"
-
+            "Bolsos",
+            "Cuidado Per"
         ]
     }
-
 
 
 ]

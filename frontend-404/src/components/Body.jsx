@@ -4,7 +4,7 @@ import { Banner } from "./Banner";
 
 import { SeparadorCompra, SeparadorTexto } from "./Separador";
 
-import { Carril } from "./CarrilProductos";
+import { Carril } from "./CarrilCategorias";
 import { PresentacionCategoria, PresentacionGenero, PresentacionSubcategoria } from "./Presentacion";
 
 const useStyle = makeStyles((theme) => ({

@@ -3,13 +3,21 @@ import { makeStyles, Button } from "@material-ui/core";
 
 const useStyle = makeStyles((theme) => ({
 
-    contImgBanner: {
-        width: '500px'
-    },
+
     imgBanner: {
+
+        
+        position:'relative',
         width: '100%',
         objectFit: 'cover',
-        height: '700px'
+        height: '700px',
+        transition:'0.5s',
+        
+        '&:hover':{
+            transform:'scale(1.1)'
+            
+        }
+
     },
     boton: {
     
@@ -21,7 +29,9 @@ const useStyle = makeStyles((theme) => ({
     },
 
     cont:{
-        position:'relative'
+        position:'relative',
+        overflow:'hidden',
+        height:'700px'
     },
 
     ContNombreCategoria:{
@@ -51,7 +61,7 @@ const TarjetaCategoria = (props) => {
 
     return (
         
-        <div>
+
             <div className={classes.cont}>
 
                 <div className={classes.ContImgBanner}>
@@ -65,9 +75,12 @@ const TarjetaCategoria = (props) => {
 
                     </div>
                     
-                    <Button variant="text" color="default" className={classes.boton}>
+                    <a href={`/${props.genero}/${props.categoria}`}>
+                    <Button variant="text" color="default" className={classes.boton} >
                     VER MAS
                     </Button>
+                    </a>
+                    
 
                 </div>
 
@@ -75,7 +88,6 @@ const TarjetaCategoria = (props) => {
 
                 
 
-            </div>
 
         </div>
 
@@ -107,9 +119,13 @@ const TarjetaSubcategoria = (props) => {
 
                     </div>
                     
+                    <a href={`/${props.genero}/${props.idCategoria}/${props.subcategoria}`}>
+
                     <Button variant="text" color="default" className={classes.boton}>
-                    VER MAS
-                    </Button>
+                        ver mas
+                   </Button>
+                    </a>
+                    
 
                 </div>
 
@@ -132,14 +148,33 @@ const useStyle2 = makeStyles(()=>({
     
     contTarProd:{
         width:'100%',
-        backgroundColor:'',
-        height:'fitContent'
+
+    
+        overflow:'hidden',
 
 
     },
     imgTarProd:{
         
-        width:'100%'
+        width:'100%',
+        height:'500px',
+        objectFit:'cover',
+        transition:'0.2s',
+        "&:hover":{
+            transform:'scale(1.2)'
+        },
+
+
+    contImg:{
+
+      
+        overflow:'hidden',
+        width:'100%',
+        height:'500px'
+    
+
+    },
+        
     
         
 
@@ -192,7 +227,11 @@ const TarjetaProducto =(props)=>{
     
     return (
         <div className={classes.contTarProd}>
-                <img src={require('../img/Banner/BannerMujer.jpg')} className={classes.imgTarProd} alt='hey'/>
+
+            <div className={classes.contImg}>
+                <img src={require(`../img/Product-images${props.urlImg}`)} className={classes.imgTarProd} alt='hey'/>
+            </div>
+                
 
             <div className={classes.contTexeProd}>
 

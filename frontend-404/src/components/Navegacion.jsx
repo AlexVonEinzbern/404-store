@@ -15,7 +15,7 @@ import SearchIcon from '@material-ui/icons/Search';
 
 import { ThemeProvider, Button } from '@material-ui/core';
 import { tema } from '../styles/tema';
-import { useStyles } from '../styles/styles';
+import { useStyles } from '../styles/styleNav';
 import { FavoriteBorder, LocalMallOutlined } from '@material-ui/icons';
 import { MenuDesplagable } from './MenuDesplegable';
 
@@ -53,30 +53,37 @@ export default function Navegacion() {
           <div color="inherit" >   |  </div>
           <Button color="inherit" > Nosotros</Button>
           <div color="inherit" >   |  </div>
-          <Button color="inherit" > Iniciar Sesion</Button>
+
+            <a href="/login">
+
+            <Button color="inherit" > Iniciar Sesion</Button>
+            </a>
+          
+
+
         </Toolbar>
         
         <Toolbar className={classes.barraInferior}>
           {/* logo */}
           <Typography className={classes.title} variant="h6" noWrap ><b>404-STORE</b></Typography>
         
-          <div color="secondary" className={classes.botonesNavegacion } >
+          <div  className={classes.botonesNavegacion } >
             {  
               BotonesNavegacion.map((btn => {
                 return (
-                 <div key= {btn.ubicacion} className={classes.contBtnMenu}
+                 <div key= {btn.id} className={classes.contBtnMenu}
                   >
 
      
-
-                  <a href={btn.ruta}> 
+                  
+                  <a href={btn.ruta}  key={btn.id+1 } className={classes.a}> 
 
                   <Button 
                   variant="text" 
                   color="inherit"
                   onMouseEnter={()=>{
                     seeMenu();
-                    SetcategoriasMenu(todasLasCategorias[btn.ubicacion]);
+                    SetcategoriasMenu(todasLasCategorias[btn.id]);
                     
                   }}
 
@@ -84,16 +91,16 @@ export default function Navegacion() {
 
                   onMouseLeave={hideMenu}
                   
-                  key={btn.ubicacion}
+                  key={btn.id}
+                  className={classes.botonMenu}
                   >
                     {btn.nombre}
+
+                  
                   </Button>
                   
                   </a>
-                  
-                 
-                  
-                    
+                
                  </div> 
                 )
               }))

@@ -13,7 +13,7 @@ import productosJson from './ProductosJson.json'
 
 const useStyles = makeStyles((theme) => ({
     cont: {
-        margin: '144px 0'
+        margin: '144px 48px'
 
     },
 
@@ -190,6 +190,7 @@ const PresentacionSubcategoria = (props) => {
                                 precio={producto.precio_producto} 
                                 categoria={producto.subcategoria_producto+' para '+ producto.genero_producto } 
                                 key ={producto.id_producto}
+                                urlImg={producto.img_path}
                                 ></TarjetaProducto>
 
                             </Grid>

@@ -1,8 +1,11 @@
 
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom"
 import { Body } from "./components/Body";
+import { Login, Registro } from "./components/Login";
 import Navegacion from './components/Navegacion'
 import { PresentacionCategoria, PresentacionGenero, PresentacionSubcategoria } from "./components/Presentacion";
+import { Nada } from "./nada";
+
 
 
 
@@ -20,22 +23,22 @@ function App() {
 
           <Route path='hombre' element={<PresentacionGenero genero='HOMBRE' />} />
             <Route path='hombre/ropaExterior' element={<PresentacionCategoria genero='HOMBRE' idCategoria='RopaExterior' />} />
-              <Route path='hombre/ropa-Exterior/camisas' element={<PresentacionSubcategoria genero='HOMBRE' subCategoria='camisas'/>} />
-              <Route path='hombre/ropa-Exterior/camisetas' element={<PresentacionSubcategoria genero='HOMBRE' subCategoria='camisetas'/>} /> 
-              <Route path='hombre/ropa-Exterior/jeans' element={<PresentacionSubcategoria genero='HOMBRE' subCategoria='jeans'/>} /> 
-              <Route path='hombre/ropa-Exterior/pantalones' element={<PresentacionSubcategoria genero='HOMBRE' subCategoria='pantalones'/>} />
+              <Route path='hombre/ropaExterior/camisas' element={<PresentacionSubcategoria genero='HOMBRE' subCategoria='camisas'/>} />
+              <Route path='hombre/ropaExterior/camisetas' element={<PresentacionSubcategoria genero='HOMBRE' subCategoria='camisetas'/>} /> 
+              <Route path='hombre/ropaExterior/jeans' element={<PresentacionSubcategoria genero='HOMBRE' subCategoria='jeans'/>} /> 
+              <Route path='hombre/ropaExterior/pantalones' element={<PresentacionSubcategoria genero='HOMBRE' subCategoria='pantalones'/>} />
                
 
-            <Route path='hombre/ropa-Interior' element={<PresentacionCategoria genero='HOMBRE' idCategoria='RopaInterior' />} />
-              <Route path='hombre/ropa-interior/pijamas' element={<PresentacionSubcategoria genero='HOMBRE' subCategoria='pijamas'/>} />
-              <Route path='hombre/ropa-interior/boxers' element={<PresentacionSubcategoria genero='HOMBRE' subCategoria='boxers'/>} />
-              <Route path='hombre/ropa-interior/camisetas' element={<PresentacionSubcategoria genero='HOMBRE' subCategoria='camisetas'/>} />
-              <Route path='hombre/ropa-interior/medias' element={<PresentacionSubcategoria genero='HOMBRE' subCategoria='medias'/>} />
+            <Route path='hombre/ropaInterior' element={<PresentacionCategoria genero='HOMBRE' idCategoria='RopaInterior' />} />
+              <Route path='hombre/ropainterior/pijamas' element={<PresentacionSubcategoria genero='HOMBRE' subCategoria='pijamas'/>} />
+              <Route path='hombre/ropainterior/boxers' element={<PresentacionSubcategoria genero='HOMBRE' subCategoria='boxers'/>} />
+              <Route path='hombre/ropainterior/camisetas' element={<PresentacionSubcategoria genero='HOMBRE' subCategoria='camisetas'/>} />
+              <Route path='hombre/ropainterior/medias' element={<PresentacionSubcategoria genero='HOMBRE' subCategoria='medias'/>} />
               
-            <Route path='hombre/ropa-Deportiva' element={<PresentacionCategoria genero='HOMBRE' idCategoria='RopaDeportiva' />} />
-              <Route path='hombre/ropa-deportiva/prendas-superiores' element={<PresentacionSubcategoria genero='HOMBRE' subCategoria='prendasSuperiores'/>} />
-              <Route path='hombre/ropa-deportiva/prendas-inferiores' element={<PresentacionSubcategoria genero='HOMBRE' subCategoria='prendasInferiores'/>} />
-              <Route path='hombre/ropa-deportiva/accesorios' element={<PresentacionSubcategoria genero='HOMBRE' subCategoria='accesorios'/>} />
+            <Route path='hombre/ropaDeportiva' element={<PresentacionCategoria genero='HOMBRE' idCategoria='RopaDeportiva' />} />
+              <Route path='hombre/ropadeportiva/prendassuperiores' element={<PresentacionSubcategoria genero='HOMBRE' subCategoria='prendasSuperiores'/>} />
+              <Route path='hombre/ropadeportiva/prendasinferiores' element={<PresentacionSubcategoria genero='HOMBRE' subCategoria='prendasInferiores'/>} />
+              <Route path='hombre/ropadeportiva/accesorios' element={<PresentacionSubcategoria genero='HOMBRE' subCategoria='accesorios'/>} />
 
 
             <Route path='hombre/accesorios' element={<PresentacionCategoria genero='HOMBRE' idCategoria='Accesorios' />} />
@@ -46,28 +49,39 @@ function App() {
 
             
             <Route path='mujer' element={<PresentacionGenero genero='MUJER' />} />
-            <Route path='mujer/ropa-Exterior' element={<PresentacionCategoria genero='MUJER' idCategoria='RopaExterior' />} />
-              <Route path='mujer/ropa-Exterior/camisas' element={<PresentacionSubcategoria genero='MUJER' subCategoria='camisas'/>} />
-              <Route path='mujer/ropa-Exterior/camisetas' element={<PresentacionSubcategoria genero='MUJER' subCategoria='camisetas'/>} /> 
-              <Route path='mujer/ropa-Exterior/jeans' element={<PresentacionSubcategoria genero='MUJER' subCategoria='jeans'/>} /> 
-              <Route path='mujer/ropa-Exterior/pantalones' element={<PresentacionSubcategoria genero='MUJER' subCategoria='pantalones'/>} /> 
+            <Route path='mujer/ropaExterior' element={<PresentacionCategoria genero='MUJER' idCategoria='RopaExterior' />} />
+              <Route path='mujer/ropaExterior/camisas' element={<PresentacionSubcategoria genero='MUJER' subCategoria='camisas'/>} />
+              <Route path='mujer/ropaExterior/camisetas' element={<PresentacionSubcategoria genero='MUJER' subCategoria='camisetas'/>} /> 
+              <Route path='mujer/ropaExterior/jeans' element={<PresentacionSubcategoria genero='MUJER' subCategoria='jeans'/>} /> 
+              <Route path='mujer/ropaExterior/pantalones' element={<PresentacionSubcategoria genero='MUJER' subCategoria='pantalones'/>} /> 
 
-            <Route path='mujer/ropa-Interior' element={<PresentacionCategoria genero='MUJER' idCategoria='RopaInterior' />} />
-              <Route path='mujer/ropa-interior/pijamas' element={<PresentacionSubcategoria genero='MUJER' subCategoria='pijamas'/>} />
-              <Route path='mujer/ropa-interior/panties' element={<PresentacionSubcategoria genero='MUJER' subCategoria='panties'/>} />
-              <Route path='mujer/ropa-interior/tops' element={<PresentacionSubcategoria genero='MUJER' subCategoria='tops'/>} />
-              <Route path='mujer/ropa-interior/medias' element={<PresentacionSubcategoria genero='MUJER' subCategoria='medias'/>} />
+            <Route path='mujer/ropaInterior' element={<PresentacionCategoria genero='MUJER' idCategoria='RopaInterior' />} />
+              <Route path='mujer/ropainterior/pijamas' element={<PresentacionSubcategoria genero='MUJER' subCategoria='pijamas'/>} />
+              <Route path='mujer/ropainterior/panties' element={<PresentacionSubcategoria genero='MUJER' subCategoria='panties'/>} />
+              <Route path='mujer/ropainterior/tops' element={<PresentacionSubcategoria genero='MUJER' subCategoria='tops'/>} />
+              <Route path='mujer/ropainterior/medias' element={<PresentacionSubcategoria genero='MUJER' subCategoria='medias'/>} />
               
-            <Route path='mujer/ropa-Deportiva' element={<PresentacionCategoria genero='MUJER' idCategoria='RopaDeportiva' />} />
-              <Route path='mujer/ropa-deportiva/prendas-superiores' element={<PresentacionSubcategoria genero='MUJER' subCategoria='prendasSuperiores'/>} />
-              <Route path='mujer/ropa-deportiva/prendas-inferiores' element={<PresentacionSubcategoria genero='MUJER' subCategoria='prendasInferiores'/>} />
-              <Route path='mujer/ropa-deportiva/accesorios' element={<PresentacionSubcategoria genero='MUJER' subCategoria='accesorios'/>} />
+            <Route path='mujer/ropaDeportiva' element={<PresentacionCategoria genero='MUJER' idCategoria='RopaDeportiva' />} />
+              <Route path='mujer/ropadeportiva/prendassuperiores' element={<PresentacionSubcategoria genero='MUJER' subCategoria='prendasSuperiores'/>} />
+              <Route path='mujer/ropadeportiva/prendasinferiores' element={<PresentacionSubcategoria genero='MUJER' subCategoria='prendasInferiores'/>} />
+              <Route path='mujer/ropadeportiva/accesorios' element={<PresentacionSubcategoria genero='MUJER' subCategoria='accesorios'/>} />
 
 
             <Route path='mujer/accesorios' element={<PresentacionCategoria genero='MUJER' idCategoria='Accesorios' />} />
               <Route path='mujer/accesorios/bisuteria' element={<PresentacionSubcategoria genero='MUJER' subCategoria='billeteras'/>} />
               <Route path='mujer/accesorios/correas' element={<PresentacionSubcategoria genero='MUJER' subCategoria='correas'/>} />
               <Route path='mujer/accesorios/bolsos' element={<PresentacionSubcategoria genero='MUJER' subCategoria='gorras'/>} />
+
+
+
+
+              <Route path="login" element={<Login/>}/>
+              <Route path="registro" element={<Registro/>}/>
+
+              <Route path="*" element={<Nada/>}> </Route>
+
+
+            
    
 
 

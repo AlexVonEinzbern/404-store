@@ -4,31 +4,28 @@ import { TextField } from "@material-ui/core";
 import { makeStyles, Button } from "@material-ui/core";
 import { Height } from "@material-ui/icons";
 
+import { useState } from 'react';  //Cambios para que los datos en el formulario tengan
+                                   //efecto en la base de datos
+
+const URI = process.env.REACT_APP_URI;  //Se conecta con el backend
 
 const useStyle = makeStyles((theme) => ({
 
     cont: {
-
         display: 'flex',
         flexDirection: 'column',
         width: '400px',
- 
- 
-
     },
-    contLogin:{
-        
+    contLogin:{        
         display:'flex',
         flexDirection:'column',
         height:'100vh',
         margin:'auto',
         alignItems:'center',
         justifyContent:'center'
-
     },
 
     logo:{
-
         fontSize:'24px',
         fontWeight:'bold',
         margin:'20px'
@@ -47,22 +44,15 @@ const useStyle = makeStyles((theme) => ({
         color:'#000'
     }
 
-
-
-
 }))
 
-
-
  const Login = () => {
+
     const classes = useStyle()
-
-
 
     return (
 
         <div className={classes.contLogin}>
-
 
             <div className={classes.logo}>
                 404-STORE
@@ -82,40 +72,71 @@ const useStyle = makeStyles((theme) => ({
 
                 <div className={classes.textoOpcion}> ¿No estas registrado?  <a href="/registro" className={classes.a}> registrarse</a></div>
 
-
             </form>
-
 
         </div>
 
-
     )
-
-
-
 
 }
 
 const Registro = () => {
-    const classes = useStyle()
 
+    const [name_cliente_registrado, setName_cliente_registrado]           = useState('')
+    const [cedula_cliente_registrado, setCedula_cliente_registrado]       = useState('')
+    const [edad_cliente_registrado, setEdad_cliente_registrado]           = useState('')
+    const [email_cliente_registrado, setEmail_cliente_registrado]         = useState('')
+    const [username_cliente_registrado, setUsername_cliente_registrado]   = useState('')
+    const [direccion_cliente_registrado, setDireccion_cliente_registrado] = useState('')
+    const [password_cliente_registrado, setPassword_cliente_registrado]   = useState('')
+    const [telefono_cliente_registrado, setTelefono_cliente_registrado]   = useState('')
+    const [alertError, setAlertError] = useState('')
+    const [estado, setEstado]         = useState('')
 
+    const handleSutmit = async (e) => {
+        try{
+            e.preventDefault();
+            const res = await fetch(`${URI}crearClienteRegistrado`, {
+                method: 'POST',
+                headers:{
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    name_cliente_registrado,
+                    cedula_cliente_registrado,
+                    edad_cliente_registrado,
+                    email_cliente_registrado,
+                    username_cliente_registrado,
+                    direccion_cliente_registrado,
+                    password_cliente_registrado,
+                    telefono_cliente_registrado
+                })
+            })
+            const data = await res.json();
+            console.log(data);
+            setEstado(true);
+            setAlertError(false);
 
+            setName_cliente_registrado('');
+            setCedula_cliente_registrado('');
+            setEdad_cliente_registrado('');
+            setEmail_cliente_registrado('');
+            setUsername_cliente_registrado('');
+            setDireccion_cliente_registrado('');
+            setPassword_cliente_registrado('');
+            setTelefono_cliente_registrado('');
 
-    const registrarCliente=()=>{
-
-        
-
+        } catch (error) {
+            setEstado(true);
+            setAlertError(true);
+        }
     }
 
-
-
-
+    const classes = useStyle()
 
     return (
 
         <div className={classes.contLogin}>
-
 
             <div className={classes.logo}>
                 404-STORE
@@ -126,39 +147,63 @@ const Registro = () => {
             </div>
 
             <form noValidate autoComplete="off" className={classes.cont}>
-                <TextField id="standard-basic" label="Nombre" />
-                <TextField id="standard-basic" label="Cedula" />
-                <TextField id="standard-basic" label="Edad" />
-                <TextField id="standard-basic" label="Email" />
-                <TextField id="standard-basic" label="Usuario" />
-                <TextField id="standard-basic" label="Direccion" />
-                <TextField id="standard-basic" label="Contraseña" />
-                <TextField id="standard-basic" label="Telefono" />
-           
-                
-
-                <Button variant="contained" color="secondary" className={classes.iniciar}>
-                  Registrarse
-                </Button>
-
+                <TextField 
+                    id="standard-basic" 
+                    label="Nombre"
+                    onChange = {e => setName_cliente_registrado(e.target.value)} 
+                />
+                <TextField 
+                    id="standard-basic" 
+                    label="Cedula"
+                    onChange = {e => setCedula_cliente_registrado(e.target.value)}
+                />
+                <TextField 
+                    id="standard-basic" 
+                    label="Edad"
+                    onChange = {e => setEdad_cliente_registrado(e.target.value)}
+                />
+                <TextField 
+                    id="standard-basic" 
+                    label="Email"
+                    onChange = {e => setEmail_cliente_registrado(e.target.value)}
+                />
+                <TextField 
+                    id="standard-basic" 
+                    label="Usuario" 
+                    onChange = {e => setUsername_cliente_registrado(e.target.value)}
+                />
+                <TextField 
+                    id="standard-basic" 
+                    label="Direccion" 
+                    onChange = {e => setDireccion_cliente_registrado(e.target.value)}
+                />
+                <TextField 
+                    id="standard-basic" 
+                    label="Contraseña" 
+                    onChange = {e => setPassword_cliente_registrado(e.target.value)}
+                />
+                <TextField 
+                    id="standard-basic"
+                    label="Telefono"
+                    onChange = {e => setTelefono_cliente_registrado(e.target.value)}
+                />
+                 
+                <Button 
+                    variant="contained" 
+                    color="secondary" 
+                    className={classes.iniciar}
+                    onClick = {handleSutmit}>
+                    Registrarse
+                </Button> 
 
                 <div  className={classes.textoOpcion}> ¿Ya tienes cuenta?  <a href="/login" className={classes.a}> Iniciar Sesion </a>   </div>
-
-                
-
-
+   
             </form>
-
 
         </div>
 
-
     )
-
-
-
     
 }
-
 
 export {Login,Registro}

@@ -85,6 +85,11 @@ def obtenerClienteRegistrado(username_cliente_registrado):
     cliente_registrado = ClienteRegistrado.query.filter_by(username_cliente_registrado=username_cliente_registrado).first()
     return cliente_registrado_schema.jsonify(cliente_registrado)
 
+clientes_registrados_schema = ClienteRegistradoSchema(many=True)
+@app.route('/obtenerClientesRegistrados', methods=['GET'])
+def obtenerClientesRegistrados():
+    clientes_registrados = ClienteRegistrado.query.all()
+    return clientes_registrados_schema.jsonify(clientes_registrados)
 
 ##                      FUTUROS CAMBIOS
 ##================================================================

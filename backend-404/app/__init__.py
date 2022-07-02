@@ -11,7 +11,6 @@ def init_app():
     app = Flask(__name__, instance_relative_config=False)
     CORS(app)
     app.config.from_object('config.Config')
-    CORS()
     db.init_app(app)
     ma.init_app(app)
 

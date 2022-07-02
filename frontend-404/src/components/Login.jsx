@@ -4,7 +4,7 @@ import { TextField } from "@material-ui/core";
 import { makeStyles, Button } from "@material-ui/core";
 import { Height } from "@material-ui/icons";
 
-import { useState } from 'react';  //Cambios para que los datos en el formulario tengan
+import { useState, useEffect } from 'react';  //Cambios para que los datos en el formulario tengan
                                    //efecto en la base de datos
 
 const URI = process.env.REACT_APP_URI;  //Se conecta con el backend
@@ -131,6 +131,10 @@ const Registro = () => {
             setAlertError(true);
         }
     }
+
+    useEffect ( () => {
+        handleSutmit();
+    }, [])
 
     const classes = useStyle()
 

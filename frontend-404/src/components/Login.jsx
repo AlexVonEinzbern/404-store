@@ -183,7 +183,8 @@ const Registro = () => {
                 />
                 <TextField 
                     id="standard-basic" 
-                    label="Contraseña" 
+                    label="Contraseña"
+                    type="password"
                     onChange = {e => setPassword_cliente_registrado(e.target.value)}
                 />
                 <TextField 

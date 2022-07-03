@@ -1,4 +1,4 @@
-from flask import request, abort
+from flask import request, jsonify
 from flask import current_app as app
 from .models import *
 from flask_bcrypt import generate_password_hash
@@ -66,10 +66,14 @@ def crearClienteRegistrado():
     username_cliente_registrado  = request.json['username_cliente_registrado']
     telefono_cliente_registrado  = request.json['telefono_cliente_registrado']
 
-    cliente_existe = ClienteRegistrado.query.filter_by(email_cliente_registrado=email_cliente_registrado).first() is not None
+    email_existe    = ClienteRegistrado.query.filter_by(email_cliente_registrado=email_cliente_registrado).first() is not None
+    username_existe = ClienteRegistrado.query.filter_by(username_cliente_registrado=username_cliente_registrado).first() is not None
+    
+    if email_existe:
+        return jsonify({ "error" : "Email ya existe"}), 409
 
-    if cliente_existe:
-        abort(409)
+    if username_existe:
+        return jsonify({ "error" : "Usuario ya existe"}), 409
 
     hashed_password = generate_password_hash(password_cliente_registrado)
 

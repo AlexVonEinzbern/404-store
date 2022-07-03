@@ -1,6 +1,7 @@
-from flask import request
+from flask import request, abort
 from flask import current_app as app
 from .models import *
+from flask_bcrypt import generate_password_hash
 
 producto_schema = ProductoSchema()
 @app.route('/crearProducto', methods=['POST'])
@@ -39,9 +40,9 @@ def crearProducto():
 
     return producto_schema.jsonify(new_producto)
 
-@app.route('/obtenerProducto/<id_producto>', methods=['GET'])
-def obtenerProducto(id_producto):
-    producto = Producto.query.filter_by(id_producto=id_producto).first()
+@app.route('/obtenerProducto/<name_producto>', methods=['GET'])
+def obtenerProducto(name_producto):
+    producto = Producto.query.filter_by(name_producto=name_producto).first()
     return producto_schema.jsonify(producto)
 
 productos_schema = ProductoSchema(many=True)
@@ -55,6 +56,7 @@ cliente_registrado_schema = ClienteRegistradoSchema()
 @app.route('/crearClienteRegistrado', methods=['POST'])
 def crearClienteRegistrado():
 
+
     name_cliente_registrado      = request.json['name_cliente_registrado']
     cedula_cliente_registrado    = request.json['cedula_cliente_registrado']
     edad_cliente_registrado      = request.json['edad_cliente_registrado']
@@ -64,13 +66,20 @@ def crearClienteRegistrado():
     username_cliente_registrado  = request.json['username_cliente_registrado']
     telefono_cliente_registrado  = request.json['telefono_cliente_registrado']
 
+    cliente_existe = ClienteRegistrado.query.filter_by(email_cliente_registrado=email_cliente_registrado).first() is not None
+
+    if cliente_existe:
+        abort(409)
+
+    hashed_password = generate_password_hash(password_cliente_registrado)
+
     new_cliente = ClienteRegistrado(
         name_cliente_registrado = name_cliente_registrado,
         cedula_cliente_registrado = cedula_cliente_registrado,
         edad_cliente_registrado = edad_cliente_registrado,
         email_cliente_registrado = email_cliente_registrado,
         direccion_cliente_registrado = direccion_cliente_registrado,
-        password_cliente_registrado = password_cliente_registrado,
+        password_cliente_registrado = hashed_password,
         username_cliente_registrado  = username_cliente_registrado,
         telefono_cliente_registrado = telefono_cliente_registrado
     )
@@ -80,6 +89,7 @@ def crearClienteRegistrado():
 
     return cliente_registrado_schema.jsonify(new_cliente)
 
+##Ruta para el Login
 @app.route('/obtenerClienteRegistrado/<username_cliente_registrado>', methods=['GET'])
 def obtenerClienteRegistrado(username_cliente_registrado):
     cliente_registrado = ClienteRegistrado.query.filter_by(username_cliente_registrado=username_cliente_registrado).first()

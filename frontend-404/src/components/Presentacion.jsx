@@ -9,15 +9,11 @@ import { todasLasCategorias } from "./todasLasCategorias";
 import productosJson from './ProductosJson.json'
 
 
-
-
 const useStyles = makeStyles((theme) => ({
     cont: {
         margin: '144px 48px'
 
     },
-
-
 }))
 
 const PresentacionGenero = (props) => {
@@ -38,12 +34,7 @@ const PresentacionGenero = (props) => {
 
     }
 
-
-
-
-
     const classes = useStyles()
-
 
     return (
         <div className={classes.cont}>
@@ -114,9 +105,7 @@ const PresentacionCategoria = (props) => {
                     return categoriaElegida
                 }
             }
-
         }
-
     }
 
 
@@ -126,8 +115,6 @@ const PresentacionCategoria = (props) => {
                 titulo={'TODO EN ' + elegirCategoria().nombrCategoria + " PARA " + props.genero}
                 subtitulo={props.subtitulo}></SeparadorTexto>
             <Grid container spacing={2}>
-
-
 
                 {
                     elegirCategoria().sub.map((subcat) => {
@@ -143,17 +130,9 @@ const PresentacionCategoria = (props) => {
                                 >
                                 </TarjetaSubcategoria>
                             </Grid>
-
-
                         )
-
-
-
                     })
                 }
-
-
-
             </Grid>
         </div>
     )
@@ -196,15 +175,8 @@ const PresentacionSubcategoria = (props) => {
                             </Grid>
 
                         )
-
-
-
-
                     })
                 }
-
-
-
 
             </Grid>
         </div>

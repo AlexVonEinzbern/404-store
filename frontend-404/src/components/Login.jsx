@@ -5,9 +5,9 @@ import { makeStyles, Button } from "@material-ui/core";
 import { Height } from "@material-ui/icons";
 
 import { useState, useEffect } from 'react';  //Cambios para que los datos en el formulario tengan
-                                   //efecto en la base de datos
+                                              //efecto en la base de datos
 
-const URI = process.env.REACT_APP_URI;  //Se conecta con el backend
+const URI = process.env.REACT_APP_URI;        //Se conecta con el backend
 
 const useStyle = makeStyles((theme) => ({
 
@@ -48,6 +48,24 @@ const useStyle = makeStyles((theme) => ({
 
  const Login = () => {
 
+    const [username_cliente_registrado, setUsername_cliente_registrado] = useState('')
+    const [password_cliente_registrado, setPassword_cliente_registrado] = useState('')
+    const [login, setLogin]           = useState([])
+    const [alertError, setAlertError] = useState('')
+    const [estado, setEstado]         = useState('')
+
+    const handleSutmit = async (username) => {
+
+            const res = await fetch(`${URI}obtenerClienteRegistrado/${username}`)
+            const data = await res.json();
+
+            setLogin(data);
+
+            setEstado(true);
+            setAlertError(false);
+    }
+
+
     const classes = useStyle()
 
     return (
@@ -63,14 +81,27 @@ const useStyle = makeStyles((theme) => ({
             </div>
 
             <form noValidate autoComplete="off" className={classes.cont}>
-                <TextField id="standard-basic" label="Usuario" />
-                <TextField id="standard-basic" label="Contraseña" />
+                <TextField 
+                    id="standard-basic" 
+                    label="Usuario"
+                    onChange = {username => setUsername_cliente_registrado(username.target.value)}
+                />
+                <TextField 
+                    id="standard-basic" 
+                    label="Contraseña"
+                    type="password"
+                    onChange = {username => setPassword_cliente_registrado(username.target.value)}
+                />
 
-                <Button variant="contained" color="secondary" className={classes.iniciar}>
-                  iniciar sesion
+                <Button 
+                    variant="contained" 
+                    color="secondary" 
+                    className={classes.iniciar}
+                    onClick={handleSutmit}>
+                    Iniciar sesión
                 </Button>
 
-                <div className={classes.textoOpcion}> ¿No estas registrado?  <a href="/registro" className={classes.a}> registrarse</a></div>
+                <div className={classes.textoOpcion}> ¿No estás registrado?  <a href="/registro" className={classes.a}> registrarse</a></div>
 
             </form>
 
@@ -132,10 +163,6 @@ const Registro = () => {
         }
     }
 
-    useEffect ( () => {
-        handleSutmit();
-    }, [])
-
     const classes = useStyle()
 
     return (
@@ -158,7 +185,7 @@ const Registro = () => {
                 />
                 <TextField 
                     id="standard-basic" 
-                    label="Cedula"
+                    label="Cédula"
                     onChange = {e => setCedula_cliente_registrado(e.target.value)}
                 />
                 <TextField 
@@ -178,7 +205,7 @@ const Registro = () => {
                 />
                 <TextField 
                     id="standard-basic" 
-                    label="Direccion" 
+                    label="Dirección" 
                     onChange = {e => setDireccion_cliente_registrado(e.target.value)}
                 />
                 <TextField 
@@ -189,7 +216,7 @@ const Registro = () => {
                 />
                 <TextField 
                     id="standard-basic"
-                    label="Telefono"
+                    label="Teléfono"
                     onChange = {e => setTelefono_cliente_registrado(e.target.value)}
                 />
                  
@@ -201,7 +228,7 @@ const Registro = () => {
                     Registrarse
                 </Button> 
 
-                <div  className={classes.textoOpcion}> ¿Ya tienes cuenta?  <a href="/login" className={classes.a}> Iniciar Sesion </a>   </div>
+                <div  className={classes.textoOpcion}> ¿Ya tienes cuenta?  <a href="/login" className={classes.a}> Iniciar Sesión </a>   </div>
    
             </form>
 

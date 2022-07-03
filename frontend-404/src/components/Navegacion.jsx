@@ -6,12 +6,7 @@ import Typography from '@material-ui/core/Typography';
 import InputBase from '@material-ui/core/InputBase';
 import Badge from '@material-ui/core/Badge';
 
-
-
-
-
 import SearchIcon from '@material-ui/icons/Search';
-
 
 import { ThemeProvider, Button } from '@material-ui/core';
 import { tema } from '../styles/tema';
@@ -19,11 +14,8 @@ import { useStyles } from '../styles/styleNav';
 import { FavoriteBorder, LocalMallOutlined } from '@material-ui/icons';
 import { MenuDesplagable } from './MenuDesplegable';
 
-
 import { BotonesNavegacion } from './botonesDeNavegacion';
 import { todasLasCategorias } from './todasLasCategorias';
-
-
 
 export default function Navegacion() {
   //tema
@@ -42,6 +34,7 @@ export default function Navegacion() {
     setShowMenu(false)
   }
 
+  const productosCarrito = { productosEnCarrito : 0 }
 
   return (
     <ThemeProvider theme={tema}>
@@ -133,7 +126,7 @@ export default function Navegacion() {
               aria-label="account of current user"
               aria-haspopup="true"
               color="inherit">
-              <Badge badgeContent={4} color='secondary' overlap='rectangular' >
+              <Badge badgeContent={0} color='secondary' overlap='rectangular' >
                 <LocalMallOutlined />
               </Badge>
             </IconButton>

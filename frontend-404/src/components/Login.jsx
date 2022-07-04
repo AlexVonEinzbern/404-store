@@ -56,7 +56,7 @@ const useStyle = makeStyles((theme) => ({
 
     const handleSutmit = async (username) => {
 
-            const res = await fetch(`${URI}obtenerClienteRegistrado/${username}`)
+            const res = await fetch(`${URI}login`)
             const data = await res.json();
 
             setLogin(data);

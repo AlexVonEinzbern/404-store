@@ -1,6 +1,10 @@
 """Data models"""
 
 from . import db, ma
+from uuid import uuid4
+
+def get_uuid():
+    return uuid4().hex
 
 clienteregistrado_reporte = db.Table(
     'association_clienteregistrado_reporte',
@@ -118,7 +122,7 @@ class ProductoSchema(ma.Schema):
 class ClienteRegistrado(db.Model):
     """docstring for ClienteRegistrado"""
     __tablename__ = "clienteregistrado"
-    id_cliente_registrado        = db.Column(db.Integer, primary_key=True)
+    id_cliente_registrado        = db.Column(db.String(32), primary_key=True, unique=True, default=get_uuid)
     name_cliente_registrado      = db.Column(db.String(50), nullable=False)
     cedula_cliente_registrado    = db.Column(db.Integer, unique=True, nullable=False)
     edad_cliente_registrado      = db.Column(db.Integer, nullable=False)
@@ -198,7 +202,7 @@ class MetodoPago(db.Model):
     __tablename__ = "metodopago"
     id_metodo             = db.Column(db.Integer, primary_key=True)
     name_metodo           = db.Column(db.String(50), unique=True, nullable=False)
-    id_cliente_registrado = db.Column(db.Integer, db.ForeignKey('clienteregistrado.id_cliente_registrado'))
+    id_cliente_registrado = db.Column(db.String(32), db.ForeignKey('clienteregistrado.id_cliente_registrado'))
     
     venta = db.relationship('Venta', back_populates = 'metodopago')
 
@@ -215,7 +219,7 @@ class Venta(db.Model):
     id_venta              = db.Column(db.Integer, primary_key=True)
     fecha_venta           = db.Column(db.DateTime, nullable=False)
     total_venta           = db.Column(db.Float, nullable=False)
-    id_cliente_registrado = db.Column(db.Integer, db.ForeignKey('clienteregistrado.id_cliente_registrado'))
+    id_cliente_registrado = db.Column(db.String(32), db.ForeignKey('clienteregistrado.id_cliente_registrado'))
     id_metodo             = db.Column(db.Integer, db.ForeignKey('metodopago.id_metodo'))
 
     metodopago      = db.relationship('MetodoPago', back_populates = 'venta')

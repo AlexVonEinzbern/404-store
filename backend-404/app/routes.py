@@ -1,7 +1,7 @@
-from flask import request, jsonify
+from flask import request, jsonify, session
 from flask import current_app as app
 from .models import *
-from flask_bcrypt import generate_password_hash
+from flask_bcrypt import generate_password_hash, check_password_hash
 
 producto_schema = ProductoSchema()
 @app.route('/crearProducto', methods=['POST'])
@@ -56,7 +56,6 @@ cliente_registrado_schema = ClienteRegistradoSchema()
 @app.route('/crearClienteRegistrado', methods=['POST'])
 def crearClienteRegistrado():
 
-
     name_cliente_registrado      = request.json['name_cliente_registrado']
     cedula_cliente_registrado    = request.json['cedula_cliente_registrado']
     edad_cliente_registrado      = request.json['edad_cliente_registrado']
@@ -75,7 +74,7 @@ def crearClienteRegistrado():
     if username_existe:
         return jsonify({ "error" : "Usuario ya existe"}), 409
 
-    hashed_password = generate_password_hash(password_cliente_registrado)
+    hashed_password = generate_password_hash(password_cliente_registrado).decode('utf-8')
 
     new_cliente = ClienteRegistrado(
         name_cliente_registrado = name_cliente_registrado,
@@ -93,7 +92,37 @@ def crearClienteRegistrado():
 
     return cliente_registrado_schema.jsonify(new_cliente)
 
+@app.route('/@me')
+def get_current_user():
+
+    user_id = session.get("user_id", decode_responses=True)
+
+    if not user_id:
+        return jsonify({ "error" : "Unauthorized"}), 401
+
+    user = ClienteRegistrado.query.filter_by(id_cliente_registrado=user_id).first()
+
+    return cliente_registrado_schema.jsonify(user)
+
 ##Ruta para el Login
+@app.route('/login', methods=['POST'])
+def login():
+
+    password_cliente_registrado  = request.json['password_cliente_registrado']
+    username_cliente_registrado  = request.json['username_cliente_registrado']
+
+    username_existe = ClienteRegistrado.query.filter_by(username_cliente_registrado=username_cliente_registrado).first()
+
+    if username_existe is None:
+        return jsonify({ "error" : "Unauthorized" }), 401
+
+    if not check_password_hash(username_existe.password_cliente_registrado, password_cliente_registrado):
+        return jsonify({ "error" : "Unauthorized" }), 401
+
+    session["user_id"] = username_existe.id_cliente_registrado
+
+    return cliente_registrado_schema.jsonify(username_existe)
+
 @app.route('/obtenerClienteRegistrado/<username_cliente_registrado>', methods=['GET'])
 def obtenerClienteRegistrado(username_cliente_registrado):
     cliente_registrado = ClienteRegistrado.query.filter_by(username_cliente_registrado=username_cliente_registrado).first()
@@ -130,48 +159,3 @@ def obtenerClientesRegistrados():
 # def obtenerProductoImagen(id_producto):
 #     productoimagen = ProductoImagen.query.filter_by(id_producto = id_producto).first()
 #     return producto_imagen_schema.jsonify(productoimagen)
-
-
-
-
-
-##                      GUIA
-##================================================================
-
-
-# @app.route('/createUser', methods=['POST'])
-# def createUser():
-#     id_user = request.json['id_user']
-#     name_user = request.json['name_user']
-#     _password = request.json['_password']
-
-#     new_user = user(id_user=id_user, name_user=name_user, _password=_password)
-#     db.session.add(new_user)
-#     db.session.commit()
-#     return user_schema.jsonify(new_user)
-
-
-# @app.route('/getUsers', methods=['GET'])
-# def getUsers():
-#     users = user.query.all()
-#     return users_schema.jsonify(users)
-
-#@app.route('/createPeer', methods=['POST'])
-#def createPeer():
-#    host = request.json['host']
-#    file = request.json['file']
-
-#    new_peer = Peer(host=host, file=file)
-#    db.session.add(new_peer)
-#    db.session.commit()
-#    return peer_schema.jsonify(new_peer)
-
-#@app.route('/getPeers', methods=['GET'])
-#def getPeers():
-#    peers = Peer.query.all()
-#    return peers_schema.jsonify(peers)
-
-#@app.route('/getPeer/<file_name>', methods=['GET'])
-#def getPeer(file_name):
-#    peer = Peer.query.filter_by(file=file_name)
-#    return peers_schema.jsonify(peer)

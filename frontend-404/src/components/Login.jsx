@@ -50,18 +50,22 @@ const useStyle = makeStyles((theme) => ({
 
     const [username_cliente_registrado, setUsername_cliente_registrado] = useState('')
     const [password_cliente_registrado, setPassword_cliente_registrado] = useState('')
-    const [login, setLogin]           = useState([])
     const [alertError, setAlertError] = useState('')
-    const [estado, setEstado]         = useState('')
 
     const handleSutmit = async (username) => {
 
-            const res = await fetch(`${URI}login`)
+            const res = await fetch(`${URI}login`, {
+                method: 'POST',
+                headers:{
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    username_cliente_registrado,
+                    password_cliente_registrado
+                })
+            })
             const data = await res.json();
 
-            setLogin(data);
-
-            setEstado(true);
             setAlertError(false);
     }
 

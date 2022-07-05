@@ -11,7 +11,6 @@ sess = Session()
 def init_app():
     """Construct the core app"""
     app = Flask(__name__, instance_relative_config=False)
-    ##bcrypt.init_app(app)
     CORS(app)
     app.config.from_object('config.Config')
     db.init_app(app)

@@ -95,7 +95,7 @@ def crearClienteRegistrado():
 @app.route('/@me')
 def get_current_user():
 
-    user_id = session.get("user_id", decode_responses=True)
+    user_id = session.get("user_id")
 
     if not user_id:
         return jsonify({ "error" : "Unauthorized"}), 401

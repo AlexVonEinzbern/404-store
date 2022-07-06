@@ -35,7 +35,7 @@ services:
     container_name: "frontend-404"
     build: ./frontend-404
     volumes:
-      - product-images:/app
+      - ./product-images:/app/product-images
     ports:
       - 3000:3000
     stdin_open: true
@@ -47,9 +47,3 @@ volumes:
   db-data:
   cache:
     driver: local
-  product-images:
-    driver: local
-    driver_opts:
-      type: 'none'
-      o: 'bind'
-      device: './product-images'

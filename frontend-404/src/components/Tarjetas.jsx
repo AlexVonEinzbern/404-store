@@ -6,21 +6,22 @@ const useStyle = makeStyles((theme) => ({
 
     imgBanner: {
 
-        
-        position:'relative',
+
+        position: 'relative',
         width: '100%',
         objectFit: 'cover',
         height: '700px',
-        transition:'0.5s',
-        
-        '&:hover':{
-            transform:'scale(1.1)'
-            
+        transition: '0.5s',
+        transform: 'scale(1.05)',
+
+        '&:hover': {
+            transform: 'scale(1.15)'
+
         }
 
     },
     boton: {
-    
+
         color: '#fff',
         fontSize: '36px',
         textAlign: 'center',
@@ -28,25 +29,25 @@ const useStyle = makeStyles((theme) => ({
         borderRadius: '0'
     },
 
-    cont:{
-        position:'relative',
-        overflow:'hidden',
-        height:'700px'
+    cont: {
+        position: 'relative',
+        overflow: 'hidden',
+        height: '700px'
     },
 
-    ContNombreCategoria:{
-        display:'flex',
-        position:'absolute',
-        top:'50%',
-        color:'#fff',
-        fontSize:'60px',
-        textAlign:'center',
-        fontWeight:'bold',
-        backgroundColor:'rgba(0,0,0,0.4)',
-        padding:'2% 0px',
-        justifyContent:'space-around',
-        width:'100%',
-        textTransform:'uppercase'
+    ContNombreCategoria: {
+        display: 'flex',
+        position: 'absolute',
+        top: '50%',
+        color: '#fff',
+        fontSize: '60px',
+        textAlign: 'center',
+        fontWeight: 'bold',
+        backgroundColor: 'rgba(0,0,0,0.4)',
+        padding: '2% 0px',
+        justifyContent: 'space-around',
+        width: '100%',
+        textTransform: 'uppercase'
     }
 
 
@@ -60,33 +61,33 @@ const TarjetaCategoria = (props) => {
     const classes = useStyle()
 
     return (
-        
 
-            <div className={classes.cont}>
 
-                <div className={classes.ContImgBanner}>
-                    <img src={require(`../img/Banner/${props.genero}/${props.categoria}/1.jpg`)} alt="" className={classes.imgBanner} />
+        <div className={classes.cont}>
+
+            <div className={classes.ContImgBanner}>
+                <img src={require(`../img/Banner/${props.genero}/${props.categoria}/1.jpg`)} alt="" className={classes.imgBanner} />
+            </div>
+
+            <div className={classes.ContNombreCategoria}>
+
+                <div>
+                    {props.cat}
+
                 </div>
 
-                <div className={classes.ContNombreCategoria}>
-
-                    <div>
-                            {props.cat}
-
-                    </div>
-                    
-                    <a href={`/${props.genero}/${props.categoria}`}>
+                <a href={`/${props.genero}/${props.categoria}`}>
                     <Button variant="text" color="default" className={classes.boton} >
-                    VER MAS
+                        VER MAS
                     </Button>
-                    </a>
-                    
-
-                </div>
+                </a>
 
 
+            </div>
 
-                
+
+
+
 
 
         </div>
@@ -104,7 +105,7 @@ const TarjetaSubcategoria = (props) => {
     const classes = useStyle()
 
     return (
-        
+
         <div>
             <div className={classes.cont}>
 
@@ -115,23 +116,19 @@ const TarjetaSubcategoria = (props) => {
                 <div className={classes.ContNombreCategoria}>
 
                     <div>
-                            {props.nombre}
+                        {props.nombre}
 
                     </div>
-                    
+
                     <a href={`/${props.genero}/${props.idCategoria}/${props.subcategoria}`}>
 
-                    <Button variant="text" color="default" className={classes.boton}>
-                        ver mas
-                   </Button>
+                        <Button variant="text" color="default" className={classes.boton}>
+                            ver mas
+                        </Button>
                     </a>
-                    
+
 
                 </div>
-
-
-
-                
 
             </div>
 
@@ -143,73 +140,80 @@ const TarjetaSubcategoria = (props) => {
 }
 
 
-const useStyle2 = makeStyles(()=>({
+const useStyle2 = makeStyles(() => ({
 
-    
-    contTarProd:{
-        width:'100%',
 
-    
-        overflow:'hidden',
-
+    contTarProd: {
+        width: '100%',
+        margin: '0',
+        overflow: 'hidden',
+        margin: '0',
+        padding: '0'
 
     },
-    imgTarProd:{
-        
-        width:'100%',
-        height:'500px',
-        objectFit:'cover',
-        transition:'0.2s',
-        "&:hover":{
-            transform:'scale(1.2)'
+    imgTarProd: {
+
+        margin: '0',
+        padding: '0',
+        width: '100%',
+        height: '500px',
+        objectFit: 'cover',
+        transition: '0.2s',
+        transform: 'scale(1.05)',
+        "&:hover": {
+            transform: 'scale(1.2)'
         },
 
 
-    contImg:{
+        contImg: {
 
-      
-        overflow:'hidden',
-        width:'100%',
-        height:'500px'
-    
 
-    },
-        
-    
-        
+            overflow: 'hidden',
+            width: '100%',
 
+            margin: '0',
+            padding: '0',
+
+
+        },
 
     },
-    contTexeProd:{
+    contTexeProd: {
+        margin: '0',
+        padding: '0',
+        position: 'relative',
+        display: 'flex',
+        height: '20%',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        backgroundColor: '#fff',
 
-        display:'flex',
 
-        height:'max-content',
-        alignItems:'center',
-        justifyContent:'space-between'
     },
 
-    txtProd:{
-        
-        margin:'20px 20px',
+    txtProd: {
+        position: 'relative',
+        padding: '20px 20px',
+        margin: '0',
+        height: '20%'
 
-    
+
     },
-      
-    nombre:{
-        fontWeight:'bold',
+
+    nombre: {
+        fontWeight: 'bold',
         textTransform: 'lowercase',
-        "&:first-letter":{
-            textTransform:'uppercase'
+        "&:first-letter": {
+            textTransform: 'uppercase'
         }
-    
+
     },
 
-    categoria:{
-        opacity:'0.7',
+    categoria: {
+        opacity: '0.7',
         textTransform: 'lowercase',
-        "&:first-letter":{
-            textTransform:'uppercase'
+        "&:first-letter": {
+            textTransform: 'uppercase'
         }
     }
 
@@ -221,34 +225,37 @@ const useStyle2 = makeStyles(()=>({
 }))
 
 
-const TarjetaProducto =(props)=>{
+const TarjetaProducto = (props) => {
 
-    const classes=useStyle2();
-    
+    const classes = useStyle2();
+
     return (
         <div className={classes.contTarProd}>
 
-            <div className={classes.contImg}>
-                <img src={require(`../img/Product-images${props.urlImg}`)} className={classes.imgTarProd} alt='hey'/>
-            </div>
-                
+            
+                <div className={classes.contImg}>
+                    <img src={require(`../img/Product-images${props.urlImg}`)} className={classes.imgTarProd} alt='hey' />
+                </div>
+           
+
+
 
             <div className={classes.contTexeProd}>
 
                 <div className={classes.txtProd}>
-
                     <div variant="h4" color="initial" className={classes.nombre}>  {props.nombre}  </div>
-                    <div variant="h4" color="initial" className={classes.categoria}> {props.categoria}</div>   
+                    <div variant="h4" color="initial" className={classes.categoria}> {props.categoria}</div>
                 </div>
+
                 <div variant="h4" color="initial" className={classes.txtProd}> {props.precio}</div>
-                
+
             </div>
 
         </div>
-            
+
 
     )
 }
 
 
-export {TarjetaCategoria, TarjetaProducto,TarjetaSubcategoria}
+export { TarjetaCategoria, TarjetaProducto, TarjetaSubcategoria }

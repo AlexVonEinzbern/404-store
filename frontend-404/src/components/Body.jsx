@@ -5,7 +5,7 @@ import { Banner } from "./Banner";
 import { SeparadorCompra, SeparadorTexto } from "./Separador";
 
 import { Carril } from "./CarrilCategorias";
-import { PresentacionCategoria, PresentacionGenero, PresentacionSubcategoria } from "./Presentacion";
+import { PresentacionCategoria, PresentacionGenero, PresentacionProducto, PresentacionSubcategoria } from "./Presentacion";
 
 const useStyle = makeStyles((theme) => ({
 
@@ -51,27 +51,31 @@ export const Body = () => {
 
             <div className={classes.body}>
 
+
+
+      
+                <PresentacionProducto id='36'></PresentacionProducto>
                 <Banner genero='Mujer'></Banner>
 
                 <SeparadorCompra
                     titulo="ROPA PARA TODA LA FMILIA"
-                    subtitulo='panita lleve lo que necesite, no se asare, aqui le fiamos y le cobramos cuando petro diga'></SeparadorCompra>
-                <Carril cantidad='2' genero='MUJER' titulo='Mujeres'></Carril>
+                    subtitulo='panita lleve lo que necesite, no se asare, aqui le fiamos y le cobramos cuando petro diga'>
+                 </SeparadorCompra>
+
+                {/* <Carril cantidad='4' genero='MUJER' titulo='Mujeres'></Carril> */}
 
                 <SeparadorTexto
                     titulo="POR AQUI HAY MAS ROPITA BRO"
-                    subtitulo='panita lleve lo que necesite, no se asare, aqui le fiamos y le cobramos cuando petro diga'></SeparadorTexto>
-
-                <Banner genero='Mujer'></Banner>
-
+                    subtitulo='panita lleve lo que necesite, no se asare, aqui le fiamos y le cobramos cuando petro diga'>
+                        </SeparadorTexto>  
+                 <Banner genero='Hombre'></Banner>
 
                 <PresentacionGenero genero='HOMBRE'></PresentacionGenero>
-                <PresentacionGenero genero='MUJER'></PresentacionGenero>
+                <PresentacionGenero genero='MUJER'></PresentacionGenero> 
 
-                <PresentacionCategoria
+               <PresentacionCategoria
                     genero='HOMBRE'
-                    subtitulo='Lleva lo mejor en Ropa para Estar afuera'
-                    idCategoria='RopaExterior'
+                    idCategoria='RopaInterior'
                 ></PresentacionCategoria>
 
                 <PresentacionCategoria
@@ -80,8 +84,8 @@ export const Body = () => {
                     idCategoria='RopaExterior'
                 ></PresentacionCategoria>
 
-                <PresentacionSubcategoria genero='MUJER' subCategoria='medias'></PresentacionSubcategoria>
-                <PresentacionSubcategoria genero='MUJER' subCategoria='camisas'></PresentacionSubcategoria>
+                {/* <PresentacionSubcategoria genero='MUJER' subCategoria='medias'></PresentacionSubcategoria>
+                <PresentacionSubcategoria genero='MUJER' subCategoria='camisas'></PresentacionSubcategoria>   */}
 
 
 

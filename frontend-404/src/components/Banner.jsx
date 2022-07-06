@@ -48,9 +48,13 @@ export const Banner = (props) => {
                 <img src={require(`../img/Banner/Banner${props.genero}.jpg`)} alt="" className={classes.imgBanner} />
             </div>
 
+            <a href={props.genero}>
+
             <Button variant="text" color="default" className={classes.boton}>
                 VER COLECCION
             </Button>
+            </a>
+            
 
         </div>
 

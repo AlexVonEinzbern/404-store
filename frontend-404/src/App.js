@@ -3,8 +3,9 @@ import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom"
 import { Body } from "./components/Body";
 import { Login, Registro } from "./components/Login";
 import Navegacion from './components/Navegacion'
-import { PresentacionCategoria, PresentacionGenero, PresentacionSubcategoria } from "./components/Presentacion";
+import { PresentacionCategoria, PresentacionGenero, PresentacionSubcategoria , PresentacionProducto} from "./components/Presentacion";
 import { Nada } from "./nada";
+import productosJson from "./components/ProductosJson.json"
 
 
 
@@ -12,11 +13,19 @@ import { Nada } from "./nada";
 //import MenuCategorias from './components/MenuCategorias';
 
 function App() {
+
+
+ const links = productosJson
+
+
   return (
     <div className="App">
 
-
+      
       <Navegacion />
+
+
+      
       <Router>
 
         <Routes>
@@ -78,7 +87,26 @@ function App() {
               <Route path="login" element={<Login/>}/>
               <Route path="registro" element={<Registro/>}/>
 
+
+
               <Route path="*" element={<Nada/>}> </Route>
+              <Route path="/" element={<Body/>}></Route>
+
+
+              {
+                productosJson.map((producto) => {
+
+                return (
+                  <Route path={`${producto.genero_producto}/${producto.categoria_producto}/${producto.subcategoria_producto}/producto-${producto.id_producto}`} element={<PresentacionProducto id={producto.id_producto-1}></PresentacionProducto>}>
+
+                    </Route>
+                )
+
+                })
+                
+                }
+              
+              
 
 
             

@@ -99,11 +99,20 @@ export const useStyles = makeStyles((theme) => ({
     menuButton: {
       marginRight: theme.spacing(2),
     },
+
     title: {
-      display: 'none',
-      [theme.breakpoints.up('sm')]: {
-        display: 'block',
-      },
+   
+      textDecoration:'none',
+      zIndex:'1',
+      color:'black',
+      "&:visited":{
+        color:'#000',
+      
+        
+      
+      }
+      
+      
     },
     search: {
       position: 'relative',

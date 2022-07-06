@@ -5,6 +5,7 @@ import { TarjetaCategoria, TarjetaProducto, TarjetaSubcategoria } from "./Tarjet
 import { SeparadorTexto } from "./Separador";
 import { makeStyles } from "@material-ui/styles";
 import { todasLasCategorias } from "./todasLasCategorias";
+import { Router, Routes, Route } from "react-router-dom";
 
 import productosJson from './ProductosJson.json'
 
@@ -53,7 +54,7 @@ const PresentacionGenero = (props) => {
                                     cat={categoria.nombre}
                                     genero={props.genero}
                                     categoria={categoria.id}
-                                    key={categoria.id+'1'}
+                                    key={categoria.id + '1'}
                                 >
                                 </TarjetaCategoria>
                             </Grid>)
@@ -155,7 +156,7 @@ const PresentacionSubcategoria = (props) => {
     return (
         <div className={classes.cont}>
             <SeparadorTexto
-                titulo={props.subCategoria + " para " + props.genero} 
+                titulo={props.subCategoria + " para " + props.genero}
                 subtitulo={props.subtitulo}></SeparadorTexto>
             <Grid container spacing={2}>
 
@@ -163,24 +164,73 @@ const PresentacionSubcategoria = (props) => {
                     elegirProductos().map((producto) => {
 
                         return (
-                            <Grid item md={3} key={producto.id_producto}>
-                                <TarjetaProducto 
-                                nombre={producto.name_producto} 
-                                precio={producto.precio_producto} 
-                                categoria={producto.subcategoria_producto+' para '+ producto.genero_producto } 
-                                key ={producto.id_producto}
-                                urlImg={producto.img_path}
-                                ></TarjetaProducto>
 
+                            <Grid item md={3} key={producto.id_producto}>
+
+                                <a href={`/${producto.genero_producto}/${producto.categoria_producto}/${producto.subcategoria_producto}/producto-${producto.id_producto}`} element={<PresentacionProducto id={producto.id_producto}></PresentacionProducto>}>
+                                    <TarjetaProducto
+                                        nombre={producto.name_producto}
+                                        precio={producto.precio_producto}
+                                        categoria={producto.subcategoria_producto + ' para ' + producto.genero_producto}
+                                        key={producto.id_producto}
+                                        urlImg={producto.img_path}
+                                    ></TarjetaProducto>
+                                </a>
                             </Grid>
 
                         )
                     })
                 }
-
             </Grid>
         </div>
     )
 }
 
-export { PresentacionGenero, PresentacionCategoria, PresentacionSubcategoria }
+
+const useStyles3 = makeStyles((theme) => ({
+
+    imgProd: {
+
+    }
+
+}))
+
+
+
+const PresentacionProducto = (props) => {
+
+
+    const classes = useStyles3
+
+
+
+    const elegirProducto = () => {
+        const producto = {}
+
+
+
+
+    }
+
+    return (
+
+
+        <div>
+            <div className={classes.imgProd}>
+
+                <img src={require(`../img/Product-images${productosJson[props.id].img_path}`)} className={classes.imgTarProd} alt='hey' />
+
+            </div>
+            <div>
+
+
+
+            </div>
+        </div>
+    )
+
+
+
+
+}
+export { PresentacionGenero, PresentacionCategoria, PresentacionSubcategoria, PresentacionProducto }

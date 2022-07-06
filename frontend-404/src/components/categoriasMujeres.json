@@ -41,10 +41,13 @@
         "nombre":"ACCESORIOS",
         "genero":"mujer",
         "categorias":[
-            "Bisutería",
+            
             "Correas",
-            "Bolsos",
-            "Cuidado Per"
+            "Bolsos"
+            
+
+            
+            
         ]
     }
 

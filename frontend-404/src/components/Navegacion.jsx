@@ -58,7 +58,10 @@ export default function Navegacion() {
         
         <Toolbar className={classes.barraInferior}>
           {/* logo */}
-          <Typography className={classes.title} variant="h6" noWrap ><b>404-STORE</b></Typography>
+          
+            <Typography className={classes.title} variant="h6" noWrap > <a href="/" className={classes.title}><b>404-STORE</b></a></Typography>
+
+          
         
           <div  className={classes.botonesNavegacion } >
             {  

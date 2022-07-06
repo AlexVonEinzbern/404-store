@@ -35,7 +35,7 @@ services:
     container_name: "frontend-404"
     build: ./frontend-404
     volumes:
-      - ./product-images:/app/product-images
+      - ./product-images:/usr/src/app/product-images
     ports:
       - 3000:3000
     stdin_open: true

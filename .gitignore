@@ -6,6 +6,9 @@ __pycache__/
 #Data
 data.json
 
+#Folder
+/product-images
+
 #Dependencies
 /node_modules
 node_modules/

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
@@ -46,6 +46,10 @@ export default function Navegacion() {
     const data = await res.json();
     setProductos(data);
   }
+
+   useEffect(() => {
+        nameProductos();
+    }, [])
 
   const buscarProducto = async (name_producto) => {
     const res = await fetch(`${URI}obtenerProducto/${name_producto}`);
@@ -142,7 +146,7 @@ export default function Navegacion() {
 
               <Stack spacing={2} sx={{ width: 300 }}>
               <Autocomplete
-                onChange = {(e, value) => {nameProductos(); buscarProducto(value)}}
+                onChange = {(e, value) => buscarProducto(value)}
                 options={productos.map((option) => option.name_producto)}
                 renderInput={(params) => (
                   <TextField

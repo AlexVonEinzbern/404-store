@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
@@ -35,19 +35,26 @@ export default function Navegacion() {
   //Se usará para la búsqueda en la barra de búsqueda
   const [value, setValue] = useState('');
 
-  //Se usará para almacenar los productoos
+  //Se usará para almacenar los productos
   const [productos, setProductos] = useState([])
 
-  const busquedaTexto = (e) => {
-    setValue(e.target.value);
+  //Se usará para almacenar el resultado de buscar un producto
+  const [producto, setProducto] = useState([])
+
+  const nameProductos = async () => {
+    const res = await fetch(`${URI}obtenerProductos`);
+    const data = await res.json();
+    setProductos(data);
   }
 
-  const enterTexto = async (e) => {
-    if (e.key === 'Enter') {
-      const res = await fetch(`${URI}obtenerProductos`);
-      const data = await res.json();
-      setProductos(data);
-    }
+   useEffect(() => {
+        nameProductos();
+    }, [])
+
+  const buscarProducto = async (name_producto) => {
+    const res = await fetch(`${URI}obtenerProducto/${name_producto}`);
+    const data = await res.json();
+    setProducto(data);
   }
 
   const seeMenu = () => {
@@ -101,6 +108,7 @@ export default function Navegacion() {
                           seeMenu();
                           SetcategoriasMenu(todasLasCategorias[btn.id]);
 
+<<<<<<< HEAD
                         }}
 
                         onMouseLeave={hideMenu}
@@ -116,6 +124,20 @@ export default function Navegacion() {
                     </a>
 
                   </div>
+=======
+                  onMouseLeave={hideMenu}
+                  
+                  key={btn.id}
+                  className={classes.botonMenu}
+                  >
+                    {btn.nombre}
+ 
+                  </Button>
+                  
+                  </a>
+                
+                 </div> 
+>>>>>>> 4f9086d40e73ac3010028e113f46660c586c9029
                 )
               }))
             }
@@ -139,6 +161,7 @@ export default function Navegacion() {
                 onKeyPress = {enterTexto}
               />*/}
 
+<<<<<<< HEAD
               <Stack spacing={2} sx={{ width: 300 , height:48}} className={classes.barraBuscar}>
                 
                 <Autocomplete
@@ -162,6 +185,23 @@ export default function Navegacion() {
                     />
                   )}
                 />
+=======
+              <Stack spacing={2} sx={{ width: 300 }}>
+              <Autocomplete
+                onChange = {(e, value) => buscarProducto(value)}
+                options={productos.map((option) => option.name_producto)}
+                renderInput={(params) => (
+                  <TextField
+                    {...params}
+                    label="Search..."
+                    InputProps={{
+                      ...params.InputProps,
+                      type: 'search',
+                    }}
+                  />
+                )}
+              />
+>>>>>>> 4f9086d40e73ac3010028e113f46660c586c9029
               </Stack>
 
 

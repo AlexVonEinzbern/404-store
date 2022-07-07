@@ -152,7 +152,7 @@ export const useStyles = makeStyles((theme) => ({
 
       // border: '2 px solid red',
       // backgroundColor:'white',
-      borderRadius:'300px',
+      // borderRadius:'300px'
       display:'none'
 
     },

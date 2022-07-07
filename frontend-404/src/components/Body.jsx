@@ -54,7 +54,7 @@ export const Body = () => {
 
 
       
-                <PresentacionProducto id='36'></PresentacionProducto>
+                
                 <Banner genero='Mujer'></Banner>
 
                 <SeparadorCompra

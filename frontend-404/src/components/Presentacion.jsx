@@ -1,7 +1,7 @@
 import React from "react";
 import { Grid } from "@material-ui/core";
 import { TarjetaCategoria, TarjetaProducto, TarjetaSubcategoria } from "./Tarjetas";
-
+import { Button } from "@material-ui/core";
 import { SeparadorTexto } from "./Separador";
 import { makeStyles } from "@material-ui/styles";
 import { todasLasCategorias } from "./todasLasCategorias";
@@ -187,12 +187,77 @@ const PresentacionSubcategoria = (props) => {
 }
 
 
+
+
+
 const useStyles3 = makeStyles((theme) => ({
 
     imgProd: {
+        width: '50%',
+        display:'flex'
 
+    },
+
+    imgTarProd: {
+        width: '80%',
+        
+        
+    },
+
+    lateralDerecho: {
+
+        width: '20%',
+
+        display: 'flex',
+        flexDirection: 'column',
+        margin: '0px 48px '
+
+
+    },
+    cont: {
+
+        display: 'flex',
+        margin: '144px 48px'
+    },
+    info: {
+
+
+    },
+
+    nombre: {
+        fontSize: '24px',
+        "&:first-letter": {
+            textTransform: 'uppercase'
+
+        }
+    },
+
+
+    subcategoria: {
+        fontSize: '16px',
+        color: 'rgba(0,0,0,0.6)'
+    },
+
+    tallas: {
+
+        display: 'flex',
+
+    },
+    tallas_boton: {
+        backgroundColor: '#000',
+        color: '#fff',
+        borderRadius: '50px',
+        margin: '10px'
+    },
+
+    imgTarProdMins:{
+        display:'flex',
+        flexDirection:'column',
+        width:'25%'
+    },
+    imgTar:{
+        width:'100%'
     }
-
 }))
 
 
@@ -200,7 +265,7 @@ const useStyles3 = makeStyles((theme) => ({
 const PresentacionProducto = (props) => {
 
 
-    const classes = useStyles3
+    const classes = useStyles3()
 
 
 
@@ -215,17 +280,73 @@ const PresentacionProducto = (props) => {
     return (
 
 
-        <div>
+        <div className={classes.cont}>
+
             <div className={classes.imgProd}>
 
-                <img src={require(`../img/Product-images${productosJson[props.id].img_path}`)} className={classes.imgTarProd} alt='hey' />
+                
+                <div className={classes.imgTarProdMins}>
+                    <img src={require(`../img/Product-images${productosJson[props.id - 1].img_path}`)} className={classes.imgTarProdMin} alt='hey' />
+                    <img src={require(`../img/Product-images${productosJson[props.id - 1].img_path}`)} className={classes.imgTarProdMin} alt='hey' />
+                    <img src={require(`../img/Product-images${productosJson[props.id - 1].img_path}`)} className={classes.imgTarProdMin} alt='hey' />
+
+                </div>
+
+                <div className={classes.imgTarProd}>
+                <img src={require(`../img/Product-images${productosJson[props.id - 1].img_path}`)} className={classes.imgTar}  alt='hey' />
+                </div>
+
+                
+
+
 
             </div>
-            <div>
 
+
+            <div className={classes.lateralDerecho}>
+
+                <div className={classes.info}>
+                    <p className={classes.nombre}>
+                        nombre aqui deberia ir el nombre del productod
+                    </p>
+
+                    <p className={classes.subcategoria}>
+                        subcategoria - genero
+                    </p>
+
+                    <p>
+                        selecciona tu talla
+                    </p>
+                </div>
+
+                <div className={classes.tallas}>
+                    <Button className={classes.tallas_boton}>
+                        SM
+                    </Button>
+                    <Button className={classes.tallas_boton}>
+                        S
+                    </Button>
+                    <Button className={classes.tallas_boton}>
+                        M
+                    </Button >
+                    <Button className={classes.tallas_boton} >
+                        L
+                    </Button>
+
+                </div>
+
+                <Button>
+                    añadir al carrito
+                </Button>
+
+                <Button>
+                    favorito
+                </Button>
 
 
             </div>
+
+
         </div>
     )
 

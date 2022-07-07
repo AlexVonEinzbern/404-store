@@ -97,7 +97,7 @@ function App() {
                 productosJson.map((producto) => {
 
                 return (
-                  <Route path={`${producto.genero_producto}/${producto.categoria_producto}/${producto.subcategoria_producto}/producto-${producto.id_producto}`} element={<PresentacionProducto id={producto.id_producto-1}></PresentacionProducto>}>
+                  <Route path={`${producto.genero_producto}/${producto.categoria_producto}/${producto.subcategoria_producto}/producto-${producto.id_producto}`} element={<PresentacionProducto id={producto.id_producto}></PresentacionProducto>}>
 
                     </Route>
                 )

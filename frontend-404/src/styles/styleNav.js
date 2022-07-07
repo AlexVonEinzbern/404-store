@@ -133,6 +133,8 @@ export const useStyles = makeStyles((theme) => ({
         marginLeft: theme.spacing(3),
         width: 'auto',
       },
+
+      border:'none'
     },
     
     searchIcon: {
@@ -143,7 +145,18 @@ export const useStyles = makeStyles((theme) => ({
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
+      
     },
+
+    barraBuscar:{
+
+      // border: '2 px solid red',
+      // backgroundColor:'white',
+      borderRadius:'300px',
+      display:'none'
+
+    },
+
     inputRoot: {
       color: 'inherit',
     },

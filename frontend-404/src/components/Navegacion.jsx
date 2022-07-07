@@ -30,7 +30,7 @@ export default function Navegacion() {
 
   //renderiza el menu
   const [showMenu, setShowMenu] = useState(false)
-  const [categoriasMenu,SetcategoriasMenu]=useState([])
+  const [categoriasMenu, SetcategoriasMenu] = useState([])
 
   //Se usará para la búsqueda en la barra de búsqueda
   const [value, setValue] = useState('');
@@ -58,7 +58,7 @@ export default function Navegacion() {
     setShowMenu(false)
   }
 
-  const productosCarrito = { productosEnCarrito : 0 }
+  const productosCarrito = { productosEnCarrito: 0 }
 
   return (
     <ThemeProvider theme={tema}>
@@ -71,63 +71,61 @@ export default function Navegacion() {
           <Button color="inherit" > Nosotros</Button>
           <div color="inherit" >   |  </div>
 
-            <a href="/login">
+          <a href="/login">
 
             <Button color="inherit" > Iniciar Sesion</Button>
-            </a>
+          </a>
 
         </Toolbar>
-        
+
         <Toolbar className={classes.barraInferior}>
           {/* logo */}
-          
-            <Typography className={classes.title} variant="h6" noWrap > <a href="/" className={classes.title}><b>404-STORE</b></a></Typography>
 
-          
-        
-          <div  className={classes.botonesNavegacion } >
-            {  
+          <Typography className={classes.title} variant="h6" noWrap > <a href="/" className={classes.title}><b>404-STORE</b></a></Typography>
+
+
+
+          <div className={classes.botonesNavegacion} >
+            {
               BotonesNavegacion.map((btn => {
                 return (
-                 <div key= {btn.id} className={classes.contBtnMenu}
+                  <div key={btn.id} className={classes.contBtnMenu}
                   >
 
-                  <a href={btn.ruta}  key={btn.id+1 } className={classes.a}> 
+                    <a href={btn.ruta} key={btn.id + 1} className={classes.a}>
 
-                  <Button 
-                  variant="text" 
-                  color="inherit"
-                  onMouseEnter={()=>{
-                    seeMenu();
-                    SetcategoriasMenu(todasLasCategorias[btn.id]);
-                    
-                  }} 
+                      <Button
+                        variant="text"
+                        color="inherit"
+                        onMouseEnter={() => {
+                          seeMenu();
+                          SetcategoriasMenu(todasLasCategorias[btn.id]);
 
-                  onMouseLeave={hideMenu}
-                  
-                  key={btn.id}
-                  className={classes.botonMenu}
-                  >
-                    {btn.nombre}
+                        }}
 
-                  
-                  </Button>
-                  
-                  </a>
-                
-                 </div> 
+                        onMouseLeave={hideMenu}
+
+                        key={btn.id}
+                        className={classes.botonMenu}
+                      >
+                        {btn.nombre}
+
+
+                      </Button>
+
+                    </a>
+
+                  </div>
                 )
               }))
             }
           </div>
-          
+
           <div className={classes.sectionDesktop}>
 
             <div className={classes.search}>
 
-              <div className={classes.searchIcon}>
-                <SearchIcon />
-              </div>
+              
 
               {/*<InputBase
                 placeholder="Search…"
@@ -140,27 +138,33 @@ export default function Navegacion() {
                 onChange = {busquedaTexto}
                 onKeyPress = {enterTexto}
               />*/}
-              <Stack spacing={2} sx={{ width: 300 }}>
-              <Autocomplete
-                Search
-                id="free-solo-2-demo"
-                disableClearable
-                value = {value}
-                onChange = {busquedaTexto}
-                onKeyPress = {enterTexto}
-                options={productos.map((option) => option.name_producto)}
-                renderInput={(params) => (
-                  <TextField
-                    {...params}
-                    label="Search input"
-                    InputProps={{
-                      ...params.InputProps,
-                      type: 'search',
-                    }}
-                  />
-                )}
-              />
+
+              <Stack spacing={2} sx={{ width: 300 , height:48}} className={classes.barraBuscar}>
+                
+                <Autocomplete
+                  Search
+                  id="free-solo-2-demo"
+                  disableClearable
+                  value={value}
+                  onChange={busquedaTexto}
+                  onKeyPress={enterTexto}
+                  options={productos.map((option) => option.name_producto)}
+                  renderInput={(params) => (
+                    <TextField
+                    
+                      {...params}
+                      label="Buscar"
+                      variant='standard'
+                      InputProps={{
+                        ...params.InputProps,
+                        type: 'search',
+                      }}
+                    />
+                  )}
+                />
               </Stack>
+
+
             </div>
             <IconButton color="inherit" >
               <FavoriteBorder />
@@ -178,12 +182,12 @@ export default function Navegacion() {
           </div>
         </Toolbar>
 
-      <div className={classes.fantasma} onMouseEnter={seeMenu}onMouseLeave={hideMenu}>
-      {showMenu && <MenuDesplagable categorias={categoriasMenu} className={classes.MenuDesplagable}></MenuDesplagable>}
-      </div>
+        <div className={classes.fantasma} onMouseEnter={seeMenu} onMouseLeave={hideMenu}>
+          {showMenu && <MenuDesplagable categorias={categoriasMenu} className={classes.MenuDesplagable}></MenuDesplagable>}
+        </div>
 
       </AppBar>
-      
+
     </ThemeProvider>
   );
 }

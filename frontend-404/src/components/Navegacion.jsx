@@ -35,19 +35,22 @@ export default function Navegacion() {
   //Se usará para la búsqueda en la barra de búsqueda
   const [value, setValue] = useState('');
 
-  //Se usará para almacenar los productoos
+  //Se usará para almacenar los productos
   const [productos, setProductos] = useState([])
 
-  const busquedaTexto = (e) => {
-    setValue(e.target.value);
+  //Se usará para almacenar el resultado de buscar un producto
+  const [producto, setProducto] = useState([])
+
+  const nameProductos = async () => {
+    const res = await fetch(`${URI}obtenerProductos`);
+    const data = await res.json();
+    setProductos(data);
   }
 
-  const enterTexto = async (e) => {
-    if (e.key === 'Enter') {
-      const res = await fetch(`${URI}obtenerProductos`);
-      const data = await res.json();
-      setProductos(data);
-    }
+  const buscarProducto = async (name_producto) => {
+    const res = await fetch(`${URI}obtenerProducto/${name_producto}`);
+    const data = await res.json();
+    setProducto(data);
   }
 
   const seeMenu = () => {
@@ -106,8 +109,7 @@ export default function Navegacion() {
                   className={classes.botonMenu}
                   >
                     {btn.nombre}
-
-                  
+ 
                   </Button>
                   
                   </a>
@@ -137,19 +139,15 @@ export default function Navegacion() {
                 onChange = {busquedaTexto}
                 onKeyPress = {enterTexto}
               />*/}
+
               <Stack spacing={2} sx={{ width: 300 }}>
               <Autocomplete
-                Search
-                id="free-solo-2-demo"
-                disableClearable
-                value = {value}
-                onChange = {busquedaTexto}
-                onKeyPress = {enterTexto}
+                onChange = {(e, value) => {nameProductos(); buscarProducto(value)}}
                 options={productos.map((option) => option.name_producto)}
                 renderInput={(params) => (
                   <TextField
                     {...params}
-                    label="Search input"
+                    label="Search..."
                     InputProps={{
                       ...params.InputProps,
                       type: 'search',

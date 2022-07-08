@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
@@ -35,19 +35,26 @@ export default function Navegacion() {
   //Se usará para la búsqueda en la barra de búsqueda
   const [value, setValue] = useState('');
 
-  //Se usará para almacenar los productoos
+  //Se usará para almacenar los productos
   const [productos, setProductos] = useState([])
 
-  const busquedaTexto = (e) => {
-    setValue(e.target.value);
+  //Se usará para almacenar el resultado de buscar un producto
+  const [producto, setProducto] = useState([])
+
+  const nameProductos = async () => {
+    const res = await fetch(`${URI}obtenerProductos`);
+    const data = await res.json();
+    setProductos(data);
   }
 
-  const enterTexto = async (e) => {
-    if (e.key === 'Enter') {
-      const res = await fetch(`${URI}obtenerProductos`);
-      const data = await res.json();
-      setProductos(data);
-    }
+   useEffect(() => {
+        nameProductos();
+    }, [])
+
+  const buscarProducto = async (name_producto) => {
+    const res = await fetch(`${URI}obtenerProducto/${name_producto}`);
+    const data = await res.json();
+    setProducto(data);
   }
 
   const seeMenu = () => {
@@ -83,8 +90,6 @@ export default function Navegacion() {
 
           <Typography className={classes.title} variant="h6" noWrap > <a href="/" className={classes.title}><b>404-STORE</b></a></Typography>
 
-
-
           <div className={classes.botonesNavegacion} >
             {
               BotonesNavegacion.map((btn => {
@@ -110,7 +115,6 @@ export default function Navegacion() {
                       >
                         {btn.nombre}
 
-
                       </Button>
 
                     </a>
@@ -125,20 +129,6 @@ export default function Navegacion() {
 
             <div className={classes.search}>
 
-              
-
-              {/*<InputBase
-                placeholder="Search…"
-                classes={{
-                  root: classes.inputRoot,
-                  input: classes.inputInput,
-                }}
-                inputProps={{ 'aria-label': 'search' }}
-                value = {value}
-                onChange = {busquedaTexto}
-                onKeyPress = {enterTexto}
-              />*/}
-
               <Stack spacing={2} sx={{ width: 300 }}>
                 
                 <Autocomplete
@@ -146,12 +136,12 @@ export default function Navegacion() {
                   id="free-solo-2-demo"
                   disableClearable
                   value={value}
-                  onChange={busquedaTexto}
-                  onKeyPress={enterTexto}
+                  onChange={(e, value) => buscarProducto(value)}
+                  //onKeyPress={enterTexto}
                   options={productos.map((option) => option.name_producto)}
                   renderInput={(params) => (
                     <TextField
-                    className={classes.barraBuscar}
+                    //className={classes.barraBuscar}
                       {...params}
                       label="Buscar"
                       variant='standard'
@@ -163,7 +153,6 @@ export default function Navegacion() {
                   )}
                 />
               </Stack>
-
 
             </div>
             <IconButton color="inherit" >

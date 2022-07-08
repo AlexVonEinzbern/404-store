@@ -45,20 +45,15 @@ const useStyles = makeStyles((theme) => ({
         borderRadius: '10px'
     }
 
-
-
 }))
 
 const SeparadorCompra = (props) => {
 
-
     const classes = useStyles()
-
 
     return (
 
         <div className={classes.cont}>
-
 
             <div className={classes.tittle}>
 
@@ -69,7 +64,6 @@ const SeparadorCompra = (props) => {
             <div className={classes.subtittle}>
                 {props.subtitulo}
             </div>
-
 
             <div className={classes.botones}>
                 <Button variant="text" color="secondary" className={classes.boton}>
@@ -93,9 +87,7 @@ const SeparadorCompra = (props) => {
 
 const SeparadorTexto = (props) => {
 
-
     const classes = useStyles()
-
 
     return (
 
@@ -110,7 +102,6 @@ const SeparadorTexto = (props) => {
             <div className={classes.subtittleText}>
                 {props.subtitulo}
             </div>
-
 
         </div>
     )

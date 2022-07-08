@@ -15,8 +15,6 @@ const useStyles = makeStyles(() => ({
         width: 'auto',
         justifyContent: 'center',
         backgroundColor: '',
-        
-
     },
 
     ContMenuCatOcult: {
@@ -38,8 +36,6 @@ const useStyles = makeStyles(() => ({
     cat: {
         justifyContent: 'start',
         padding: '0',
-
-
     }
 
 }));
@@ -65,9 +61,6 @@ export const MenuDesplagable = (props) => {
 
                     </Button>
                 </a>
-
-
-
             )
         }
         return cats
@@ -89,8 +82,6 @@ export const MenuDesplagable = (props) => {
                                     </Button >
 
                                 </a>
-
-
 
                                 <ButtonGroup variant="outlined" color="default" size="small" aria-label="" orientation='vertical' >
                                     {

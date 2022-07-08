@@ -30,12 +30,7 @@ const useStyle = makeStyles((theme) => ({
         position:'relative'
     }
 
-
-
 }))
-
-
-
 
 export const Banner = (props) => {
 
@@ -55,13 +50,7 @@ export const Banner = (props) => {
             </Button>
             </a>
             
-
         </div>
-
-
-
-
-
 
     )
 }

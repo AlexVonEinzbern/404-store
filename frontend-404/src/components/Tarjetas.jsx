@@ -3,9 +3,7 @@ import { makeStyles, Button } from "@material-ui/core";
 
 const useStyle = makeStyles((theme) => ({
 
-
     imgBanner: {
-
 
         position: 'relative',
         width: '100%',
@@ -16,7 +14,6 @@ const useStyle = makeStyles((theme) => ({
 
         '&:hover': {
             transform: 'scale(1.15)'
-
         }
 
     },
@@ -49,19 +46,13 @@ const useStyle = makeStyles((theme) => ({
         width: '100%',
         textTransform: 'uppercase'
     }
-
-
-
 }))
-
-
 
 const TarjetaCategoria = (props) => {
 
     const classes = useStyle()
 
     return (
-
 
         <div className={classes.cont}>
 
@@ -82,23 +73,11 @@ const TarjetaCategoria = (props) => {
                     </Button>
                 </a>
 
-
             </div>
 
-
-
-
-
-
         </div>
-
-
-
     )
 }
-
-
-
 
 const TarjetaSubcategoria = (props) => {
 
@@ -127,21 +106,17 @@ const TarjetaSubcategoria = (props) => {
                         </Button>
                     </a>
 
-
                 </div>
 
             </div>
 
         </div>
 
-
-
     )
 }
 
 
 const useStyle2 = makeStyles(() => ({
-
 
     contTarProd: {
         width: '100%',
@@ -164,16 +139,13 @@ const useStyle2 = makeStyles(() => ({
             transform: 'scale(1.2)'
         },
 
-
         contImg: {
-
 
             overflow: 'hidden',
             width: '100%',
 
             margin: '0',
             padding: '0',
-
 
         },
 
@@ -188,7 +160,6 @@ const useStyle2 = makeStyles(() => ({
         justifyContent: 'space-between',
         backgroundColor: '#fff',
 
-
     },
 
     txtProd: {
@@ -196,7 +167,6 @@ const useStyle2 = makeStyles(() => ({
         padding: '20px 20px',
         margin: '0',
         height: '20%'
-
 
     },
 
@@ -217,13 +187,7 @@ const useStyle2 = makeStyles(() => ({
         }
     }
 
-
-
-
-
-
 }))
-
 
 const TarjetaProducto = (props) => {
 
@@ -237,9 +201,6 @@ const TarjetaProducto = (props) => {
                     <img src={require(`../img/Product-images${props.urlImg}`)} className={classes.imgTarProd} alt='hey' />
                 </div>
            
-
-
-
             <div className={classes.contTexeProd}>
 
                 <div className={classes.txtProd}>
@@ -253,9 +214,7 @@ const TarjetaProducto = (props) => {
 
         </div>
 
-
     )
 }
-
 
 export { TarjetaCategoria, TarjetaProducto, TarjetaSubcategoria }

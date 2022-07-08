@@ -8,24 +8,18 @@ import { Nada } from "./nada";
 import productosJson from "./components/ProductosJson.json"
 
 
-
-
 //import MenuCategorias from './components/MenuCategorias';
 
 function App() {
 
-
  const links = productosJson
-
 
   return (
     <div className="App">
 
       
       <Navegacion />
-
-
-      
+     
       <Router>
 
         <Routes>
@@ -81,17 +75,11 @@ function App() {
               <Route path='mujer/accesorios/correas' element={<PresentacionSubcategoria genero='MUJER' subCategoria='correas'/>} />
               <Route path='mujer/accesorios/bolsos' element={<PresentacionSubcategoria genero='MUJER' subCategoria='gorras'/>} />
 
-
-
-
               <Route path="login" element={<Login/>}/>
               <Route path="registro" element={<Registro/>}/>
 
-
-
               <Route path="*" element={<Nada/>}> </Route>
               <Route path="/" element={<Body/>}></Route>
-
 
               {
                 productosJson.map((producto) => {
@@ -105,19 +93,6 @@ function App() {
                 })
                 
                 }
-              
-              
-
-
-            
-   
-
-
-
-
-
-
-
 
         </Routes>
 

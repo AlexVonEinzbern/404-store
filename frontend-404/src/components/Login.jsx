@@ -69,7 +69,6 @@ const useStyle = makeStyles((theme) => ({
             setAlertError(false);
     }
 
-
     const classes = useStyle()
 
     return (
@@ -168,9 +167,6 @@ const Registro = () => {
     }
 
     const classes = useStyle()
-
-
-    
 
     return (
 

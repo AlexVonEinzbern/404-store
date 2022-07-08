@@ -4,8 +4,6 @@ import productosJson from './ProductosJson.json'
 import { TarjetaProducto } from "./Tarjetas";
 import { makeStyles } from "@material-ui/styles";
 
-
-
 const useStyle = makeStyles((theme) => ({
 
     division: {
@@ -56,18 +54,13 @@ export const Carril = (props) => {
                 }
 
                 i++
-
-                
+    
             }
             }
             
-
         return productos
 
         } 
-
-    
-
 
     return (
 
@@ -102,19 +95,12 @@ export const Carril = (props) => {
                                 urlImg={`/hola`}
                                 ></TarjetaProducto>
 
-
                     </Grid>
                 )
 
             })}
 
-
-    
-
         </Grid>
-
-
-
 
     )
 }

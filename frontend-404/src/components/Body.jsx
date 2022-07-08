@@ -47,13 +47,7 @@ export const Body = () => {
 
         <div className={classes.cont}>
 
-
-
             <div className={classes.body}>
-
-
-
-      
                 
                 <Banner genero='Mujer'></Banner>
 
@@ -86,8 +80,6 @@ export const Body = () => {
 
                 {/* <PresentacionSubcategoria genero='MUJER' subCategoria='medias'></PresentacionSubcategoria>
                 <PresentacionSubcategoria genero='MUJER' subCategoria='camisas'></PresentacionSubcategoria>   */}
-
-
 
             </div>
 

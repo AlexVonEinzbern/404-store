@@ -249,10 +249,7 @@ const useStyles3 = makeStyles((theme) => ({
         display: 'flex',
         width:'50%',
         justifyContent:'space-around',
-        margin:'0 auto'
-
-        
-        
+        margin:'0 auto'    
     
     },
     tallas_boton: {
@@ -291,8 +288,6 @@ const useStyles3 = makeStyles((theme) => ({
     }
 }))
 
-
-
 const PresentacionProducto = (props) => {
 
 
@@ -303,13 +298,9 @@ const PresentacionProducto = (props) => {
     const elegirProducto = () => {
         const producto = {}
 
-
-
-
     }
 
     return (
-
 
         <div className={classes.cont}>
 
@@ -327,7 +318,6 @@ const PresentacionProducto = (props) => {
                 </div>
 
             </div>
-
 
             <div className={classes.lateralDerecho}>
 
@@ -347,8 +337,7 @@ const PresentacionProducto = (props) => {
                     <p>
                         selecciona tu talla
                     </p>
-
-                    
+                   
                 </div>
 
                 <div className={classes.tallas}>
@@ -391,15 +380,10 @@ const PresentacionProducto = (props) => {
                         </p>
                     </div>
 
-
             </div>
-
 
         </div>
     )
-
-
-
 
 }
 export { PresentacionGenero, PresentacionCategoria, PresentacionSubcategoria, PresentacionProducto }

@@ -1,7 +1,5 @@
 import React from "react";
 
-
-
 import { makeStyles } from "@material-ui/core";
 
 
@@ -14,20 +12,14 @@ const useStyle = makeStyles((theme)=>({
         fontSize:'96px',
         width:'100vh',
         marginTop:'400px'
-        
-
     }
 
-
 }))
-
-
 
 export const Nada=()=>{
 
     const classes= useStyle()
     return(
-
 
         <div className={classes.texto}>
             Nada por aca, venga otro dia bro

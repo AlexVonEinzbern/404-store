@@ -57,6 +57,12 @@ export default function Navegacion() {
     setProducto(data);
   }
 
+  const tarjetaProducto = (e) => {
+    if (e.key === 'Enter') {
+      
+    }
+  }
+
   const seeMenu = () => {
     setShowMenu(true)
   }
@@ -96,7 +102,6 @@ export default function Navegacion() {
                 return (
                   <div key={btn.id} className={classes.contBtnMenu}
                   >
-
                     <a href={btn.ruta} key={btn.id + 1} className={classes.a}>
 
                       <Button
@@ -137,7 +142,7 @@ export default function Navegacion() {
                   disableClearable
                   value={value}
                   onChange={(e, value) => buscarProducto(value)}
-                  //onKeyPress={enterTexto}
+                  onKeyPress={tarjetaProducto}
                   options={productos.map((option) => option.name_producto)}
                   renderInput={(params) => (
                     <TextField

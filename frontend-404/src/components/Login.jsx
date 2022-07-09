@@ -93,7 +93,7 @@ const useStyle = makeStyles((theme) => ({
                     id="standard-basic" 
                     label="Contraseña"
                     type="password"
-                    onChange = {username => setPassword_cliente_registrado(username.target.value)}
+                    onChange = {username => setPassword_cliente_registrado(password.target.value)}
                 />
 
                 <Button 

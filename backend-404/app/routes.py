@@ -40,6 +40,24 @@ def crearProducto():
 
     return producto_schema.jsonify(new_producto)
 
+@app.route('/actualizarProducto/<name_producto>', methods=['PUT'])
+def actualizarProducto(name_producto):
+    Producto.query.filter_by(name_producto=name_producto).update({
+        'name_producto':         request.json['name_producto'],
+        'genero_producto':       request.json['genero_producto'],
+        'categoria_producto':    request.json['categoria_producto'],
+        'subcategoria_producto': request.json['subcategoria_producto'],
+        'descripcion_producto':  request.json['descripcion_producto'],
+        'talla_producto':        request.json['talla_producto'],
+        'calificacion_producto': request.json['calificacion_producto'],
+        'stock_producto':        request.json['stock_producto'],
+        'precio_producto':       request.json['precio_producto'],
+        'url_imagen_producto':   request.json['url_imagen_producto'],
+        'color_imagen_hex':      request.json['color_imagen_hex']
+        })
+    db.session.commit()
+    return {'msg': 'Producto actualizado'}
+
 @app.route('/obtenerProducto/<name_producto>', methods=['GET'])
 def obtenerProducto(name_producto):
     producto = Producto.query.filter_by(name_producto=name_producto).first()

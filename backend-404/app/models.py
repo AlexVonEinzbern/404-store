@@ -127,7 +127,7 @@ class ClienteRegistrado(db.Model):
     cedula_cliente_registrado    = db.Column(db.Integer, unique=True, nullable=False)
     edad_cliente_registrado      = db.Column(db.Integer, nullable=False)
     email_cliente_registrado     = db.Column(db.String(50), unique=True, nullable=False)
-    direccion_cliente_registrado = db.Column(db.String(50))
+    direccion_cliente_registrado = db.Column(db.String(50), nullable=False)
     #ip_cliente_registrado        = db.Column(db.String(15), unique=True, nullable=False)
     #numero_visitas_registrado    = db.Column(db.Integer, nullable=False)
     password_cliente_registrado  = db.Column(db.String(128), unique=True, nullable=False)

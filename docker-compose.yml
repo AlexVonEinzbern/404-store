@@ -11,6 +11,17 @@ services:
       - "5432:5432"
     volumes: 
       - ~/db-data:/var/lib/postgresql/data
+
+  # db:
+  #   image: postgres:12
+  #   container_name: "backend-404"
+  #   env_file: 
+  #     - backend-404/database.env
+  #   ports: 
+  #     - "5432:5432"
+  #   volumes: 
+  #     - db-data:/var/lib/postgresql/data
+
   
   cache:
     image: redis:7.0.2-alpine
@@ -26,8 +37,8 @@ services:
       dockerfile: backend-404/Dockerfile
     env_file:
       - backend-404/.env
-    depends_on:
-      - db
+    # depends_on:
+    #   - db
     ports:
       - "5000:5000"
 

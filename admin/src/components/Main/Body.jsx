@@ -2,10 +2,18 @@ import React from "react";
 import { makeStyles} from "@material-ui/core";
 import { Banner } from "./Banner";
 
-import { SeparadorCompra, SeparadorTexto } from "./Separador";
+import { SeparadorCompra} from "../Separadores/SeparadorCompra";
+import { SeparadorTexto} from "../Separadores/SeparadorTexto";
 
 import { Carril } from "./CarrilCategorias";
-import { PresentacionCategoria, PresentacionGenero, PresentacionProducto, PresentacionSubcategoria } from "./Presentacion";
+
+import {PresentacionGenero} from "../Presentaciones/PresentacionGenero.jsx";
+import {PresentacionCategoria} from "../Presentaciones/PresentacionCategoria.jsx"
+import {PresentacionSubcategoria} from "../Presentaciones/PresentacionSubcategoria.jsx"
+import {PresentacionProducto} from "../Presentaciones/PresentacionProducto.jsx"
+import { Nada } from "./nada.jsx";
+import productosJson from "../ProductosJson.json"
+
 
 const useStyle = makeStyles((theme) => ({
 

@@ -1,0 +1,19 @@
+[
+
+    {
+        "id":"gesionar-usuarios",
+        "genero":"mujer",
+        "nombre":"Gestionar usuarios",
+        "categorias":[
+            "Agregar",
+            "Editar",
+            "Eliminar",
+            "Listar"
+            
+        ]
+    }
+
+
+]
+
+

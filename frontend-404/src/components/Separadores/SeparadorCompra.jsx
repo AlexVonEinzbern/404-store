@@ -47,7 +47,7 @@ const useStyles = makeStyles((theme) => ({
 
 }))
 
-const SeparadorCompra = (props) => {
+export const SeparadorCompra = (props) => {
 
     const classes = useStyles()
 
@@ -83,28 +83,3 @@ const SeparadorCompra = (props) => {
     )
 
 }
-
-
-const SeparadorTexto = (props) => {
-
-    const classes = useStyles()
-
-    return (
-
-        <div className={classes.cont}>
-
-            <div className={classes.tittle}>
-
-                <b>{props.titulo}</b>
-
-            </div>
-
-            <div className={classes.subtittleText}>
-                {props.subtitulo}
-            </div>
-
-        </div>
-    )
-
-}
-export { SeparadorCompra, SeparadorTexto }

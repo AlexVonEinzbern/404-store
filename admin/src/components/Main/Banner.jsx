@@ -40,7 +40,7 @@ export const Banner = (props) => {
         <div className={classes.cont}>
 
             <div className={classes.ContImgBanner}>
-                <img src={require(`../img/Banner/Banner${props.genero}.jpg`)} alt="" className={classes.imgBanner} />
+                <img src={require(`../../img/Banner/Banner${props.genero}.jpg`)} alt="" className={classes.imgBanner} />
             </div>
 
             <a href={props.genero}>

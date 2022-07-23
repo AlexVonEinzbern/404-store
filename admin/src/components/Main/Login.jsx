@@ -5,7 +5,7 @@ import { makeStyles, Button } from "@material-ui/core";
 
 
 import { useState} from 'react';  //Cambios para que los datos en el formulario tengan
-                                              //efecto en la base de datos
+                                  //efecto en la base de datos
 
 const URI = process.env.REACT_APP_URI;        //Se conecta con el backend
 

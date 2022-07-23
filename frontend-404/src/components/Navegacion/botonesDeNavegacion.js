@@ -6,7 +6,6 @@ export  const BotonesNavegacion=[
     //     ruta:''
     // },
     
-
     {
         nombre:'hombre',
         id:0, //ubicacion del boton en la barras de navegacion

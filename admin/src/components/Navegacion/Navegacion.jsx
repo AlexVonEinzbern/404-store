@@ -12,13 +12,13 @@ import Badge from '@material-ui/core/Badge';
 import SearchIcon from '@material-ui/icons/Search';
 
 import { ThemeProvider, Button } from '@material-ui/core';
-import { tema } from '../styles/tema';
-import { useStyles } from '../styles/styleNav';
+import { tema } from './styles/tema';
+import { useStyles } from './styles/styleNav';
 import { FavoriteBorder, LocalMallOutlined } from '@material-ui/icons';
 import { MenuDesplagable } from './MenuDesplegable';
 
 import { BotonesNavegacion } from './botonesDeNavegacion';
-import { todasLasCategorias } from './todasLasCategorias';
+import { todasLasCategorias } from './Categorias/todasLasCategorias';
 
 const URI = process.env.REACT_APP_URI;        //Se conecta con el backend
 
@@ -79,22 +79,16 @@ export default function Navegacion() {
       <AppBar position="static" color='primary' className={classes.Navegacion}>
 
         <Toolbar className={classes.barraSuperior}>
-          <Button color="inherit" >Ayuda</Button>
-          <div color="inherit" >   |  </div>
-          <Button color="inherit" > Nosotros</Button>
-          <div color="inherit" >   |  </div>
 
-          <a href="/login">
-
+          <a href="/login" className={classes.a}>
             <Button color="inherit" > Iniciar Sesion</Button>
           </a>
-
         </Toolbar>
 
         <Toolbar className={classes.barraInferior}>
           {/* logo */}
 
-          <Typography className={classes.title} variant="h6" noWrap > <a href="/" className={classes.title}><b>404-STORE</b></a></Typography>
+          <Typography className={classes.title} variant="h6" noWrap > <a href="/" className={classes.title}><b>404-STORE ADMIN</b></a></Typography>
 
           <div className={classes.botonesNavegacion} >
             {
@@ -132,47 +126,7 @@ export default function Navegacion() {
 
           <div className={classes.sectionDesktop}>
 
-            <div className={classes.search}>
-
-              <Stack spacing={2} sx={{ width: 300 }}>
-                
-                <Autocomplete
-                  Search
-                  id="free-solo-2-demo"
-                  disableClearable
-                  value={value}
-                  onChange={(e, value) => buscarProducto(value)}
-                  onKeyPress={tarjetaProducto}
-                  options={productos.map((option) => option.name_producto)}
-                  renderInput={(params) => (
-                    <TextField
-                    //className={classes.barraBuscar}
-                      {...params}
-                      label="Buscar"
-                      variant='standard'
-                      InputProps={{
-                        ...params.InputProps,
-                        type: 'search',
-                      }}
-                    />
-                  )}
-                />
-              </Stack>
-
-            </div>
-            <IconButton color="inherit" >
-              <FavoriteBorder />
-            </IconButton>
-
-            <IconButton
-              edge="end"
-              aria-label="account of current user"
-              aria-haspopup="true"
-              color="inherit">
-              <Badge badgeContent={0} color='secondary' overlap='rectangular' >
-                <LocalMallOutlined />
-              </Badge>
-            </IconButton>
+            
           </div>
         </Toolbar>
 

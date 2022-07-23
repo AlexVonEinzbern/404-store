@@ -6,9 +6,9 @@ import Navegacion from './components/Navegacion'
 import { PresentacionCategoria, PresentacionGenero, PresentacionSubcategoria , PresentacionProducto} from "./components/Presentacion";
 import { Nada } from "./nada";
 import productosJson from "./components/ProductosJson.json"
+import { VistaCrearProducto } from "./componentAdmin/VistaCrearProducto";
+import NavegacionAdmin from "./componentAdmin/NavegacionAdmin";
 
-
-//import MenuCategorias from './components/MenuCategorias';
 
 function App() {
 
@@ -17,10 +17,10 @@ function App() {
   return (
     <div className="App">
 
-      
-      <Navegacion />
+      <NavegacionAdmin></NavegacionAdmin>
+      <VistaCrearProducto />
      
-      <Router>
+      {/* <Router>
 
         <Routes>
 
@@ -34,15 +34,7 @@ function App() {
 
             <Route path='hombre/ropaInterior' element={<PresentacionCategoria genero='HOMBRE' idCategoria='RopaInterior' />} />
               <Route path='hombre/ropainterior/pijamas' element={<PresentacionSubcategoria genero='HOMBRE' subCategoria='pijamas'/>} />
-              <Route path='hombre/ropainterior/boxers' element={<PresentacionSubcategoria genero='HOMBRE' subCategoria='boxers'/>} />
-              <Route path='hombre/ropainterior/camisetas' element={<PresentacionSubcategoria genero='HOMBRE' subCategoria='camisetas'/>} />
-              <Route path='hombre/ropainterior/medias' element={<PresentacionSubcategoria genero='HOMBRE' subCategoria='medias'/>} />
-              
-            <Route path='hombre/ropaDeportiva' element={<PresentacionCategoria genero='HOMBRE' idCategoria='RopaDeportiva' />} />
-              <Route path='hombre/ropadeportiva/prendassuperiores' element={<PresentacionSubcategoria genero='HOMBRE' subCategoria='prendasSuperiores'/>} />
-              <Route path='hombre/ropadeportiva/prendasinferiores' element={<PresentacionSubcategoria genero='HOMBRE' subCategoria='prendasInferiores'/>} />
-              <Route path='hombre/ropadeportiva/accesorios' element={<PresentacionSubcategoria genero='HOMBRE' subCategoria='accesorios'/>} />
-
+              <Route path='hombre/ropNavegacion
 
             <Route path='hombre/accesorios' element={<PresentacionCategoria genero='HOMBRE' idCategoria='Accesorios' />} />
               <Route path='hombre/accesorios/billeteras' element={<PresentacionSubcategoria genero='HOMBRE' subCategoria='billeteras'/>} />
@@ -96,7 +88,10 @@ function App() {
 
         </Routes>
 
-      </Router>
+      </Router> */}
+
+
+
 
     </div>
   );

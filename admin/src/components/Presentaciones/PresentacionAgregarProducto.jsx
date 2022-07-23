@@ -2,6 +2,9 @@
 import React from "react";
 import { makeStyles, Button, TextField, } from "@material-ui/core";
 import { BarraLateral } from "./BarraLateral.jsx";
+import axios from "axios"; 
+
+const URI = "http://172.20.0.3:5000/";   
 
 const useStyles = makeStyles((theme) => ({
 
@@ -85,8 +88,67 @@ const useStyles = makeStyles((theme) => ({
 
 
 export const PresentacionAgregarProducto = () => {
+    
+    //obtener valores de los texfields 
+    const classes = useStyles()
+    const [nameProducto, setNameProducto]=React.useState("");
+    const [generoProducto, setGeneroProducto]=React.useState("");
+    const [categoriaProducto, setCategoriaProducto]=React.useState("");
+    const [subcategoriaProducto, setSubcategoriaProducto]=React.useState("");
+    const [descripcionProducto, setDescripcionProducto]=React.useState("");
+    const [tallaProducto, setTallaProducto]=React.useState("");
+    const [stockProducto, setStockProducto]=React.useState("");
+    const [precioProducto, setPrecioProducto]=React.useState("");
+    const [direccionProducto, setDireccionProducto]=React.useState("");
+    
+    // enviar datos al backend
+    
+    const addProduct= async()=>{
+        console.log("aqui")
+        const respuesta= await axios.post(URI+"crearProducto/",{
+            name_producto: nameProducto,
+            genero_producto: generoProducto,
+            categoria_producto: categoriaProducto,
+            subcategoria_producto: subcategoriaProducto,
+            descripcion_producto: descripcionProducto,
+            talla_producto: tallaProducto,
+            calificacion_producto: 0,
+            stock_producto: stockProducto,
+            stock_vendido_producto: 0,
+            precio_producto: precioProducto,
+            url_imagen_producto: direccionProducto
+         })
+         console.log(respuesta)
+    } 
 
-const classes = useStyles()
+    //eventos de los textfields 
+    const eventoNombre=(e)=>{
+        setNameProducto(e.target.value)        
+    }
+    const eventoGenero=(e)=>{
+        setGeneroProducto(e.target.value)        
+    }
+    const eventoCategoria=(e)=>{
+        setCategoriaProducto(e.target.value)        
+    }
+    const eventoSubcategoria=(e)=>{
+        setSubcategoriaProducto(e.target.value)        
+    }
+    const eventoDescripcion=(e)=>{
+        setDescripcionProducto(e.target.value)        
+    }
+    const eventoTalla=(e)=>{
+        setTallaProducto(e.target.value)        
+    }
+    const eventoStock=(e)=>{
+        setStockProducto(e.target.value)        
+    }
+    const eventoPrecio=(e)=>{
+        setPrecioProducto(e.target.value)        
+    }
+    const eventoDireccion=(e)=>{
+        setDireccionProducto(e.target.value)        
+    }
 
     return (
 
@@ -102,23 +164,23 @@ const classes = useStyles()
 
             <div className={classes.lateralIzq}>
                 <p className={classes.titulo}>Agregar producto</p>
-                <TextField label='Nombre'></TextField>
-                <TextField label='Categoria'></TextField>
-                <TextField label='Sub categoria'></TextField>
-                <TextField label='Talla'></TextField>
-                <TextField label='Genero'></TextField>
-                <TextField label='Stock disponible'></TextField>
-                <TextField label='Precio'></TextField>
-                <TextField label='Direccion de la imagen'></TextField>
+                <TextField onChange={eventoNombre} label='Nombre'></TextField>
+                <TextField onChange={eventoCategoria} label='Categoria'></TextField>
+                <TextField onChange={eventoSubcategoria} label='Sub categoria'></TextField>
+                <TextField onChange={eventoTalla} label='Talla'></TextField>
+                <TextField onChange={eventoGenero} label='Genero'></TextField>
+                <TextField onChange={eventoStock} label='Stock disponible'></TextField>
+                <TextField onChange={eventoPrecio} label='Precio'></TextField>
+                <TextField onChange={eventoDireccion} label='Direccion de la imagen'></TextField>
 
                 <div className={classes.imagen}>
                 <p className={classes.ruta}>Nombre de la imagen</p>
-                <Button color="primary" variant="contained" className={classes.cargarImagen}>Cargar imagen</Button>
+                <Button color="primary"  variant="contained" className={classes.cargarImagen}>Cargar imagen</Button>
                 </div>
 
                
                
-                <Button color="inherit" variant="contained" className={classes.agregarProducto}>Agregar producto</Button>
+                <Button onClick={addProduct} color="inherit" variant="contained" className={classes.agregarProducto}>Agregar producto</Button>
             </div>
 
             
@@ -130,13 +192,6 @@ const classes = useStyles()
                 
             </div>
 
-            
-
-            
-
-
-
-   
         </div>
     )
 

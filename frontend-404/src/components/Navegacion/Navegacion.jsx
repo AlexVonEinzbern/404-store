@@ -84,7 +84,7 @@ export default function Navegacion() {
           <Button color="inherit" > Nosotros</Button>
           <div color="inherit" >   |  </div>
 
-          <a href="/login">
+          <a href="/login" className={classes.a}>
 
             <Button color="inherit" > Iniciar Sesion</Button>
           </a>

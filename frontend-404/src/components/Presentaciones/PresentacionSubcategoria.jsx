@@ -16,6 +16,20 @@ const useStyles = makeStyles((theme) => ({
         margin: '144px 48px'
 
     },
+    a:{
+        color:'black',
+        textDecoration:'none',
+        '&:visited':{
+          color:'black',
+        textDecoration:'none',
+        
+    
+      }
+    
+      
+    
+    },
+    
 }))
 
 
@@ -47,7 +61,7 @@ export const PresentacionSubcategoria = (props) => {
 
                             <Grid item md={3} key={producto.id_producto}>
 
-                                <a href={`/${producto.genero_producto}/${producto.categoria_producto}/${producto.subcategoria_producto}/producto-${producto.id_producto}`} >
+                                <a href={`/${producto.genero_producto}/${producto.categoria_producto}/${producto.subcategoria_producto}/producto-${producto.id_producto}`} className={classes.a} >
                                     <TarjetaProducto
                                         nombre={producto.name_producto}
                                         precio={producto.precio_producto}

@@ -18,7 +18,21 @@ export const useStyles = makeStyles((theme) => ({
     
 
     
-  },
+  },    
+  
+  a:{
+    color:'black',
+    textDecoration:'none',
+    '&:visited':{
+      color:'black',
+    textDecoration:'none',
+    
+
+  }
+
+  
+
+},
 
 
   botonesNavegacion:{
@@ -31,16 +45,6 @@ export const useStyles = makeStyles((theme) => ({
     
     },
 
-    a:{
-      color:'black',
-      '&:visited':{
-        color:'black'
-
-    }
-
-    
- 
-  },
 
   itemNavSuperior:{
     margin: '4px',

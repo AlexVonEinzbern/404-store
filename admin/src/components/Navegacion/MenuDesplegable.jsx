@@ -15,6 +15,7 @@ const useStyles = makeStyles(() => ({
         width: 'auto',
         justifyContent: 'center',
         backgroundColor: '',
+        borderRadius:'50px'
     },
 
     ContMenuCatOcult: {

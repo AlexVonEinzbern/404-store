@@ -77,9 +77,10 @@ const useStyles = makeStyles((theme) => ({
         color:'#fff'
     
     },
-    BarraLateral:{
-        marginRight:'96px',
-        border:'1px solid black',
+    BarraLateral: {
+        marginRight: '48px',
+        paddingRight: '40px',
+        borderRight: '1px solid black',
     }
 
 

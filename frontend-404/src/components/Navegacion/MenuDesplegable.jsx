@@ -36,6 +36,20 @@ const useStyles = makeStyles(() => ({
     cat: {
         justifyContent: 'start',
         padding: '0',
+    },
+
+    a:{
+        color:'black',
+        textDecoration:'none',
+        '&:visited':{
+          color:'black',
+        textDecoration:'none',
+        
+  
+      }
+  
+      
+   
     }
 
 }));
@@ -54,7 +68,8 @@ export const MenuDesplagable = (props) => {
         const cats = []
         for (let i = 0; i < categoria.categorias.length; i++) {
             cats.push(
-                <a href={`/${categoria.genero}/${categoria.id}/${categoria.categorias[i]}`}>
+                <a href={`/${categoria.genero}/${categoria.id}/${categoria.categorias[i]}`} className={classes
+                .a}>
 
                     <Button variant="text" color="default" className={classes.itmCatMenu}
                         key={'itemCategoriaMenu' + i} onClick={hideMenu} > {categoria.categorias[i]}
@@ -75,7 +90,7 @@ export const MenuDesplagable = (props) => {
                         return (
                             <div key={btn.id} className={classes.MenuDespCat}>
 
-                                <a href={`/${btn.genero}/${btn.id}`}>
+                                <a href={`/${btn.genero}/${btn.id}`} className={classes.a}>
 
                                     <Button variant="text" color="default" key={categorias.nombre}>
                                         <Typography variant="h6" color="initial" onClick={hideMenu} className={classes.cat}> {btn.nombre}</Typography >

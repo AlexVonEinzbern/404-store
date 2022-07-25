@@ -47,7 +47,21 @@ const useStyle = makeStyles((theme) => ({
         justifyContent: 'space-around',
         width: '100%',
         textTransform: 'uppercase'
-    }
+    },
+    a:{
+        color:'black',
+        textDecoration:'none',
+        '&:visited':{
+          color:'black',
+        textDecoration:'none',
+        
+    
+      }
+    
+      
+    
+    },
+    
 }))
 
 
@@ -72,7 +86,7 @@ export const TarjetaSubcategoria = (props) => {
 
                     </div>
 
-                    <a href={`/${props.genero}/${props.idCategoria}/${props.subcategoria}`}>
+                    <a href={`/${props.genero}/${props.idCategoria}/${props.subcategoria}`} className={classes.a}>
 
                         <Button variant="text" color="default" className={classes.boton}>
                             ver mas

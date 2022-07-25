@@ -116,13 +116,6 @@ export const PresentacionProducto = (props) => {
 
     const classes = useStyles3()
 
-
-
-    const elegirProducto = () => {
-        const producto = {}
-
-    }
-
     return (
 
         <div className={classes.cont}>

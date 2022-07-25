@@ -4,7 +4,8 @@ import { makeStyles, Button, TextField, } from "@material-ui/core";
 import { BarraLateral } from "./BarraLateral.jsx";
 import axios from "axios"; 
 
-const URI = "http://172.20.0.3:5000/";   
+const URI = process.env.REACT_APP_URI;   
+
 
 const useStyles = makeStyles((theme) => ({
 
@@ -106,7 +107,11 @@ export const PresentacionAgregarProducto = () => {
     
     const addProduct= async()=>{
         console.log("aqui")
-        const respuesta= await axios.post(URI+"crearProducto/",{
+		const config={
+			headers : {"Access-Control-Allow-Origin":"*"}
+			};
+		
+        const respuesta= await axios.post(URI+"crearProducto",{
             name_producto: nameProducto,
             genero_producto: generoProducto,
             categoria_producto: categoriaProducto,
@@ -117,8 +122,9 @@ export const PresentacionAgregarProducto = () => {
             stock_producto: stockProducto,
             stock_vendido_producto: 0,
             precio_producto: precioProducto,
-            url_imagen_producto: direccionProducto
-         })
+            url_imagen_producto: direccionProducto,
+			
+         }, config);
          console.log(respuesta)
     } 
 
@@ -183,12 +189,9 @@ export const PresentacionAgregarProducto = () => {
                
                 <Button onClick={addProduct} color="inherit" variant="contained" className={classes.agregarProducto}>Agregar producto</Button>
             </div>
-
-            
-
             <div  className={classes.lateralDer}>
      
-                <textarea name="" placeholder="Descripcion" className={classes.imagenProd} ></textarea>
+                <textarea onChange={eventoDescripcion} name="" placeholder="Descripcion" className={classes.imagenProd} ></textarea>
                 <img name="" className={classes.descripcion} ></img>
                 
             </div>

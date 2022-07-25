@@ -12,77 +12,112 @@ const useStyles = makeStyles((theme) => ({
 
     cont: {
 
-        display:'flex',
-        width:'100%',
-        margin:'144px  auto',
-        
-    },
-
-    lateralIzq:{
-        display:'flex',
-        flexDirection:'column',
-        width:'60%'
+        display: 'flex',
+        width: '100%',
+        margin: '144px  0',
 
     },
-    lateralDer:{
-        width:'40%',
-        marginLeft:'40px',
-        marginRight:'144px',
-   
-        display:'flex',
-        flexDirection:'column'
 
+    lateralIzq: {
+        display: 'flex',
+        flexDirection: 'column',
+        width: '50%',
+        margin:'0 24px'
         
 
     },
-    descripcion:{
-       
-        width:'auto',
-        height:'50%',
-        resize:'none'
+
+    descripcion: {
+
+        width: 'auto',
+        height: '50%',
+        resize: 'none'
     },
 
-    imagenProd:{
+    imagenProd: {
 
-        width:'auto',
-        height:'50%',
-        resize:'none'
+        width: 'auto',
+        height: '50%',
+        resize: 'none'
     },
 
-    titulo:{
-        fontSize:'24px'
+    titulo: {
+        fontSize: '24px',
+        fontFamily: 'roboto'
     },
 
-    imagen:{
+    imagen: {
 
-        marginTop:'10px',
+        marginTop: '10px',
 
-        display:'flex',
-        justifyContent:'space-between',
-        alignItems:'center'
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'center'
 
     },
-    cargarImagen:{
-        width:'40%',
-        height:'30px',
-        color:'gray',
-        backgroundColor:'#fff'
-        
+    cargarImagen: {
+        width: '40%',
+        height: '30px',
+        color: 'gray',
+        backgroundColor: '#fff'
+
     },
-    ruta:{
-        color:'rgba(0,0,0,0.5)'
+    ruta: {
+        color: 'rgba(0,0,0,0.5)',
+        fontFamily: 'roboto'
     },
-    agregarProducto:{
-        marginTop:'20px',
-        backgroundColor:'#000',
-        color:'#fff'
-    
+    GuargarCambios: {
+        marginTop: '20px',
+        backgroundColor: '#000',
+        color: '#fff',
+        width: '50%',
+
+
+    }, Descartar: {
+        marginTop: '20px',
+
+        color: '#000',
+        width: '50%',
+
     },
     BarraLateral: {
-        marginRight: '48px',
-        paddingRight: '40px',
+
         borderRight: '1px solid black',
+        width:'20%'
+    },
+    busqueda: {
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'space-between'
+
+    },
+    barraBusqueda: {
+
+        width: 'auto',
+        height: 'auto',
+        resize: 'none'
+
+    },
+    buscar: {
+        display: 'flex',
+        gap: '20px'
+    },
+    botones: {
+        display: 'flex'
+    },
+    agregarUsuario:{
+        backgroundColor:'black',
+        color:'#fff',
+        marginTop:'20px',
+    },
+
+    lateralDer:{
+        width:'30%',
+        display:'flex',
+        flexDirection:'column',
+        margin:'0 24px 0 24X'
     }
+
 
 
 }))
@@ -191,8 +226,8 @@ export const PresentacionAgregarProducto = () => {
             </div>
             <div  className={classes.lateralDer}>
      
-                <textarea onChange={eventoDescripcion} name="" placeholder="Descripcion" className={classes.imagenProd} ></textarea>
-                <img name="" className={classes.descripcion} ></img>
+                <textarea onChange={eventoDescripcion} name="" placeholder="Descripcion" className={classes.descripcion} ></textarea>
+                <img name="" className={classes.imagenProd} ></img>
                 
             </div>
 

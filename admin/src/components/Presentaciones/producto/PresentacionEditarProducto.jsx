@@ -10,27 +10,19 @@ const useStyles = makeStyles((theme) => ({
 
         display: 'flex',
         width: '100%',
-        margin: '144px  auto',
+        margin: '144px  0',
 
     },
 
     lateralIzq: {
         display: 'flex',
         flexDirection: 'column',
-        width: '60%'
+        width: '50%',
+        margin:'0 24px'
+        
 
     },
-    lateralDer: {
-        width: '40%',
-        marginLeft: '40px',
-        marginRight: '144px',
 
-        display: 'flex',
-        flexDirection: 'column'
-
-
-
-    },
     descripcion: {
 
         width: 'auto',
@@ -85,9 +77,9 @@ const useStyles = makeStyles((theme) => ({
 
     },
     BarraLateral: {
-        marginRight: '48px',
-        paddingRight: '40px',
+
         borderRight: '1px solid black',
+        width:'20%'
     },
     busqueda: {
         display: 'flex',
@@ -108,7 +100,20 @@ const useStyles = makeStyles((theme) => ({
     },
     botones: {
         display: 'flex'
+    },
+    agregarUsuario:{
+        backgroundColor:'black',
+        color:'#fff',
+        marginTop:'20px',
+    },
+
+    lateralDer:{
+        width:'30%',
+        display:'flex',
+        flexDirection:'column',
+        margin:'0 24px 0 24X'
     }
+
 
 
 }))

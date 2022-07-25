@@ -96,7 +96,7 @@ export default function Navegacion() {
                 return (
                   <div key={btn.id} className={classes.contBtnMenu}
                   >
-                    <a href={btn.ruta} key={btn.id + 1} className={classes.a}>
+                    <a key={btn.id + 1} className={classes.a}>
 
                       <Button
                         variant="text"

@@ -10,7 +10,7 @@ const useStyles = makeStyles((theme) => ({
 
         display: 'flex',
         width: '100%',
-        margin: '144px  0',
+        margin: '144px  auto',
 
     },
 
@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
         display: 'flex',
         flexDirection: 'column',
         width: '50%',
-        margin:'0 24px'
+        margin:'auto'
         
 
     },
@@ -100,27 +100,13 @@ const useStyles = makeStyles((theme) => ({
     },
     botones: {
         display: 'flex'
-    },
-    agregarUsuario:{
-        backgroundColor:'black',
-        color:'#fff',
-        marginTop:'20px',
-    },
-
-    lateralDer:{
-        width:'30%',
-        display:'flex',
-        flexDirection:'column',
-        margin:'0 24px 0 24X'
     }
-
 
 
 }))
 
 
-
-export const PresentacionEliminarProducto = () => {
+export const PresentacionEditarUsuario = () => {
 
     const classes = useStyles()
 
@@ -139,49 +125,30 @@ export const PresentacionEliminarProducto = () => {
                 <div className={classes.lateralIzq}>
 
                     <div className={classes.busqueda}>
-                        <p className={classes.titulo}>Eliminar Producto</p>
+                        <p className={classes.titulo}>Editar Usuario</p>
                         <div className={classes.buscar}>
                             <textarea className={classes.barraBusqueda} name="" id="" cols="30" ></textarea>
                             <Button> Buscar </Button>
                         </div>
                     </div>
-
-
-
-
-                    <TextField label='Nombre'></TextField>
-                    <TextField label='Categoria'></TextField>
-                    <TextField label='Sub categoria'></TextField>
-                    <TextField label='Talla'></TextField>
-                    <TextField label='Genero'></TextField>
-                    <TextField label='Stock disponible'></TextField>
-                    <TextField label='Precio'></TextField>
-                    <TextField label='Direccion de la imagen'></TextField>
+                    <TextField label='Nombre '></TextField>
+                <TextField label='Cedula'></TextField>
+                <TextField label='Edad'></TextField>
+                <TextField label='E-Mail'></TextField>             
+                <TextField label='telefono'></TextField>
+                <TextField label='Direccion'></TextField>
+                <TextField label='Usuario'></TextField>
+                <TextField label='contraseña'></TextField>
 
                     
 
                     <div className={classes.botones}>
 
                         <Button color="inherit" variant="contained" className={classes.Descartar}>Descartar</Button>
-                        <Button color="inherit" variant="contained" className={classes.GuargarCambios}>Eliminar Producto</Button>
+                        <Button color="inherit" variant="contained" className={classes.GuargarCambios}>Guardar cambios</Button>
                     </div>
 
                 </div>
-
-
-
-                <div className={classes.lateralDer}>
-
-                    <textarea name="" placeholder="Descripcion" className={classes.imagenProd} ></textarea>
-                    <img name="" className={classes.descripcion} ></img>
-
-                </div>
-
-
-
-
-
-
 
 
             </div>

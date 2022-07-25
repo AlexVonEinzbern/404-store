@@ -50,7 +50,7 @@ export const ItemProducto = (props)=>{
 
         <div className={classes.cont}>  
             <div >
-            <img src={require(`../../img/Product-images${props.urlImg}`)} alt="" className={classes.imagen}/>
+            <img src={require(`../../../img/Product-images${props.urlImg}`)} alt="" className={classes.imagen}/>
             </div>         
             
             <div className={classes.element}>{props.nombre}</div>

@@ -1,7 +1,7 @@
 
 import React from "react";
 import { makeStyles, Button, TextField, } from "@material-ui/core";
-import { BarraLateral } from "./BarraLateral.jsx";
+import { BarraLateral } from "../BarraLateral.jsx";
 
 const useStyles = makeStyles((theme) => ({
 

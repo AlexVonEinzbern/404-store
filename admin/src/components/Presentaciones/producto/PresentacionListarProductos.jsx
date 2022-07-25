@@ -3,9 +3,9 @@ import React from "react";
 
 import { makeStyles } from "@material-ui/core"
 import { ItemProducto } from "./ItemProducto";
-import productosJson from '../ProductosJson.json'
+import productosJson from '../../ProductosJson.json'
 import { width } from "@mui/system";
-import { Cabecera } from "./Cabecera";
+import { Cabecera } from "../Cabecera";
 
 
 const useStyles = makeStyles((theme) => ({

@@ -3,6 +3,11 @@ import React from "react";
 import { makeStyles, Button, TextField, } from "@material-ui/core";
 import { BarraLateral } from "../BarraLateral.jsx";
 import axios from "axios"; 
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select, { SelectChangeEvent } from '@mui/material/Select';
+import Stack from '@mui/material/Stack';
 
 const URI = process.env.REACT_APP_URI;   
 
@@ -121,6 +126,9 @@ const useStyles = makeStyles((theme) => ({
 
 
 }))
+function generarDireccion(genero,categoria,subcategoria){
+	return "/"+genero+"/"+categoria+"/"+subcategoria+"/";
+}
 
 
 
@@ -136,7 +144,7 @@ export const PresentacionAgregarProducto = () => {
     const [tallaProducto, setTallaProducto]=React.useState("");
     const [stockProducto, setStockProducto]=React.useState("");
     const [precioProducto, setPrecioProducto]=React.useState("");
-    const [direccionProducto, setDireccionProducto]=React.useState("");
+    //const [direccionProducto, setDireccionProducto]=React.useState("");
     
     // enviar datos al backend
     
@@ -157,7 +165,7 @@ export const PresentacionAgregarProducto = () => {
             stock_producto: stockProducto,
             stock_vendido_producto: 0,
             precio_producto: precioProducto,
-            url_imagen_producto: direccionProducto,
+            url_imagen_producto: generarDireccion(generoProducto,categoriaProducto,subcategoriaProducto),
 			
          }, config);
          console.log(respuesta)
@@ -188,9 +196,7 @@ export const PresentacionAgregarProducto = () => {
     const eventoPrecio=(e)=>{
         setPrecioProducto(e.target.value)        
     }
-    const eventoDireccion=(e)=>{
-        setDireccionProducto(e.target.value)        
-    }
+    
 
     return (
 
@@ -206,15 +212,41 @@ export const PresentacionAgregarProducto = () => {
 
             <div className={classes.lateralIzq}>
                 <p className={classes.titulo}>Agregar producto</p>
+				<Stack spacing={3}>
                 <TextField onChange={eventoNombre} label='Nombre'></TextField>
                 <TextField onChange={eventoCategoria} label='Categoria'></TextField>
                 <TextField onChange={eventoSubcategoria} label='Sub categoria'></TextField>
-                <TextField onChange={eventoTalla} label='Talla'></TextField>
-                <TextField onChange={eventoGenero} label='Genero'></TextField>
-                <TextField onChange={eventoStock} label='Stock disponible'></TextField>
-                <TextField onChange={eventoPrecio} label='Precio'></TextField>
-                <TextField onChange={eventoDireccion} label='Direccion de la imagen'></TextField>
+				<FormControl fullWidth>
+					<InputLabel id="label_talla"> Talla</InputLabel>
+					  <Select
+						labelId="label_talla"
+						value={tallaProducto}
+						label="Genero"
+						onChange={eventoTalla}
+					  >
+						<MenuItem value="XS">XS</MenuItem>
+						<MenuItem value="S">S</MenuItem>
+						<MenuItem value="M">M</MenuItem>
+						<MenuItem value="L">L</MenuItem>
+						<MenuItem value="XL">XL</MenuItem>
+					  </Select>
+				</FormControl>
 
+				<FormControl fullWidth>
+					<InputLabel id="genero_label"> Genero</InputLabel>
+					  <Select
+						labelId="genero_label"
+						value={generoProducto}
+						label="Genero"
+						onChange={eventoGenero}
+					  >
+						<MenuItem value="HOMBRE">HOMBRE</MenuItem>
+						<MenuItem value="MUJER">MUJER</MenuItem>
+					  </Select>
+				</FormControl>
+                <TextField onChange={eventoStock}  inputProps={{ inputMode: 'numeric', pattern: '[0-9]*' }}  type="number" label='Stock disponible'></TextField>
+                <TextField onChange={eventoPrecio} type="number" label='Precio'></TextField>
+				</Stack>
                 <div className={classes.imagen}>
                 <p className={classes.ruta}>Nombre de la imagen</p>
                 <Button color="primary"  variant="contained" className={classes.cargarImagen}>Cargar imagen</Button>
@@ -233,9 +265,4 @@ export const PresentacionAgregarProducto = () => {
 
         </div>
     )
-
-
-
-
-
 }

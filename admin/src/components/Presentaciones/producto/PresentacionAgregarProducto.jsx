@@ -126,11 +126,14 @@ const useStyles = makeStyles((theme) => ({
 
 
 }))
-function generarDireccion(genero,categoria,subcategoria){
-	return "/"+genero+"/"+categoria+"/"+subcategoria+"/";
+function generarDireccion(genero,categoria,subcategoria,name){
+	return "/"+genero+"/"+categoria+"/"+subcategoria+"/"+name+".png";
 }
-
-
+function isNumeric(str) {
+  if (typeof str != "string") return false 
+  return !isNaN(str) && 
+         !isNaN(parseFloat(str)) 
+}
 
 export const PresentacionAgregarProducto = () => {
     
@@ -145,30 +148,69 @@ export const PresentacionAgregarProducto = () => {
     const [stockProducto, setStockProducto]=React.useState("");
     const [precioProducto, setPrecioProducto]=React.useState("");
     //const [direccionProducto, setDireccionProducto]=React.useState("");
+	
+	const [nameProductoError, setNameProductoError]=React.useState(false);
+    const [generoProductoError, setGeneroProductoError]=React.useState(false);
+    const [categoriaProductoError, setCategoriaProductoError]=React.useState(false);
+    const [subcategoriaProductoError, setSubcategoriaProductoError]=React.useState(false);
+    const [descripcionProductoError, setDescripcionProductoError]=React.useState(false);
+    const [tallaProductoError, setTallaProductoError]=React.useState(false);
+    const [stockProductoError, setStockProductoError]=React.useState(false);
+    const [precioProductoError, setPrecioProductoError]=React.useState(false);
     
     // enviar datos al backend
     
     const addProduct= async()=>{
-        console.log("aqui")
-		const config={
-			headers : {"Access-Control-Allow-Origin":"*"}
-			};
-		
-        const respuesta= await axios.post(URI+"crearProducto",{
-            name_producto: nameProducto,
-            genero_producto: generoProducto,
-            categoria_producto: categoriaProducto,
-            subcategoria_producto: subcategoriaProducto,
-            descripcion_producto: descripcionProducto,
-            talla_producto: tallaProducto,
-            calificacion_producto: 0,
-            stock_producto: stockProducto,
-            stock_vendido_producto: 0,
-            precio_producto: precioProducto,
-            url_imagen_producto: generarDireccion(generoProducto,categoriaProducto,subcategoriaProducto),
+		setNameProductoError(false);
+		setGeneroProductoError(false);
+		setCategoriaProductoError(false);
+		setSubcategoriaProductoError(false);
+		setDescripcionProductoError(false);
+		setTallaProductoError(false);
+		setStockProductoError(false);
+		setPrecioProductoError(false);
+
+		if (nameProducto==''){
+			setNameProductoError(true);
+		}if (generoProducto==''){
+			setGeneroProductoError(true);
+		}if(categoriaProducto==''){
+			setCategoriaProductoError(true);
+		}if(subcategoriaProducto==''){
+			setSubcategoriaProductoError(true);
+		}if (descripcionProducto==''){
+			setDescripcionProductoError(true);
+		}if(tallaProducto==''){
+			setTallaProductoError(true);
+		}if(stockProducto=='' || !isNumeric(stockProducto)){
+			setStockProductoError(true);
+		}if(precioProducto=='' || !isNumeric(precioProducto)){
+			setPrecioProductoError(true);
+		} 
+
+		if(nameProducto && generoProducto && categoriaProducto && subcategoriaProducto
+			&&descripcionProducto && tallaProducto && stockProducto && precioProducto){
+			const config={
+				headers : {"Access-Control-Allow-Origin":"*"}
+				};
 			
-         }, config);
-         console.log(respuesta)
+			const respuesta= await axios.post(URI+"crearProducto",{
+				name_producto: nameProducto,
+				genero_producto: generoProducto,
+				categoria_producto: categoriaProducto,
+				subcategoria_producto: subcategoriaProducto,
+				descripcion_producto: descripcionProducto,
+				talla_producto: tallaProducto,
+				calificacion_producto: 0,
+				stock_producto: stockProducto,
+				stock_vendido_producto: 0,
+				precio_producto: precioProducto,
+				url_imagen_producto: generarDireccion(generoProducto,categoriaProducto,subcategoriaProducto,nameProducto),
+				
+			 }, config);
+			alert("producto registrado");
+		}
+
     } 
 
     //eventos de los textfields 
@@ -213,9 +255,9 @@ export const PresentacionAgregarProducto = () => {
             <div className={classes.lateralIzq}>
                 <p className={classes.titulo}>Agregar producto</p>
 				<Stack spacing={3}>
-                <TextField onChange={eventoNombre} label='Nombre'></TextField>
-                <TextField onChange={eventoCategoria} label='Categoria'></TextField>
-                <TextField onChange={eventoSubcategoria} label='Sub categoria'></TextField>
+                <TextField onChange={eventoNombre} error={nameProductoError} label='Nombre'></TextField>
+                <TextField onChange={eventoCategoria} error={categoriaProductoError} label='Categoria'></TextField>
+                <TextField onChange={eventoSubcategoria} error={subcategoriaProductoError} label='Sub categoria'></TextField>
 				<FormControl fullWidth>
 					<InputLabel id="label_talla"> Talla</InputLabel>
 					  <Select
@@ -223,6 +265,7 @@ export const PresentacionAgregarProducto = () => {
 						value={tallaProducto}
 						label="Genero"
 						onChange={eventoTalla}
+						error={tallaProductoError}
 					  >
 						<MenuItem value="XS">XS</MenuItem>
 						<MenuItem value="S">S</MenuItem>
@@ -239,26 +282,25 @@ export const PresentacionAgregarProducto = () => {
 						value={generoProducto}
 						label="Genero"
 						onChange={eventoGenero}
+						error={generoProductoError}
 					  >
 						<MenuItem value="HOMBRE">HOMBRE</MenuItem>
 						<MenuItem value="MUJER">MUJER</MenuItem>
 					  </Select>
 				</FormControl>
-                <TextField onChange={eventoStock}  inputProps={{ inputMode: 'numeric', pattern: '[0-9]*' }}  type="number" label='Stock disponible'></TextField>
-                <TextField onChange={eventoPrecio} type="number" label='Precio'></TextField>
+                <TextField onChange={eventoStock}  error={stockProductoError} inputProps={{ inputMode: 'numeric', pattern: '[0-9]*' }}  type="number" label='Stock disponible'></TextField>
+                <TextField onChange={eventoPrecio} error={precioProductoError} type="number" label='Precio'></TextField>
+                <textarea onChange={eventoDescripcion} error={descripcionProductoError} name="" placeholder="Descripcion" className={classes.descripcion} ></textarea>
 				</Stack>
                 <div className={classes.imagen}>
                 <p className={classes.ruta}>Nombre de la imagen</p>
                 <Button color="primary"  variant="contained" className={classes.cargarImagen}>Cargar imagen</Button>
                 </div>
 
-               
-               
                 <Button onClick={addProduct} color="inherit" variant="contained" className={classes.agregarProducto}>Agregar producto</Button>
             </div>
             <div  className={classes.lateralDer}>
      
-                <textarea onChange={eventoDescripcion} name="" placeholder="Descripcion" className={classes.descripcion} ></textarea>
                 <img name="" className={classes.imagenProd} ></img>
                 
             </div>

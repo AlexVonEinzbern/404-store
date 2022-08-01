@@ -149,6 +149,12 @@ def obtenerClientesRegistrados():
     clientes_registrados = ClienteRegistrado.query.all()
     return clientes_registrados_schema.jsonify(clientes_registrados)
 
+@app.route('/eliminarProducto<name_producto>', methods=['DELETE'])
+def eliminarProducto(name_producto):
+    Producto.query.filter_by(name_producto=name_producto).delete()
+    db.session.commit()
+    return {'msg': 'Producto eliminado'}
+
 ##                      FUTUROS CAMBIOS
 ##================================================================
 

@@ -213,6 +213,8 @@ export const PresentacionEliminarProducto = () => {
 			return false 
 		}else{
 			axios.post(URI+"eliminarProducto/"+preprocessNombre(nombre_producto));
+			alert("Producto eliminado")
+			descartarProducto()
 		}
 
 	}

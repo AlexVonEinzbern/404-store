@@ -6,7 +6,7 @@ import axios from "axios";
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
-import Select, { SelectChangeEvent } from '@mui/material/Select';
+import Select from '@mui/material/Select';
 import Stack from '@mui/material/Stack';
 
 const URI = process.env.REACT_APP_URI;   
@@ -170,21 +170,21 @@ export const PresentacionAgregarProducto = () => {
 		setStockProductoError(false);
 		setPrecioProductoError(false);
 
-		if (nameProducto==''){
+		if (nameProducto===''){
 			setNameProductoError(true);
-		}if (generoProducto==''){
+		}if (generoProducto===''){
 			setGeneroProductoError(true);
-		}if(categoriaProducto==''){
+		}if(categoriaProducto===''){
 			setCategoriaProductoError(true);
-		}if(subcategoriaProducto==''){
+		}if(subcategoriaProducto===''){
 			setSubcategoriaProductoError(true);
-		}if (descripcionProducto==''){
+		}if (descripcionProducto===''){
 			setDescripcionProductoError(true);
-		}if(tallaProducto==''){
+		}if(tallaProducto===''){
 			setTallaProductoError(true);
-		}if(stockProducto=='' || !isNumeric(stockProducto)){
+		}if(stockProducto==='' || !isNumeric(stockProducto)){
 			setStockProductoError(true);
-		}if(precioProducto=='' || !isNumeric(precioProducto)){
+		}if(precioProducto==='' || !isNumeric(precioProducto)){
 			setPrecioProductoError(true);
 		} 
 
@@ -194,7 +194,7 @@ export const PresentacionAgregarProducto = () => {
 				headers : {"Access-Control-Allow-Origin":"*"}
 				};
 			
-			const respuesta= await axios.post(URI+"crearProducto",{
+			await axios.post(URI+"crearProducto",{
 				name_producto: nameProducto,
 				genero_producto: generoProducto,
 				categoria_producto: categoriaProducto,
@@ -207,8 +207,8 @@ export const PresentacionAgregarProducto = () => {
 				precio_producto: precioProducto,
 				url_imagen_producto: generarDireccion(generoProducto,categoriaProducto,subcategoriaProducto,nameProducto),
 				
-			 }, config);
-			alert("producto registrado");
+			 }, config).then(
+			alert("producto registrado"));
 		}
 
     } 

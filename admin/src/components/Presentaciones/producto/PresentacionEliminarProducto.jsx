@@ -131,7 +131,7 @@ const useStyles = makeStyles((theme) => ({ //estilos
 function preprocessNombre(nombre){
 	let nombre_aux="";
 	for (let x of nombre){
-		if (x==' ')
+		if (x===' ')
 			nombre_aux+="%20";
 		else
 			nombre_aux+=x
@@ -183,7 +183,7 @@ export const PresentacionEliminarProducto = () => {
 
 	}
 	const eliminarProducto=()=>{
-		if(nombre_producto==''){
+		if(nombre_producto===''){
 			alert("busque el producto que va a eliminar primero")
 			return false 
 		}else{

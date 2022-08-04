@@ -10,7 +10,7 @@ services:
     ports: 
       - "5432:5432"
     volumes: 
-      - db-data:/var/lib/postgresql/data
+      - db-data-test:/var/lib/postgresql/data
   
   cache:
     image: redis:7.0.2-alpine
@@ -44,6 +44,11 @@ services:
     command: npm start
   
 volumes: 
-  db-data:
+  db-data-test:
+    driver: local
+    driver_opts:
+      type: 'none'
+      o: 'bind'
+      device: 'home/alexander/github/404-store/volumes'
   cache:
     driver: local

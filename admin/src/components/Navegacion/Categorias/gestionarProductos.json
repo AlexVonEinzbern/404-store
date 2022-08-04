@@ -1,0 +1,20 @@
+
+[
+
+    {
+        "id":"Gestionar-productos",
+        "genero":"hombre",
+        "nombre":"Gestionar productos",
+        "categorias":[
+            "Agregar",
+            "Editar",
+            "Eliminar",
+            "Listar"
+
+        ]}
+    
+    
+
+]
+
+

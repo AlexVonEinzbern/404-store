@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { Login } from './components/Login';
 import { tema } from './styles/tema';
 import { ThemeProvider } from '@material-ui/core';
 const root = ReactDOM.createRoot(document.getElementById('root'));

@@ -1,0 +1,17 @@
+[
+
+    {
+        "id":"Gestionar-Reportes",
+        "genero":"mujer",
+        "nombre":"Gestionar reportes",
+        "categorias":[
+            "Agregar",
+            "Editar",
+            "Eliminar",
+            "Listar"
+            
+        ] 
+    }
+
+
+]

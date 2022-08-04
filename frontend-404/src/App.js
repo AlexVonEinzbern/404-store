@@ -1,15 +1,16 @@
 
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom"
-import { Body } from "./components/Body";
-import { Login, Registro } from "./components/Login";
-import Navegacion from './components/Navegacion'
-import { PresentacionCategoria, PresentacionGenero, PresentacionSubcategoria , PresentacionProducto} from "./components/Presentacion";
+import { Body } from "./components/Main/Body";
+import { Login, Registro } from "./components/Main/Login";
+
+import { PresentacionCategoria } from "./components/Presentaciones/PresentacionCategoria";
+import { PresentacionGenero } from "./components/Presentaciones/PresentacionGenero";
+import { PresentacionSubcategoria } from "./components/Presentaciones/PresentacionSubcategoria";
+import { PresentacionProducto } from "./components/Presentaciones/PresentacionProducto";
 import { Nada } from "./nada";
 import productosJson from "./components/ProductosJson.json"
 
-
-//import MenuCategorias from './components/MenuCategorias';
-
+import Navegacion from "./components/Navegacion/Navegacion";
 function App() {
 
  const links = productosJson
@@ -17,9 +18,9 @@ function App() {
   return (
     <div className="App">
 
-      
-      <Navegacion />
-     
+
+
+    <Navegacion></Navegacion>
       <Router>
 
         <Routes>
@@ -34,17 +35,9 @@ function App() {
 
             <Route path='hombre/ropaInterior' element={<PresentacionCategoria genero='HOMBRE' idCategoria='RopaInterior' />} />
               <Route path='hombre/ropainterior/pijamas' element={<PresentacionSubcategoria genero='HOMBRE' subCategoria='pijamas'/>} />
-              <Route path='hombre/ropainterior/boxers' element={<PresentacionSubcategoria genero='HOMBRE' subCategoria='boxers'/>} />
-              <Route path='hombre/ropainterior/camisetas' element={<PresentacionSubcategoria genero='HOMBRE' subCategoria='camisetas'/>} />
-              <Route path='hombre/ropainterior/medias' element={<PresentacionSubcategoria genero='HOMBRE' subCategoria='medias'/>} />
               
-            <Route path='hombre/ropaDeportiva' element={<PresentacionCategoria genero='HOMBRE' idCategoria='RopaDeportiva' />} />
-              <Route path='hombre/ropadeportiva/prendassuperiores' element={<PresentacionSubcategoria genero='HOMBRE' subCategoria='prendasSuperiores'/>} />
-              <Route path='hombre/ropadeportiva/prendasinferiores' element={<PresentacionSubcategoria genero='HOMBRE' subCategoria='prendasInferiores'/>} />
-              <Route path='hombre/ropadeportiva/accesorios' element={<PresentacionSubcategoria genero='HOMBRE' subCategoria='accesorios'/>} />
 
-
-            <Route path='hombre/accesorios' element={<PresentacionCategoria genero='HOMBRE' idCategoria='Accesorios' />} />
+              <Route path='hombre/accesorios' element={<PresentacionCategoria genero='HOMBRE' idCategoria='Accesorios' />} />
               <Route path='hombre/accesorios/billeteras' element={<PresentacionSubcategoria genero='HOMBRE' subCategoria='billeteras'/>} />
               <Route path='hombre/accesorios/correas' element={<PresentacionSubcategoria genero='HOMBRE' subCategoria='correas'/>} />
               <Route path='hombre/accesorios/gorras' element={<PresentacionSubcategoria genero='HOMBRE' subCategoria='gorras'/>} />
@@ -96,7 +89,9 @@ function App() {
 
         </Routes>
 
-      </Router>
+      </Router> 
+
+
 
     </div>
   );

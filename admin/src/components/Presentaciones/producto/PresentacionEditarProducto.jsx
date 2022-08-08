@@ -2,6 +2,13 @@
 import React from "react";
 import { makeStyles, Button, TextField, } from "@material-ui/core";
 import { BarraLateral } from "../BarraLateral.jsx";
+import { useFormik } from 'formik';
+import * as yup from 'yup';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
+import InputLabel from '@mui/material/InputLabel';
+
 
 const useStyles = makeStyles((theme) => ({
 
@@ -123,6 +130,49 @@ const useStyles = makeStyles((theme) => ({
 export const PresentacionEditarProducto = () => {
 
     const classes = useStyles()
+	const validationSchema = yup.object({
+	  nombre: yup
+		.string('Nombre del producto')
+		.required('Nombre es requerido'),
+	  categoria: yup
+		.string('Categoria')
+		.required('Categoria es requerida'),
+	  subcategoria: yup
+		.string('Sub categoria')
+		.required('Sub categoria es requerida'),
+	  talla: yup
+		.string('talla')
+		.required('talla es requerida'),
+	  genero: yup
+		.string('Genero')
+		.required('genero es requerido'),
+	  stock: yup
+		.number()
+		.required('stock es requerido'),
+	  precio: yup
+		.number()
+		.required('Precio es requerido'),
+	  descripcion: yup
+		.string('descripcion del producto')
+		.required('Descripcion es requerida')
+	});
+
+	const formik=useFormik({
+		initialValues:{
+			nombre:'',
+			categoria:'',
+			subcategoria:'',
+			talla:'',
+			genero: '' ,
+			stock:0,
+			precio:0,
+			descripcion:''
+		},
+		validationSchema:validationSchema,
+		onSubmit:(values)=>{
+			
+		}
+	})
 
     return (
 
@@ -146,17 +196,94 @@ export const PresentacionEditarProducto = () => {
                         </div>
                     </div>
 
+					<form onSubmit={formik.handleSubmit}>
+						<TextField label='Nombre'
+									name='nombre'
+									id='nombre'
+		 							value={formik.values.nombre}
+									onChange={formik.handleChange}
+									error={formik.touched.nombre && Boolean(formik.errors.nombre)}
+									helperText={formik.touched.nombre && formik.errors.nombre}></TextField>
+						<TextField label='Categoria'
+									name='categoria'
+									id='categoria'
+									value={formik.values.categoria}
+									onChange={formik.handleChange}
+									error={formik.touched.categoria && Boolean(formik.errors.categoria)}
+									helperText={formik.touched.categoria && formik.errors.categoria}></TextField>
+			
+						<TextField label='Sub categoria'
+									name='subcategoria'
+									id='subcategoria'
+									value={formik.values.subcategoria}
+									onChange={formik.handleChange}
+									error={formik.touched.subcategoria && Boolean(formik.errors.subcategoria)}
+									helperText={formik.touched.subcategoria && formik.errors.subcategoria}></TextField>
+						<FormControl fullWidth>
+							<InputLabel id="label_talla"> Talla</InputLabel>
+							  <Select
+								name="talla"
+								id="talla"
+								labelId="label_talla"
+								value={formik.values.talla}
+								label="Talla"
+								onChange={formik.handleChange}
+								error={formik.touched.talla && Boolean(formik.errors.talla)}
+								helperText={formik.touched.talla && formik.errors.talla}
+							  >
+								<MenuItem value="XS">XS</MenuItem>
+								<MenuItem value="S">S</MenuItem>
+								<MenuItem value="M">M</MenuItem>
+								<MenuItem value="L">L</MenuItem>
+								<MenuItem value="XL">XL</MenuItem>
+							  </Select>
+						</FormControl>
 
+	
+						<FormControl fullWidth>
+							<InputLabel id="genero_label"> Genero</InputLabel>
+							  <Select
+								name="genero"
+								id="genero"
+								labelId="genero_label"
+								value={formik.values.genero}
+								label="Genero"
+								onChange={formik.handleChange}
+								error={formik.touched.genero && Boolean(formik.errors.genero)}
+								helperText={formik.touched.genero && formik.errors.genero}
+							  >
+								<MenuItem value="HOMBRE">HOMBRE</MenuItem>
+								<MenuItem value="MUJER">MUJER</MenuItem>
+							  </Select>
+						</FormControl>
+						<TextField label='Stock disponible'
+									name="stock"
+									id="stock"
+									type='number'
+									value={formik.values.stock}
+									onChange={formik.handleChange}
+									error={formik.touched.stock && Boolean(formik.errors.stock)}
+									helperText={formik.touched.stock && formik.errors.stock}></TextField>
+						<TextField label='Precio'
+									type='number'
+									name="precio"
+									id="precio"
+									value={formik.values.precio}
+									onChange={formik.handleChange}
+									error={formik.touched.precio && Boolean(formik.errors.precio)}
+									helperText={formik.touched.precio && formik.errors.precio}></TextField>
 
-
-                    <TextField label='Nombre'></TextField>
-                    <TextField label='Categoria'></TextField>
-                    <TextField label='Sub categoria'></TextField>
-                    <TextField label='Talla'></TextField>
-                    <TextField label='Genero'></TextField>
-                    <TextField label='Stock disponible'></TextField>
-                    <TextField label='Precio'></TextField>
-                    <TextField label='Direccion de la imagen'></TextField>
+						<textarea 
+								  error={formik.touched.descripcion && Boolean(formik.errors.descripcion)}
+		                          name="descripcion" 
+								  id="descripcion"
+								  value={formik.values.descripcion}	
+								  onChange={formik.handleChange}
+								  helperText={formik.touched.descripcion && formik.errors.descripcion}	
+		                          placeholder="Descripcion"  
+		                          className={classes.descripcion} ></textarea>
+						<Button type='submit' color='primary'> editar producto</Button>
+					</form>
 
                     <div className={classes.imagen}>
                         <p className={classes.ruta}>Nombre de la imagen</p>

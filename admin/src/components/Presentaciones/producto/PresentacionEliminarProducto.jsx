@@ -1,14 +1,13 @@
 
 import React, {useEffect} from "react";
-import { makeStyles, Button, TextField, } from "@material-ui/core";
+import { makeStyles, Button } from "@material-ui/core";
 import { BarraLateral } from "../BarraLateral.jsx";
 import axios from "axios"; 
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
-import ListItemButton from '@mui/material/ListItemButton';
-import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import ListSubheader from '@mui/material/ListSubheader';
+
 
 
 const URI = process.env.REACT_APP_URI;  // se conecta con el backend 
@@ -132,29 +131,13 @@ const useStyles = makeStyles((theme) => ({ //estilos
 function preprocessNombre(nombre){
 	let nombre_aux="";
 	for (let x of nombre){
-		if (x==' ')
+		if (x===' ')
 			nombre_aux+="%20";
 		else
 			nombre_aux+=x
 	}
 	return nombre_aux; 	
 }
-
-//traer producto a eliminar 
-/*function traerproductoaEliminar(nombre){
-	const config={
-				headers : {"Access-Control-Allow-Origin":"*"}
-				};
-	let aux;	
-	axios.get(URI+"obtenerProducto/"+preprocessNombre(nombre)).then(function(response){
-		console.log(response.data)
-		 aux=response.data;
-	});
-	console.log(aux)
-	return aux;
-
-}*/
-
 
 
 export const PresentacionEliminarProducto = () => {
@@ -170,30 +153,21 @@ export const PresentacionEliminarProducto = () => {
 	const [stock_producto, setStockProducto]=React.useState('')
 	const [precio_producto, setPrecioProducto]=React.useState('')
 	const [descripcion_producto,setDescripcionProducto]=React.useState('')
-
-	const [producto,setProducto] =React.useState({})//respuesta del servidor 
-
-
-	const actualizarCamposInfoProducto=()=>{ //actualiza la información del producto a eliminar 
+	const [imagen_producto,setImagenproducto]=React.useState(require('../../../img/producto.jpg'))
 
 
-		axios.get(URI+"obtenerProducto/"+preprocessNombre(busqueda)).then(function(response){
-			 setProducto(()=>(response.data));
-		});
-		setNombreProducto(()=>(producto["name_producto"]));
-		setCategoriaProducto(()=>(producto["categoria_producto"]))
-		setSubCategoriaProducto(()=>(producto["subcategoria_producto"]))
-		setTallaProducto(()=>(producto["talla_producto"]))
-		setGeneroProducto(()=>(producto["genero_producto"]))
-		setStockProducto(()=>(producto["stock_producto"]))
-		setPrecioProducto(()=>(producto["precio_producto"]))
-		setDescripcionProducto(()=>(producto["descripcion_producto"]))
-
-
-		console.log(producto);
-		console.log(nombre_producto);
-		console.log(categoria_producto);
-		console.log(subcategoria_producto);
+	const actualizarCamposInfoProducto= async()=>{ //actualiza la información del producto a eliminar 
+		const {data:info} = await axios.get(URI+"obtenerProducto/"+preprocessNombre(busqueda))
+		setNombreProducto(info["name_producto"]);
+		setCategoriaProducto(info["categoria_producto"])
+		setSubCategoriaProducto(info["subcategoria_producto"])
+		setTallaProducto(info["talla_producto"])
+		setGeneroProducto(info["genero_producto"])
+		setStockProducto(info["stock_producto"])
+		setPrecioProducto(info["precio_producto"])
+		setDescripcionProducto(info["descripcion_producto"])
+		setImagenproducto(require('../../../img/Product-images'+info['url_imagen_producto']))
+		console.log(info)
 	}
 	const descartarProducto=()=>{ //descarta el producto traido
 
@@ -205,17 +179,21 @@ export const PresentacionEliminarProducto = () => {
 		setStockProducto(()=>(''))
 		setPrecioProducto(()=>(''))
 		setDescripcionProducto(()=>(''))
+		setImagenproducto(require('../../../img/producto.jpg'))
 
 	}
 	const eliminarProducto=()=>{
-		if(nombre_producto==''){
+		if(nombre_producto===''){
 			alert("busque el producto que va a eliminar primero")
 			return false 
 		}else{
 			axios.post(URI+"eliminarProducto/"+preprocessNombre(nombre_producto));
+			alert("Producto eliminado")
+			descartarProducto()
 		}
-
 	}
+
+	useEffect(()=>{} ,[nombre_producto,categoria_producto])
 
     return (
 
@@ -235,7 +213,7 @@ export const PresentacionEliminarProducto = () => {
                         <p className={classes.titulo}>Eliminar Producto</p>
                         <div className={classes.buscar}>
                             <textarea className={classes.barraBusqueda} onChange={(e)=>{setBusqueda(e.target.value)}} name="" id="" cols="30" ></textarea>
-                            <Button  onClick={actualizarCamposInfoProducto} > Buscar  </Button>
+                            <Button  onClick={()=>actualizarCamposInfoProducto()} > Buscar  </Button>
                         </div>
                     </div>
 
@@ -273,9 +251,8 @@ export const PresentacionEliminarProducto = () => {
 						<ListItem disablePadding>
 							<ListItemText primary="Descripcion del producto" secondary={descripcion_producto}/>
 						</ListItem>
-
+					
 					</List>
-
 					<div className={classes.botones}>
 
                         <Button color="inherit" variant="contained" onClick={descartarProducto} className={classes.Descartar}>Descartar</Button>
@@ -283,16 +260,9 @@ export const PresentacionEliminarProducto = () => {
                     </div>
 
                 </div>
-
-
-
-                <div className={classes.lateralDer}>
-
-                    <img name="" className={classes.descripcion} ></img>
-
-                </div>
-
-
+						<div className={classes.lateralDer}>
+							<img className={classes.descripcion}  src={imagen_producto}></img>
+						</div>
             </div>
 
         </div>

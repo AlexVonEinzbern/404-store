@@ -26,8 +26,6 @@ services:
       dockerfile: backend-404/Dockerfile
     env_file:
       - backend-404/.env
-    # depends_on:
-    #   - db
     ports:
       - "5000:5000"
 
@@ -46,6 +44,8 @@ services:
   admin_service:
     container_name: "admin-404"
     build: ./admin
+    depends_on:
+      - frontend
     ports:
       - 3001:3000
     stdin_open: true

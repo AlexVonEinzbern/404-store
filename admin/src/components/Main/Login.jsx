@@ -87,13 +87,13 @@ const useStyle = makeStyles((theme) => ({
                 <TextField 
                     id="standard-basic" 
                     label="Usuario"
-                    onChange = {username => setUsername_cliente_registrado(username.target.value)}
+                    onChange = {e => setUsername_cliente_registrado(e.target.value)}
                 />
                 <TextField 
                     id="standard-basic" 
                     label="Contraseña"
                     type="password"
-                    onChange = {username => setPassword_cliente_registrado(password.target.value)}
+                    onChange = {e => setPassword_cliente_registrado(e.target.value)}
                 />
 
                 <Button 

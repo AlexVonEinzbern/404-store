@@ -71,7 +71,7 @@ export default function Navegacion() {
     setShowMenu(false)
   }
 
-  const productosCarrito = { productosEnCarrito: 0 }
+  const productosCarrito = { productosEnCarrito: 2 }
 
   return (
     <ThemeProvider theme={tema}>

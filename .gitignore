@@ -13,6 +13,9 @@ data.json
 /node_modules
 node_modules/
 
+#Config files
+pyrightconfig.json
+
 # C extensions
 *.so
 

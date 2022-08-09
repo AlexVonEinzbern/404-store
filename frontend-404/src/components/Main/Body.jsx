@@ -12,7 +12,7 @@ import {PresentacionCategoria} from "../Presentaciones/PresentacionCategoria.jsx
 import {PresentacionSubcategoria} from "../Presentaciones/PresentacionSubcategoria.jsx"
 import {PresentacionProducto} from "../Presentaciones/PresentacionProducto.jsx"
 import { Nada } from "./nada.jsx";
-import productosJson from "../ProductosJson.json"
+//import productosJson from "../ProductosJson.json"
 
 
 const useStyle = makeStyles((theme) => ({

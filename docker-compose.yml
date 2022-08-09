@@ -29,29 +29,29 @@ services:
     ports:
       - "5000:5000"
 
-  frontend:
-    container_name: "frontend-404"
-    build: ./frontend-404
-    # volumes:
-    #   - ./product-images:/usr/src/app/product-images
-    ports:
-      - 3000:3000
-    stdin_open: true
-    environment:
-      - CHOKIDAR_USEPOLLING=true
-    command: npm start
+  # frontend:
+  #   container_name: "frontend-404"
+  #   build: ./frontend-404
+  #   # volumes:
+  #   #   - ./product-images:/usr/src/app/product-images
+  #   ports:
+  #     - 3000:3000
+  #   stdin_open: true
+  #   environment:
+  #     - CHOKIDAR_USEPOLLING=true
+  #   command: npm start
   
-  admin_service:
-    container_name: "admin-404"
-    build: ./admin
-    depends_on:
-      - frontend
-    ports:
-      - 3001:3000
-    stdin_open: true
-    environment:
-      - CHOKIDAR_USEPOLLING=true
-    command: npm start
+  # admin_service:
+  #   container_name: "admin-404"
+  #   build: ./admin
+  #   depends_on:
+  #     - frontend
+  #   ports:
+  #     - 3001:3000
+  #   stdin_open: true
+  #   environment:
+  #     - CHOKIDAR_USEPOLLING=true
+  #   command: npm start
 
 volumes: 
   db-data-test:

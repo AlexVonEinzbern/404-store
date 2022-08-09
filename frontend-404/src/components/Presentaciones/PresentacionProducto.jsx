@@ -7,9 +7,7 @@ import { IconButton } from "@material-ui/core";
 import { Button } from "@material-ui/core";
 
 import { makeStyles } from "@material-ui/styles";
-
-
-import productosJson from '../ProductosJson.json'
+import { useCart } from "react-use-cart";
 
 
 
@@ -64,7 +62,8 @@ const useStyles3 = makeStyles((theme) => ({
 
     subcategoria: {
         fontSize: '16px',
-        color: 'rgba(0,0,0,0.6)'
+        color: 'rgba(0,0,0,0.6)',
+        textTransform:'lowercase'
     },
 
     tallas: {
@@ -114,6 +113,7 @@ const useStyles3 = makeStyles((theme) => ({
 export const PresentacionProducto = (props) => {
 
 
+    const {addItem,totalItems,items,totalUniqueItems,emptyCart }=useCart()
     const classes = useStyles3()
 
     return (
@@ -124,13 +124,13 @@ export const PresentacionProducto = (props) => {
 
                 
                 <div className={classes.imgTarProdMins}>
-                    <img src={require(`../../img/Product-images${productosJson[props.id - 1].img_path}`)} className={classes.imgTarProdMin} alt='hey' />
-                    <img src={require(`../../img/Product-images${productosJson[props.id - 1].img_path}`)} className={classes.imgTarProdMin} alt='hey' />
-                    <img src={require(`../../img/Product-images${productosJson[props.id - 1].img_path}`)} className={classes.imgTarProdMin} alt='hey' />
+                    <img src={require(`../../img/Product-images${props.producto.img_path}`)} className={classes.imgTarProdMin} alt='hey' />
+                    <img src={require(`../../img/Product-images${props.producto.img_path}`)} className={classes.imgTarProdMin} alt='hey' />
+                    <img src={require(`../../img/Product-images${props.producto.img_path}`)} className={classes.imgTarProdMin} alt='hey' />
                 </div>
 
                 <div className={classes.imgTarProd}>
-                    <img src={require(`../../img/Product-images${productosJson[props.id - 1].img_path}`)} className={classes.imgTar}  alt='hey' />
+                    <img src={require(`../../img/Product-images${props.producto.img_path}`)} className={classes.imgTar}  alt='hey' />
                 </div>
 
             </div>
@@ -139,15 +139,15 @@ export const PresentacionProducto = (props) => {
 
                 <div className={classes.info}>
                     <p className={classes.nombre}>
-                        nombre aqui deberia ir el nombre del productod
+                    {props.producto.name_producto}
                     </p>
 
                     <p className={classes.subcategoria}>
-                        subcategoria - genero
+                        {props.producto.subcategoria_producto} para {props.producto.genero_producto}
                     </p>
 
                     <p className={classes.precio}>
-                        $35.000
+                        ${props.producto.precio_producto}
                     </p>
 
                     <p>
@@ -173,7 +173,20 @@ export const PresentacionProducto = (props) => {
 
                 </div>
 
-                <Button className={classes.btnCarrito}>
+                <Button className={classes.btnCarrito}  onClick={()=>{ 
+                    
+                    const productoAEnviar=props.producto
+                    productoAEnviar.id=props.producto.id_producto
+                    productoAEnviar.price=props.producto.precio_producto
+
+                    addItem(productoAEnviar)
+                    console.log(totalItems)
+                    console.log(items)
+
+
+                    
+                    
+                    }}>
                     añadir al carrito
                 </Button>
 
@@ -189,10 +202,7 @@ export const PresentacionProducto = (props) => {
                         </p>
 
                         <p>         
-                            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quisquam nemo, accusantium facilis non debitis assumenda quis repellat esse suscipit impedit ducimus, eum aspernatur ipsum soluta at quaerat modi voluptatum? Quasi!
-                            Accusantium cumque illo sapiente sunt! Beatae amet soluta vero totam delectus. Facere, voluptatem maxime libero aperiam sed iste corporis totam doloremque placeat nam dolorem non rem laborum labore optio soluta!
-                            Autem laboriosam, voluptate eum, corporis doloribus quidem qui ut cumque, saepe id odio minima amet totam atque quae veritatis provident dicta expedita officia hic. Deleniti itaque aut unde maiores veritatis?
-
+                            {props.producto.descripcion_producto}
                         </p>
                     </div>
 

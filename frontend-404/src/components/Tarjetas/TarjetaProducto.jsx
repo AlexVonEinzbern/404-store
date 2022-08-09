@@ -86,17 +86,17 @@ export const TarjetaProducto = (props) => {
 
             
                 <div className={classes.contImg}>
-                    <img src={require(`../../img/Product-images${props.urlImg}`)} className={classes.imgTarProd} alt='hey' />
+                    <img src={require(`../../img/Product-images${props.producto.img_path}`)} className={classes.imgTarProd} alt='hey' />
                 </div>
            
             <div className={classes.contTexeProd}>
 
                 <div className={classes.txtProd}>
-                    <div variant="h4" color="initial" className={classes.nombre}>  {props.nombre}  </div>
-                    <div variant="h4" color="initial" className={classes.categoria}> {props.categoria}</div>
+                    <div variant="h4" color="initial" className={classes.nombre}>  {props.producto.name_producto}  </div>
+                    <div variant="h4" color="initial" className={classes.categoria}> {props.producto.subcategoria_producto + ' para ' + props.producto.genero_producto}</div>
                 </div>
 
-                <div variant="h4" color="initial" className={classes.txtProd}> {props.precio}</div>
+                <div variant="h4" color="initial" className={classes.txtProd}> {props.producto.precio_producto}</div>
 
             </div>
 

@@ -19,10 +19,11 @@ import { MenuDesplagable } from './MenuDesplegable';
 
 import { BotonesNavegacion } from './botonesDeNavegacion';
 import { todasLasCategorias } from './Categorias/todasLasCategorias';
-
+import { useCart } from 'react-use-cart';
 const URI = process.env.REACT_APP_URI;        //Se conecta con el backend
 
 export default function Navegacion() {
+  const {totalItems}=useCart()
   //tema
   const classes = useStyles();
   //guarda el estado del menu
@@ -169,8 +170,11 @@ export default function Navegacion() {
               aria-label="account of current user"
               aria-haspopup="true"
               color="inherit">
-              <Badge badgeContent={0} color='secondary' overlap='rectangular' >
-                <LocalMallOutlined />
+              <Badge badgeContent={totalItems} color='secondary' overlap='rectangular' >
+                
+                <a href="/carrito" className={classes.a}>
+                      <LocalMallOutlined />
+                </a>
               </Badge>
             </IconButton>
           </div>

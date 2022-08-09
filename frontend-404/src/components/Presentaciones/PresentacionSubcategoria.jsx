@@ -60,14 +60,10 @@ export const PresentacionSubcategoria = (props) => {
                         return (
 
                             <Grid item md={3} key={producto.id_producto}>
-
                                 <a href={`/${producto.genero_producto}/${producto.categoria_producto}/${producto.subcategoria_producto}/producto-${producto.id_producto}`} className={classes.a} >
                                     <TarjetaProducto
-                                        nombre={producto.name_producto}
-                                        precio={producto.precio_producto}
-                                        categoria={producto.subcategoria_producto + ' para ' + producto.genero_producto}
                                         key={producto.id_producto}
-                                        urlImg={producto.img_path}
+                                        producto={producto}
                                     ></TarjetaProducto>
                                 </a>
                             </Grid>

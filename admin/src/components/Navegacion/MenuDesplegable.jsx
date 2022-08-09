@@ -46,6 +46,7 @@ const useStyles = makeStyles(() => ({
 
 }));
 
+
 export const MenuDesplagable = (props) => {
 
     const [visible, SetVisible] = useState(true)
@@ -83,7 +84,7 @@ export const MenuDesplagable = (props) => {
 
 
 
-                                <ButtonGroup variant="outlined" color="default" size="small" aria-label="" orientation='horizontal' >
+                                <ButtonGroup key={btn.id} variant="outlined" color="default" size="small" aria-label="" orientation='horizontal' >
                                     {
                                         getSubcategorias(btn)
                                     }

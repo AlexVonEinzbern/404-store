@@ -191,7 +191,7 @@ export const PresentacionAgregarProducto = () => {
             console.log(reader.result)
             localStorage.setItem('recent-image', reader.result)
             setImagen(localStorage.getItem('recent-image'))
-            console.log(imagenImg.url)
+            console.log(localStorage.getItem('recent-image'))
         })
 
 

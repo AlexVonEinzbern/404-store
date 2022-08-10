@@ -57,7 +57,7 @@ function App() {
 						<Route path='mujer/ropainterior/panties' element={<PresentacionSubcategoria genero='MUJER' subCategoria='panties' />} />
 						<Route path='mujer/ropainterior/tops' element={<PresentacionSubcategoria genero='MUJER' subCategoria='tops' />} />
 						<Route path='mujer/ropainterior/medias' element={<PresentacionSubcategoria genero='MUJER' subCategoria='medias' />} />
-
+z
 						<Route path='mujer/ropaDeportiva' element={<PresentacionCategoria genero='MUJER' idCategoria='RopaDeportiva' />} />
 						<Route path='mujer/ropadeportiva/prendassuperiores' element={<PresentacionSubcategoria genero='MUJER' subCategoria='prendasSuperiores' />} />
 						<Route path='mujer/ropadeportiva/prendasinferiores' element={<PresentacionSubcategoria genero='MUJER' subCategoria='prendasInferiores' />} />
@@ -65,10 +65,10 @@ function App() {
 
 
 						<Route path='mujer/accesorios' element={<PresentacionCategoria genero='MUJER' idCategoria='Accesorios' />} />
-						<Route path='mujer/accesorios/bisuteria' element={<PresentacionSubcategoria genero='MUJER' subCategoria='billeteras' />} />
-						<Route path='mujer/accesorios/correas' element={<PresentacionSubcategoria genero='MUJER' subCategoria='correas' />} />
-						<Route path='mujer/accesorios/bolsos' element={<PresentacionSubcategoria genero='MUJER' subCategoria='gorras' />} />
-
+							<Route path='mujer/accesorios/bisuteria' element={<PresentacionSubcategoria genero='MUJER' subCategoria='billeteras' />} />
+							<Route path='mujer/accesorios/correas' element={<PresentacionSubcategoria genero='MUJER' subCategoria='correas' />} />
+							<Route path='mujer/accesorios/bolsos' element={<PresentacionSubcategoria genero='MUJER' subCategoria='gorras' />} />
+			
 						<Route path="login" element={<Login />} />
 						<Route path="registro" element={<Registro />} />
 

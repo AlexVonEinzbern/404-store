@@ -14,7 +14,6 @@ import productosJson from '../ProductosJson.json'
 const useStyles = makeStyles((theme) => ({
     cont: {
         margin: '144px 48px'
-
     },
     a:{
         color:'black',
@@ -22,14 +21,8 @@ const useStyles = makeStyles((theme) => ({
         '&:visited':{
           color:'black',
         textDecoration:'none',
-        
-    
       }
-    
-      
-    
     },
-    
 }))
 
 

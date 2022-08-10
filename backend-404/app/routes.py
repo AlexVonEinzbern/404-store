@@ -18,7 +18,6 @@ def crearProducto():
     stock_vendido_producto    = request.json['stock_vendido_producto']
     precio_producto           = request.json['precio_producto']
     url_imagen_producto       = request.json['url_imagen_producto']
-    imagen_payload            = request.json['imagen_payload']
 
     new_producto = Producto(
         name_producto             = name_producto, 
@@ -31,8 +30,7 @@ def crearProducto():
         stock_producto            = stock_producto,
         stock_vendido_producto    = stock_vendido_producto,
         precio_producto           = precio_producto,
-        url_imagen_producto       = url_imagen_producto,
-        imagen_payload            = imagen_payload
+        url_imagen_producto       = url_imagen_producto
         )
 
     db.session.add(new_producto)
@@ -53,8 +51,7 @@ def actualizarProducto(name_producto):
         'calificacion_producto': producto_editar.calificacion_producto,
         'stock_producto':        request.json['stock_producto'],
         'precio_producto':       request.json['precio_producto'],
-        'url_imagen_producto':   producto_editar.url_imagen_producto,
-        'imagen_payload':        producto_editar.imagen_payload
+        'url_imagen_producto':   producto_editar.url_imagen_producto
         })
     db.session.commit()
     return {'msg': 'Producto actualizado'}

@@ -156,6 +156,18 @@ def eliminarProducto(name_producto):
     db.session.commit()
     return {'msg': 'Producto eliminado'}
 
+
+@app.route('/obtenerProductoGenero/<genero_producto>', methods=['GET'])
+def obtenerProductoGenero(genero_producto):
+    productos = Producto.query.filter_by(genero_producto=genero_producto)
+    return productos_schema.jsonify(productos)
+
+@app.route('/obtenerProductoCategoria/<categoria_producto>', methods=['GET'])
+def obtenerProductoCategoria(categoria_producto):
+    productos = Producto.query.filter_by(categoria_producto=categoria_producto)
+    return productos_schema.jsonify(productos)
+
+
 ##                      FUTUROS CAMBIOS
 ##================================================================
 

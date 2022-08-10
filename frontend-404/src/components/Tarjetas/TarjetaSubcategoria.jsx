@@ -53,18 +53,11 @@ const useStyle = makeStyles((theme) => ({
         textDecoration:'none',
         '&:visited':{
           color:'black',
-        textDecoration:'none',
-        
-    
-      }
-    
-      
-    
+        textDecoration:'none',  
+      }   
     },
     
 }))
-
-
 
 export const TarjetaSubcategoria = (props) => {
 

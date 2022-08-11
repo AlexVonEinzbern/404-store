@@ -86,7 +86,7 @@ export const TarjetaProducto = (props) => {
 
             
                 <div className={classes.contImg}>
-                    <img src={require(`../../img/Product-images${props.producto.img_path}`)} className={classes.imgTarProd} alt='hey' />
+                    <img src={require(`../../img/Product-images/HOMBRE/ropaExterior/camisetas/hombre-ropaExterior-camiseta1-color1.jpg`)} className={classes.imgTarProd} alt='hey' />
                 </div>
            
             <div className={classes.contTexeProd}>

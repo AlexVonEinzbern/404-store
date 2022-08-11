@@ -2,19 +2,24 @@ import { useState, useEffect } from 'react';
 
 const URI = process.env.REACT_APP_URI;        //Se conecta con el backend
 
-export const ProductosJson = () => {
+const ProductosJson = () => {
 
-	const [productos, setProductos] = useState([]);
+	const productos=[]
+	
 
 	const nameProductos = async () => {
 		const res = await fetch(`${URI}obtenerProductos`);
 		const data = await res.json();
-		setProductos(data);
+		productos = data
 	}
+	nameProductos();
+	console.log(productos);
+	return (
+		 productos
+	)
 
-	useEffect(() => {
-		nameProductos();
-	}, [])
-
-	return productos
 }
+
+const productos=ProductosJson()
+
+export {ProductosJson,productos}

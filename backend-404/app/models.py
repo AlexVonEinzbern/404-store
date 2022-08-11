@@ -83,7 +83,7 @@ class Producto(db.Model):
     stock_producto            = db.Column(db.Integer, nullable=False)
     stock_vendido_producto    = db.Column(db.Integer, nullable=False)
     precio_producto           = db.Column(db.Float, nullable=False)
-    url_imagen_producto       = db.Column(db.String(200), unique=True, nullable=False)
+    ##url_imagen_producto       = db.Column(db.String(200), unique=True, nullable=False)
     imagen_producto_blob      = db.Column(db.LargeBinary, nullable=False)
 
     #productoimagen  = db.relationship('ProductoImagen')
@@ -102,7 +102,7 @@ class ProductoSchema(ma.Schema):
         fields = ('id_producto', 'name_producto', 'genero_producto', 'categoria_producto', 
             'subcategoria_producto', 'descripcion_producto', 'talla_producto', 
             'calificacion_producto', 'stock_producto', 'stock_vendido_producto', 'precio_producto',
-            'url_imagen_producto', 'imagen_producto_blob',)
+            'imagen_producto_blob',)
 
 # class ProductoImagen(db.Model):
 #     """docstring for ProductoImagen"""

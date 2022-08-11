@@ -8,14 +8,14 @@ import { PresentacionGenero } from "./components/Presentaciones/PresentacionGene
 import { PresentacionSubcategoria } from "./components/Presentaciones/PresentacionSubcategoria";
 import { PresentacionProducto } from "./components/Presentaciones/PresentacionProducto";
 import { Nada } from "./nada";
-import { ProductosJson } from './components/productosJson'
+import { ProductosJson ,productos} from './components/productosJson'
 import { CartProvider } from "react-use-cart";
 import Navegacion from "./components/Navegacion/Navegacion";
 import PresentacionCarrito from "./components/Presentaciones/presentacionCarrito";
 
 function App() {
 
-	const links = ProductosJson
+	// const links = ProductosJson
 
 	return (
 		<div className="App">
@@ -78,7 +78,7 @@ function App() {
 		<Route path="carrito" element={<PresentacionCarrito />}></Route>
 
 		{
-			ProductosJson.map((producto) => {
+			productos.map((producto) => {
 
 				return (
 				<Route path={`${producto.genero_producto}/${producto.categoria_producto}/${producto.subcategoria_producto}/producto-${producto.id_producto}`}
@@ -86,17 +86,14 @@ function App() {
 
 				</Route>
 				)
-
 			})
-
 		}
+
+	
 
 		</Routes>
 
 		</Router>
-
-
-
 		</CartProvider>
 
 

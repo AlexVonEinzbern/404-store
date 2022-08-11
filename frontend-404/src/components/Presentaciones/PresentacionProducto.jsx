@@ -124,13 +124,13 @@ export const PresentacionProducto = (props) => {
 
                 
                 <div className={classes.imgTarProdMins}>
-                    <img src={require(`../../img/Product-images${props.producto.img_path}`)} className={classes.imgTarProdMin} alt='hey' />
-                    <img src={require(`../../img/Product-images${props.producto.img_path}`)} className={classes.imgTarProdMin} alt='hey' />
-                    <img src={require(`../../img/Product-images${props.producto.img_path}`)} className={classes.imgTarProdMin} alt='hey' />
+                    <img src={require('../../img/Product-images/HOMBRE/ropaExterior/camisetas/hombre-ropaExterior-camiseta1-color1.jpg')} className={classes.imgTarProdMin} alt='hey' />
+                    <img src={require('../../img/Product-images/HOMBRE/ropaExterior/camisetas/hombre-ropaExterior-camiseta1-color1.jpg')} className={classes.imgTarProdMin} alt='hey' />
+                    <img src={require('../../img/Product-images/HOMBRE/ropaExterior/camisetas/hombre-ropaExterior-camiseta1-color1.jpg')} className={classes.imgTarProdMin} alt='hey' />
                 </div>
 
                 <div className={classes.imgTarProd}>
-                    <img src={require(`../../img/Product-images${props.producto.img_path}`)} className={classes.imgTar}  alt='hey' />
+                    <img src={require('../../img/Product-images/HOMBRE/ropaExterior/camisetas/hombre-ropaExterior-camiseta1-color1.jpg')} className={classes.imgTar}  alt='hey' />
                 </div>
 
             </div>

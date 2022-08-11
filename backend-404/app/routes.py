@@ -33,7 +33,7 @@ def crearProducto():
         stock_producto            = stock_producto,
         stock_vendido_producto    = stock_vendido_producto,
         precio_producto           = precio_producto,
-        url_imagen_producto       = url_imagen_producto,
+        #url_imagen_producto       = url_imagen_producto,
         imagen_producto_blob      = imagen_producto_blob
         )
 
@@ -55,7 +55,7 @@ def actualizarProducto(name_producto):
         'calificacion_producto': producto_editar.calificacion_producto,
         'stock_producto':        request.json['stock_producto'],
         'precio_producto':       request.json['precio_producto'],
-        'url_imagen_producto':   producto_editar.url_imagen_producto,
+        ##'url_imagen_producto':   producto_editar.url_imagen_producto,
         'imagen_producto_blob':  producto_editar.imagen_producto_blob
         })
     db.session.commit()

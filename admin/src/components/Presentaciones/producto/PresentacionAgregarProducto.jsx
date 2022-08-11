@@ -267,6 +267,7 @@ export const PresentacionAgregarProducto = () => {
                 stock_producto: stockProducto,
                 stock_vendido_producto: 0,
                 precio_producto: precioProducto,
+				imagen_producto_blob: "asdsadsasda", 
                 url_imagen_producto: generarDireccion(generoProducto, categoriaProducto, subcategoriaProducto, nameProducto),
 
             }, config).then(

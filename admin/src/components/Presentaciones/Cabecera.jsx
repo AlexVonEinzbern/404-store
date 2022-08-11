@@ -4,6 +4,12 @@ import React from "react";
 import { makeStyles,Button } from "@material-ui/core";
 import { margin } from "@mui/system";
 import { useState } from "react";
+import { ItemProducto } from "./producto/ItemProducto";
+import axios from "axios"; 
+import categorias from "./categorias.json"
+
+
+const URI = process.env.REACT_APP_URI;  // se conecta con el backend 
 
 const useStyles = makeStyles((theme) => ({
 
@@ -104,9 +110,21 @@ const useStyles = makeStyles((theme) => ({
     }
 }))
 
-export const Cabecera = (props) => {
 
-    
+export const Cabecera = () => {
+	const [productosJson,setProductosJson]=React.useState([])//productos filtrados
+
+	const [filtroGenero, setFiltroGenero]=React.useState("%")
+	const [filtroClase, setFiltroClase]=React.useState("%")
+	const [filtroSubClase,setFiltroSubclase]=React.useState("%")
+	const [filtroTalla,setFiltroTalla]=React.useState("%")
+
+
+	const productosFiltrados=async ()=>{
+		const {data:info} =await axios.get(URI+filtroGenero+"/"+filtroClase+"/"+filtroSubClase+"/"+filtroTalla)
+		console.log(info)
+		setProductosJson(info)
+	}
     const classes = useStyles();
     return (
 
@@ -116,31 +134,63 @@ export const Cabecera = (props) => {
 
                 <div className={classes.opciones}>
 
-                <select name="" id="" className={classes.opcion}>
-                        <option value="">Genero</option>
-                        <option value="">Hombre</option>
-                        <option value="">Mujer</option>
+                <select 
+		                name={filtroGenero} 
+		                id="" 
+		                className={classes.opcion}
+		                value={filtroGenero}
+		                onChange={(e)=>{setFiltroGenero(e.target.value)}}>
+                        <option value="%">Genero</option>
+                        <option value="HOMBRE">Hombre</option>
+                        <option value="MUJER">Mujer</option>
                     </select>
-                    <select name="" id="" className={classes.opcion}>
-                        <option value="">Categoria</option>
-                        <option value="">Editar</option>
-                        <option value="">Eliminar</option>
+                    <select name=""
+		                    id="" 
+							className={classes.opcion}
+		                    value={filtroClase}
+							onChange={(e)=>{setFiltroClase(e.target.value)}}>
+                        <option value="%">Categoria</option>
+						{["accesorios","ropaDeportiva","ropaExterior","ropaInterior"].map(
+								u=>{
+									return <option value={u}> {u}</option>;
+								}
+							)
+						}
                     </select>
-                    <select name="" id="" className={classes.opcion}>
-                        <option value="">Subcategoria</option>
-                        <option value="">Editar</option>
-                        <option value="">Eliminar</option>
+                    <select name=""
+							id="" 
+							className={classes.opcion}
+							value={filtroSubClase}
+							onChange={(e)=>{setFiltroSubclase(e.target.value)}}>
+                        <option value="%">Subcategoria</option>
+						{ 
+							/*categorias[filtroGenero][filtroClase].map(u=>{
+								if (filtroGenero=="%")
+									return <></>
+								else
+									return <option values={u}> {u} </option>
+							})*/
+							
+						}
                     </select>
-                    <select name="" id="" className={classes.opcion}>
-                        <option value="">Talla</option>
-                        <option value="">Editar</option>
-                        <option value="">Eliminar</option>
-                    </select>
-  
-                    <Button color='secondary' variant='outlined' className={classes.boton}> Filtrar</Button>
+                    <select 
+							name="" 
+							id="" 
+							className={classes.opcion}
+							value={filtroTalla}
+							onChange={(e)=>{setFiltroTalla(e.target.value)}}>
+                        <option value="%">Talla</option>
+						 
+						{["XS","S","M","L","XL"].map(
+								u=>{
+									return <option value={u}>{u}</option>
+								}
+							)
+						}
+					</select>
+  		
+                    <Button color='secondary' variant='outlined' onClick={productosFiltrados} className={classes.boton}> Filtrar</Button>
                 </div>
-
-
 
                 <div >
                     <div className={classes.imagen} > img  </div>
@@ -153,13 +203,29 @@ export const Cabecera = (props) => {
                 <div className={classes.element}>Genero</div>
                 <div className={classes.element}>stock_producto</div>
                 <div className={classes.element}>precio</div>
-                <div className={classes.element}>accion</div>
                 <div className={classes.fondo}></div>
 
 
 
             </div>
+			<div className={classes.lista}>
+                {productosJson.map(producto => {
+                    return (
 
+                        <ItemProducto
+                            nombre={producto.name_producto}
+                            categoria={producto.categoria_producto}
+                            subcategoria={producto.subcategoria_producto}
+                            talla={producto.talla_producto}
+                            genero={producto.genero_producto}
+                            stock={producto.stock_producto}
+                            precio={producto.precio_producto}
+                            urlImg={producto.img_path}>
+                        </ItemProducto>
+                    )
+                })
+                }
+            </div>
 
         </>
 

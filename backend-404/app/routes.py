@@ -2,8 +2,10 @@ from flask import request, jsonify, session
 from flask import current_app as app
 from .models import *
 from flask_bcrypt import generate_password_hash, check_password_hash
+from flask_cors import cross_origin
 
 producto_schema = ProductoSchema()
+@cross_origin
 @app.route('/crearProducto', methods=['POST'])
 def crearProducto():
 
@@ -170,6 +172,19 @@ def obtenerProductoCategoria(categoria_producto):
     productos = Producto.query.filter_by(categoria_producto=categoria_producto)
     return productos_schema.jsonify(productos)
 
+@app.route('/obtenerProductoFiltrado/<genero>/<categoria>/<subcategoria>/<talla>', methods=["GET"])
+def obtenerProductoFiltrado(genero,categoria,subcategoria,talla):   
+    aux={}
+    if genero!="%":
+        aux["genero_producto"]=genero
+    if categoria!="%":
+        aux["categoria_producto"]=categoria
+    if subcategoria!= "%":
+        aux["subcategoria_producto"]=subcategoria
+    if talla!="%":
+        aux["talla_producto"]=talla
+    productos=Producto.query.get(aux) 
+    return productos_schema.jsonify(productos)
 
 ##                      FUTUROS CAMBIOS
 ##================================================================

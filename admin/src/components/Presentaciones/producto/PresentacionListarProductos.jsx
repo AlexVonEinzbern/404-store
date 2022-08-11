@@ -1,11 +1,12 @@
+
 import React from "react";
 
 
 import { makeStyles } from "@material-ui/core"
-import { ItemProducto } from "./ItemProducto";
-import productosJson from '../../ProductosJson.json'
 import { width } from "@mui/system";
 import { Cabecera } from "../Cabecera";
+import axios from "axios"; 
+const URI = process.env.REACT_APP_URI;  // se conecta con el backend 
 
 
 const useStyles = makeStyles((theme) => ({
@@ -79,42 +80,15 @@ export const PresentacionListarProductos = () => {
 
 
     const classes = useStyles();
+	//let productos=axios.get(URI+) 
     return (
 
         <div>
-
-                        
-        
-        
         <Cabecera>
-
 
         </Cabecera>
 
-            <div className={classes.lista}>
-                {productosJson.map(producto => {
-                    return (
-
-                        <ItemProducto
-                            nombre={producto.name_producto}
-                            categoria={producto.categoria_producto}
-                            subcategoria={producto.subcategoria_producto}
-                            talla={producto.talla_producto}
-                            genero={producto.genero_producto}
-                            stock={producto.stock_producto}
-                            precio={producto.precio_producto}
-                            urlImg={producto.img_path}>
-                        </ItemProducto>
-                    )
-                })
-                }
-            </div>
-
-
         </div>
-
-
 
     )
 }
-

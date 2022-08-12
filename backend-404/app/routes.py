@@ -85,6 +85,7 @@ def crearClienteRegistrado():
     password_cliente_registrado  = request.json['password_cliente_registrado']
     username_cliente_registrado  = request.json['username_cliente_registrado']
     telefono_cliente_registrado  = request.json['telefono_cliente_registrado']
+    estado_cliente_registrado    = request.json['estado_cliente_registrado']
 
     email_existe    = ClienteRegistrado.query.filter_by(email_cliente_registrado=email_cliente_registrado).first() is not None
     username_existe = ClienteRegistrado.query.filter_by(username_cliente_registrado=username_cliente_registrado).first() is not None
@@ -98,14 +99,15 @@ def crearClienteRegistrado():
     hashed_password = generate_password_hash(password_cliente_registrado).decode('utf-8')
 
     new_cliente = ClienteRegistrado(
-        name_cliente_registrado = name_cliente_registrado,
-        cedula_cliente_registrado = cedula_cliente_registrado,
-        edad_cliente_registrado = edad_cliente_registrado,
-        email_cliente_registrado = email_cliente_registrado,
+        name_cliente_registrado      = name_cliente_registrado,
+        cedula_cliente_registrado    = cedula_cliente_registrado,
+        edad_cliente_registrado      = edad_cliente_registrado,
+        email_cliente_registrado     = email_cliente_registrado,
         direccion_cliente_registrado = direccion_cliente_registrado,
-        password_cliente_registrado = hashed_password,
+        password_cliente_registrado  = hashed_password,
         username_cliente_registrado  = username_cliente_registrado,
-        telefono_cliente_registrado = telefono_cliente_registrado
+        telefono_cliente_registrado  = telefono_cliente_registrado,
+        estado_cliente_registrado    = estado_cliente_registrado
     )
 
     db.session.add(new_cliente)
@@ -119,7 +121,7 @@ def get_current_user():
     user_id = session.get("user_id")
 
     if not user_id:
-        return jsonify({ "error" : "Unauthorized"}), 401
+        return jsonify({ "error" : "Unauthorized" }), 401
 
     user = ClienteRegistrado.query.filter_by(id_cliente_registrado=user_id).first()
 
@@ -133,7 +135,7 @@ def login():
     username_cliente_registrado  = request.json['username_cliente_registrado']
 
     username_existe = ClienteRegistrado.query.filter_by(username_cliente_registrado=username_cliente_registrado).first()
-
+    
     if username_existe is None:
         return jsonify({ "error" : "Unauthorized" }), 401
 
@@ -185,6 +187,12 @@ def obtenerProductoFiltrado(genero,categoria,subcategoria,talla):
         aux["talla_producto"]=talla
     productos=Producto.query.get(aux) 
     return productos_schema.jsonify(productos)
+
+metodo_pago_schema = MetodoPagoSchema()
+@app.route('/obtenerMetodoPago/<id_cliente_registrado>', methods=['GET'])
+def obtenerMetodoPago(id_cliente_registrado):
+    metodopago = MetodoPago.query.filter_by(id_cliente_registrado=id_cliente_registrado).first()
+    return metodo_pago_schema.jsonify(metodopago)
 
 ##                      FUTUROS CAMBIOS
 ##================================================================

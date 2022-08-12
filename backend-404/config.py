@@ -2,6 +2,7 @@
 
 from os import environ, path
 from dotenv import load_dotenv
+from flask_cors.extension import CORS
 import redis
 
 basedir = path.abspath(path.dirname(__file__))

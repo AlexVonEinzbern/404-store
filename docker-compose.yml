@@ -54,11 +54,5 @@ services:
   #   command: npm start
 
 volumes: 
-  db-data-test:
-    driver: local
-    driver_opts:
-      type: 'none'
-      o: 'bind'
-      device: 'home/alexander/github/404-store/volumes'
   cache:
     driver: local

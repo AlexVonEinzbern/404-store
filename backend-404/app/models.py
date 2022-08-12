@@ -133,6 +133,7 @@ class ClienteRegistrado(db.Model):
     password_cliente_registrado  = db.Column(db.String(128), unique=True, nullable=False)
     username_cliente_registrado  = db.Column(db.String(15), unique=True, nullable=False)
     telefono_cliente_registrado  = db.Column(db.Integer)
+    estado_cliente_registrado    = db.Column(db.Boolean, nullable=False)
     
     metodoPago = db.relationship('MetodoPago')
     venta      = db.relationship('Venta')
@@ -148,7 +149,8 @@ class ClienteRegistradoSchema(ma.Schema):
     class Meta:
         fields = ('id_cliente_registrado', 'name_cliente_registrado', 'cedula_cliente_registrado',
             'edad_cliente_registrado', 'email_cliente_registrado', 'direccion_cliente_registrado',
-            'password_cliente_registrado', 'username_cliente_registrado', 'telefono_cliente_registrado',)
+            'password_cliente_registrado', 'username_cliente_registrado', 'telefono_cliente_registrado',
+            'estado_cliente_registrado',)
     
     ##                  FUTUROS CAMBIOS A ESTA TABLA          
     # class Meta:

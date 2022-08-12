@@ -134,6 +134,7 @@ const Registro = () => {
 	const [direccion_cliente_registrado, setDireccion_cliente_registrado] = useState('')
 	const [password_cliente_registrado, setPassword_cliente_registrado]   = useState('')
 	const [telefono_cliente_registrado, setTelefono_cliente_registrado]   = useState('')
+	const [estado_cliente_registrado, setEstado_cliente_registrado]       = useState(true)
 
 	const [login, setLogin]   = useState('')
 
@@ -155,7 +156,8 @@ const Registro = () => {
 					username_cliente_registrado,
 					direccion_cliente_registrado,
 					password_cliente_registrado,
-					telefono_cliente_registrado
+					telefono_cliente_registrado,
+					estado_cliente_registrado
 				})
 			})
 			const data = await res.json();

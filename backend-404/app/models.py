@@ -83,10 +83,8 @@ class Producto(db.Model):
     stock_producto            = db.Column(db.Integer, nullable=False)
     stock_vendido_producto    = db.Column(db.Integer, nullable=False)
     precio_producto           = db.Column(db.Float, nullable=False)
-    ##url_imagen_producto       = db.Column(db.String(200), unique=True, nullable=False)
-    imagen_producto_blob      = db.Column(db.LargeBinary, nullable=False)
+    url_imagen_producto       = db.Column(db.Text, unique=True, nullable=False)
 
-    #productoimagen  = db.relationship('ProductoImagen')
     reporte         = db.relationship('Reporte', secondary = producto_reporte)
     productovendido = db.relationship('ProductosVendidos', secondary = producto_productosvendidos)
 
@@ -102,22 +100,7 @@ class ProductoSchema(ma.Schema):
         fields = ('id_producto', 'name_producto', 'genero_producto', 'categoria_producto', 
             'subcategoria_producto', 'descripcion_producto', 'talla_producto', 
             'calificacion_producto', 'stock_producto', 'stock_vendido_producto', 'precio_producto',
-            'imagen_producto_blob',)
-
-# class ProductoImagen(db.Model):
-#     """docstring for ProductoImagen"""
-#     __tablename__ = "productoimagen"
-#     id_url_imagen       = db.Column(db.Integer, primary_key=True)
-#     url_imagen_producto = db.Column(db.String(200), unique=True, nullable=False)
-#     color_imagen_hex    = db.Column(db.String(10), nullable=False)
-#     id_producto         = db.Column(db.Integer, db.ForeignKey('producto.id_producto'))
-
-#     def __repr__(self):
-#         return '<Url image added>'
-
-# class ProductoImagenSchema(ma.Schema):
-#     class Meta:
-#         fields = ('id_url_imagen', 'url_imagen_producto', 'color_imagen_hex', 'id_producto',)
+            'url_imagen_producto',)
 
 class ClienteRegistrado(db.Model):
     """docstring for ClienteRegistrado"""
@@ -128,8 +111,6 @@ class ClienteRegistrado(db.Model):
     edad_cliente_registrado      = db.Column(db.Integer, nullable=False)
     email_cliente_registrado     = db.Column(db.String(50), unique=True, nullable=False)
     direccion_cliente_registrado = db.Column(db.String(50), nullable=False)
-    #ip_cliente_registrado        = db.Column(db.String(15), unique=True, nullable=False)
-    #numero_visitas_registrado    = db.Column(db.Integer, nullable=False)
     password_cliente_registrado  = db.Column(db.String(128), unique=True, nullable=False)
     username_cliente_registrado  = db.Column(db.String(15), unique=True, nullable=False)
     telefono_cliente_registrado  = db.Column(db.Integer)
@@ -151,13 +132,6 @@ class ClienteRegistradoSchema(ma.Schema):
             'edad_cliente_registrado', 'email_cliente_registrado', 'direccion_cliente_registrado',
             'password_cliente_registrado', 'username_cliente_registrado', 'telefono_cliente_registrado',
             'estado_cliente_registrado',)
-    
-    ##                  FUTUROS CAMBIOS A ESTA TABLA          
-    # class Meta:
-    #     fields = ('id_cliente_registrado', 'name_cliente_registrado', 'cedula_cliente_registrado',
-    #         'edad_cliente_registrado', 'email_cliente_registrado', 'direccion_cliente_registrado',
-    #         'ip_cliente_registrado', 'numero_visitas_registrado', 'password_cliente_registrado',
-    #         'username_cliente_registrado', 'telefono_cliente_registrado',)
 
 class ClienteNoRegistrado(db.Model):
     """docstring for ClienteNoRegistrado"""

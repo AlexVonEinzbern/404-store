@@ -3,6 +3,7 @@ from flask import current_app as app
 from .models import *
 from flask_bcrypt import generate_password_hash, check_password_hash
 from flask_cors import cross_origin
+import sys
 
 producto_schema = ProductoSchema()
 @app.route('/crearProducto', methods=['POST'])
@@ -38,7 +39,6 @@ def crearProducto():
     db.session.add(new_producto)
     db.session.commit()
 
-    new_producto.headers.add("Access-Control-Allow-Origin", "*")
     return producto_schema.jsonify(new_producto)
 
 @app.route('/actualizarProducto/<name_producto>', methods=['PUT'])
@@ -63,7 +63,7 @@ def actualizarProducto(name_producto):
 @cross_origin(origins='*',allow_headers=['Content-Type','Authorization'])
 def obtenerProducto(name_producto):
     producto = Producto.query.filter_by(name_producto=name_producto).first()
-    producto.headers.add("Access-Control-Allow-Origin", "*")
+
     return producto_schema.jsonify(producto)
 
 productos_schema = ProductoSchema(many=True)
@@ -71,7 +71,7 @@ productos_schema = ProductoSchema(many=True)
 @cross_origin(origins='*',allow_headers=['Content-Type','Authorization'])
 def obtenerProductos():
     productos = Producto.query.all()
-    productos.headers.add("Access-Control-Allow-Origin", "*")
+
     return productos_schema.jsonify(productos)
 
 
@@ -122,13 +122,14 @@ def crearClienteRegistrado():
 @cross_origin(origins='*',allow_headers=['Content-Type','Authorization'])
 def get_current_user():
 
-    user_id = session.get("user_id")
+    print(session['user_id'], file=sys.stderr)
+    user_id = session.get('user_id')
 
     if not user_id:
         return jsonify({ "error" : "Unauthorized" }), 401
 
     user = ClienteRegistrado.query.filter_by(id_cliente_registrado=user_id).first()
-    user.headers.add("Access-Control-Allow-Origin", "*")
+
     return cliente_registrado_schema.jsonify(user)
 
 ##Ruta para el Login
@@ -140,7 +141,6 @@ def login():
     username_cliente_registrado  = request.json['username_cliente_registrado']
 
     username_existe = ClienteRegistrado.query.filter_by(username_cliente_registrado=username_cliente_registrado).first()
-    username_existe.headers.add("Access-Control-Allow-Origin", "*")
 
     if username_existe is None:
         return jsonify({ "error" : "Unauthorized" }), 401
@@ -148,7 +148,8 @@ def login():
     if not check_password_hash(username_existe.password_cliente_registrado, password_cliente_registrado):
         return jsonify({ "error" : "Unauthorized" }), 401
 
-    session["user_id"] = username_existe.id_cliente_registrado
+    session['user_id'] = username_existe.id_cliente_registrado
+    print(session['user_id'], file=sys.stderr)
 
     return cliente_registrado_schema.jsonify(username_existe)
 
@@ -156,7 +157,7 @@ def login():
 @cross_origin(origins='*',allow_headers=['Content-Type','Authorization'])
 def obtenerClienteRegistrado(username_cliente_registrado):
     cliente_registrado = ClienteRegistrado.query.filter_by(username_cliente_registrado=username_cliente_registrado).first()
-    cliente_registrado.headers.add("Access-Control-Allow-Origin", "*")
+
     return cliente_registrado_schema.jsonify(cliente_registrado)
 
 clientes_registrados_schema = ClienteRegistradoSchema(many=True)
@@ -164,7 +165,6 @@ clientes_registrados_schema = ClienteRegistradoSchema(many=True)
 @cross_origin(origins='*',allow_headers=['Content-Type','Authorization'])
 def obtenerClientesRegistrados():
     clientes_registrados = ClienteRegistrado.query.all()
-    clientes_registrados.headers.add("Access-Control-Allow-Origin", "*")
     return clientes_registrados_schema.jsonify(clientes_registrados)
 
 @app.route('/eliminarProducto<name_producto>', methods=['DELETE'])
@@ -179,14 +179,14 @@ def eliminarProducto(name_producto):
 @cross_origin(origins='*',allow_headers=['Content-Type','Authorization'])
 def obtenerProductoGenero(genero_producto):
     productos = Producto.query.filter_by(genero_producto=genero_producto)
-    productos.headers.add("Access-Control-Allow-Origin", "*")
+    #productos.headers.add("Access-Control-Allow-Origin", "*")
     return productos_schema.jsonify(productos)
 
 @app.route('/obtenerProductoCategoria/<categoria_producto>', methods=['GET'])
 @cross_origin(origins='*',allow_headers=['Content-Type','Authorization'])
 def obtenerProductoCategoria(categoria_producto):
     productos = Producto.query.filter_by(categoria_producto=categoria_producto)
-    productos.headers.add("Access-Control-Allow-Origin", "*")
+    #productos.headers.add("Access-Control-Allow-Origin", "*")
     return productos_schema.jsonify(productos)
 
 @app.route('/obtenerProductoFiltrado/<genero>/<categoria>/<subcategoria>/<talla>', methods=["GET"])
@@ -202,7 +202,7 @@ def obtenerProductoFiltrado(genero,categoria,subcategoria,talla):
     if talla!="%":
         aux["talla_producto"]=talla
     productos = Producto.query.get(aux) 
-    productos.headers.add("Access-Control-Allow-Origin", "*")
+    #productos.headers.add("Access-Control-Allow-Origin", "*")
     return productos_schema.jsonify(productos)
 
 metodo_pago_schema = MetodoPagoSchema()
@@ -210,7 +210,7 @@ metodo_pago_schema = MetodoPagoSchema()
 @cross_origin(origins='*',allow_headers=['Content-Type','Authorization'])
 def obtenerMetodoPago(id_cliente_registrado):
     metodopago = MetodoPago.query.filter_by(id_cliente_registrado=id_cliente_registrado).first()
-    metodopago.headers.add("Access-Control-Allow-Origin", "*")
+    #metodopago.headers.add("Access-Control-Allow-Origin", "*")
     return metodo_pago_schema.jsonify(metodopago)
 
 ##                      FUTUROS CAMBIOS

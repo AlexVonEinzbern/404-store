@@ -1,5 +1,6 @@
 """Flak configuration variables"""
 
+import datetime
 from os import environ, path
 from dotenv import load_dotenv
 from flask_cors.extension import CORS
@@ -23,6 +24,6 @@ class Config:
     SQLALCHEME_TRACK_MODIFICATIONS = environ.get('SQLALCHEME_TRACK_MODIFICATIONS')
 
     SESSION_TYPE = "redis"
-    SESSION_PERMANENT = False
+    PERMANENT_SESSION_LIFETIME = datetime.timedelta(minutes=10)
     SESSION_USE_SIGNER = True
     SESSION_REDIS = redis.Redis(host='cache', port=6379, password='eYVX7EwVmmxKPCDmwMtyKVge8oLd2t81')

@@ -1,5 +1,6 @@
 from flask import request, jsonify, session
 from flask import current_app as app
+from marshmallow.types import StrSequenceOrSet
 from .models import *
 from flask_bcrypt import generate_password_hash, check_password_hash
 from flask_cors import cross_origin
@@ -7,7 +8,7 @@ import sys
 
 producto_schema = ProductoSchema()
 @app.route('/crearProducto', methods=['POST'])
-@cross_origin(origins='*',allow_headers=['Content-Type','Authorization'])
+#@cross_origin(origins='*',allow_headers=['Content-Type','Authorization'])
 def crearProducto():
 
     name_producto             = request.json['name_producto']
@@ -42,7 +43,6 @@ def crearProducto():
     return producto_schema.jsonify(new_producto)
 
 @app.route('/actualizarProducto/<name_producto>', methods=['PUT'])
-@cross_origin(origins='*', allow_headers=['Content-Type','Authorization'])
 def actualizarProducto(name_producto):
     Producto.query.filter_by(name_producto=name_producto).update({
         'name_producto':          request.json['name_producto'],
@@ -60,7 +60,6 @@ def actualizarProducto(name_producto):
     return {'msg': 'Producto actualizado'}
 
 @app.route('/obtenerProducto/<name_producto>', methods=['GET'])
-@cross_origin(origins='*',allow_headers=['Content-Type','Authorization'])
 def obtenerProducto(name_producto):
     producto = Producto.query.filter_by(name_producto=name_producto).first()
 
@@ -68,7 +67,6 @@ def obtenerProducto(name_producto):
 
 productos_schema = ProductoSchema(many=True)
 @app.route('/obtenerProductos', methods=['GET'])
-@cross_origin(origins='*',allow_headers=['Content-Type','Authorization'])
 def obtenerProductos():
     productos = Producto.query.all()
 
@@ -77,7 +75,6 @@ def obtenerProductos():
 
 cliente_registrado_schema = ClienteRegistradoSchema()
 @app.route('/crearClienteRegistrado', methods=['POST'])
-@cross_origin(origins='*',allow_headers=['Content-Type','Authorization'])
 def crearClienteRegistrado():
 
     name_cliente_registrado      = request.json['name_cliente_registrado']
@@ -119,9 +116,9 @@ def crearClienteRegistrado():
     return cliente_registrado_schema.jsonify(new_cliente)
 
 @app.route('/@me')
-@cross_origin(origins='*',allow_headers=['Content-Type','Authorization'])
 def get_current_user():
 
+    print(session.get('user_id'), file=sys.stderr)
     user_id = session.get('user_id')
 
     if not user_id:
@@ -132,14 +129,12 @@ def get_current_user():
     return cliente_registrado_schema.jsonify(user)
 
 @app.route("/logout", methods=["POST"])
-@cross_origin(origins='*',allow_headers=['Content-Type','Authorization'])
 def logout():
     session.pop('user_id')
     return "200"
 
 ##Ruta para el Login
 @app.route('/login', methods=['POST'])
-@cross_origin(origins='*',allow_headers=['Content-Type','Authorization'])
 def login():
 
     password_cliente_registrado  = request.json['password_cliente_registrado']
@@ -154,11 +149,10 @@ def login():
         return jsonify({ "error" : "Unauthorized" }), 401
 
     session['user_id'] = username_existe.id_cliente_registrado
-
+    print(session.get('user_id'), file=sys.stderr)
     return cliente_registrado_schema.jsonify(username_existe)
 
 @app.route('/obtenerClienteRegistrado/<username_cliente_registrado>', methods=['GET'])
-@cross_origin(origins='*',allow_headers=['Content-Type','Authorization'])
 def obtenerClienteRegistrado(username_cliente_registrado):
     cliente_registrado = ClienteRegistrado.query.filter_by(username_cliente_registrado=username_cliente_registrado).first()
 
@@ -166,13 +160,11 @@ def obtenerClienteRegistrado(username_cliente_registrado):
 
 clientes_registrados_schema = ClienteRegistradoSchema(many=True)
 @app.route('/obtenerClientesRegistrados', methods=['GET'])
-@cross_origin(origins='*',allow_headers=['Content-Type','Authorization'])
 def obtenerClientesRegistrados():
     clientes_registrados = ClienteRegistrado.query.all()
     return clientes_registrados_schema.jsonify(clientes_registrados)
 
 @app.route('/eliminarProducto<name_producto>', methods=['DELETE'])
-@cross_origin(origins='*',allow_headers=['Content-Type','Authorization'])
 def eliminarProducto(name_producto):
     Producto.query.filter_by(name_producto=name_producto).delete()
     db.session.commit()
@@ -180,21 +172,18 @@ def eliminarProducto(name_producto):
 
 
 @app.route('/obtenerProductoGenero/<genero_producto>', methods=['GET'])
-@cross_origin(origins='*',allow_headers=['Content-Type','Authorization'])
 def obtenerProductoGenero(genero_producto):
     productos = Producto.query.filter_by(genero_producto=genero_producto)
     #productos.headers.add("Access-Control-Allow-Origin", "*")
     return productos_schema.jsonify(productos)
 
 @app.route('/obtenerProductoCategoria/<categoria_producto>', methods=['GET'])
-@cross_origin(origins='*',allow_headers=['Content-Type','Authorization'])
 def obtenerProductoCategoria(categoria_producto):
     productos = Producto.query.filter_by(categoria_producto=categoria_producto)
     #productos.headers.add("Access-Control-Allow-Origin", "*")
     return productos_schema.jsonify(productos)
 
 @app.route('/obtenerProductoFiltrado/<genero>/<categoria>/<subcategoria>/<talla>', methods=["GET"])
-@cross_origin(origins='*',allow_headers=['Content-Type','Authorization'])
 def obtenerProductoFiltrado(genero,categoria,subcategoria,talla):   
     aux={}
     if genero!="%":
@@ -211,7 +200,6 @@ def obtenerProductoFiltrado(genero,categoria,subcategoria,talla):
 
 metodo_pago_schema = MetodoPagoSchema()
 @app.route('/obtenerMetodoPago/<id_cliente_registrado>', methods=['GET'])
-@cross_origin(origins='*',allow_headers=['Content-Type','Authorization'])
 def obtenerMetodoPago(id_cliente_registrado):
     metodopago = MetodoPago.query.filter_by(id_cliente_registrado=id_cliente_registrado).first()
     #metodopago.headers.add("Access-Control-Allow-Origin", "*")

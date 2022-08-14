@@ -1,13 +1,9 @@
 import React from "react";
 import { TextField } from "@material-ui/core";
-
 import { makeStyles, Button } from "@material-ui/core";
-
-
-import { useState} from 'react';  //Cambios para que los datos en el formulario tengan
+import httpClient from "../httpClient";
+import { useState } from 'react';  //Cambios para que los datos en el formulario tengan
 								  //efecto en la base de datos
-
-								  import { useNavigate } from "react-router-dom";
 
 const URI = process.env.REACT_APP_URI;        //Se conecta con el backend
 
@@ -52,34 +48,28 @@ const Login = () => {
 
 	const [username_cliente_registrado, setUsername_cliente_registrado] = useState('')
 	const [password_cliente_registrado, setPassword_cliente_registrado] = useState('')
-	const [logged, setLogged] = useState(false)
 
-	const navigate = useNavigate();
+	const handleSutmit = async () => {
 
-	const handleSutmit = async (username) => {
+		const config = {
+			headers: { "Access-Control-Allow-Origin": "*" }
+		};
 
-		try {
-			const res = await fetch(`${URI}login`, {
-				method: 'POST',
-				headers:{
-					'Content-Type': 'application/json'
-				},
-				body: JSON.stringify({
-					username_cliente_registrado,
-					password_cliente_registrado
-				})
-			})
-			setLogged(true);
-		} catch (error) {
-			console.log(error)
-		}
+		const res = await httpClient.post(URI + "login", {
+			username_cliente_registrado,
+			password_cliente_registrado
+		}, config)
+		.then(function (response) {
+				window.location.href = "/";
+		})
+		.catch (function (error) {
+			if (error.response.data.error){
+				alert("Invalid credentials")
+			}
+		})
 	}
 
 	const classes = useStyle()
-
-	if (logged) {
-		navigate("/");
-	}
 
 	return (
 
@@ -136,126 +126,121 @@ const Registro = () => {
 	const [telefono_cliente_registrado, setTelefono_cliente_registrado]   = useState('')
 	const [estado_cliente_registrado, setEstado_cliente_registrado]       = useState(true)
 
-	const [login, setLogin]   = useState('')
+	const handleSutmit = async () => {
+		const config = {
+			headers: { "Access-Control-Allow-Origin": "*" }
+		};
+		const res = await httpClient.post(URI + "crearClienteRegistrado", {
+			name_cliente_registrado,
+			cedula_cliente_registrado,
+			edad_cliente_registrado,
+			email_cliente_registrado,
+			username_cliente_registrado,
+			direccion_cliente_registrado,
+			password_cliente_registrado,
+			telefono_cliente_registrado,
+			estado_cliente_registrado
+		}, config)
+		.then(function (response) {
+				//const data = await res.json();
+				console.log(response);
 
-	const navigate = useNavigate();
+				setName_cliente_registrado('');
+				setCedula_cliente_registrado('');
+				setEdad_cliente_registrado('');
+				setEmail_cliente_registrado('');
+				setUsername_cliente_registrado('');
+				setDireccion_cliente_registrado('');
+				setPassword_cliente_registrado('');
+				setTelefono_cliente_registrado('');
 
-	const handleSutmit = async (e) => {
-		try{
-			e.preventDefault();
-			const res = await fetch(`${URI}crearClienteRegistrado`, {
-				method: 'POST',
-				headers:{
-					'Content-Type': 'application/json'
-				},
-				body: JSON.stringify({
-					name_cliente_registrado,
-					cedula_cliente_registrado,
-					edad_cliente_registrado,
-					email_cliente_registrado,
-					username_cliente_registrado,
-					direccion_cliente_registrado,
-					password_cliente_registrado,
-					telefono_cliente_registrado,
-					estado_cliente_registrado
-				})
-			})
-			const data = await res.json();
-			console.log(data);
-
-			setName_cliente_registrado('');
-			setCedula_cliente_registrado('');
-			setEdad_cliente_registrado('');
-			setEmail_cliente_registrado('');
-			setUsername_cliente_registrado('');
-			setDireccion_cliente_registrado('');
-			setPassword_cliente_registrado('');
-			setTelefono_cliente_registrado('');
-
-			setLogin(true);
-
-		} catch (error) {
-			console.log(error)
+				window.location.href = "/";
+			}
+			)
+		.catch (function (error) {
+			if (error.response.data.error===401) {
+				alert("Invalid credentials");
+			}
+		})
 		}
+
+		if (login) {
+			navigate("/login");
+		}
+
+		const classes = useStyle()
+
+		return (
+
+			<div className={classes.contLogin}>
+
+			<div className={classes.logo}>
+			404-STORE
+			</div>
+
+			<div >
+			CUENTANOS QUIEN ERES
+			</div>
+
+			<form noValidate autoComplete="off" className={classes.cont}>
+			<TextField 
+			id="standard-basic" 
+			label="Nombre"
+			onChange = {e => setName_cliente_registrado(e.target.value)} 
+			/>
+			<TextField 
+			id="standard-basic" 
+			label="Cédula"
+			onChange = {e => setCedula_cliente_registrado(e.target.value)}
+			/>
+			<TextField 
+			id="standard-basic" 
+			label="Edad"
+			onChange = {e => setEdad_cliente_registrado(e.target.value)}
+			/>
+			<TextField 
+			id="standard-basic" 
+			label="Email"
+			onChange = {e => setEmail_cliente_registrado(e.target.value)}
+			/>
+			<TextField 
+			id="standard-basic" 
+			label="Usuario" 
+			onChange = {e => setUsername_cliente_registrado(e.target.value)}
+			/>
+			<TextField 
+			id="standard-basic" 
+			label="Dirección" 
+			onChange = {e => setDireccion_cliente_registrado(e.target.value)}
+			/>
+			<TextField 
+			id="standard-basic" 
+			label="Contraseña"
+			type="password"
+			onChange = {e => setPassword_cliente_registrado(e.target.value)}
+			/>
+			<TextField 
+			id="standard-basic"
+			label="Teléfono"
+			onChange = {e => setTelefono_cliente_registrado(e.target.value)}
+			/>
+
+			<Button 
+			variant="contained" 
+			color="secondary" 
+			className={classes.iniciar}
+			onClick = {handleSutmit}>
+			Registrarse
+			</Button> 
+
+			<div  className={classes.textoOpcion}> ¿Ya tienes cuenta?  <a href="/login" className={classes.a}> Iniciar Sesión </a>   </div>
+
+			</form>
+
+			</div>
+
+			)
+
 	}
 
-	if (login) {
-		navigate("/login");
-	}
-
-	const classes = useStyle()
-
-	return (
-
-		<div className={classes.contLogin}>
-
-		<div className={classes.logo}>
-		404-STORE
-		</div>
-
-		<div >
-		CUENTANOS QUIEN ERES
-		</div>
-
-		<form noValidate autoComplete="off" className={classes.cont}>
-		<TextField 
-		id="standard-basic" 
-		label="Nombre"
-		onChange = {e => setName_cliente_registrado(e.target.value)} 
-		/>
-		<TextField 
-		id="standard-basic" 
-		label="Cédula"
-		onChange = {e => setCedula_cliente_registrado(e.target.value)}
-		/>
-		<TextField 
-		id="standard-basic" 
-		label="Edad"
-		onChange = {e => setEdad_cliente_registrado(e.target.value)}
-		/>
-		<TextField 
-		id="standard-basic" 
-		label="Email"
-		onChange = {e => setEmail_cliente_registrado(e.target.value)}
-		/>
-		<TextField 
-		id="standard-basic" 
-		label="Usuario" 
-		onChange = {e => setUsername_cliente_registrado(e.target.value)}
-		/>
-		<TextField 
-		id="standard-basic" 
-		label="Dirección" 
-		onChange = {e => setDireccion_cliente_registrado(e.target.value)}
-		/>
-		<TextField 
-		id="standard-basic" 
-		label="Contraseña"
-		type="password"
-		onChange = {e => setPassword_cliente_registrado(e.target.value)}
-		/>
-		<TextField 
-		id="standard-basic"
-		label="Teléfono"
-		onChange = {e => setTelefono_cliente_registrado(e.target.value)}
-		/>
-
-		<Button 
-		variant="contained" 
-		color="secondary" 
-		className={classes.iniciar}
-		onClick = {handleSutmit}>
-		Registrarse
-		</Button> 
-
-		<div  className={classes.textoOpcion}> ¿Ya tienes cuenta?  <a href="/login" className={classes.a}> Iniciar Sesión </a>   </div>
-
-		</form>
-
-		</div>
-
-		)
-	
-}
-
-export {Login,Registro}
+	export {Login,Registro}

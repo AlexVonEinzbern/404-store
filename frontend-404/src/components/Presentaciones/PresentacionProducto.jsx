@@ -14,17 +14,17 @@ import { useCart } from "react-use-cart";
 const useStyles3 = makeStyles((theme) => ({
 
     imgProd: {
-        width: '80%',
+        width: '60%',
         display:'flex',
-        
-        overflow:'hidden'
+        height:'80vh',
+        overflow:'hidden',
+    
 
     },
 
     imgTarProd: {
         width: '100%',
-        
-        
+
         
     },
 
@@ -40,8 +40,12 @@ const useStyles3 = makeStyles((theme) => ({
     },
     cont: {
 
+        width:'100%',
+
         display: 'flex',
-        margin: '144px 96px '
+        margin: '144px auto ',
+        maxWidth:'1200px',
+        // margin:'auto'
     },
     info: {
 
@@ -124,13 +128,13 @@ export const PresentacionProducto = (props) => {
 
                 
                 <div className={classes.imgTarProdMins}>
-                    <img src={require('../../img/Product-images/HOMBRE/ropaExterior/camisetas/hombre-ropaExterior-camiseta1-color1.jpg')} className={classes.imgTarProdMin} alt='hey' />
-                    <img src={require('../../img/Product-images/HOMBRE/ropaExterior/camisetas/hombre-ropaExterior-camiseta1-color1.jpg')} className={classes.imgTarProdMin} alt='hey' />
-                    <img src={require('../../img/Product-images/HOMBRE/ropaExterior/camisetas/hombre-ropaExterior-camiseta1-color1.jpg')} className={classes.imgTarProdMin} alt='hey' />
+                    <img src={props.producto.img_path} className={classes.imgTarProdMin} alt='hey' />
+                    <img src={props.producto.img_path} className={classes.imgTarProdMin} alt='hey' />
+                    <img src={props.producto.img_path} className={classes.imgTarProdMin} alt='hey' />
                 </div>
 
                 <div className={classes.imgTarProd}>
-                    <img src={require('../../img/Product-images/HOMBRE/ropaExterior/camisetas/hombre-ropaExterior-camiseta1-color1.jpg')} className={classes.imgTar}  alt='hey' />
+                    <img src={props.producto.img_path} className={classes.imgTar}  alt='hey' />
                 </div>
 
             </div>

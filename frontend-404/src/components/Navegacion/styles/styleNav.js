@@ -6,7 +6,10 @@ export const useStyles = makeStyles((theme) => ({
 
   Navegacion:{
     position:'fixed',
-    top:0
+    top:0,
+   
+    width:'100%',
+    minWidth:'1024px'
 
   },
   fantasma:{

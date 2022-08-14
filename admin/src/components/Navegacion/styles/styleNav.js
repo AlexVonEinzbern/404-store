@@ -193,7 +193,8 @@ export const useStyles = makeStyles((theme) => ({
       top:0,
       margin:0,
       padding:0,
-      left:0
+      left:0,
+      borderRadius:'0 0 20px 20px'
   
     },
   }));

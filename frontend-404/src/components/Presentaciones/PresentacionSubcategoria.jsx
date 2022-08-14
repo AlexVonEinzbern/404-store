@@ -5,6 +5,7 @@ import { TarjetaProducto} from "../Tarjetas/TarjetaProducto.jsx";
 import { useState, useEffect } from 'react';
 import { SeparadorTexto } from "../Separadores/SeparadorTexto";
 import { makeStyles } from "@material-ui/styles";
+import productos from '../ProductosJson.json'
 
 //import productosJson from '../ProductosJson.json'
 
@@ -51,10 +52,10 @@ export const PresentacionSubcategoria = (props) => {
 
     const elegirProductos = () => {
         const prod = []
-        for (let i = 0; i < productosJson.length; i++) {
+        for (let i = 0; i < productos.length; i++) {
 
-            if (productosJson[i].genero_producto === props.genero && productosJson[i].subcategoria_producto === props.subCategoria)
-                prod.push(productosJson[i])
+            if (productos[i].genero_producto === props.genero && productos[i].subcategoria_producto === props.subCategoria)
+                prod.push(productos[i])
         }
         return prod
     }

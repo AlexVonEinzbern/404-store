@@ -107,7 +107,7 @@ function TajetaItemCarrito(props) {
 
             <div className={classes.contImagen}>
 
-                <img src={require(`../../img/Product-images${props.producto.img_path}`)} alt="" className={classes.images} />
+                <img src={props.producto.img_path} alt="" className={classes.images} />
             </div>
 
 

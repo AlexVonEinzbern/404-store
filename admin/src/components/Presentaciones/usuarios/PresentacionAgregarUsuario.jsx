@@ -12,16 +12,23 @@ const useStyles = makeStyles((theme) => ({
     cont: {
 
         display: 'flex',
-        width: '100%',
-        margin: '144px  auto',
-
+        width: '50%',
+        margin: '20vh  auto', 
+        borderLeft:'2px solid #ddd',
+        borderRadius: '15px',
+        backgroundColor:'#fff',
+		position:'relative',
+		boxShadow: '0px 0px 20px 1px rgba(0, 0, 0, 0.2)',
+		padding:'40px',
+        justifyContent:'center'
     },
 
     lateralIzq: {
         display: 'flex',
         flexDirection: 'column',
-        width: '50%',
-        margin:'auto'
+        width: '100%',
+        margin:'auto',
+        paddingLeft:'50px'
         
 
     },

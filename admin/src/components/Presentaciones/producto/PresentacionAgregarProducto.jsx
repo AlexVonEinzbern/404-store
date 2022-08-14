@@ -18,11 +18,33 @@ const useStyles = makeStyles((theme) => ({
     cont: {
 
         display: 'flex',
-        width: '80%',
+        width: '82%',
         margin: '144px  auto', 
-        borderLeft:'2px solid gray',
+        borderLeft:'2px solid #ddd',
         borderRadius: '15px',
-        backgroundColor:'#'
+        backgroundColor:'#fff',
+		position:'relative',
+		boxShadow: '0px 0px 20px 1px rgba(0, 0, 0, 0.2)',
+		padding:'40px'
+
+    },
+
+    noImage:{
+
+        position:'absolute',
+        top:0,
+        bottom:0,
+        left:0,
+        right:0,      
+        display:'flex',
+        width:'auto',
+        backgroundColor:'#fff',
+        justifyContent:'center',
+        alignItems:'center',
+        fontFamily:'roboto',
+        fontSize:'40px',
+        zIndex:'-1'
+
 
     },
 
@@ -44,9 +66,8 @@ const useStyles = makeStyles((theme) => ({
         marginTop:'40px',
         fontFamily:'roboto',
         padding:'10px',
-        fontSize:'px',
-
-        border:'1px solid #ab003c',
+        fontSize:'18px',
+        border:'1px solid #bbb',
     },
 
     imagenProd: {
@@ -56,12 +77,14 @@ const useStyles = makeStyles((theme) => ({
         resize: 'none',
         position: 'relative',
         objectFit: 'cover',
-        borderRadius: '15px'
+        borderRadius: '15px',
+        backgroundColor:'transparent'
     },
 
     titulo: {
         fontSize: '24px',
-        fontFamily: 'roboto'
+        fontFamily: 'roboto',
+        marginBottom:'20px'
     },
 
     imagen: {
@@ -70,7 +93,8 @@ const useStyles = makeStyles((theme) => ({
 
         display: 'flex',
         justifyContent: 'space-between',
-        alignItems: 'center'
+        alignItems: 'center',
+        backgroundColor:'transparent'
 
     },
     cargarImagen: {
@@ -107,7 +131,7 @@ const useStyles = makeStyles((theme) => ({
     },
     BarraLateral: {
 
-        borderRight: '1px solid black',
+        borderRight: '1px solid #ddd',
         width: '20%'
     },
     busqueda: {
@@ -140,10 +164,8 @@ const useStyles = makeStyles((theme) => ({
         width: '30%',
         display: 'flex',
         flexDirection: 'column',
-        margin: '0 24px 0 24X',
         position: 'relative',
-        borderLeft:'1px solid #000',
-        paddingLeft:'20px'
+     
 
     },
     contenedorImagnen: {
@@ -151,7 +173,7 @@ const useStyles = makeStyles((theme) => ({
         height: '75%',
         resize: 'none',
         position: 'relative',
-        border: '2px dashed black',
+        border: '3px dashed #bbb',
         borderRadius: '15px'
     },
     stack:{
@@ -178,26 +200,25 @@ export const PresentacionAgregarProducto = () => {
 
     const refCargarImagen = useRef(0)
 
-    const [imagenImg, setImagen] = useState()
 
 
-    const capturarImagen = (e) => {
+    // const capturarImagen = (e) => {
 
-        let imagen = (e.target.files)[0]
+    //     let imagen = (e.target.files)[0]
 
-        const reader = new FileReader()
-        reader.readAsDataURL(imagen)
-        reader.addEventListener('load', () => {
-            console.log(reader.result)
-            localStorage.setItem('recent-image', reader.result)
-            setImagen(localStorage.getItem('recent-image'))
-            console.log(localStorage.getItem('recent-image'))
-        })
-
-
+    //     const reader = new FileReader()
+    //     reader.readAsDataURL(imagen)
+    //     reader.addEventListener('load', () => {
+    //         console.log(reader.result)
+    //         localStorage.setItem('recent-image', reader.result)
+    //         setImagen(localStorage.getItem('recent-image'))
+    //         console.log(localStorage.getItem('recent-image'))
+    //     })
 
 
-    }
+
+
+    // }
 
     //obtener valores de los texfields 
     const classes = useStyles()
@@ -209,6 +230,7 @@ export const PresentacionAgregarProducto = () => {
     const [tallaProducto, setTallaProducto] = React.useState("");
     const [stockProducto, setStockProducto] = React.useState("");
     const [precioProducto, setPrecioProducto] = React.useState("");
+    const [urlImagen, setUrlImagen] = React.useState("https://assetspwa.liverpool.com.mx/assets/digital/landing/devoluciones/img/producto-etiquetas.jpg");
     //const [direccionProducto, setDireccionProducto]=React.useState("");
 
     const [nameProductoError, setNameProductoError] = React.useState(false);
@@ -219,6 +241,7 @@ export const PresentacionAgregarProducto = () => {
     const [tallaProductoError, setTallaProductoError] = React.useState(false);
     const [stockProductoError, setStockProductoError] = React.useState(false);
     const [precioProductoError, setPrecioProductoError] = React.useState(false);
+    const [UrlImagenError, setUrlImagenError] = React.useState(false);
 
     // enviar datos al backend
 
@@ -231,6 +254,8 @@ export const PresentacionAgregarProducto = () => {
         setTallaProductoError(false);
         setStockProductoError(false);
         setPrecioProductoError(false);
+        setUrlImagenError(false);
+    
 
         if (nameProducto === '') {
             setNameProductoError(true);
@@ -248,10 +273,12 @@ export const PresentacionAgregarProducto = () => {
             setStockProductoError(true);
         } if (precioProducto === '' || !isNumeric(precioProducto)) {
             setPrecioProductoError(true);
+        } if (urlImagen === ''){
+            setUrlImagenError(true)
         }
 
         if (nameProducto && generoProducto && categoriaProducto && subcategoriaProducto
-            && descripcionProducto && tallaProducto && stockProducto && precioProducto) {
+            && descripcionProducto && tallaProducto && stockProducto && precioProducto && urlImagen) {
             const config = {
                 headers: { "Access-Control-Allow-Origin": "*" }
             };
@@ -268,7 +295,7 @@ export const PresentacionAgregarProducto = () => {
                 stock_vendido_producto: 0,
                 precio_producto: precioProducto,
 				imagen_producto_blob: "asdsadsasda", 
-                url_imagen_producto: generarDireccion(generoProducto, categoriaProducto, subcategoriaProducto, nameProducto),
+                url_imagen_producto: urlImagen
 
             }, config).then(
                 alert("producto registrado"));
@@ -304,6 +331,10 @@ export const PresentacionAgregarProducto = () => {
     const eventoPrecio = (e) => {
         setPrecioProducto(e.target.value)
     }
+    const eventoImagen = (e) =>{
+        setUrlImagen(e.target.value)
+
+    }
 
 
     return (
@@ -321,9 +352,9 @@ export const PresentacionAgregarProducto = () => {
             <div className={classes.lateralIzq}>
                 <p className={classes.titulo}>Agregar producto</p>
                 <Stack spacing={3} className={classes.stack}>
-                    <TextField onChange={eventoNombre} error={nameProductoError} label='Nombre'></TextField>
-                    <TextField onChange={eventoCategoria} error={categoriaProductoError} label='Categoria'></TextField>
-                    <TextField onChange={eventoSubcategoria} error={subcategoriaProductoError} label='Sub categoria'></TextField>
+                    <TextField onChange={eventoNombre} error={nameProductoError} label='Nombre' variant="outlined"></TextField>
+                    <TextField onChange={eventoCategoria} error={categoriaProductoError} label='Categoria' variant="outlined"> </TextField>
+                    <TextField onChange={eventoSubcategoria} error={subcategoriaProductoError} label='Sub categoria' variant="outlined"></TextField>
                     <FormControl fullWidth>
                         <InputLabel id="label_talla"> Talla</InputLabel>
                         <Select
@@ -332,6 +363,7 @@ export const PresentacionAgregarProducto = () => {
                             label="Genero"
                             onChange={eventoTalla}
                             error={tallaProductoError}
+                            variant="outlined"
                         >
                             <MenuItem value="XS">XS</MenuItem>
                             <MenuItem value="S">S</MenuItem>
@@ -354,8 +386,9 @@ export const PresentacionAgregarProducto = () => {
                             <MenuItem value="MUJER">MUJER</MenuItem>
                         </Select>
                     </FormControl>
-                    <TextField onChange={eventoStock} error={stockProductoError} inputProps={{ inputMode: 'numeric', pattern: '[0-9]*' }} type="number" label='Stock disponible'></TextField>
-                    <TextField onChange={eventoPrecio} error={precioProductoError} type="number" label='Precio'></TextField>
+                    <TextField onChange={eventoStock} error={stockProductoError} inputProps={{ inputMode: 'numeric', pattern: '[0-9]*' }} type="number" label='Stock disponible' variant="outlined"></TextField>
+                    <TextField onChange={eventoPrecio} error={precioProductoError} type="number" label='Precio' variant="outlined"></TextField>
+                    <TextField onChange={eventoImagen} error={stockProductoError} inputProps={{ inputMode: 'numeric', pattern: '[0-9]*' }} type="text" label='Url Imagen ' variant="outlined"></TextField>
 
                 </Stack>
 
@@ -368,11 +401,12 @@ export const PresentacionAgregarProducto = () => {
 
 
 
-                    <img name="" className={classes.imagenProd} src={localStorage.getItem('recent-image')}></img>
-                    <Button color="secondary" variant="outlined" className={classes.cargarImagen} onClick={() => { refCargarImagen.current.click() }}>Cargar imagen</Button>
+                 <img name="" className={classes.imagenProd} src={urlImagen}></img>
+                 <div className={classes.noImage}><p>No Image</p></div> 
+                    
+
                 </div>
-                <input type='file' ref={refCargarImagen} hidden onChange={
-                    capturarImagen}></input>
+                
 
                 <textarea onChange={eventoDescripcion} error={descripcionProductoError} name="" placeholder="Descripcion" className={classes.descripcion} ></textarea>
             </div>

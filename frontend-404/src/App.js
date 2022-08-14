@@ -8,11 +8,11 @@ import { PresentacionGenero } from "./components/Presentaciones/PresentacionGene
 import { PresentacionSubcategoria } from "./components/Presentaciones/PresentacionSubcategoria";
 import { PresentacionProducto } from "./components/Presentaciones/PresentacionProducto";
 import { Nada } from "./nada";
-import { ProductosJson ,productos} from './components/productosJson'
 import { CartProvider } from "react-use-cart";
 import Navegacion from "./components/Navegacion/Navegacion";
 import PresentacionCarrito from "./components/Presentaciones/presentacionCarrito";
-
+import productos from './components/ProductosJson.json'
+import "./App.css"
 function App() {
 
 	// const links = ProductosJson
@@ -28,15 +28,25 @@ function App() {
 		<Routes>
 
 		<Route path='hombre' element={<PresentacionGenero genero='HOMBRE' />} />
-		<Route path='hombre/ropaExterior' element={<PresentacionCategoria genero='HOMBRE' idCategoria='RopaExterior' />} />
-		<Route path='hombre/ropaExterior/camisas' element={<PresentacionSubcategoria genero='HOMBRE' subCategoria='camisas' />} />
-		<Route path='hombre/ropaExterior/camisetas' element={<PresentacionSubcategoria genero='HOMBRE' subCategoria='camisetas' />} />
-		<Route path='hombre/ropaExterior/jeans' element={<PresentacionSubcategoria genero='HOMBRE' subCategoria='jeans' />} />
-		<Route path='hombre/ropaExterior/pantalones' element={<PresentacionSubcategoria genero='HOMBRE' subCategoria='pantalones' />} />
+			<Route path='hombre/ropaExterior' element={<PresentacionCategoria genero='HOMBRE' idCategoria='RopaExterior' />} />
+			<Route path='hombre/ropaExterior/camisas' element={<PresentacionSubcategoria genero='HOMBRE' subCategoria='camisas' />} />
+			<Route path='hombre/ropaExterior/camisetas' element={<PresentacionSubcategoria genero='HOMBRE' subCategoria='camisetas' />} />
+			<Route path='hombre/ropaExterior/jeans' element={<PresentacionSubcategoria genero='HOMBRE' subCategoria='jeans' />} />
+			<Route path='hombre/ropaExterior/pantalones' element={<PresentacionSubcategoria genero='HOMBRE' subCategoria='pantalones' />} />
 
 
 		<Route path='hombre/ropaInterior' element={<PresentacionCategoria genero='HOMBRE' idCategoria='RopaInterior' />} />
-		<Route path='hombre/ropainterior/pijamas' element={<PresentacionSubcategoria genero='HOMBRE' subCategoria='pijamas' />} />
+			<Route path='hombre/ropainterior/pijamas' element={<PresentacionSubcategoria genero='HOMBRE' subCategoria='pijamas' />} />
+			<Route path='hombre/ropainterior/boxers' element={<PresentacionSubcategoria genero='HOMBRE' subCategoria='boxers' />} />
+			<Route path='hombre/ropainterior/camisetas' element={<PresentacionSubcategoria genero='HOMBRE' subCategoria='camisetas' />} />
+			<Route path='hombre/ropainterior/medias' element={<PresentacionSubcategoria genero='HOMBRE' subCategoria='medias' />} />
+
+			<Route path='hombre/ropaDeportiva' element={<PresentacionCategoria genero='HOMBRE' idCategoria='ropaDeportiva' />} />
+			<Route path='hombre/ropaDeportiva/prendasSuperiores' element={<PresentacionSubcategoria genero='HOMBRE' subCategoria='prendasSuperiores' />} />
+			<Route path='hombre/ropaDeportiva/prendasInferiores' element={<PresentacionSubcategoria genero='HOMBRE' subCategoria='prendasInferiores' />} />
+			<Route path='hombre/ropaDeportiva/accesorios' element={<PresentacionSubcategoria genero='HOMBRE' subCategoria='accesorios' />} />
+
+
 
 
 		<Route path='hombre/accesorios' element={<PresentacionCategoria genero='HOMBRE' idCategoria='Accesorios' />} />
@@ -68,7 +78,7 @@ function App() {
 		<Route path='mujer/accesorios' element={<PresentacionCategoria genero='MUJER' idCategoria='Accesorios' />} />
 		<Route path='mujer/accesorios/bisuteria' element={<PresentacionSubcategoria genero='MUJER' subCategoria='billeteras' />} />
 		<Route path='mujer/accesorios/correas' element={<PresentacionSubcategoria genero='MUJER' subCategoria='correas' />} />
-		<Route path='mujer/accesorios/bolsos' element={<PresentacionSubcategoria genero='MUJER' subCategoria='gorras' />} />
+		<Route path='mujer/accesorios/bolsos' element={<PresentacionSubcategoria genero='MUJER' subCategoria='bolsos' />} />
 
 		<Route path="login" element={<Login />} />
 		<Route path="registro" element={<Registro />} />
@@ -93,7 +103,10 @@ function App() {
 
 		</Routes>
 
+
+
 		</Router>
+
 		</CartProvider>
 
 

@@ -17,9 +17,16 @@ const useStyles = makeStyles((theme) => ({ //estilos
 
     cont: {
 
+ 
         display: 'flex',
-        width: '100%',
-        margin: '144px  0',
+        width: '82%',
+        margin: '144px  auto', 
+        borderLeft:'2px solid #ddd',
+        borderRadius: '15px',
+        backgroundColor:'#fff',
+		position:'relative',
+		boxShadow: '0px 0px 50px 10px rgba(0, 0, 0, 0.5)',
+		padding:'40px'
 
     },
 
@@ -27,7 +34,8 @@ const useStyles = makeStyles((theme) => ({ //estilos
         display: 'flex',
         flexDirection: 'column',
         width: '50%',
-        margin:'0 24px'
+        margin:'0 24px',
+        position:'relative'
         
 
     },
@@ -53,11 +61,13 @@ const useStyles = makeStyles((theme) => ({ //estilos
 
     imagen: {
 
-        marginTop: '10px',
-
-        display: 'flex',
-        justifyContent: 'space-between',
-        alignItems: 'center'
+   width: 'auto',
+        height: '50vh',
+        resize: 'none',
+        position: 'relative',
+        border: '3px dashed #bbb',
+        borderRadius: '15px',
+		objectFit:'cover'
 
     },
     cargarImagen: {
@@ -87,7 +97,7 @@ const useStyles = makeStyles((theme) => ({ //estilos
     },
     BarraLateral: {
 
-        borderRight: '1px solid black',
+        borderRight: '1px solid #ddd',
         width:'20%'
     },
     busqueda: {
@@ -100,7 +110,8 @@ const useStyles = makeStyles((theme) => ({ //estilos
 
         width: 'auto',
         height: 'auto',
-        resize: 'none'
+        resize: 'none',
+        borderRadius:'5px'
 
     },
     buscar: {
@@ -108,7 +119,12 @@ const useStyles = makeStyles((theme) => ({ //estilos
         gap: '20px'
     },
     botones: {
-        display: 'flex'
+        display: 'flex',
+        position:'absolute',
+        bottom:0,
+        left:0,
+        right:0,
+        gap:'40px'
     },
     agregarUsuario:{
         backgroundColor:'black',
@@ -121,6 +137,11 @@ const useStyles = makeStyles((theme) => ({ //estilos
         display:'flex',
         flexDirection:'column',
         margin:'0 24px 0 24X'
+    },
+    lista:{
+        display:'flex',
+        flexDirection:'column',
+        justifyContent:'space-between'
     }
 
 
@@ -153,7 +174,7 @@ export const PresentacionEliminarProducto = () => {
 	const [stock_producto, setStockProducto]=React.useState('')
 	const [precio_producto, setPrecioProducto]=React.useState('')
 	const [descripcion_producto,setDescripcionProducto]=React.useState('')
-	const [imagen_producto,setImagenproducto]=React.useState(require('../../../img/producto.jpg'))
+	const [imagen_producto,setImagenproducto]=React.useState("https://assetspwa.liverpool.com.mx/assets/digital/landing/devoluciones/img/producto-etiquetas.jpg")
 
 
 	const actualizarCamposInfoProducto= async()=>{ //actualiza la información del producto a eliminar 
@@ -225,7 +246,9 @@ export const PresentacionEliminarProducto = () => {
 						<ListSubheader component="div" >
 						  Información de el producto a eliminar
 						</ListSubheader>
+                        
 					  }
+                      className={classes.lista}
 					>
 						<ListItem disablePadding>
 							<ListItemText primary="Nombre del producto" secondary={nombre_producto}/>
@@ -261,7 +284,7 @@ export const PresentacionEliminarProducto = () => {
 
                 </div>
 						<div className={classes.lateralDer}>
-							<img className={classes.descripcion}  src={imagen_producto}></img>
+							<img className={classes.imagen}  src={imagen_producto}></img>
 						</div>
             </div>
 

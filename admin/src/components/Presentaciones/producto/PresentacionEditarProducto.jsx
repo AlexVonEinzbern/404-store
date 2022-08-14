@@ -18,9 +18,15 @@ const useStyles = makeStyles((theme) => ({
 
     cont: {
 
-        display: 'flex',
-        width: '100%',
-        margin: '144px  0',
+		display: 'flex',
+        width: '82%',
+        margin: '144px  auto', 
+        borderLeft:'2px solid #ddd',
+        borderRadius: '15px',
+        backgroundColor:'#fff',
+		position:'relative',
+		boxShadow: '0px 0px 50px 10px rgba(0, 0, 0, 0.5)',
+		padding:'40px'
 
     },
 
@@ -36,16 +42,13 @@ const useStyles = makeStyles((theme) => ({
     descripcion: {
 
         width: 'auto',
-        height: '50%',
-        resize: 'none'
+        height: '150px',
+        resize: 'none',
+		// backgroundColor:'red',
+		overflow:'hidden'
+	
     },
 
-    imagenProd: {
-
-        width: 'auto',
-        height: '50%',
-        resize: 'none'
-    },
 
     titulo: {
         fontSize: '24px',
@@ -54,12 +57,13 @@ const useStyles = makeStyles((theme) => ({
 
     imagen: {
 
-        marginTop: '10px',
-
-        display: 'flex',
-        justifyContent: 'space-between',
-        alignItems: 'center'
-
+		width: 'auto',
+        height: '80%',
+        resize: 'none',
+        position: 'relative',
+        border: '3px dashed #bbb',
+        borderRadius: '15px',
+		objectFit:'cover'
     },
     cargarImagen: {
         width: '40%',
@@ -88,20 +92,22 @@ const useStyles = makeStyles((theme) => ({
     },
     BarraLateral: {
 
-        borderRight: '1px solid black',
-        width:'20%'
+        borderRight: '1px solid #bbb',
+        width:'20%',
     },
     busqueda: {
         display: 'flex',
         alignItems: 'center',
-        justifyContent: 'space-between'
+        justifyContent: 'space-between',
+		marginBottom:'20px'
 
     },
     barraBusqueda: {
 
         width: 'auto',
         height: 'auto',
-        resize: 'none'
+        resize: 'none',
+		borderRadius:'5px'
 
     },
     buscar: {
@@ -109,7 +115,15 @@ const useStyles = makeStyles((theme) => ({
         gap: '20px'
     },
     botones: {
-        display: 'flex'
+        display: 'flex',
+		gap:'40px',
+		position:'relative',
+	
+		bottom:'0',
+		width:'100%',
+		justifyContent:'center'
+	
+
     },
     agregarUsuario:{
         backgroundColor:'black',
@@ -121,8 +135,14 @@ const useStyles = makeStyles((theme) => ({
         width:'30%',
         display:'flex',
         flexDirection:'column',
-        margin:'0 24px 0 24X'
-    }
+        margin:'0 24px 0 24X',
+		position:'relative'
+    },
+	formulario:{
+		display:'flex',
+		flexDirection:'column',
+		gap:'20px'
+	}
 
 
 
@@ -147,7 +167,7 @@ function preprocessNombre(nombre){
 export const PresentacionEditarProducto = () => {
 
 	const [busqueda,setBusqueda]=React.useState('') // barra de busqueda 
-	const [imagen,setImagen]=React.useState(require('../../../img/producto.jpg'))
+	const [imagen,setImagen]=React.useState("https://assetspwa.liverpool.com.mx/assets/digital/landing/devoluciones/img/producto-etiquetas.jpg")
 	const [nombre_aux,setNombreAux]=React.useState("")
 
     const classes = useStyles()
@@ -272,8 +292,9 @@ export const PresentacionEditarProducto = () => {
                         </div>
                     </div>
 
-					<form onSubmit={formik.handleSubmit}>
-						<TextField label='Nombre'
+					<form onSubmit={formik.handleSubmit} className={classes.formulario}>
+						<TextField 	variant="outlined"
+									label='Nombre'
 									name='nombre'
 									id='nombre'
 		 							value={formik.values.nombre}
@@ -281,6 +302,7 @@ export const PresentacionEditarProducto = () => {
 									error={formik.touched.nombre && Boolean(formik.errors.nombre)}
 									helpertext={formik.touched.nombre && formik.errors.nombre}></TextField>
 						<TextField label='Categoria'
+									variant="outlined"
 									name='categoria'
 									id='categoria'
 									value={formik.values.categoria}
@@ -290,6 +312,7 @@ export const PresentacionEditarProducto = () => {
 			
 						<TextField label='Sub categoria'
 									name='subcategoria'
+									variant="outlined"
 									id='subcategoria'
 									value={formik.values.subcategoria}
 									onChange={formik.handleChange}
@@ -314,7 +337,6 @@ export const PresentacionEditarProducto = () => {
 								<MenuItem value="XL">XL</MenuItem>
 							  </Select>
 						</FormControl>
-
 	
 						<FormControl fullWidth>
 							<InputLabel id="genero_label"> Genero</InputLabel>
@@ -336,26 +358,26 @@ export const PresentacionEditarProducto = () => {
 									name="stock"
 									id="stock"
 									type='number'
+									variant='outlined'
 									value={formik.values.stock}
 									onChange={formik.handleChange}
 									error={formik.touched.stock && Boolean(formik.errors.stock)}
 									helpertext={formik.touched.stock && formik.errors.stock}></TextField>
 						<TextField label='Precio'
 									type='number'
+									variant="outlined"
 									name="precio"
 									id="precio"
 									value={formik.values.precio}
 									onChange={formik.handleChange}
 									error={formik.touched.precio && Boolean(formik.errors.precio)}
 									helpertext={formik.touched.precio && formik.errors.precio}></TextField>
-
-
-                        <Button color="primary" variant="contained" className={classes.cargarImagen}>Cargar imagen</Button>
 						<TextField 
 								  multiline
-								  rows={15}
+								  rows={7}
 								  columns={70}
 								  maxRows={20}
+								  variant="outlined"
 		                          name="descripcion" 
 								  id="descripcion"
 								  value={formik.values.descripcion}	
@@ -365,16 +387,22 @@ export const PresentacionEditarProducto = () => {
 		                          placeholder="Descripcion"  
 		                          className={classes.descripcion} >
 						</TextField>
-						<button type='submit' color='primary'> Editar producto</button>
-						<Button color="inherit" variant="contained" onClick={descartarCampos} className={classes.Descartar}>Descartar</Button>
-					</form>
+						
+					
 
-				   <div className={classes.botones}>
-                    </div>
+						</form>
+
+
                 </div>
                 <div className={classes.lateralDer}>
 
-                    <img name="" src={imagen} className={classes.descripcion} ></img>
+                    <img name="" src={imagen} className={classes.imagen} ></img>
+					<div className={classes.botones}>
+						<Button color="inherit" variant="contained" onClick={descartarCampos} className={classes.Descartar}>Descartar</Button>
+
+						<Button type='submit' color='primary' className={classes.GuargarCambios}> Guardar cambios</Button>
+					
+						</div>
 
                 </div>
             </div>

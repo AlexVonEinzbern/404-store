@@ -133,7 +133,7 @@ export default function Navegacion() {
 
           <div className={classes.sectionDesktop}>
 
-            <div className={classes.search}>
+            {/* <div className={classes.search}>
 
               <Stack spacing={2} sx={{ width: 300 }}>
                 
@@ -160,11 +160,12 @@ export default function Navegacion() {
                 />
               </Stack>
 
-            </div>
+            </div> */}
             <IconButton color="inherit" >
               <FavoriteBorder />
             </IconButton>
 
+            <a href="/carrito" className={classes.a}>
             <IconButton
               edge="end"
               aria-label="account of current user"
@@ -172,11 +173,14 @@ export default function Navegacion() {
               color="inherit">
               <Badge badgeContent={totalItems} color='secondary' overlap='rectangular' >
                 
-                <a href="/carrito" className={classes.a}>
+               
                       <LocalMallOutlined />
-                </a>
+              
               </Badge>
             </IconButton>
+            </a>
+
+
           </div>
         </Toolbar>
 

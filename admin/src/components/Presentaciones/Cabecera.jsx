@@ -51,7 +51,7 @@ const useStyles = makeStyles((theme) => ({
         display: 'flex',
         alignItems: 'center',
         paddingLeft: '20px',
-        borderLeft: '1px solid #000',
+        borderLeft: '1px solid #bbb',
         minWidth: '11%',
         maxWidth: '11%',
 
@@ -72,6 +72,7 @@ const useStyles = makeStyles((theme) => ({
         height: '244px',
         position: 'fixed'
     },
+
     opciones: {
         position: 'fixed',
         top: '120px',
@@ -79,9 +80,16 @@ const useStyles = makeStyles((theme) => ({
  
         margin:'auto',
         width:'100%',
+
+
+
         
 
     },
+
+ 
+
+    
     opcion:{
         height: '48px',
         display: 'flex',
@@ -97,16 +105,42 @@ const useStyles = makeStyles((theme) => ({
       
         backgroundColor:'#fff',
         border:'none',
-        borderTop:'1px solid #000',
-        borderBottom:'1px solid #000'
-
+        borderTop:'1px solid #bbb',
+        borderBottom:'1px solid #bbb',
+        "&:first-child":{
+            borderLeft:'1px solid black',
+            borderRadius:'5px  0  0 5px '
+        },
+ 
+       
+    
     },
     boton:{
         width:'200px',
         marginLeft:'48px',
-       
     
-   
+    },
+    last:{
+  
+        height: '48px',
+        display: 'flex',
+        alignItems: 'center',
+        paddingLeft: '20px',
+
+        minWidth: '15%',
+        maxWidth: '15%',
+
+        margin: 0,
+        fontFamily: 'roboto',
+        fontSize: '20px',
+      
+        backgroundColor:'#fff',
+        border:'none',
+        borderTop:'1px solid #bbb',
+        borderBottom:'1px solid #bbb',
+        borderRight:'1px solid #bbb',
+        borderRadius:'0  5px  5px 0'
+
     }
 }))
 
@@ -176,10 +210,10 @@ export const Cabecera = () => {
                     <select 
 							name="" 
 							id="" 
-							className={classes.opcion}
+							className={classes.last}
 							value={filtroTalla}
 							onChange={(e)=>{setFiltroTalla(e.target.value)}}>
-                        <option value="%">Talla</option>
+                        <option value="%" className={classes.last}>Talla</option>
 						 
 						{["XS","S","M","L","XL"].map(
 								u=>{

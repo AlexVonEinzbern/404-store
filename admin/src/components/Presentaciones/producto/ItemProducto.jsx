@@ -12,7 +12,8 @@ const useStyles=makeStyles((theme)=> ({
         fontFamily:'roboto',
         width:'100%',
         margin:'4px',
-        fontSize:'20px'
+        fontSize:'20px',
+        backgroundColor:'#fff'
     },
     imagen:{
         width:'48px',
@@ -28,7 +29,7 @@ const useStyles=makeStyles((theme)=> ({
         display:'flex',
         alignItems:'center',
         paddingLeft:'20px',
-        borderLeft:'1px solid #000',
+        borderLeft:'1px solid #bbb',
         minWidth:'11%',
         maxWidth:'11%',
         
@@ -50,16 +51,16 @@ export const ItemProducto = (props)=>{
 
         <div className={classes.cont}>  
             <div >
-            <img src={require(`../../../img/Product-images${props.urlImg}`)} alt="" className={classes.imagen}/>
+            <img src={props.producto.img_path} alt="" className={classes.imagen}/>
             </div>         
             
-            <div className={classes.element}>{props.nombre}</div>
-            <div className={classes.element}>{props.genero}</div>
-            <div className={classes.element}>{props.categoria}</div>
-            <div className={classes.element}>{props.subcategoria}</div>
-            <div className={classes.element}>{props.talla}</div>
-            <div className={classes.element}>{props.stock}</div>
-            <div className={classes.element}>{props.precio}</div>
+            <div className={classes.element}>{props.producto.name_producto}</div>
+            <div className={classes.element}>{props.producto.genero_producto}</div>
+            <div className={classes.element}>{props.producto.categoria_producto}</div>
+            <div className={classes.element}>{props.producto.subcategoria_producto}</div>
+            <div className={classes.element}>{props.producto.talla_producto}</div>
+            <div className={classes.element}>{props.producto.stock_producto}</div>
+            <div className={classes.element}>${props.producto.precio_producto}</div>
             <select name="" id="" className={classes.element}>
                 <option value="">Gestionar</option>
                 <option value="">Editar</option>

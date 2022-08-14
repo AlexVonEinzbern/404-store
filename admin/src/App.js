@@ -8,7 +8,7 @@ import { tema } from './components/Navegacion/styles/tema';
 import { PresentacionEliminarProducto } from './components/Presentaciones/producto/PresentacionEliminarProducto';
 import { ItemProducto } from './components/Presentaciones/producto/ItemProducto';
 import { PresentacionListarProductos } from './components/Presentaciones/producto/PresentacionListarProductos';
-import { ItemUsuario } from './components/Presentaciones/usuarios/itemUsuario';
+// import { ItemUsuario } from './components/Presentaciones/usuarios/ItemUsuario';
 import { PresentacionAgregarUsuario } from './components/Presentaciones/usuarios/PresentacionAgregarUsuario';
 import { PresentacionEditarUsuario } from './components/Presentaciones/usuarios/PresentacionEditarUsuario'
 import { PresentacionEliminarUsuario } from './components/Presentaciones/usuarios/PresentacionEliminarUsuario'
@@ -18,7 +18,7 @@ function App() {
 
 
     <ThemeProvider theme={tema}>
-      <div>
+      <div className='cont'>
         <Navegacion></Navegacion>
 
         <Router>

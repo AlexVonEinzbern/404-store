@@ -1,25 +1,43 @@
-import { useState, useEffect } from 'react';
+import httpClient from "./httpClient";
 
-const URI = process.env.REACT_APP_URI;        //Se conecta con el backend
+let data = [];
+function productosJson() {
+    const URI = process.env.REACT_APP_URI;        //Se conecta con el backend
+    const config = {
+      headers: { "Access-Control-Allow-Origin": "*" }
+    };
+    const res = await httpClient.get(URI + "obtenerProductos", config)
+    .then(function (response){
+    	data[JSON.stringify(res.data)];
+    })
+    .catch(function (error){
+    	if(error.response.data.error){
+    		console.log("Can't load data")
+    	}
+    })
+    return data;
+  }
 
-const ProductosJson = () => {
+  export productosJson
 
-	const productos=[]
-	
+/*(async () => {
+  let data = {};
+  async function productosJson() {
+    const URI = process.env.REACT_APP_URI;        //Se conecta con el backend
+    const config = {
+		headers: { "Access-Control-Allow-Origin": "*" }
+	};
+    const res = await httpClient.get(URI + "obtenerProductos", config)
+    .then(function (response){
+    	data = JSON.stringify(res.data);
+    })
+    .catch(function (error){
+    	if(error.response.data.error){
+    		console.log("Can't load data")
+    	}
+    })
+  }
+  await productosJson();
+  console.log(data);
+})()*/
 
-	const nameProductos = async () => {
-		const res = await fetch(`${URI}obtenerProductos`);
-		const data = await res.json();
-		productos = data
-	}
-	nameProductos();
-	console.log(productos);
-	return (
-		 productos
-	)
-
-}
-
-const productos=ProductosJson()
-
-export {ProductosJson,productos}

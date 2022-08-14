@@ -164,10 +164,6 @@ const Registro = () => {
 		})
 		}
 
-		if (login) {
-			navigate("/login");
-		}
-
 		const classes = useStyle()
 
 		return (

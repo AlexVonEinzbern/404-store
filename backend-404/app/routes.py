@@ -122,7 +122,6 @@ def crearClienteRegistrado():
 @cross_origin(origins='*',allow_headers=['Content-Type','Authorization'])
 def get_current_user():
 
-    print(session['user_id'], file=sys.stderr)
     user_id = session.get('user_id')
 
     if not user_id:
@@ -131,6 +130,12 @@ def get_current_user():
     user = ClienteRegistrado.query.filter_by(id_cliente_registrado=user_id).first()
 
     return cliente_registrado_schema.jsonify(user)
+
+@app.route("/logout", methods=["POST"])
+@cross_origin(origins='*',allow_headers=['Content-Type','Authorization'])
+def logout():
+    session.pop('user_id')
+    return "200"
 
 ##Ruta para el Login
 @app.route('/login', methods=['POST'])
@@ -149,7 +154,6 @@ def login():
         return jsonify({ "error" : "Unauthorized" }), 401
 
     session['user_id'] = username_existe.id_cliente_registrado
-    print(session['user_id'], file=sys.stderr)
 
     return cliente_registrado_schema.jsonify(username_existe)
 

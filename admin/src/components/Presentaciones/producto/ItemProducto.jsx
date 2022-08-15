@@ -51,7 +51,7 @@ export const ItemProducto = (props)=>{
 
         <div className={classes.cont}>  
             <div >
-            <img src={props.producto.img_path} alt="" className={classes.imagen}/>
+            <img src={props.producto.url_imagen_producto} alt="" className={classes.imagen}/>
             </div>         
             
             <div className={classes.element}>{props.producto.name_producto}</div>

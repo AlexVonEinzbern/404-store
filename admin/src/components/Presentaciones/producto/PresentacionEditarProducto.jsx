@@ -288,7 +288,7 @@ export const PresentacionEditarProducto = () => {
                         <p className={classes.titulo}>Editar Producto</p>
                         <div className={classes.buscar}>
                             <textarea className={classes.barraBusqueda} onChange={(e)=>{setBusqueda(e.target.value)}} id="" cols="30" ></textarea>
-                            <Button onClick={actualizarCamposInfoProducto} > Buscar </Button>
+                            <Button onClick={actualizarCamposInfoProducto} color='secondary' variant='outlined'> Buscar </Button>
                         </div>
                     </div>
 

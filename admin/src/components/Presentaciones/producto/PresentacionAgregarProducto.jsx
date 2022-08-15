@@ -17,14 +17,14 @@ const useStyles = makeStyles((theme) => ({
 
     cont: {
 
-        display: 'flex',
+		display: 'flex',
         width: '82%',
         margin: '144px  auto', 
         borderLeft:'2px solid #ddd',
         borderRadius: '15px',
         backgroundColor:'#fff',
 		position:'relative',
-		boxShadow: '0px 0px 20px 1px rgba(0, 0, 0, 0.2)',
+		boxShadow: '0px 0px 50px 10px rgba(0, 0, 0, 0.5)',
 		padding:'40px'
 
     },

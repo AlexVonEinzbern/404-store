@@ -39,6 +39,7 @@ def crearProducto():
 
     db.session.add(new_producto)
     db.session.commit()
+    db.session.close()
 
     return producto_schema.jsonify(new_producto)
 
@@ -57,6 +58,7 @@ def actualizarProducto(name_producto):
         'url_imagen_producto':    request.json['url_imagen_producto'],
         })
     db.session.commit()
+    db.session.close()
     return {'msg': 'Producto actualizado'}
 
 @app.route('/obtenerProducto/<name_producto>', methods=['GET'])
@@ -112,7 +114,7 @@ def crearClienteRegistrado():
 
     db.session.add(new_cliente)
     db.session.commit()
-
+    db.session.close()
     return cliente_registrado_schema.jsonify(new_cliente)
 
 @app.route('/@me')
@@ -168,6 +170,7 @@ def obtenerClientesRegistrados():
 def eliminarProducto(name_producto):
     Producto.query.filter_by(name_producto=name_producto).delete()
     db.session.commit()
+    db.session.close()
     return {'msg': 'Producto eliminado'}
 
 

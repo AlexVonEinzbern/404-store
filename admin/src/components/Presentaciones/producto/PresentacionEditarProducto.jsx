@@ -263,10 +263,10 @@ export const PresentacionEditarProducto = () => {
 			formik.setFieldValue("stock",info["stock_producto"])
 			formik.setFieldValue("precio",info["precio_producto"])
 			formik.setFieldValue("descripcion",info["descripcion_producto"])
-			setImagen(require('../../../img/Product-images'+info['url_imagen_producto']))
+			//setImagen(require('../../../img/Product-images'+info['url_imagen_producto']))
 		}catch{
 			alert("Producto no encontrado")
-			descartarCampos()
+			//descartarCampos()
 		}
 	}
 
@@ -387,11 +387,7 @@ export const PresentacionEditarProducto = () => {
 		                          placeholder="Descripcion"  
 		                          className={classes.descripcion} >
 						</TextField>
-						
-					
-
-						</form>
-
+					</form>
 
                 </div>
                 <div className={classes.lateralDer}>

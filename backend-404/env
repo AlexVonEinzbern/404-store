@@ -1,0 +1,5 @@
+SQLALCHEMY_DATABASE_URI="postgresql://jangel:4bRuMBFERe93Cgp@ojerosos.postgres.database.azure.com/desarrollo_dos?sslmode=require"
+FLASK_APP=wsgi.py
+FLASK_ENV=development
+SQLALCHEMY_TRACK_MODIFICATIONS=False
+SECRET_KEY="ojerosos"

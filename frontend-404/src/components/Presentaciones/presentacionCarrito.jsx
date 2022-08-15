@@ -76,6 +76,9 @@ const usestyles = makeStyles(theme => ({
     textoResumen:{
         fontSize:'24px'
     },
+    gastos:{
+        textAlign:'left'
+    }
 
 
 }))
@@ -112,12 +115,13 @@ function PresentacionCarrito() {
         <div className={classes.cuerpo}>
         <div className={classes.tarjetas}>
         {
-            items.map(producto => {
+            items.map((producto,index )=> {
                 return (
 
                     <TajetaItemCarrito className={classes.tarjeta}
 
                     producto={producto}
+                    key={index}
                     >
                     </TajetaItemCarrito>
                     )
@@ -132,7 +136,7 @@ function PresentacionCarrito() {
 
         <div className={classes.textoResumen}> <p>Resumen</p> </div>
         <div className={classes.itemResumen}> <p>Subtotal</p> <p>${cartTotal}</p></div>
-        <div className={classes.itemResumen}> <p>Gastos de envío y gestión estimados</p> <p>$0</p></div>
+        <div className={classes.itemResumen}> <p className={classes.gastos}>Gastos de envío y gestión estimados</p> <p>$0</p></div>
         <div className={classes.itemResumen}> <p>Total</p> <p>${cartTotal}</p></div>
         <Button className={classes.pagar} color='secondary' variant='contained'>Pagar</Button>
 

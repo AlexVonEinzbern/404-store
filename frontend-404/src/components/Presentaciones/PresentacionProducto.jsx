@@ -8,6 +8,8 @@ import { Button } from "@material-ui/core";
 
 import { makeStyles } from "@material-ui/styles";
 import { useCart } from "react-use-cart";
+import { ProductosJson,productos } from "../productosJson";
+import { useEffect } from "react";
 
 
 
@@ -34,7 +36,8 @@ const useStyles3 = makeStyles((theme) => ({
 
         display: 'flex',
         flexDirection: 'column',
-        margin: '0px 0px 0px 48px'
+        margin: '0px 0px 0px 48px',
+        alignItems:'start'
 
 
     },
@@ -59,7 +62,8 @@ const useStyles3 = makeStyles((theme) => ({
 
         },
        
-        margin:'0'
+        margin:'0',
+        textAlign:'left'
 
     },
 
@@ -67,7 +71,8 @@ const useStyles3 = makeStyles((theme) => ({
     subcategoria: {
         fontSize: '16px',
         color: 'rgba(0,0,0,0.6)',
-        textTransform:'lowercase'
+        textTransform:'lowercase',
+        textAlign:'left'
     },
 
     tallas: {
@@ -110,12 +115,26 @@ const useStyles3 = makeStyles((theme) => ({
 
     },
     precio:{
+        textAlign:'left  '
 
+    },
+    descripcion:{
+        textAlign:'justify'
+    },
+
+    tallatext:{
+        textAlign:'left'
+    },
+    descripcionTexto:{
+      
+        fontWeight:'100'
     }
 }))
 
 export const PresentacionProducto = (props) => {
 
+
+ 
 
     const {addItem,totalItems,items,totalUniqueItems,emptyCart }=useCart()
     const classes = useStyles3()
@@ -128,13 +147,13 @@ export const PresentacionProducto = (props) => {
 
                 
                 <div className={classes.imgTarProdMins}>
-                    <img src={props.producto.img_path} className={classes.imgTarProdMin} alt='hey' />
-                    <img src={props.producto.img_path} className={classes.imgTarProdMin} alt='hey' />
-                    <img src={props.producto.img_path} className={classes.imgTarProdMin} alt='hey' />
+                    <img src={props.producto.url_imagen_producto} className={classes.imgTarProdMin} alt='hey' />
+                    <img src={props.producto.url_imagen_producto} className={classes.imgTarProdMin} alt='hey' />
+                    <img src={props.producto.url_imagen_producto} className={classes.imgTarProdMin} alt='hey' />
                 </div>
 
                 <div className={classes.imgTarProd}>
-                    <img src={props.producto.img_path} className={classes.imgTar}  alt='hey' />
+                    <img src={props.producto.url_imagen_producto} className={classes.imgTar}  alt='hey' />
                 </div>
 
             </div>
@@ -151,11 +170,11 @@ export const PresentacionProducto = (props) => {
                     </p>
 
                     <p className={classes.precio}>
-                        ${props.producto.precio_producto}
+                        $   {props.producto.precio_producto}
                     </p>
 
-                    <p>
-                        selecciona tu talla
+                    <p className={classes.tallatext}>
+                    selecciona tu talla
                     </p>
                    
                 </div>
@@ -198,15 +217,15 @@ export const PresentacionProducto = (props) => {
                     favorito
                 </Button>
 
-                <div>
+                <div className={classes.descripcion}>
                         <p>
                             <b>
                             Descripcion: 
                             </b>
                         </p>
 
-                        <p>         
-                            {props.producto.descripcion_producto}
+                        <p className={classes.descripcionTexto}>         
+                            {props.producto.descripcion_producto }
                         </p>
                     </div>
 

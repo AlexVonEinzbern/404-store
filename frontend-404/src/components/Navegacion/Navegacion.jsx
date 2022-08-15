@@ -102,6 +102,7 @@ export default function Navegacion() {
               BotonesNavegacion.map((btn => {
                 return (
                   <div key={btn.id} className={classes.contBtnMenu}
+            
                   >
                     <a href={btn.ruta} key={btn.id + 1} className={classes.a}>
 
@@ -185,7 +186,7 @@ export default function Navegacion() {
         </Toolbar>
 
         <div className={classes.fantasma} onMouseEnter={seeMenu} onMouseLeave={hideMenu}>
-          {showMenu && <MenuDesplagable categorias={categoriasMenu} className={classes.MenuDesplagable}></MenuDesplagable>}
+          {/* {showMenu && <MenuDesplagable categorias={categoriasMenu} className={classes.MenuDesplagable}></MenuDesplagable>} */}
         </div>
 
       </AppBar>

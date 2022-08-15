@@ -9,7 +9,12 @@ export const useStyles = makeStyles((theme) => ({
     top:0,
    
     width:'100%',
-    minWidth:'1024px'
+    minWidth:'1024px',
+
+    borderRadius:'0 0 20px 20px',
+    boxShadow: '0px 0px 20px 5px rgba(0, 0, 0, 0.2)',
+    
+
 
   },
   fantasma:{

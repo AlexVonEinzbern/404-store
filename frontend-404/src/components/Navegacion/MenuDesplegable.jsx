@@ -44,12 +44,7 @@ const useStyles = makeStyles(() => ({
         '&:visited':{
           color:'black',
         textDecoration:'none',
-        
-  
       }
-  
-      
-   
     }
 
 }));
@@ -68,8 +63,7 @@ export const MenuDesplagable = (props) => {
         const cats = []
         for (let i = 0; i < categoria.categorias.length; i++) {
             cats.push(
-                <a href={`/${categoria.genero}/${categoria.id}/${categoria.categorias[i]}`} className={classes
-                .a}>
+                <a href={`/${categoria.genero}/${categoria.id}/${categoria.categorias[i]}`} className={classes.a}>
 
                     <Button variant="text" color="default" className={classes.itmCatMenu}
                         key={'itemCategoriaMenu' + i} onClick={hideMenu} > {categoria.categorias[i]}
@@ -90,7 +84,7 @@ export const MenuDesplagable = (props) => {
                         return (
                             <div key={btn.id} className={classes.MenuDespCat}>
 
-                                <a href={`/${btn.genero}/${btn.id}`} className={classes.a}>
+                                <a href={`/${btn.genero}/${btn.id}`} className={classes.a} key={btn.id+1}>
 
                                     <Button variant="text" color="default" key={categorias.nombre}>
                                         <Typography variant="h6" color="initial" onClick={hideMenu} className={classes.cat}> {btn.nombre}</Typography >
@@ -98,7 +92,7 @@ export const MenuDesplagable = (props) => {
 
                                 </a>
 
-                                <ButtonGroup variant="outlined" color="default" size="small" aria-label="" orientation='vertical' >
+                                <ButtonGroup variant="outlined" color="default" size="small" aria-label="" orientation='vertical' key={btn.id+2} >
                                     {
                                         getSubcategorias(btn)
                                     }

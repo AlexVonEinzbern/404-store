@@ -2,7 +2,7 @@
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom"
 import { Body } from "./components/Main/Body";
 import { Login, Registro } from "./components/Main/Login";
-
+import React, { useState } from "react";
 import { PresentacionCategoria } from "./components/Presentaciones/PresentacionCategoria";
 import { PresentacionGenero } from "./components/Presentaciones/PresentacionGenero";
 import { PresentacionSubcategoria } from "./components/Presentaciones/PresentacionSubcategoria";
@@ -11,21 +11,50 @@ import { Nada } from "./nada";
 import { CartProvider } from "react-use-cart";
 import Navegacion from "./components/Navegacion/Navegacion";
 import PresentacionCarrito from "./components/Presentaciones/presentacionCarrito";
-// import {productos} from "./components/productosJson.js"
+import {productos,ProductosJson} from "./components/productosJson.js"
+import { useEffect } from "react";
 import "./App.css"
+const URI = process.env.REACT_APP_URI;  
 function App() {
 
-	// const links = ProductosJson
+	
+	const [productosJson, setProductosJson] = useState([]);
+
+    const nameProductos = async () => {
+        const res = await fetch(`${URI}obtenerProductos`);
+        const data = await res.json();
+        setProductosJson(data);
+    }
+
+    useEffect(() => {
+        nameProductos();
+    }, [])
+
 
 	return (
 		<div className="App">
-
-
+ 
 		<CartProvider>
 		<Navegacion></Navegacion>
 		<Router>
 
 		<Routes>
+
+
+		{
+		    	productosJson.map( producto => {
+ 
+				return (
+				<Route path={`${producto.genero_producto}/${producto.categoria_producto}/${producto.subcategoria_producto}/producto-${producto.id_producto}`}
+				key={producto.id_producto}
+				 element={<PresentacionProducto producto={producto} ></PresentacionProducto>}>
+				</Route>
+				
+				)
+			})
+			
+		} 
+ 
 
 		<Route path='hombre' element={<PresentacionGenero genero='HOMBRE' />} />
 			<Route path='hombre/ropaExterior' element={<PresentacionCategoria genero='HOMBRE' idCategoria='RopaExterior' />} />
@@ -83,21 +112,14 @@ function App() {
 		<Route path="login" element={<Login />} />
 		<Route path="registro" element={<Registro />} />
 
-		<Route path="*" element={<Nada />}> </Route>
+		
+
+		
+		{/* <Route path="*" element={<Nada />}> </Route> */}
 		<Route path="/" element={<Body />}></Route>
 		<Route path="carrito" element={<PresentacionCarrito />}></Route>
 
-		{
-			productosJson.map((producto) => {
 
-				return (
-				<Route path={`${producto.genero_producto}/${producto.categoria_producto}/${producto.subcategoria_producto}/producto-${producto.id_producto}`}
-				element={<PresentacionProducto producto={producto} ></PresentacionProducto>}>
-
-				</Route>
-				)
-			})
-		}
 
 	
 

@@ -61,9 +61,9 @@ const usestyles = makeStyles(theme => ({
         backgroundColor: 'white',
         height: '64px',
         overflow: 'hidden',
-        textAlign: 'justify'
-
-
+        textAlign: 'justify',
+        fontWeight:'100'
+    
     },
     talla: {
         display: 'flex',
@@ -90,7 +90,7 @@ const usestyles = makeStyles(theme => ({
         width:'100%',
         marginLeft:'',
         
-    }
+    },
 
 
 
@@ -107,7 +107,7 @@ function TajetaItemCarrito(props) {
 
             <div className={classes.contImagen}>
 
-                <img src={props.producto.img_path} alt="" className={classes.images} />
+                <img src={props.producto.url_imagen_producto} alt="" className={classes.images} />
             </div>
 
 

@@ -11,7 +11,7 @@ import { Nada } from "./nada";
 import { CartProvider } from "react-use-cart";
 import Navegacion from "./components/Navegacion/Navegacion";
 import PresentacionCarrito from "./components/Presentaciones/presentacionCarrito";
-import productos from './components/ProductosJson.json'
+import {productos} from "./components/productosJson.js"
 import "./App.css"
 function App() {
 

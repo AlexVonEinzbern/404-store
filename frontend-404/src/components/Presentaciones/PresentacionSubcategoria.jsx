@@ -5,7 +5,7 @@ import { TarjetaProducto} from "../Tarjetas/TarjetaProducto.jsx";
 import { useState, useEffect } from 'react';
 import { SeparadorTexto } from "../Separadores/SeparadorTexto";
 import { makeStyles } from "@material-ui/styles";
-import productos from '../ProductosJson.json'
+import {productos} from '../productosJson.js'
 
 //import productosJson from '../ProductosJson.json'
 

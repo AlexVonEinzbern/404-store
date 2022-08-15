@@ -11,7 +11,7 @@ import { Nada } from "./nada";
 import { CartProvider } from "react-use-cart";
 import Navegacion from "./components/Navegacion/Navegacion";
 import PresentacionCarrito from "./components/Presentaciones/presentacionCarrito";
-import {productos} from "./components/productosJson.js"
+// import {productos} from "./components/productosJson.js"
 import "./App.css"
 function App() {
 
@@ -88,7 +88,7 @@ function App() {
 		<Route path="carrito" element={<PresentacionCarrito />}></Route>
 
 		{
-			productos.map((producto) => {
+			productosJson.map((producto) => {
 
 				return (
 				<Route path={`${producto.genero_producto}/${producto.categoria_producto}/${producto.subcategoria_producto}/producto-${producto.id_producto}`}

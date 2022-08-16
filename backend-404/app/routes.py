@@ -117,6 +117,24 @@ def crearClienteRegistrado():
     db.session.close()
     return cliente_registrado_schema.jsonify(new_cliente)
 
+@app.route('/actualizarClienteRegistrado/<name_cliente_registrado>', methods=['PUT'])
+def actualizarClienteRegistrado(name_cliente_registrado):
+    ClienteRegistrado.query.filter_by(name_cliente_registrado=name_cliente_registrado).update({
+        'name_cliente_registrado':      request.json['name_cliente_registrado'],
+        'cedula_cliente_registrado':    request.json['cedula_cliente_registrado'],
+        'edad_cliente_registrado':      request.json['edad_cliente_registrado'],
+        'email_cliente_registrado':     request.json['email_cliente_registrado'],
+        'direccion_cliente_registrado': request.json['direccion_cliente_registrado'],
+        'password_cliente_registrado':  request.json['password_cliente_registrado'],
+        'username_cliente_registrado':  request.json['username_cliente_registrado'],
+        'telefono_cliente_registrado':  request.json['telefono_cliente_registrado'],
+        'estado_cliente_registrado':    request.json['estado_cliente_registrado']
+        })
+
+    db.session.commit()
+    db.session.close()
+    return {'msg': 'Cliente actualizado'}
+
 admin_schema = AdministradorSchema()
 @app.route('/crearAdmin', methods=['POST'])
 def crearAdmin():

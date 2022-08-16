@@ -265,7 +265,7 @@ def obtenerProductoCategoria(categoria_producto):
     #productos.headers.add("Access-Control-Allow-Origin", "*")
     return productos_schema.jsonify(productos)
 
-@app.route('/obtenerProductoFiltrado/<genero>/<categoria>/<subcategoria>/<talla>', methods=["GET"])
+"""@app.route('/obtenerProductoFiltrado/<genero>/<categoria>/<subcategoria>/<talla>', methods=["GET"])
 def obtenerProductoFiltrado(genero,categoria,subcategoria,talla):   
     aux={}
     if genero!="%":
@@ -279,6 +279,23 @@ def obtenerProductoFiltrado(genero,categoria,subcategoria,talla):
     productos = Producto.query.get(aux) 
     #productos.headers.add("Access-Control-Allow-Origin", "*")
     return productos_schema.jsonify(productos)
+"""
+@app.route('/obtenerProductoFiltrado/<genero>/<categoria>/<subcategoria>/<talla>', methods=["GET"])
+def obtenerProductoFiltrado(genero,categoria,subcategoria,talla):   
+    aux={}
+    if genero!="%":
+        aux["genero_producto"]=genero
+    if categoria!="%":
+        aux["categoria_producto"]=categoria
+    if subcategoria!= "%":
+        aux["subcategoria_producto"]=subcategoria
+    if talla!="%":
+        aux["talla_producto"]=talla
+    productos = db.session.query(Producto)
+    for attr in aux:
+        productos=productos.filter(getattr(Producto,attr).like("%%%s%%" % aux[attr]))
+    return productos_schema.jsonify(productos)
+
 
 metodo_pago_schema = MetodoPagoSchema()
 @app.route('/obtenerMetodoPago/<id_cliente_registrado>', methods=['GET'])

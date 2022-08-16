@@ -276,7 +276,7 @@ def obtenerProductoFiltrado(genero,categoria,subcategoria,talla):
         aux["subcategoria_producto"]=subcategoria
     if talla!="%":
         aux["talla_producto"]=talla
-    productos = Producto.query.filter_by(aux) 
+    productos = Producto.query.get(aux) 
     #productos.headers.add("Access-Control-Allow-Origin", "*")
     return productos_schema.jsonify(productos)
 

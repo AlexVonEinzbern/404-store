@@ -3,7 +3,6 @@ import { useState, useEffect } from 'react';
 const URI = process.env.REACT_APP_URI;        //Se conecta con el backend
 
 
-
 let productos=[]
 
 	const ProductosJson = async () => {
@@ -14,13 +13,8 @@ let productos=[]
   
 	}
 
- 
-
   console.log(productos)
 	
-
 ProductosJson()
-
-
 
 export {productos,ProductosJson}

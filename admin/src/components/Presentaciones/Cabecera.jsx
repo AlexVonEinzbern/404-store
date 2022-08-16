@@ -23,16 +23,19 @@ const useStyles = makeStyles((theme) => ({
 
         textTransform: 'uppercase',
         fontWeight: 'bold',
-        position: 'sticky',
-        top: '0px',
+        position: 'fixed',
+        top: '-10px',
+        left:-3,
         marginBottom: '20px',
         backgroundColor: 'white',
         height: '244px',
         alignItems: 'flex-end',
         paddingBottom: '40px',
         zIndex: '0',
+        boxShadow: '0px -5px 20px 5px rgba(0, 0, 0, 0.3)',
 
-
+        borderRadius:'20px'
+    
     },
     imagen: {
         width: '48px',
@@ -77,9 +80,14 @@ const useStyles = makeStyles((theme) => ({
         position: 'fixed',
         top: '120px',
         display: 'flex',
- 
         margin:'auto',
-        width:'100%',
+        width:'auto',
+        left:0,
+        right:0,
+        backgroundColor:'white',
+        alignItems:'center',
+        justifyContent:'center'
+
 
 
 
@@ -117,7 +125,12 @@ const useStyles = makeStyles((theme) => ({
     },
     boton:{
         width:'200px',
-        marginLeft:'48px',
+        marginLeft:'50px',
+        height:'48px',
+        marginBottom:0,
+        marginTop:0
+        
+        
     
     },
     last:{
@@ -145,14 +158,14 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 
-export const Cabecera = () => {
+const Cabecera = () => {
 	const [productosJson,setProductosJson]=React.useState([])//productos filtrados
 
-	const [filtroGenero, setFiltroGenero]=React.useState("%")
-	const [filtroClase, setFiltroClase]=React.useState("%")
-	const [filtroSubClase,setFiltroSubclase]=React.useState("%")
-	const [filtroTalla,setFiltroTalla]=React.useState("%")
-
+	const [filtroGenero, setFiltroGenero]=React.useState("")
+	const [filtroClase, setFiltroClase]=React.useState("")
+	const [filtroSubClase,setFiltroSubclase]=React.useState("")
+	const [filtroTalla,setFiltroTalla]=React.useState("")
+    const forceUpdate = React.useState()[1].bind(null, {}) // see NOTE above const
 
 	const productosFiltrados=async ()=>{
 		const {data:info} =await axios.get(URI+filtroGenero+"/"+filtroClase+"/"+filtroSubClase+"/"+filtroTalla)
@@ -160,10 +173,21 @@ export const Cabecera = () => {
 		setProductosJson(info)
 	}
     const classes = useStyles();
+
+
+
+
+    const establecerFiltros=()=>{
+
+        localStorage.clear()
+        localStorage.setItem("filtros",JSON.stringify([filtroGenero,filtroSubClase,filtroSubClase,filtroTalla]))
+        window.location.replace('');
+    }
+
+
     return (
 
         <>
-
             <div className={classes.cont}>
 
                 <div className={classes.opciones}>
@@ -173,8 +197,10 @@ export const Cabecera = () => {
 		                id="" 
 		                className={classes.opcion}
 		                value={filtroGenero}
-		                onChange={(e)=>{setFiltroGenero(e.target.value)}}>
-                        <option value="%">Genero</option>
+		                onChange={(e)=>{setFiltroGenero(e.target.value)
+                        }}>
+                            
+                        <option value="">Genero</option>
                         <option value="HOMBRE">Hombre</option>
                         <option value="MUJER">Mujer</option>
                     </select>
@@ -182,8 +208,9 @@ export const Cabecera = () => {
 		                    id="" 
 							className={classes.opcion}
 		                    value={filtroClase}
-							onChange={(e)=>{setFiltroClase(e.target.value)}}>
-                        <option value="%">Categoria</option>
+							onChange={(e)=>{setFiltroClase(e.target.value)
+                                            }}>
+                        <option value="">Categoria</option>
 						{["accesorios","ropaDeportiva","ropaExterior","ropaInterior"].map(
 								u=>{
 									return <option value={u}> {u}</option>;
@@ -195,8 +222,9 @@ export const Cabecera = () => {
 							id="" 
 							className={classes.opcion}
 							value={filtroSubClase}
-							onChange={(e)=>{setFiltroSubclase(e.target.value)}}>
-                        <option value="%">Subcategoria</option>
+							onChange={(e)=>{setFiltroSubclase(e.target.value)
+                            }}>
+                        <option value="">Subcategoria</option>
 						{ 
 							/*categorias[filtroGenero][filtroClase].map(u=>{
 								if (filtroGenero=="%")
@@ -212,8 +240,10 @@ export const Cabecera = () => {
 							id="" 
 							className={classes.last}
 							value={filtroTalla}
-							onChange={(e)=>{setFiltroTalla(e.target.value)}}>
-                        <option value="%" className={classes.last}>Talla</option>
+							onChange={(e)=>{setFiltroTalla(e.target.value)
+                            }
+                            }>
+                        <option value="" className={classes.last}>Talla</option>
 						 
 						{["XS","S","M","L","XL"].map(
 								u=>{
@@ -222,9 +252,11 @@ export const Cabecera = () => {
 							)
 						}
 					</select>
-  		
-                    <Button color='secondary' variant='outlined' onClick={productosFiltrados} className={classes.boton}> Filtrar</Button>
+                        
+                    <Button color='secondary' variant='outlined' onClick={establecerFiltros} className={classes.boton}> Filtrar</Button>
                 </div>
+
+
 
                 <div >
                     <div className={classes.imagen} > img  </div>
@@ -237,31 +269,11 @@ export const Cabecera = () => {
                 <div className={classes.element}>Genero</div>
                 <div className={classes.element}>stock_producto</div>
                 <div className={classes.element}>precio</div>
-                <div className={classes.fondo}></div>
-
-
-
-            </div>
-			<div className={classes.lista}>
-                {productosJson.map(producto => {
-                    return (
-
-                        <ItemProducto
-                            nombre={producto.name_producto}
-                            categoria={producto.categoria_producto}
-                            subcategoria={producto.subcategoria_producto}
-                            talla={producto.talla_producto}
-                            genero={producto.genero_producto}
-                            stock={producto.stock_producto}
-                            precio={producto.precio_producto}
-                            urlImg={producto.img_path}>
-                        </ItemProducto>
-                    )
-                })
-                }
+                <div className={classes.element}>Administrar</div>
             </div>
 
         </>
 
     )
 }
+export {Cabecera}

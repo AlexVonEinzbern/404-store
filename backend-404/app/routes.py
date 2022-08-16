@@ -117,6 +117,85 @@ def crearClienteRegistrado():
     db.session.close()
     return cliente_registrado_schema.jsonify(new_cliente)
 
+@app.route('/actualizarClienteRegistrado/<name_cliente_registrado>', methods=['PUT'])
+def actualizarClienteRegistrado(name_cliente_registrado):
+    ClienteRegistrado.query.filter_by(name_cliente_registrado=name_cliente_registrado).update({
+        'name_cliente_registrado':      request.json['name_cliente_registrado'],
+        'cedula_cliente_registrado':    request.json['cedula_cliente_registrado'],
+        'edad_cliente_registrado':      request.json['edad_cliente_registrado'],
+        'email_cliente_registrado':     request.json['email_cliente_registrado'],
+        'direccion_cliente_registrado': request.json['direccion_cliente_registrado'],
+        'password_cliente_registrado':  request.json['password_cliente_registrado'],
+        'username_cliente_registrado':  request.json['username_cliente_registrado'],
+        'telefono_cliente_registrado':  request.json['telefono_cliente_registrado'],
+        'estado_cliente_registrado':    request.json['estado_cliente_registrado']
+        })
+
+    db.session.commit()
+    db.session.close()
+    return {'msg': 'Cliente actualizado'}
+
+admin_schema = AdministradorSchema()
+@app.route('/crearAdmin', methods=['POST'])
+def crearAdmin():
+
+    name_administrador      = request.json['name_administrador']
+    username_administrador  = request.json['username_administrador']
+    password_administrador  = request.json['password_administrador']
+    telefono_administrador  = request.json['telefono_administrador']
+    direccion_administrador = request.json['direccion_administrador']
+    cedula_administrador    = request.json['cedula_administrador']
+    email_administrador     = request.json['email_administrador']
+
+    email_existe    = Administrador.query.filter_by(email_administrador=email_administrador).first() is not None
+    username_existe = Administrador.query.filter_by(username_administrador=username_administrador).first() is not None
+
+    if email_existe:
+        return jsonify({ "error" : "Email ya existe"}), 409
+
+    if username_existe:
+        return jsonify({ "error" : "Usuario ya existe"}), 409
+
+    hashed_password = generate_password_hash(password_administrador).decode('utf-8')
+
+    new_admin = Administrador(
+        name_administrador      = name_administrador,
+        username_administrador  = username_administrador,
+        password_administrador  = password_administrador,
+        telefono_administrador  = telefono_administrador,
+        direccion_administrador = direccion_administrador,
+        cedula_administrador    = cedula_administrador,
+        email_administrador     = email_administrador
+        )
+
+    db.session.add(new_admin)
+    db.session.commit()
+    db.session.close()
+    return admin_schema.jsonify(new_admin)
+
+@app.route('/actualizarAdmin/<name_administrador>', methods=['PUT'])
+def actualizarAdmin(name_administrador):
+    Administrador.query.filter_by(name_administrador=name_administrador).update({
+        'name_administrador':      request.json['name_administrador'],
+        'username_administrador':  request.json['username_administrador'],
+        'password_administrador':  request.json['password_administrador'],
+        'telefono_administrador':  request.json['telefono_administrador'],
+        'direccion_administrador': request.json['direccion_administrador'],
+        'cedula_administrador':    request.json['cedula_administrador'],
+        'email_administrador':     request.json['email_administrador']
+    })
+
+    db.session.commit()
+    db.session.close()
+    return {'msg': 'Administrador actualizado'}
+
+@app.route('/eliminarAdmin<name_administrador>', methods=['DELETE'])
+def eliminarAdmin(name_administrador):
+    Administrador.query.filter_by(name_administrador=name_administrador).delete()
+    db.session.commit()
+    db.session.close()
+    return {'msg': 'Administrador eliminado'}
+
 @app.route('/@me')
 def get_current_user():
 

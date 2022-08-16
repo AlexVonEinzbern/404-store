@@ -161,12 +161,13 @@ const useStyles = makeStyles((theme) => ({
 const Cabecera = () => {
 	const [productosJson,setProductosJson]=React.useState([])//productos filtrados
 
-	const [filtroGenero, setFiltroGenero]=React.useState("")
-	const [filtroClase, setFiltroClase]=React.useState("")
-	const [filtroSubClase,setFiltroSubclase]=React.useState("")
-	const [filtroTalla,setFiltroTalla]=React.useState("")
+	const [filtroGenero, setFiltroGenero]=React.useState("%")
+	const [filtroClase, setFiltroClase]=React.useState("%")
+	const [filtroSubClase,setFiltroSubclase]=React.useState("%")
+	const [filtroTalla,setFiltroTalla]=React.useState("%")
     const forceUpdate = React.useState()[1].bind(null, {}) // see NOTE above const
 
+    
 	const productosFiltrados=async ()=>{
 		const {data:info} =await axios.get(URI+filtroGenero+"/"+filtroClase+"/"+filtroSubClase+"/"+filtroTalla)
 		console.log(info)
@@ -180,7 +181,7 @@ const Cabecera = () => {
     const establecerFiltros=()=>{
 
         localStorage.clear()
-        localStorage.setItem("filtros",JSON.stringify([filtroGenero,filtroSubClase,filtroSubClase,filtroTalla]))
+        localStorage.setItem("filtros",JSON.stringify([filtroGenero,filtroClase,filtroSubClase,filtroTalla]))
         window.location.replace('');
     }
 

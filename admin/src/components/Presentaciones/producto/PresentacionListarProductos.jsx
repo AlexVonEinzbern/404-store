@@ -84,7 +84,7 @@ const useStyles = makeStyles((theme) => ({
     const [categoria,setCategoria]=useState('');
     const [subcategoria,setSubcategoria]=useState('');
     const [talla,setTalla]=useState('');
-    
+    const forceUpdate = React.useState()[1].bind(null, {}) // see NOTE above const
 
     const nameProductos = async () => {
         const res = await fetch(`${URI}obtenerProductos`);
@@ -98,6 +98,8 @@ const useStyles = makeStyles((theme) => ({
 
 
     const cumpleFiltro=(producto,filtro)=>{
+
+
         if(
             producto.genero_producto==filtro||
             producto.categoria_producto==filtro||
@@ -108,51 +110,29 @@ const useStyles = makeStyles((theme) => ({
                 return false
             }
 
+
     }
+
+
     const filtrar=()=>{
 
+        const filtros=JSON.parse(localStorage.getItem('filtros'))
+        const filtroGenero=filtros[0]
+        const filtroClase=filtros[1]
+        const filtroSubClase=filtros[2]
+        const filtroTalla=filtros[3]
 
-        // setCategoria(toString('') )
-        // setGenero(filtroGender)
-        // setTalla(filtroTall)
-        // setSubcategoria(filtroSubCat)
+        var filtrados=[]
 
-        
-        const filtrosAll = JSON.parse(localStorage.getItem('filtros'))
-        console.log(filtrosAll)
-        const filtrosCurrent=[]
+        const productosFiltrados=async ()=>{
+            const {data:info} =await axios.get(URI+"obtenerProductoFiltrado/"+'HOMBRE'+"/"+"ropaInterior"+"/"+"camisetas"+"/"+"L")
+            console.log(info)
+            filtrados=info
+        }
 
-        filtrosAll.map(filtro=>{
-
-            if (filtro!=''){
-                filtrosCurrent.push(filtro)
-            }
-
-        })
-
-
-        productosJson.map(producto=>{
-
-            let cumple=true
-
-            filtrosCurrent.map(filtro=>{
-
-                if(cumpleFiltro(producto,filtro)){
-
-                }else{
-                    cumple=false
-                }
-            })
-
-            if(cumple==true){
-                filtrados.push(producto)
-            }
-
-        })
-
+        productosFiltrados()
         return filtrados
     }
-
 
     const classes = useStyles();
 	//let productos=axios.get(URI+) 
@@ -164,11 +144,17 @@ const useStyles = makeStyles((theme) => ({
         </Cabecera>
         <div className={classes.lista}>
 
-        {filtrar().map((prod)=>{
+        {
+        
+        filtrar().map((prod)=>{
             return(
                 <ItemProducto producto={prod} key={prod.id_producto}></ItemProducto>
             )
-        })}
+        })
+        
+        }
+
+
 
         </div>
         

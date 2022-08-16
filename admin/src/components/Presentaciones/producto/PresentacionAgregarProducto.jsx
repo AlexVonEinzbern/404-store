@@ -8,6 +8,7 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import Stack from '@mui/material/Stack';
+import categorias from './categorias.json';
 
 const URI = process.env.REACT_APP_URI;
 
@@ -353,8 +354,59 @@ export const PresentacionAgregarProducto = () => {
                 <p className={classes.titulo}>Agregar producto</p>
                 <Stack spacing={3} className={classes.stack}>
                     <TextField onChange={eventoNombre} error={nameProductoError} label='Nombre' variant="outlined"></TextField>
-                    <TextField onChange={eventoCategoria} error={categoriaProductoError} label='Categoria' variant="outlined"> </TextField>
-                    <TextField onChange={eventoSubcategoria} error={subcategoriaProductoError} label='Sub categoria' variant="outlined"></TextField>
+                    <FormControl fullWidth>
+                        <InputLabel id="genero_label"> Genero</InputLabel>
+                        <Select
+                            labelId="genero_label"
+                            value={generoProducto}
+                            label="Genero"
+                            onChange={eventoGenero}
+                            error={generoProductoError}
+                        >
+                            <MenuItem value="HOMBRE">HOMBRE</MenuItem>
+                            <MenuItem value="MUJER">MUJER</MenuItem>
+                        </Select>
+                    </FormControl>
+ 
+					<FormControl fullWidth>
+                        <InputLabel id="categoria_nueva"> Categoria</InputLabel>
+                        <Select
+                            labelId="categoria_nueva"
+                            value={categoriaProducto}
+                            label="Categoria"
+                            onChange={eventoCategoria}
+                            error={categoriaProductoError}
+                            variant="outlined"
+                        >
+							{ 
+								["accesorios","ropaDeportiva","ropaExterior","ropaInterior"].map(
+										u=>{
+											return (<MenuItem value={u}>{u}</MenuItem>)
+										}
+									)
+							}
+                       </Select>
+                    </FormControl>
+					<FormControl fullWidth>
+                        <InputLabel id="subcategoria_nueva"> Sub categoria</InputLabel>
+                        <Select
+                            labelId="subcategoria_nueva"
+                            value={subcategoriaProducto}
+                            label="Sub Categoria"
+                            onChange={eventoSubcategoria}
+                            error={subcategoriaProductoError}
+                            variant="outlined"
+                        >
+							{ (generoProducto!="" && categoriaProducto!="") &&
+										categorias[generoProducto][categoriaProducto].map(
+											u=>{
+												return (<MenuItem value={u}>{u}</MenuItem>)
+											}
+										)
+							}
+					   </Select>
+                    </FormControl>
+    
                     <FormControl fullWidth>
                         <InputLabel id="label_talla"> Talla</InputLabel>
                         <Select
@@ -373,22 +425,9 @@ export const PresentacionAgregarProducto = () => {
                         </Select>
                     </FormControl>
 
-                    <FormControl fullWidth>
-                        <InputLabel id="genero_label"> Genero</InputLabel>
-                        <Select
-                            labelId="genero_label"
-                            value={generoProducto}
-                            label="Genero"
-                            onChange={eventoGenero}
-                            error={generoProductoError}
-                        >
-                            <MenuItem value="HOMBRE">HOMBRE</MenuItem>
-                            <MenuItem value="MUJER">MUJER</MenuItem>
-                        </Select>
-                    </FormControl>
-                    <TextField onChange={eventoStock} error={stockProductoError} inputProps={{ inputMode: 'numeric', pattern: '[0-9]*' }} type="number" label='Stock disponible' variant="outlined"></TextField>
+                   <TextField onChange={eventoStock} error={stockProductoError} inputProps={{ inputMode: 'numeric', pattern: '[0-9]*' }} type="number" label='Stock disponible' variant="outlined"></TextField>
                     <TextField onChange={eventoPrecio} error={precioProductoError} type="number" label='Precio' variant="outlined"></TextField>
-                    <TextField onChange={eventoImagen} error={stockProductoError} inputProps={{ inputMode: 'numeric', pattern: '[0-9]*' }} type="text" label='Url Imagen ' variant="outlined"></TextField>
+                    <TextField onChange={eventoImagen} error={nameProductoError} type="text" label='Url Imagen ' variant="outlined"></TextField>
 
                 </Stack>
 

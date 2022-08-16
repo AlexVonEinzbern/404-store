@@ -11,7 +11,7 @@ const useStyles=makeStyles((theme)=> ({
         alignItems:'center',
         fontFamily:'roboto',
         width:'100%',
-        margin:'4px',
+        margin:'1px',
         fontSize:'20px',
         backgroundColor:'#fff'
     },

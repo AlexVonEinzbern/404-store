@@ -4,19 +4,22 @@ import React from "react";
 
 import { makeStyles } from "@material-ui/core"
 import { width } from "@mui/system";
-import { Cabecera } from "../Cabecera";
+import { Cabecera,filtroCateg,filtroGender,filtroSubCat,filtroTall } from "../Cabecera";
 import axios from "axios"; 
 import {productos,ProductosJson} from "./productosJson"
 import { ItemProducto } from "./ItemProducto";
 import { useState,useEffect } from "react";
+
 const URI = process.env.REACT_APP_URI;  // se conecta con el backend 
+
 
 
 const useStyles = makeStyles((theme) => ({
 
 
     cont: {
-        backgroundColor:'#eee',
+        backgroundColor:'#bbb',
+        minWidth:'min-content'
 
       
 
@@ -54,10 +57,10 @@ const useStyles = makeStyles((theme) => ({
         position:'fixed'
         
         
-        
-        
     },
     lista:{
+
+        marginTop:'300px'
        
     },
     opciones:{
@@ -72,10 +75,16 @@ const useStyles = makeStyles((theme) => ({
 
 
 
-export const PresentacionListarProductos = () => {
+ const PresentacionListarProductos = () => {
 
 
     const [productosJson, setProductosJson] = useState([]);
+    const filtrados=[]
+    const [genero,setGenero]=useState(filtroGender);
+    const [categoria,setCategoria]=useState('');
+    const [subcategoria,setSubcategoria]=useState('');
+    const [talla,setTalla]=useState(filtroTall);
+    
 
     const nameProductos = async () => {
         const res = await fetch(`${URI}obtenerProductos`);
@@ -88,21 +97,83 @@ export const PresentacionListarProductos = () => {
     }, [])
 
 
+    const cumpleFiltro=(producto,filtro)=>{
+        if(
+            producto.genero_producto==filtro||
+            producto.categoria_producto==filtro||
+            producto.subcategoria_producto==filtro||
+            producto.talla_producto==filtro ){
+                return true
+            }else{
+                return false
+            }
+
+    }
+    const filtrar=()=>{
+
+
+        // setCategoria(toString('') )
+        // setGenero(filtroGender)
+        // setTalla(filtroTall)
+        // setSubcategoria(filtroSubCat)
+
+        const filtrosAll = [genero,categoria,subcategoria,talla]
+        const filtrosCurrent=[]
+
+        filtrosAll.map(filtro=>{
+
+            if (filtro!=''){
+                filtrosCurrent.push(filtro)
+            }
+
+        })
+
+
+        productosJson.map(producto=>{
+
+            let cumple=true
+
+            filtrosCurrent.map(filtro=>{
+
+                if(cumpleFiltro(producto,filtro)){
+
+                }else{
+                    cumple=false
+                }
+            })
+
+            if(cumple==true){
+                filtrados.push(producto)
+            }
+
+        })
+
+        return filtrados
+    }
+
+
     const classes = useStyles();
 	//let productos=axios.get(URI+) 
     return (
 
         <div className={classes.cont}>
-        <Cabecera>
+        <Cabecera className={classes.cabecera}>
 
         </Cabecera>
-        {productosJson.map(prod=>{
+        <div className={classes.lista}>
+
+        {filtrar().map((prod)=>{
             return(
                 <ItemProducto producto={prod} key={prod.id_producto}></ItemProducto>
             )
         })}
 
         </div>
+        
+
+        </div>
 
     )
 }
+
+export {PresentacionListarProductos}

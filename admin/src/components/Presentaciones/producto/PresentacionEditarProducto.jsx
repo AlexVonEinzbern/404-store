@@ -15,7 +15,6 @@ const URI = process.env.REACT_APP_URI;  // se conecta con el backend
 
 const useStyles = makeStyles((theme) => ({
 
-
     cont: {
 
 		display: 'flex',

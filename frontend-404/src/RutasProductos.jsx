@@ -1,5 +1,5 @@
 import React from 'react'
-import { LlamarProductos, productos } from './components/productosJson'
+import { ProductosJson, productos } from './components/productosJson'
 import { Route, Routes, Router } from 'react-router-dom'
 import { PresentacionProducto } from './components/Presentaciones/PresentacionProducto'
 import { useEffect } from 'react'
@@ -9,7 +9,7 @@ function RutasProductos() {
     const forceUpdate = React.useState()[1].bind(null, {}) // see NOTE above const forceUpdate = React.useReducer(() => ({}))[1]
 
     const actualizar = () => {
-        LlamarProductos()
+        ProductosJson()
         forceUpdate()
     }
 

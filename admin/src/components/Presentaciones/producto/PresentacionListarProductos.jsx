@@ -4,7 +4,7 @@ import React from "react";
 
 import { makeStyles } from "@material-ui/core"
 import { width } from "@mui/system";
-import { Cabecera,filtroCateg,filtroGender,filtroSubCat,filtroTall } from "../Cabecera";
+import { Cabecera } from "../Cabecera";
 import axios from "axios"; 
 import {productos,ProductosJson} from "./productosJson"
 import { ItemProducto } from "./ItemProducto";
@@ -80,10 +80,10 @@ const useStyles = makeStyles((theme) => ({
 
     const [productosJson, setProductosJson] = useState([]);
     const filtrados=[]
-    const [genero,setGenero]=useState(filtroGender);
+    const [genero,setGenero]=useState('');
     const [categoria,setCategoria]=useState('');
     const [subcategoria,setSubcategoria]=useState('');
-    const [talla,setTalla]=useState(filtroTall);
+    const [talla,setTalla]=useState('');
     
 
     const nameProductos = async () => {
@@ -117,7 +117,9 @@ const useStyles = makeStyles((theme) => ({
         // setTalla(filtroTall)
         // setSubcategoria(filtroSubCat)
 
-        const filtrosAll = [genero,categoria,subcategoria,talla]
+        
+        const filtrosAll = JSON.parse(localStorage.getItem('filtros'))
+        console.log(filtrosAll)
         const filtrosCurrent=[]
 
         filtrosAll.map(filtro=>{

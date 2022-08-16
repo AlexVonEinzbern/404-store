@@ -9,11 +9,6 @@ import axios from "axios";
 import categorias from "./categorias.json"
 
 
-let filtroGender=""
-let filtroCateg=""
-let filtroSubCat=""
-let filtroTall=""
-
 const URI = process.env.REACT_APP_URI;  // se conecta con el backend 
 
 const useStyles = makeStyles((theme) => ({
@@ -178,6 +173,18 @@ const Cabecera = () => {
 		setProductosJson(info)
 	}
     const classes = useStyles();
+
+
+
+
+    const establecerFiltros=()=>{
+
+        localStorage.clear()
+        localStorage.setItem("filtros",JSON.stringify([filtroGenero,filtroSubClase,filtroSubClase,filtroTalla]))
+        window.location.replace('');
+    }
+
+
     return (
 
         <>
@@ -191,7 +198,7 @@ const Cabecera = () => {
 		                className={classes.opcion}
 		                value={filtroGenero}
 		                onChange={(e)=>{setFiltroGenero(e.target.value)
-                                        filtroGender=e.target.value}}>
+                        }}>
                             
                         <option value="">Genero</option>
                         <option value="HOMBRE">Hombre</option>
@@ -202,7 +209,7 @@ const Cabecera = () => {
 							className={classes.opcion}
 		                    value={filtroClase}
 							onChange={(e)=>{setFiltroClase(e.target.value)
-                                            filtroCateg=e.target.value}}>
+                                            }}>
                         <option value="">Categoria</option>
 						{["accesorios","ropaDeportiva","ropaExterior","ropaInterior"].map(
 								u=>{
@@ -216,7 +223,7 @@ const Cabecera = () => {
 							className={classes.opcion}
 							value={filtroSubClase}
 							onChange={(e)=>{setFiltroSubclase(e.target.value)
-                            filtroSubCat=e.target.value}}>
+                            }}>
                         <option value="">Subcategoria</option>
 						{ 
 							/*categorias[filtroGenero][filtroClase].map(u=>{
@@ -234,7 +241,7 @@ const Cabecera = () => {
 							className={classes.last}
 							value={filtroTalla}
 							onChange={(e)=>{setFiltroTalla(e.target.value)
-                            filtroTall=e.target.value}
+                            }
                             }>
                         <option value="" className={classes.last}>Talla</option>
 						 
@@ -246,7 +253,7 @@ const Cabecera = () => {
 						}
 					</select>
                         
-                    <Button color='secondary' variant='outlined' onClick={forceUpdate} className={classes.boton}> Filtrar</Button>
+                    <Button color='secondary' variant='outlined' onClick={establecerFiltros} className={classes.boton}> Filtrar</Button>
                 </div>
 
 
@@ -269,4 +276,4 @@ const Cabecera = () => {
 
     )
 }
-export {Cabecera,filtroGender,filtroCateg,filtroSubCat,filtroTall}
+export {Cabecera}

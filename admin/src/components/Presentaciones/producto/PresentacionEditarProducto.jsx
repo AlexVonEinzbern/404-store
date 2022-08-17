@@ -1,5 +1,5 @@
 
-import React from "react";
+import React ,{useEffect} from "react";
 import { makeStyles, Button, TextField, } from "@material-ui/core";
 import { BarraLateral } from "../BarraLateral.jsx";
 import { useFormik } from 'formik';
@@ -9,11 +9,14 @@ import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import InputLabel from '@mui/material/InputLabel';
 import axios from "axios"; 
+import categorias from './categorias.json';
+
 const URI = process.env.REACT_APP_URI;  // se conecta con el backend 
 
 
 
 const useStyles = makeStyles((theme) => ({
+
 
     cont: {
 
@@ -168,6 +171,7 @@ export const PresentacionEditarProducto = () => {
 	const [busqueda,setBusqueda]=React.useState('') // barra de busqueda 
 	const [imagen,setImagen]=React.useState("https://assetspwa.liverpool.com.mx/assets/digital/landing/devoluciones/img/producto-etiquetas.jpg")
 	const [nombre_aux,setNombreAux]=React.useState("")
+	const [stock_vendido,setStockvendido]=React.useState(0)
 
     const classes = useStyles()
 	const formValidationSchema = yup.object({
@@ -196,6 +200,8 @@ export const PresentacionEditarProducto = () => {
 		.string('descripcion del producto')
 		.required('Descripcion es requerida'),
 	  imagen: yup
+		.string(),
+	  url_imagen: yup
 		.string()
 	});
 
@@ -208,7 +214,8 @@ export const PresentacionEditarProducto = () => {
 			genero: '' ,
 			stock:0,
 			precio:0,
-			descripcion:''
+			descripcion:'',
+			url_imagen:''
 		},
 		validationSchema:formValidationSchema,
 		onSubmit:(values)=>{
@@ -224,7 +231,9 @@ export const PresentacionEditarProducto = () => {
 						talla_producto:values.talla,
 						stock_producto:values.stock,
 						precio_producto:values.precio,
-						descripcion_producto:values.descripcion
+						descripcion_producto:values.descripcion,
+						url_imagen_producto:values.url_imagen,
+						stock_vendido_producto:stock_vendido
 					}
 					axios.put(URI+"actualizarProducto/"+nombre_aux,data)
 					alert("Producto editado")
@@ -247,7 +256,8 @@ export const PresentacionEditarProducto = () => {
 		formik.setFieldValue("precio",0)
 		formik.setFieldValue("descripcion","")
 		setNombreAux("")
-		setImagen(require('../../../img/producto.jpg'))
+		formik.setFieldValue("url_imagen","")
+		setImagen("https://assetspwa.liverpool.com.mx/assets/digital/landing/devoluciones/img/producto-etiquetas.jpg")
 	}
 
 	const actualizarCamposInfoProducto= async()=>{ //actualiza la información del producto a eliminar 
@@ -262,13 +272,16 @@ export const PresentacionEditarProducto = () => {
 			formik.setFieldValue("stock",info["stock_producto"])
 			formik.setFieldValue("precio",info["precio_producto"])
 			formik.setFieldValue("descripcion",info["descripcion_producto"])
-			//setImagen(require('../../../img/Product-images'+info['url_imagen_producto']))
+			formik.setFieldValue("url_imagen",info["url_imagen_producto"])
+			setImagen(formik.values.url_imagen)
+			setStockvendido(info["stock_vendido_producto"])
 		}catch{
 			alert("Producto no encontrado")
 			//descartarCampos()
 		}
 	}
 
+	 useEffect(() => { setImagen(formik.values.url_imagen) });
     return (
 
         <div>
@@ -300,23 +313,68 @@ export const PresentacionEditarProducto = () => {
 									onChange={formik.handleChange}
 									error={formik.touched.nombre && Boolean(formik.errors.nombre)}
 									helpertext={formik.touched.nombre && formik.errors.nombre}></TextField>
-						<TextField label='Categoria'
-									variant="outlined"
-									name='categoria'
-									id='categoria'
-									value={formik.values.categoria}
-									onChange={formik.handleChange}
-									error={formik.touched.categoria && Boolean(formik.errors.categoria)}
-									helpertext={formik.touched.categoria && formik.errors.categoria}></TextField>
-			
-						<TextField label='Sub categoria'
-									name='subcategoria'
-									variant="outlined"
-									id='subcategoria'
-									value={formik.values.subcategoria}
-									onChange={formik.handleChange}
-									error={formik.touched.subcategoria && Boolean(formik.errors.subcategoria)}
-									helpertext={formik.touched.subcategoria && formik.errors.subcategoria}></TextField>
+						<FormControl fullWidth>
+							<InputLabel id="genero_label"> Genero</InputLabel>
+							  <Select
+								name="genero"
+								id="genero"
+								labelId="genero_label"
+								value={formik.values.genero}
+								label="Genero"
+								onChange={formik.handleChange}
+								error={formik.touched.genero && Boolean(formik.errors.genero)}
+								helpertext={formik.touched.genero && formik.errors.genero}
+							  >
+								<MenuItem value="HOMBRE">HOMBRE</MenuItem>
+								<MenuItem value="MUJER">MUJER</MenuItem>
+							  </Select>
+						</FormControl>
+	
+						<FormControl fullWidth>
+							<InputLabel id="categoria_nueva"> Categoria</InputLabel>
+							<Select
+								labelId="categoria_nueva"
+								value={formik.values.categoria}
+								label="Categoria"
+								name="categoria"
+								id="categoria"
+								onChange={formik.handleChange}
+								error={formik.touched.categoria && Boolean(formik.errors.categoria)}
+								variant="outlined"
+								helpertext={formik.touched.categoria && formik.errors.categoria}
+							>
+								{ 
+									["accesorios","ropaDeportiva","ropaExterior","ropaInterior"].map(
+											u=>{
+												return (<MenuItem value={u}>{u}</MenuItem>)
+											}
+										)
+								}
+						   </Select>
+						</FormControl>
+						<FormControl fullWidth>
+							<InputLabel id="subcategoria_nueva"> Sub categoria</InputLabel>
+							<Select
+								id="subcategoria"
+								name="subcategoria"
+								labelId="subcategoria_nueva"
+								value={formik.values.subcategoria}
+								label="Sub categoria"
+								onChange={formik.handleChange}
+								error={formik.touched.subcategoria && Boolean(formik.errors.subcategoria)}
+								variant="outlined"
+								helpertext={formik.touched.subcategoria && formik.errors.subcategoria}
+							>
+							{ (formik.values.genero!="" && formik.values.categoria !="") &&
+										categorias[formik.values.genero][formik.values.categoria].map(
+											u=>{
+												return (<MenuItem value={u}>{u}</MenuItem>)
+											}
+										)
+							}
+						   </Select>
+						</FormControl>
+
 						<FormControl fullWidth>
 							<InputLabel id="label_talla"> Talla</InputLabel>
 							  <Select
@@ -337,23 +395,7 @@ export const PresentacionEditarProducto = () => {
 							  </Select>
 						</FormControl>
 	
-						<FormControl fullWidth>
-							<InputLabel id="genero_label"> Genero</InputLabel>
-							  <Select
-								name="genero"
-								id="genero"
-								labelId="genero_label"
-								value={formik.values.genero}
-								label="Genero"
-								onChange={formik.handleChange}
-								error={formik.touched.genero && Boolean(formik.errors.genero)}
-								helpertext={formik.touched.genero && formik.errors.genero}
-							  >
-								<MenuItem value="HOMBRE">HOMBRE</MenuItem>
-								<MenuItem value="MUJER">MUJER</MenuItem>
-							  </Select>
-						</FormControl>
-						<TextField label='Stock disponible'
+					<TextField label='Stock disponible'
 									name="stock"
 									id="stock"
 									type='number'
@@ -371,6 +413,15 @@ export const PresentacionEditarProducto = () => {
 									onChange={formik.handleChange}
 									error={formik.touched.precio && Boolean(formik.errors.precio)}
 									helpertext={formik.touched.precio && formik.errors.precio}></TextField>
+						<TextField label='url imagen'
+									variant="outlined"
+									name="url_imagen"
+									id="url_imagen"
+									value={formik.values.url_imagen}
+									onChange={formik.handleChange}
+									error={formik.touched.url_imagen && Boolean(formik.errors.url_imagen)}
+									helpertext={formik.touched.url_imagen && formik.errors.url_imagen}></TextField>
+
 						<TextField 
 								  multiline
 								  rows={7}
@@ -386,19 +437,19 @@ export const PresentacionEditarProducto = () => {
 		                          placeholder="Descripcion"  
 		                          className={classes.descripcion} >
 						</TextField>
+							<div className={classes.botones}>
+							<Button color="inherit" variant="contained" onClick={descartarCampos} className={classes.Descartar}>Descartar</Button>
+
+							<Button type='submit' color='primary' className={classes.GuargarCambios}> Guardar cambios</Button>
+						
+							</div>
+
 					</form>
 
                 </div>
                 <div className={classes.lateralDer}>
 
                     <img name="" src={imagen} className={classes.imagen} ></img>
-					<div className={classes.botones}>
-						<Button color="inherit" variant="contained" onClick={descartarCampos} className={classes.Descartar}>Descartar</Button>
-
-						<Button type='submit' color='primary' className={classes.GuargarCambios}> Guardar cambios</Button>
-					
-						</div>
-
                 </div>
             </div>
         </div>

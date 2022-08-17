@@ -1,0 +1,14 @@
+{
+	"HOMBRE": {
+		"accesorios": ["billetera","correas","gorras","relojes","zapatos"],
+		"ropaDeportiva": ["accesorios","inferiores deportivo", "superiores deportivo"] ,
+		"ropaExterior": ["camisas","camisetas","jeans","pantalones"],
+		"ropaInterior": ["boxers","interior camisetas","medias","pijama"]
+	},
+	"MUJER":{
+		"accesorios":["billeteras","bisuteria","bolsos","calzado","correas","relojes"],
+		"ropaDeportiva":["mujer-ropaDeportiva-accesorios","mujer-ropaDeportiva-inferior","mujer-ropaDeportiva-superior"],
+		"ropaExterior":["camisas","camisetas","chalecos","chaquetas","faldas","jeans","pantalones","shorts","vestidos"],
+		"ropaInterior": ["medias","panties","pijamas","tops"] 
+	}
+}

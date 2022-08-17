@@ -187,7 +187,7 @@ export const PresentacionEliminarProducto = () => {
 		setStockProducto(info["stock_producto"])
 		setPrecioProducto(info["precio_producto"])
 		setDescripcionProducto(info["descripcion_producto"])
-		setImagenproducto(require('../../../img/Product-images'+info['url_imagen_producto']))
+		setImagenproducto(info["url_imagen_producto"])
 		console.log(info)
 	}
 	const descartarProducto=()=>{ //descarta el producto traido
@@ -208,7 +208,7 @@ export const PresentacionEliminarProducto = () => {
 			alert("busque el producto que va a eliminar primero")
 			return false 
 		}else{
-			axios.post(URI+"eliminarProducto/"+preprocessNombre(nombre_producto));
+			axios.delete(URI+"eliminarProducto"+preprocessNombre(nombre_producto));
 			alert("Producto eliminado")
 			descartarProducto()
 		}
@@ -291,8 +291,6 @@ export const PresentacionEliminarProducto = () => {
         </div>
 
     )
-
-
 
 
 

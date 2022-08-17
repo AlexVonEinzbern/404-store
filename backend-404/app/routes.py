@@ -271,21 +271,6 @@ def obtenerProductoCategoria(categoria_producto):
     #productos.headers.add("Access-Control-Allow-Origin", "*")
     return productos_schema.jsonify(productos)
 
-"""@app.route('/obtenerProductoFiltrado/<genero>/<categoria>/<subcategoria>/<talla>', methods=["GET"])
-def obtenerProductoFiltrado(genero,categoria,subcategoria,talla):   
-    aux={}
-    if genero!="%":
-        aux["genero_producto"]=genero
-    if categoria!="%":
-        aux["categoria_producto"]=categoria
-    if subcategoria!= "%":
-        aux["subcategoria_producto"]=subcategoria
-    if talla!="%":
-        aux["talla_producto"]=talla
-    productos = Producto.query.get(aux) 
-    #productos.headers.add("Access-Control-Allow-Origin", "*")
-    return productos_schema.jsonify(productos)
-"""
 @app.route('/obtenerProductoFiltrado/<genero>/<categoria>/<subcategoria>/<talla>', methods=["GET"])
 def obtenerProductoFiltrado(genero,categoria,subcategoria,talla):   
     aux={}
@@ -302,36 +287,25 @@ def obtenerProductoFiltrado(genero,categoria,subcategoria,talla):
         productos=productos.filter(getattr(Producto,attr).like("%%%s%%" % aux[attr]))
     return productos_schema.jsonify(productos)
 
+metodopago_schema = MetodoPagoSchema(many=True)
+@app.route('/crearMetodoPago', methods=['POST'])
+def crearMetodoPago():
 
-metodo_pago_schema = MetodoPagoSchema()
+    name_metodo           = request.json['name_metodo']
+    id_cliente_registrado = request.json['id_cliente_registrado']
+
+    new_metodopago = MetodoPago(
+        name_metodo = name_metodo,
+        id_cliente_registrado = id_cliente_registrado
+    )
+
+    db.session.add(new_metodopago)
+    db.session.commit()
+    db.session.close()
+    return metodopago_schema.jsonify(new_metodopago)
+
+metodopagos_schema = MetodoPagoSchema(many=True)
 @app.route('/obtenerMetodoPago/<id_cliente_registrado>', methods=['GET'])
 def obtenerMetodoPago(id_cliente_registrado):
-    metodopago = MetodoPago.query.filter_by(id_cliente_registrado=id_cliente_registrado).first()
-    #metodopago.headers.add("Access-Control-Allow-Origin", "*")
-    return metodo_pago_schema.jsonify(metodopago)
-
-##                      FUTUROS CAMBIOS
-##================================================================
-
-# producto_imagen_schema = ProductoImagenSchema()
-# @app.route('/crearProductoImagen', methods=['POST'])
-# def crearProductoImagen():
-
-#     url_imagen_producto = request.json['url_imagen_producto']
-#     color_imagen_hex    = request.json['color_imagen_hex']
-#     id_producto         = request.json['id_producto']
-
-#     new_producto_imagen = ProductoImagen(
-#         url_imagen_producto = url_imagen_producto,
-#         color_imagen_hex    = color_imagen_hex,
-#         id_producto         = id_producto
-#         )
-#     db.session.add(new_producto_imagen)
-#     db.session.commit()
-
-#     return producto_imagen_schema.jsonify(new_producto_imagen)
-
-# @app.route('/obtenerProductoImagen/<id_producto>', methods=['GET'])
-# def obtenerProductoImagen(id_producto):
-#     productoimagen = ProductoImagen.query.filter_by(id_producto = id_producto).first()
-#     return producto_imagen_schema.jsonify(productoimagen)
+    metodopago = MetodoPago.query.filter_by(id_cliente_registrado=id_cliente_registrado)
+    return metodopagos_schema.jsonify(metodopago)

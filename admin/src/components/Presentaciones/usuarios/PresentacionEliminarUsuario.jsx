@@ -221,30 +221,7 @@ export const PresentacionEliminarUsuario = () => {
 
                     <div className={classes.lateralIzq}>
 
-<<<<<<< HEAD
-                        <div className={classes.busqueda}>
-                            <p className={classes.titulo}>Eliminar Usuario</p>
-                            <div className={classes.buscar}>
-                                <textarea className={classes.barraBusqueda} name="" id="" cols="30" ></textarea>
-                                <Button> Buscar </Button>
-                            </div>
-                        </div>
-                        <TextField label='Nombre '></TextField>
-                        <TextField label='Cedula'></TextField>
-                        <TextField label='Edad'></TextField>
-                        <TextField label='E-Mail'></TextField>
-                        <TextField label='telefono'></TextField>
-                        <TextField label='Direccion'></TextField>
-                        <TextField label='Usuario'></TextField>
-                        <TextField label='contraseña'></TextField>
-                        <div className={classes.botones}>
-                            <Button color="inherit" variant="contained" className={classes.Descartar}>Descartar</Button>
-                            <Button color="inherit" variant="contained" className={classes.GuargarCambios}>Eliminar Usuario</Button>
-                        </div>
 
-                    </div>
-
-=======
                     <div className={classes.busqueda}>
                         <p className={classes.titulo}>Eliminar Administrador</p>
                         <div className={classes.buscar}>
@@ -309,7 +286,6 @@ export const PresentacionEliminarUsuario = () => {
                     </form> 
 
                 </div>
->>>>>>> 7189263a5c0bc507c3f4415cf70a9cb6546e9805
 
 
 

@@ -215,7 +215,7 @@ const Cabecera = () => {
                         onChange={(e) => {
                             setFiltroClase(e.target.value)
                         }}>
-                        <option value="">Categoria</option>
+                        <option value="%">Categoria</option>
                         {["accesorios", "ropaDeportiva", "ropaExterior", "ropaInterior"].map(
                             u => {
                                 return <option value={u}> {u}</option>;
@@ -230,11 +230,13 @@ const Cabecera = () => {
                         onChange={(e) => {
                             setFiltroSubclase(e.target.value)
                         }}>
-                        <option value="">Subcategoria</option>
-
                         {
-                            
-
+                         	( filtroClase!="%" &&filtroGenero !="%" ) ?  
+								categorias[filtroGenero][filtroClase].map(
+									u=>{
+										return (<option value={u}>{u}</option>)
+									})   : <option value="%"> Subcategoria </option>
+    
                         }
 
                     </select>

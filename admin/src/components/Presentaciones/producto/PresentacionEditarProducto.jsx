@@ -171,6 +171,7 @@ export const PresentacionEditarProducto = () => {
 	const [busqueda,setBusqueda]=React.useState('') // barra de busqueda 
 	const [imagen,setImagen]=React.useState("https://assetspwa.liverpool.com.mx/assets/digital/landing/devoluciones/img/producto-etiquetas.jpg")
 	const [nombre_aux,setNombreAux]=React.useState("")
+	const [stock_vendido,setStockvendido]=React.useState(0)
 
     const classes = useStyles()
 	const formValidationSchema = yup.object({
@@ -231,7 +232,8 @@ export const PresentacionEditarProducto = () => {
 						stock_producto:values.stock,
 						precio_producto:values.precio,
 						descripcion_producto:values.descripcion,
-						url_imagen:values.url_imagen
+						url_imagen_producto:values.url_imagen,
+						stock_vendido_producto:stock_vendido
 					}
 					axios.put(URI+"actualizarProducto/"+nombre_aux,data)
 					alert("Producto editado")
@@ -272,6 +274,7 @@ export const PresentacionEditarProducto = () => {
 			formik.setFieldValue("descripcion",info["descripcion_producto"])
 			formik.setFieldValue("url_imagen",info["url_imagen_producto"])
 			setImagen(formik.values.url_imagen)
+			setStockvendido(info["stock_vendido_producto"])
 		}catch{
 			alert("Producto no encontrado")
 			//descartarCampos()

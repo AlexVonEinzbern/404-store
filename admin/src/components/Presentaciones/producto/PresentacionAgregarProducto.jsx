@@ -247,6 +247,7 @@ export const PresentacionAgregarProducto = () => {
     // enviar datos al backend
 
     const addProduct = async () => {
+		console.log("pulso el boton")
         setNameProductoError(false);
         setGeneroProductoError(false);
         setCategoriaProductoError(false);
@@ -283,6 +284,7 @@ export const PresentacionAgregarProducto = () => {
             const config = {
                 headers: { "Access-Control-Allow-Origin": "*" }
             };
+			console.log("crendo producto")
 
             await axios.post(URI + "crearProducto", {
                 name_producto: nameProducto,
@@ -300,7 +302,6 @@ export const PresentacionAgregarProducto = () => {
 
             }, config).then(
                 alert("producto registrado"));
-            localStorage.clear()
         }
 
 

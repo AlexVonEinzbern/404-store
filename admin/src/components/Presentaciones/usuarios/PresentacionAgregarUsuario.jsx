@@ -131,67 +131,54 @@ export const PresentacionAgregarUsuario = () => {
 
     const formValidationSchema = yup.object({
         nombre: yup
-          .string('Nombre del usuario')
+          .string('Nombre')
           .required('Nombre es requerido'),
-        cedula: yup
-          .number()
-          .required('Cedula es requerida'),
-        edad: yup
-          .number()
-          .required('Edad es requerida'),
-        email: yup
-          .string('E-mail')
-          .required('E-mail es requerido'),
-        direccion: yup
-          .string('Direccion')
-          .required('Direccion es requerida'),
+        user: yup
+          .string('Username')
+          .required('Nombre de usuario es requerido'),
         pass: yup
           .string('Password')
           .required('Contraseña es requerida'),
-        nick: yup
-          .string('Username')
-          .required('Nombre de usuario es requerido'),
         telefono: yup
           .number()
           .required('Telefono es requerido'),
-        estado: yup
-            .boolean()
-            .required('Estado es requerido')
+        direccion: yup
+          .string('Direccion')
+          .required('Direccion es requerida'),
+        cedula: yup
+          .number()
+          .required('Cedula es requerida'),
+        email: yup
+          .string('E-mail')
+          .required('E-mail es requerido')
       });
 
     //Valores del formulario (datos del usuario)
     const formik = useFormik({
         initialValues: {
             nombre: '',
-            cedula: 0,
-            edad: 0,
-            email: '',
-            direccion: '',
+            user: '',
             pass: '',
-            nick: '',
             telefono: 0,
-            estado: false
+            direccion: '',
+            cedula: 0,
+            email: ''
         },
         validationSchema:formValidationSchema,
         onSubmit: values => {
           
             try {
-
-                
-
                 const data={
-                    name_cliente_registrado: values.nombre,
-                    cedula_cliente_registrado: values.cedula,
-                    edad_cliente_registrado: values.edad,
-                    email_cliente_registrado: values.email,
-                    direccion_cliente_registrado: values.direccion,
-                    password_cliente_registrado: values.pass,
-                    username_cliente_registrado: values.nick,
-                    telefono_cliente_registrado: values.telefono,
-                    estado_cliente_registrado: Boolean(values.estado)
+                    name_administrador: values.nombre,
+                    username_administrador: values.user,
+                    password_administrador: values.pass,
+                    telefono_administrador: values.telefono,
+                    direccion_administrador: values.direccion,
+                    cedula_administrador: values.cedula,
+                    email_administrador: values.email
                 }
-                axios.post(URI+"crearClienteRegistrado", data).then(
-                alert("Usuario creado"));
+                //axios.post(URI+"crearAdmin", data).then(
+                //alert("Administrador creado"));
                 descartarCampos()
             }
             catch {
@@ -202,14 +189,14 @@ export const PresentacionAgregarUsuario = () => {
 
       const descartarCampos=()=>{
 		formik.setFieldValue("nombre","")
-		formik.setFieldValue("cedula",0)
-		formik.setFieldValue("edad",0)
-		formik.setFieldValue("email","")
-        formik.setFieldValue("direccion","")
+        formik.setFieldValue("user","")
         formik.setFieldValue("pass","")
-        formik.setFieldValue("nick","")
-		formik.setFieldValue("telefono",0)
-        formik.setFieldValue("estado",false)
+        formik.setFieldValue("telefono",0)
+        formik.setFieldValue("direccion","")
+		formik.setFieldValue("cedula",0)
+		formik.setFieldValue("email","")
+    
+
 		//setNombreAux("")
 		//setImagen(require('../../../img/producto.jpg'))
 	}
@@ -225,7 +212,7 @@ return (
 
 
             <div className={classes.lateralIzq}>
-                <p className={classes.titulo}>Agregar Usuario</p>
+                <p className={classes.titulo}>Agregar Usuario Administrador</p>
                 
                 <form onSubmit={formik.handleSubmit} className={classes.formulario}>
                         <TextField label='Nombre'
@@ -236,29 +223,21 @@ return (
                                     error={formik.touched.nombre && Boolean(formik.errors.nombre)}
                                     helperText={formik.touched.nombre && formik.errors.nombre}>   
                         </TextField>
-                        <TextField label='Cédula'
-                                    name='cedula'
-                                    id='cedula'
-                                    value={formik.values.cedula}
+                        <TextField label='Usuario'
+                                    name='user'
+                                    id='user'
+                                    value={formik.values.user}
                                     onChange={formik.handleChange}
-                                    error={formik.touched.cedula && Boolean(formik.errors.cedula)}
-                                    helperText={formik.touched.cedula && formik.errors.cedula}>   
+                                    error={formik.touched.user && Boolean(formik.errors.user)}
+                                    helperText={formik.touched.user && formik.errors.user}>   
                         </TextField>
-                        <TextField label='Edad'
-                                    name='edad'
-                                    id='edad'
-                                    value={formik.values.edad}
+                        <TextField label='Contraseña'
+                                    name='pass'
+                                    id='pass'
+                                    value={formik.values.pass}
                                     onChange={formik.handleChange}
-                                    error={formik.touched.edad && Boolean(formik.errors.edado)}
-                                    helperText={formik.touched.edad && formik.errors.edad}>   
-                        </TextField>
-                        <TextField label='E-mail'
-                                    name='email'
-                                    id='email'
-                                    value={formik.values.email}
-                                    onChange={formik.handleChange}
-                                    error={formik.touched.email && Boolean(formik.errors.email)}
-                                    helperText={formik.touched.email && formik.errors.email}>   
+                                    error={formik.touched.pass && Boolean(formik.errors.pass)}
+                                    helperText={formik.touched.pass && formik.errors.pass}>   
                         </TextField>
                         <TextField label='Teléfono'
                                     name='telefono'
@@ -276,32 +255,24 @@ return (
                                     error={formik.touched.direccion && Boolean(formik.errors.direccion)}
                                     helperText={formik.touched.direccion && formik.errors.direccion}>   
                         </TextField>
-                        <TextField label='Usuario'
-                                    name='nick'
-                                    id='nick'
-                                    value={formik.values.nick}
+                        <TextField label='Cédula'
+                                    name='cedula'
+                                    id='cedula'
+                                    value={formik.values.cedula}
                                     onChange={formik.handleChange}
-                                    error={formik.touched.nick && Boolean(formik.errors.nick)}
-                                    helperText={formik.touched.nick && formik.errors.nick}>   
+                                    error={formik.touched.cedula && Boolean(formik.errors.cedula)}
+                                    helperText={formik.touched.cedula && formik.errors.cedula}>   
                         </TextField>
-                        <TextField label='Contraseña'
-                                    name='pass'
-                                    id='pass'
-                                    value={formik.values.pass}
+                        <TextField label='E-mail'
+                                    name='email'
+                                    id='email'
+                                    value={formik.values.email}
                                     onChange={formik.handleChange}
-                                    error={formik.touched.pass && Boolean(formik.errors.pass)}
-                                    helperText={formik.touched.pass && formik.errors.pass}>   
+                                    error={formik.touched.email && Boolean(formik.errors.email)}
+                                    helperText={formik.touched.email && formik.errors.email}>   
                         </TextField>
-                        <TextField label='Estado'
-                                    name='estado'
-                                    id='estado'
-                                    value={formik.values.estado}
-                                    onChange={formik.handleChange}
-                                    error={formik.touched.estado && Boolean(formik.errors.estado)}
-                                    helperText={formik.touched.estado && formik.errors.estado}>   
-                        </TextField>
-                        
-                        <Button type="submit" color="inherit" variant="contained" className={classes.agregarUsuario}>Agregar Usuario</Button>
+                  
+                        <Button type="submit" color="inherit" variant="contained" className={classes.agregarUsuario}>Agregar Administrador</Button>
 
                 </form>
 

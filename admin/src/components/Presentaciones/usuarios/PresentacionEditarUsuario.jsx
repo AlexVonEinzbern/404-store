@@ -2,9 +2,12 @@
 import React from "react";
 import { makeStyles, Button, TextField, } from "@material-ui/core";
 import { BarraLateral } from "../BarraLateral.jsx";
-
 import { useFormik } from 'formik';
 import * as yup from 'yup';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
+import InputLabel from '@mui/material/InputLabel';
 import axios from "axios"; 
 const URI = process.env.REACT_APP_URI;  // se conecta con el backend 
 
@@ -130,6 +133,17 @@ function preprocessNombre(nombre){
 	return nombre_aux; 	
 }
 
+function preprocessState(estado){
+    let res="";
+    if(estado==false){
+        res="false";
+    }
+    else{
+        res="true";
+    }
+    return res;
+}
+
 export const PresentacionEditarUsuario = () => {
 
     const [busqueda,setBusqueda]=React.useState('') // barra de busqueda 
@@ -183,7 +197,12 @@ export const PresentacionEditarUsuario = () => {
         validationSchema:formValidationSchema,
         onSubmit:(values) => {
             /*
-            const data={
+            const config = {
+                headers: { "Access-Control-Allow-Origin": "*" }
+            };
+            */
+            try{
+                const data={
                     name_cliente_registrado: values.nombre,
                     cedula_cliente_registrado: values.cedula,
                     edad_cliente_registrado: values.edad,
@@ -191,9 +210,16 @@ export const PresentacionEditarUsuario = () => {
                     direccion_cliente_registrado: values.direccion,
                     password_cliente_registrado: values.pass,
                     username_cliente_registrado: values.nick,
-                    telefono_cliente_registrado: values.telefono
+                    telefono_cliente_registrado: values.telefono,
+                    estado_cliente_registrado: Boolean(values.estado)
                 }
-                */
+                axios.put(URI+"actualizarClienteRegistrado/"+nombre_aux, data)
+                    alert("Cliente actualizado")
+                    descartarCampos()
+            }
+            catch{
+                alert("error")
+            }  
         }
     })
 
@@ -206,7 +232,7 @@ export const PresentacionEditarUsuario = () => {
         formik.setFieldValue("pass","")
         formik.setFieldValue("nick","")
 		formik.setFieldValue("telefono",0)
-        //formik.setFieldValue("estado",false)
+        formik.setFieldValue("estado",preprocessState(false))
 		setNombreAux("")
 		//setImagen(require('../../../img/producto.jpg'))
 	}
@@ -223,7 +249,7 @@ export const PresentacionEditarUsuario = () => {
             formik.setFieldValue("pass",info["password_cliente_registrado"])
             formik.setFieldValue("nick",info["username_cliente_registrado"])
 			formik.setFieldValue("telefono",info["telefono_cliente_registrado"])
-			//formik.setFieldValue("estado",info["username_cliente_registrado"])
+			formik.setFieldValue("estado",preprocessState(info["estado_cliente_registrado"]))
 			//setImagen(require('../../../img/Product-images'+info['url_imagen_producto']))
 		}catch{
 			alert("Usuario no encontrado")
@@ -257,6 +283,7 @@ export const PresentacionEditarUsuario = () => {
                         <TextField label='Nombre'
                                     name='nombre'
                                     id='nombre'
+                                    disabled
                                     value={formik.values.nombre}
                                     onChange={formik.handleChange}
                                     error={formik.touched.nombre && Boolean(formik.errors.nombre)}
@@ -265,6 +292,7 @@ export const PresentacionEditarUsuario = () => {
                         <TextField label='Cédula'
                                     name='cedula'
                                     id='cedula'
+                                    disabled
                                     value={formik.values.cedula}
                                     onChange={formik.handleChange}
                                     error={formik.touched.cedula && Boolean(formik.errors.cedula)}
@@ -273,14 +301,16 @@ export const PresentacionEditarUsuario = () => {
                         <TextField label='Edad'
                                     name='edad'
                                     id='edad'
+                                    disabled
                                     value={formik.values.edad}
                                     onChange={formik.handleChange}
-                                    error={formik.touched.edad && Boolean(formik.errors.edado)}
+                                    error={formik.touched.edad && Boolean(formik.errors.edad)}
                                     helperText={formik.touched.edad && formik.errors.edad}>   
                         </TextField>
                         <TextField label='E-mail'
                                     name='email'
                                     id='email'
+                                    disabled
                                     value={formik.values.email}
                                     onChange={formik.handleChange}
                                     error={formik.touched.email && Boolean(formik.errors.email)}
@@ -289,6 +319,7 @@ export const PresentacionEditarUsuario = () => {
                         <TextField label='Teléfono'
                                     name='telefono'
                                     id='telefono'
+                                    disabled
                                     value={formik.values.telefono}
                                     onChange={formik.handleChange}
                                     error={formik.touched.telefono && Boolean(formik.errors.telefono)}
@@ -297,6 +328,7 @@ export const PresentacionEditarUsuario = () => {
                         <TextField label='Direccion'
                                     name='direccion'
                                     id='direccion'
+                                    disabled
                                     value={formik.values.direccion}
                                     onChange={formik.handleChange}
                                     error={formik.touched.direccion && Boolean(formik.errors.direccion)}
@@ -305,6 +337,7 @@ export const PresentacionEditarUsuario = () => {
                         <TextField label='Usuario'
                                     name='nick'
                                     id='nick'
+                                    disabled
                                     value={formik.values.nick}
                                     onChange={formik.handleChange}
                                     error={formik.touched.nick && Boolean(formik.errors.nick)}
@@ -313,19 +346,37 @@ export const PresentacionEditarUsuario = () => {
                         <TextField label='Contraseña'
                                     name='pass'
                                     id='pass'
+                                    disabled
                                     value={formik.values.pass}
                                     onChange={formik.handleChange}
                                     error={formik.touched.pass && Boolean(formik.errors.pass)}
                                     helperText={formik.touched.pass && formik.errors.pass}>   
                         </TextField>
-    
+                        <FormControl fullWidth>
+							<InputLabel id="label_estado"> Estado</InputLabel>
+							  <Select
+								name="estado"
+								id="estado"
+								labelId="label_estado"
+								value={formik.values.estado}
+								label="Estado"
+								onChange={formik.handleChange}
+								error={formik.touched.estado && Boolean(formik.errors.estado)}
+								helpertext={formik.touched.estado && formik.errors.estado}
+							  >
+								<MenuItem value="true">Activo</MenuItem>
+								<MenuItem value="false">Inactivo</MenuItem>
+							  </Select>
+						</FormControl>
+
+                        <div className={classes.botones}>
+                            <Button onClick={descartarCampos} color="inherit" variant="contained" className={classes.Descartar}>Descartar</Button>
+                            <Button type='submit' color="inherit" className={classes.GuargarCambios}>Guardar cambios</Button>
+                        </div>
+                        
                     </form>            
 
-                    <div className={classes.botones}>
-
-                        <Button onClick={descartarCampos} color="inherit" variant="contained" className={classes.Descartar}>Descartar</Button>
-                        <Button color="inherit" variant="contained" className={classes.GuargarCambios}>Guardar cambios</Button>
-                    </div>
+                    
 
                 </div>
 

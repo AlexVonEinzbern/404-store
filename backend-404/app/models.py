@@ -177,7 +177,7 @@ class MetodoPago(db.Model):
     """docstring for MetodoPago"""
     __tablename__ = "metodopago"
     id_metodo             = db.Column(db.Integer, primary_key=True)
-    name_metodo           = db.Column(db.String(50), unique=True, nullable=False)
+    name_metodo           = db.Column(db.String(50), nullable=False)
     id_cliente_registrado = db.Column(db.String(32), db.ForeignKey('clienteregistrado.id_cliente_registrado'))
     
     venta = db.relationship('Venta', back_populates = 'metodopago')

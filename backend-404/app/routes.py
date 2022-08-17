@@ -287,7 +287,7 @@ def obtenerProductoFiltrado(genero,categoria,subcategoria,talla):
         productos=productos.filter(getattr(Producto,attr).like("%%%s%%" % aux[attr]))
     return productos_schema.jsonify(productos)
 
-metodopago_schema = MetodoPagoSchema(many=True)
+metodopago_schema = MetodoPagoSchema()
 @app.route('/crearMetodoPago', methods=['POST'])
 def crearMetodoPago():
 

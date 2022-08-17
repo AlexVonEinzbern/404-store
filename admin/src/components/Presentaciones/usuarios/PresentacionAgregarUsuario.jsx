@@ -298,12 +298,8 @@ return (
             </TextField>
             
             <Button type="submit" color="inherit" variant="contained" className={classes.agregarUsuario}>Agregar Usuario</Button>
-<<<<<<< HEAD
 
     </form>
-=======
-   </form>
->>>>>>> a2814c2a74a77da9e38abae9dfea71865fd764d3
 
 </div>
 <div  className={classes.lateralDer}>

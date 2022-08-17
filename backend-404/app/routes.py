@@ -173,6 +173,12 @@ def crearAdmin():
     db.session.close()
     return admin_schema.jsonify(new_admin)
 
+@app.route('/obtenerAdmin/<username_administrador>', methods=['GET'])
+def obtenerAdmin(username_administrador):
+    administrador = Administrador.query.filter_by(username_administrador=username_administrador).first()
+
+    return admin_schema.jsonify(administrador)
+
 @app.route('/actualizarAdmin/<name_administrador>', methods=['PUT'])
 def actualizarAdmin(name_administrador):
     Administrador.query.filter_by(name_administrador=name_administrador).update({

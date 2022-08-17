@@ -1,14 +1,14 @@
 import React from "react";
 
 
-import { makeStyles,Button } from "@material-ui/core";
+import { makeStyles, Button } from "@material-ui/core";
 import { margin } from "@mui/system";
 import { useState } from "react";
 import { ItemProducto } from "./producto/ItemProducto";
-import axios from "axios"; 
+import axios from "axios";
 import categorias from "./categorias.json"
-
-
+import { useEffect } from "react";
+import subcategorias from "../Presentaciones/categorias.json"
 const URI = process.env.REACT_APP_URI;  // se conecta con el backend 
 
 const useStyles = makeStyles((theme) => ({
@@ -25,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
         fontWeight: 'bold',
         position: 'fixed',
         top: '-10px',
-        left:-3,
+        left: -3,
         marginBottom: '20px',
         backgroundColor: 'white',
         height: '244px',
@@ -34,8 +34,8 @@ const useStyles = makeStyles((theme) => ({
         zIndex: '0',
         boxShadow: '0px -5px 20px 5px rgba(0, 0, 0, 0.3)',
 
-        borderRadius:'20px'
-    
+        borderRadius: '20px'
+
     },
     imagen: {
         width: '48px',
@@ -80,25 +80,25 @@ const useStyles = makeStyles((theme) => ({
         position: 'fixed',
         top: '120px',
         display: 'flex',
-        margin:'auto',
-        width:'auto',
-        left:0,
-        right:0,
-        backgroundColor:'white',
-        alignItems:'center',
-        justifyContent:'center'
+        margin: 'auto',
+        width: 'auto',
+        left: 0,
+        right: 0,
+        backgroundColor: 'white',
+        alignItems: 'center',
+        justifyContent: 'center'
 
 
 
 
-        
+
 
     },
 
- 
 
-    
-    opcion:{
+
+
+    opcion: {
         height: '48px',
         display: 'flex',
         alignItems: 'center',
@@ -110,31 +110,31 @@ const useStyles = makeStyles((theme) => ({
         margin: 0,
         fontFamily: 'roboto',
         fontSize: '20px',
-      
-        backgroundColor:'#fff',
-        border:'none',
-        borderTop:'1px solid #bbb',
-        borderBottom:'1px solid #bbb',
-        "&:first-child":{
-            borderLeft:'1px solid black',
-            borderRadius:'5px  0  0 5px '
+
+        backgroundColor: '#fff',
+        border: 'none',
+        borderTop: '1px solid #bbb',
+        borderBottom: '1px solid #bbb',
+        "&:first-child": {
+            borderLeft: '1px solid black',
+            borderRadius: '5px  0  0 5px '
         },
- 
-       
-    
+
+
+
     },
-    boton:{
-        width:'200px',
-        marginLeft:'50px',
-        height:'48px',
-        marginBottom:0,
-        marginTop:0
-        
-        
-    
+    boton: {
+        width: '200px',
+        marginLeft: '50px',
+        height: '48px',
+        marginBottom: 0,
+        marginTop: 0
+
+
+
     },
-    last:{
-  
+    last: {
+
         height: '48px',
         display: 'flex',
         alignItems: 'center',
@@ -146,44 +146,46 @@ const useStyles = makeStyles((theme) => ({
         margin: 0,
         fontFamily: 'roboto',
         fontSize: '20px',
-      
-        backgroundColor:'#fff',
-        border:'none',
-        borderTop:'1px solid #bbb',
-        borderBottom:'1px solid #bbb',
-        borderRight:'1px solid #bbb',
-        borderRadius:'0  5px  5px 0'
+
+        backgroundColor: '#fff',
+        border: 'none',
+        borderTop: '1px solid #bbb',
+        borderBottom: '1px solid #bbb',
+        borderRight: '1px solid #bbb',
+        borderRadius: '0  5px  5px 0'
 
     }
 }))
 
 
 const Cabecera = () => {
-	const [productosJson,setProductosJson]=React.useState([])//productos filtrados
+    const [productosJson, setProductosJson] = React.useState([])//productos filtrados
 
-	const [filtroGenero, setFiltroGenero]=React.useState("%")
-	const [filtroClase, setFiltroClase]=React.useState("%")
-	const [filtroSubClase,setFiltroSubclase]=React.useState("%")
-	const [filtroTalla,setFiltroTalla]=React.useState("%")
+    const [filtroGenero, setFiltroGenero] = React.useState("%")
+    const [filtroClase, setFiltroClase] = React.useState("%")
+    const [filtroSubClase, setFiltroSubclase] = React.useState("%")
+    const [filtroTalla, setFiltroTalla] = React.useState("%")
     const forceUpdate = React.useState()[1].bind(null, {}) // see NOTE above const
 
-    
-	const productosFiltrados=async ()=>{
-		const {data:info} =await axios.get(URI+filtroGenero+"/"+filtroClase+"/"+filtroSubClase+"/"+filtroTalla)
-		console.log(info)
-		setProductosJson(info)
-	}
+
     const classes = useStyles();
 
 
+    useEffect(() => {
+
+    }, [])
 
 
-    const establecerFiltros=()=>{
 
-        localStorage.clear()
-        localStorage.setItem("filtros",JSON.stringify([filtroGenero,filtroClase,filtroSubClase,filtroTalla]))
+    const establecerFiltros = () => {
+
+        localStorage.setItem("filtros", JSON.stringify([filtroGenero, filtroClase, filtroSubClase, filtroTalla]))
         window.location.replace('');
+
     }
+
+    
+    
 
 
     return (
@@ -193,67 +195,68 @@ const Cabecera = () => {
 
                 <div className={classes.opciones}>
 
-                <select 
-		                name={filtroGenero} 
-		                id="" 
-		                className={classes.opcion}
-		                value={filtroGenero}
-		                onChange={(e)=>{setFiltroGenero(e.target.value)
+                    <select
+                        name={filtroGenero}
+                        id=""
+                        className={classes.opcion}
+                        value={filtroGenero}
+                        onChange={(e) => {
+                            setFiltroGenero(e.target.value)
                         }}>
-                            
+
                         <option value="">Genero</option>
                         <option value="HOMBRE">Hombre</option>
                         <option value="MUJER">Mujer</option>
                     </select>
                     <select name=""
-		                    id="" 
-							className={classes.opcion}
-		                    value={filtroClase}
-							onChange={(e)=>{setFiltroClase(e.target.value)
-                                            }}>
+                        id=""
+                        className={classes.opcion}
+                        value={filtroClase}
+                        onChange={(e) => {
+                            setFiltroClase(e.target.value)
+                        }}>
                         <option value="">Categoria</option>
-						{["accesorios","ropaDeportiva","ropaExterior","ropaInterior"].map(
-								u=>{
-									return <option value={u}> {u}</option>;
-								}
-							)
-						}
+                        {["accesorios", "ropaDeportiva", "ropaExterior", "ropaInterior"].map(
+                            u => {
+                                return <option value={u}> {u}</option>;
+                            }
+                        )
+                        }
                     </select>
                     <select name=""
-							id="" 
-							className={classes.opcion}
-							value={filtroSubClase}
-							onChange={(e)=>{setFiltroSubclase(e.target.value)
-                            }}>
+                        id=""
+                        className={classes.opcion}
+                        value={filtroSubClase}
+                        onChange={(e) => {
+                            setFiltroSubclase(e.target.value)
+                        }}>
                         <option value="">Subcategoria</option>
-						{ 
-							/*categorias[filtroGenero][filtroClase].map(u=>{
-								if (filtroGenero=="%")
-									return <></>
-								else
-									return <option values={u}> {u} </option>
-							})*/
-							
-						}
+
+                        {
+                            
+
+                        }
+
                     </select>
-                    <select 
-							name="" 
-							id="" 
-							className={classes.last}
-							value={filtroTalla}
-							onChange={(e)=>{setFiltroTalla(e.target.value)
-                            }
-                            }>
+                    <select
+                        name=""
+                        id=""
+                        className={classes.last}
+                        value={filtroTalla}
+                        onChange={(e) => {
+                            setFiltroTalla(e.target.value)
+                        }
+                        }>
                         <option value="" className={classes.last}>Talla</option>
-						 
-						{["XS","S","M","L","XL"].map(
-								u=>{
-									return <option value={u}>{u}</option>
-								}
-							)
-						}
-					</select>
-                        
+
+                        {["XS", "S", "M", "L", "XL"].map(
+                            u => {
+                                return <option value={u}>{u}</option>
+                            }
+                        )
+                        }
+                    </select>
+
                     <Button color='secondary' variant='outlined' onClick={establecerFiltros} className={classes.boton}> Filtrar</Button>
                 </div>
 
@@ -277,4 +280,4 @@ const Cabecera = () => {
 
     )
 }
-export {Cabecera}
+export { Cabecera }

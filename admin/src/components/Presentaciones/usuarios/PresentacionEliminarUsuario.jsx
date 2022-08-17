@@ -8,24 +8,25 @@ const useStyles = makeStyles((theme) => ({
 
     cont: {
         display: 'flex',
-        width: '50%',
-        margin: '20vh  auto', 
-        borderLeft:'2px solid #ddd',
+     
+        borderLeft: '2px solid #ddd',
         borderRadius: '15px',
-        backgroundColor:'#fff',
-		position:'relative',
-		boxShadow: '0px 0px 20px 1px rgba(0, 0, 0, 0.2)',
-		padding:'40px',
-        justifyContent:'center'
+        backgroundColor: '#fff',
+        position:'relative',
+        boxShadow: '0px 0px 20px 1px rgba(0, 0, 0, 0.2)',
+  
+        justifyContent: 'center',
+        padding:'40px',
+        top:'48px'
     },
 
     lateralIzq: {
         display: 'flex',
         flexDirection: 'column',
         width: '100%',
-        margin:'auto',
-        paddingLeft:'50px'
-        
+        margin: 'auto',
+        paddingLeft: '50px'
+
 
     },
 
@@ -85,7 +86,7 @@ const useStyles = makeStyles((theme) => ({
     BarraLateral: {
 
         borderRight: '1px solid black',
-        width:'20%'
+        width: '20%'
     },
     busqueda: {
         display: 'flex',
@@ -95,10 +96,17 @@ const useStyles = makeStyles((theme) => ({
     },
     barraBusqueda: {
 
-        width: 'auto',
-        height: 'auto',
+        width: '300px',
+        fontFamily: 'roboto',
+        height: '30px',
+        fontSize: '20px',
+
         resize: 'none',
-        borderRadius:'5px'
+        borderRadius: '5px',
+        textJustify: 'center',
+        lineHeight: 1.3,
+        paddingLeft: '20px',
+        fontWeight: '150'
 
     },
     buscar: {
@@ -107,6 +115,12 @@ const useStyles = makeStyles((theme) => ({
     },
     botones: {
         display: 'flex'
+    },
+    all:{
+        height:'100vh',
+        display:'flex',
+        alignItems:'center',
+        justifyContent:'center  '
     }
 
 
@@ -120,54 +134,58 @@ export const PresentacionEliminarUsuario = () => {
 
     return (
 
-        <div>
-            <div className={classes.cont}>
+        <div className={classes.all}>
+
+            <div>
+                <div className={classes.cont}>
 
 
 
-                <div className={classes.BarraLateral}>
-                    <BarraLateral></BarraLateral>
-                </div>
+                    <div className={classes.BarraLateral}>
+                        <BarraLateral></BarraLateral>
+                    </div>
 
 
-                <div className={classes.lateralIzq}>
+                    <div className={classes.lateralIzq}>
 
-                    <div className={classes.busqueda}>
-                        <p className={classes.titulo}>Eliminar Usuario</p>
-                        <div className={classes.buscar}>
-                            <textarea className={classes.barraBusqueda} name="" id="" cols="30" ></textarea>
-                            <Button> Buscar </Button>
+                        <div className={classes.busqueda}>
+                            <p className={classes.titulo}>Eliminar Usuario</p>
+                            <div className={classes.buscar}>
+                                <textarea className={classes.barraBusqueda} name="" id="" cols="30" ></textarea>
+                                <Button> Buscar </Button>
+                            </div>
                         </div>
+                        <TextField label='Nombre '></TextField>
+                        <TextField label='Cedula'></TextField>
+                        <TextField label='Edad'></TextField>
+                        <TextField label='E-Mail'></TextField>
+                        <TextField label='telefono'></TextField>
+                        <TextField label='Direccion'></TextField>
+                        <TextField label='Usuario'></TextField>
+                        <TextField label='contraseña'></TextField>
+                        <div className={classes.botones}>
+                            <Button color="inherit" variant="contained" className={classes.Descartar}>Descartar</Button>
+                            <Button color="inherit" variant="contained" className={classes.GuargarCambios}>Eliminar Usuario</Button>
+                        </div>
+
                     </div>
-                <TextField label='Nombre '></TextField>
-                <TextField label='Cedula'></TextField>
-                <TextField label='Edad'></TextField>
-                <TextField label='E-Mail'></TextField>             
-                <TextField label='telefono'></TextField>
-                <TextField label='Direccion'></TextField>
-                <TextField label='Usuario'></TextField>
-                <TextField label='contraseña'></TextField>
-                    <div className={classes.botones}>
-                        <Button color="inherit" variant="contained" className={classes.Descartar}>Descartar</Button>
-                        <Button color="inherit" variant="contained" className={classes.GuargarCambios}>Eliminar Usuario</Button>
-                    </div>
+
+
+
+
+
+
+
+
+
+
+
 
                 </div>
-
-
-
-        
-
-
-
-
-
-
-
 
             </div>
-
         </div>
+
 
     )
 

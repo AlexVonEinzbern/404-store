@@ -14,15 +14,18 @@ const useStyles = makeStyles((theme) => ({
     cont: {
 
         display: 'flex',
-        width: '50%',
-        margin: '20vh  auto', 
-        borderLeft:'2px solid #ddd',
+     
+        borderLeft: '2px solid #ddd',
         borderRadius: '15px',
-        backgroundColor:'#fff',
-		position:'relative',
-		boxShadow: '0px 0px 20px 1px rgba(0, 0, 0, 0.2)',
-		padding:'40px',
-        justifyContent:'center'
+        backgroundColor: '#fff',
+        position:'relative',
+        boxShadow: '0px 0px 20px 1px rgba(0, 0, 0, 0.2)',
+        width:'960px',
+        justifyContent: 'center',
+        padding:'40px',
+        top:'48px'
+        
+
     },
 
     lateralIzq: {
@@ -101,19 +104,36 @@ const useStyles = makeStyles((theme) => ({
     },
     barraBusqueda: {
 
-        width: 'auto',
-        height: 'auto',
+        width: '300px',
+        fontFamily:'roboto',
+        height: '30px',
+        fontSize:'20px',
+  
         resize: 'none',
-        borderRadius:'5px'
+        borderRadius:'5px',
+        textJustify:'center',
+        lineHeight:1.3,
+        paddingLeft:'20px',
+        fontWeight:'150'
+    
+          // textJustify:'center'
 
     },
     buscar: {
         display: 'flex',
-        gap: '20px'
+        gap: '20px',
+        alignItems:'center',
+        justifyContent:'center'
     },
     botones: {
         display: 'flex',
         gap:'40px'
+    },
+    all:{
+        height:'100vh',
+        display:'flex',
+        alignItems:'center',
+        justifyContent:'center  '
     }
 
 
@@ -233,7 +253,8 @@ export const PresentacionEditarUsuario = () => {
 
     return (
 
-        <div>
+        <div className={classes.all}>
+   <div>
             <div className={classes.cont}>
 
 
@@ -333,6 +354,8 @@ export const PresentacionEditarUsuario = () => {
             </div>
 
         </div>
+        </div>
+     
 
     )
 

@@ -10,6 +10,7 @@ import Select from '@mui/material/Select';
 import InputLabel from '@mui/material/InputLabel';
 import axios from "axios"; 
 import categorias from './categorias.json';
+import { productoCurrent } from "../../../prodductoCurrent.js";
 
 const URI = process.env.REACT_APP_URI;  // se conecta con el backend 
 
@@ -28,7 +29,11 @@ const useStyles = makeStyles((theme) => ({
         backgroundColor:'#fff',
 		position:'relative',
 		boxShadow: '0px 0px 50px 10px rgba(0, 0, 0, 0.5)',
-		padding:'40px'
+		padding:'40px',
+		maxWidth:'1440px',
+		maxHeight:'760px',
+		minHeight:'760px',
+		top:'48px'
 
     },
 
@@ -44,7 +49,9 @@ const useStyles = makeStyles((theme) => ({
     descripcion: {
 
         width: 'auto',
-        height: '150px',
+        height: '30%',
+		maxHeight:'50px',
+		
         resize: 'none',
 		// backgroundColor:'red',
 		overflow:'hidden'
@@ -60,7 +67,7 @@ const useStyles = makeStyles((theme) => ({
     imagen: {
 
 		width: 'auto',
-        height: '80%',
+        height: '70%',
         resize: 'none',
         position: 'relative',
         border: '3px dashed #bbb',
@@ -107,13 +114,22 @@ const useStyles = makeStyles((theme) => ({
     barraBusqueda: {
 
         width: 'auto',
-        height: 'auto',
+        height: '40px',
         resize: 'none',
-		borderRadius:'5px'
+        borderRadius:'5px',
+		padding:'0',	
+		paddingLeft:'20px',
+		width:'300px',
+		fontFamily:'roboto',
+		fontSize:'20px',
+		lineHeight:'2',
+		overflow:'hidden'
+
+
 
     },
     buscar: {
-        display: 'flex',
+		display: 'flex',
         gap: '20px'
     },
     botones: {
@@ -144,7 +160,26 @@ const useStyles = makeStyles((theme) => ({
 		display:'flex',
 		flexDirection:'column',
 		gap:'20px'
-	}
+	},
+	descripcion: {
+
+        width: 'auto',
+        height: '50%',
+        resize: 'none',
+        borderRadius: '15px',
+        marginTop:'40px',
+        fontFamily:'roboto',
+        padding:'10px',
+        fontSize:'18px',
+        border:'1px solid #bbb',
+    },
+	all:{
+        height:'100vh',
+        display:'flex',
+        alignItems:'center',
+        justifyContent:'center  '
+
+    }
 
 
 
@@ -284,7 +319,7 @@ export const PresentacionEditarProducto = () => {
 	 useEffect(() => { setImagen(formik.values.url_imagen) });
     return (
 
-        <div>
+        <div className={classes.all}>
             <div className={classes.cont}>
 
 
@@ -299,7 +334,7 @@ export const PresentacionEditarProducto = () => {
                     <div className={classes.busqueda}>
                         <p className={classes.titulo}>Editar Producto</p>
                         <div className={classes.buscar}>
-                            <textarea className={classes.barraBusqueda} onChange={(e)=>{setBusqueda(e.target.value)}} id="" cols="30" ></textarea>
+                            <textarea className={classes.barraBusqueda} onChange={(e)=>{setBusqueda(e.target.value)} } defaultValue={productoCurrent.name_producto}  id="" cols="30" ></textarea>
                             <Button onClick={actualizarCamposInfoProducto} color='secondary' variant='outlined'> Buscar </Button>
                         </div>
                     </div>
@@ -422,21 +457,7 @@ export const PresentacionEditarProducto = () => {
 									error={formik.touched.url_imagen && Boolean(formik.errors.url_imagen)}
 									helpertext={formik.touched.url_imagen && formik.errors.url_imagen}></TextField>
 
-						<TextField 
-								  multiline
-								  rows={7}
-								  columns={70}
-								  maxRows={20}
-								  variant="outlined"
-		                          name="descripcion" 
-								  id="descripcion"
-								  value={formik.values.descripcion}	
-								  onChange={formik.handleChange}
-								  helpertext={formik.touched.descripcion && formik.errors.descripcion}	
-								  error={formik.touched.descripcion && Boolean(formik.errors.descripcion)}
-		                          placeholder="Descripcion"  
-		                          className={classes.descripcion} >
-						</TextField>
+						
 							<div className={classes.botones}>
 							<Button color="inherit" variant="contained" onClick={descartarCampos} className={classes.Descartar}>Descartar</Button>
 
@@ -450,6 +471,22 @@ export const PresentacionEditarProducto = () => {
                 <div className={classes.lateralDer}>
 
                     <img name="" src={imagen} className={classes.imagen} ></img>
+
+					<textarea 
+								  multiline
+								  rows={7}
+								  columns={70}
+								  maxRows={30}
+								  variant="outlined"
+		                          name="descripcion" 
+								  id="descripcion"
+								  value={formik.values.descripcion}	
+								  onChange={formik.handleChange}
+								  helpertext={formik.touched.descripcion && formik.errors.descripcion}	
+								  error={formik.touched.descripcion && Boolean(formik.errors.descripcion)}
+		                          placeholder="Descripcion"  
+		                          className={classes.descripcion} >
+						</textarea>
                 </div>
             </div>
         </div>

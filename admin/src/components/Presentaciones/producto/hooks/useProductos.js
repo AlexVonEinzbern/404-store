@@ -1,5 +1,5 @@
 import React from "react";
-import ProductosContext from "../context/ProductosContext";
+import ProductosContext from "../context/productosContext";
 import { useContext } from "react";
 
 

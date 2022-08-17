@@ -1,0 +1,108 @@
+
+[
+
+    {
+        "id":"RopaExterior",
+        "genero":"hombre",
+        "nombre":"ROPA EXTERIOR",
+        "categorias":[
+            "Camisas",
+            "Camisetas",
+            "Jeans",
+            "Pantalones"
+
+        ]
+    
+    },
+    
+
+    {
+        "id":"RopaInterior",
+        "nombre":"ROPA INTERIOR",
+        "genero":"hombre",
+        "categorias":[
+            "Pijamas",
+            "Boxers",
+            "Camisetas",
+            "Medias"
+        ]
+    },
+
+    {
+        "id":"RopaDeportiva",
+        "nombre":"ROPA DEPORTIVA",
+        "genero":"hombre",
+        "categorias":[
+            "PrendasSuperiores",
+            "PrendasInferiores",
+            "Accesorios"
+        ]
+    },
+
+    {
+        "id":"Accesorios",
+        "nombre":"ACCESORIOS",
+        "genero":"hombre",
+        "categorias":[
+            "Billeteras",
+            "Correas",
+            "Gorras",
+            "Relojes"
+
+        ]
+    },
+
+    {
+        "id":"RopaExterior",
+        "genero":"mujer",
+        "nombre":"ROPA EXTERIOR",
+        "categorias":[
+            "Camisas",
+            "Camisetas",
+            "Jeans",
+            "Pantalones"
+            
+        ]
+    },
+
+    {
+        "id":"RopaInterior",
+        "nombre":"ROPA INTERIOR",
+        "genero":"mujer",
+        "categorias":[
+            "Pijamas",
+            "Panties",
+            "Tops",
+            "Medias"
+        ]
+    },
+
+    {
+        "id":"RopaDeportiva",
+        "nombre":"ROPA DEPORTIVA",
+        "genero":"mujer",
+        "categorias":[
+            "PrendasSuperiores",
+            "PrendasInferiores",
+            "Accesorios"
+        ]
+    },
+
+    {
+        "id":"Accesorios",
+        "nombre":"ACCESORIOS",
+        "genero":"mujer",
+        "categorias":[
+            
+            "Correas",
+            "Bolsos"
+        
+        ]
+    }
+
+
+    
+
+]
+
+

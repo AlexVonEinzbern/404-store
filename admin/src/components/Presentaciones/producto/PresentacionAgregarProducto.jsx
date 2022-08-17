@@ -18,15 +18,19 @@ const useStyles = makeStyles((theme) => ({
 
     cont: {
 
-		display: 'flex',
-        width: '82%',
-        margin: '144px  auto', 
+	
+        display: 'flex',
+        width: '50%',
+        minWidth:'1440px',
+        margin: '20vh  auto', 
         borderLeft:'2px solid #ddd',
         borderRadius: '15px',
         backgroundColor:'#fff',
 		position:'relative',
-		boxShadow: '0px 0px 50px 10px rgba(0, 0, 0, 0.5)',
-		padding:'40px'
+		boxShadow: '0px 0px 20px 1px rgba(0, 0, 0, 0.2)',
+		padding:'40px',
+        justifyContent:'center',
+        top:'48px'
 
     },
 
@@ -143,9 +147,17 @@ const useStyles = makeStyles((theme) => ({
     },
     barraBusqueda: {
 
-        width: 'auto',
-        height: 'auto',
-        resize: 'none'
+        width: '300px',
+        fontFamily:'roboto',
+        height: '30px',
+        fontSize:'20px',
+  
+        resize: 'none',
+        borderRadius:'5px',
+        textJustify:'center',
+        lineHeight:1.3,
+        paddingLeft:'20px',
+        fontWeight:'150'
 
     },
     buscar: {
@@ -181,6 +193,13 @@ const useStyles = makeStyles((theme) => ({
         height:'100%',
         display:'flex',
         flexDirection:'column',
+
+    },
+    all:{
+        height:'100vh',
+        display:'flex',
+        alignItems:'center',
+        justifyContent:'center  '
 
     }
 
@@ -342,116 +361,120 @@ export const PresentacionAgregarProducto = () => {
     return (
 
 
-        <div className={classes.cont}>
+        <div className={classes.all}>
+<div className={classes.cont}>
 
 
 
-            <div className={classes.BarraLateral}>
-                <BarraLateral></BarraLateral>
-            </div>
+<div className={classes.BarraLateral}>
+    <BarraLateral></BarraLateral>
+</div>
 
 
-            <div className={classes.lateralIzq}>
-                <p className={classes.titulo}>Agregar producto</p>
-                <Stack spacing={3} className={classes.stack}>
-                    <TextField onChange={eventoNombre} error={nameProductoError} label='Nombre' variant="outlined"></TextField>
-                    <FormControl fullWidth>
-                        <InputLabel id="genero_label"> Genero</InputLabel>
-                        <Select
-                            labelId="genero_label"
-                            value={generoProducto}
-                            label="Genero"
-                            onChange={eventoGenero}
-                            error={generoProductoError}
-                        >
-                            <MenuItem value="HOMBRE">HOMBRE</MenuItem>
-                            <MenuItem value="MUJER">MUJER</MenuItem>
-                        </Select>
-                    </FormControl>
- 
-					<FormControl fullWidth>
-                        <InputLabel id="categoria_nueva"> Categoria</InputLabel>
-                        <Select
-                            labelId="categoria_nueva"
-                            value={categoriaProducto}
-                            label="Categoria"
-                            onChange={eventoCategoria}
-                            error={categoriaProductoError}
-                            variant="outlined"
-                        >
-							{ 
-								["accesorios","ropaDeportiva","ropaExterior","ropaInterior"].map(
-										u=>{
-											return (<MenuItem value={u}>{u}</MenuItem>)
-										}
-									)
-							}
-                       </Select>
-                    </FormControl>
-					<FormControl fullWidth>
-                        <InputLabel id="subcategoria_nueva"> Sub categoria</InputLabel>
-                        <Select
-                            labelId="subcategoria_nueva"
-                            value={subcategoriaProducto}
-                            label="Sub Categoria"
-                            onChange={eventoSubcategoria}
-                            error={subcategoriaProductoError}
-                            variant="outlined"
-                        >
-							{ (generoProducto!="" && categoriaProducto!="") &&
-										categorias[generoProducto][categoriaProducto].map(
-											u=>{
-												return (<MenuItem value={u}>{u}</MenuItem>)
-											}
-										)
-							}
-					   </Select>
-                    </FormControl>
+<div className={classes.lateralIzq}>
+    <p className={classes.titulo}>Agregar producto</p>
+    <Stack spacing={3} className={classes.stack}>
+        <TextField onChange={eventoNombre} error={nameProductoError} label='Nombre' variant="outlined"
+        className={classes.campo}></TextField>
+        <FormControl fullWidth>
+            <InputLabel id="genero_label"> Genero</InputLabel>
+            <Select
+                labelId="genero_label"
+                value={generoProducto}
+                label="Genero"
+                onChange={eventoGenero}
+                error={generoProductoError}
+            >
+                <MenuItem value="HOMBRE">HOMBRE</MenuItem>
+                <MenuItem value="MUJER">MUJER</MenuItem>
+            </Select>
+        </FormControl>
+
+        <FormControl fullWidth>
+            <InputLabel id="categoria_nueva"> Categoria</InputLabel>
+            <Select
+                labelId="categoria_nueva"
+                value={categoriaProducto}
+                label="Categoria"
+                onChange={eventoCategoria}
+                error={categoriaProductoError}
+                variant="outlined"
+            >
+                { 
+                    ["accesorios","ropaDeportiva","ropaExterior","ropaInterior"].map(
+                            u=>{
+                                return (<MenuItem value={u}>{u}</MenuItem>)
+                            }
+                        )
+                }
+           </Select>
+        </FormControl>
+        <FormControl fullWidth>
+            <InputLabel id="subcategoria_nueva"> Sub categoria</InputLabel>
+            <Select
+                labelId="subcategoria_nueva"
+                value={subcategoriaProducto}
+                label="Sub Categoria"
+                onChange={eventoSubcategoria}
+                error={subcategoriaProductoError}
+                variant="outlined"
+            >
+                { (generoProducto!="" && categoriaProducto!="") &&
+                            categorias[generoProducto][categoriaProducto].map(
+                                u=>{
+                                    return (<MenuItem value={u}>{u}</MenuItem>)
+                                }
+                            )
+                }
+           </Select>
+        </FormControl>
+
+        <FormControl fullWidth>
+            <InputLabel id="label_talla"> Talla</InputLabel>
+            <Select
+                labelId="label_talla"
+                value={tallaProducto}
+                label="Genero"
+                onChange={eventoTalla}
+                error={tallaProductoError}
+                variant="outlined"
+            >
+                <MenuItem value="XS">XS</MenuItem>
+                <MenuItem value="S">S</MenuItem>
+                <MenuItem value="M">M</MenuItem>
+                <MenuItem value="L">L</MenuItem>
+                <MenuItem value="XL">XL</MenuItem>
+            </Select>
+        </FormControl>
+
+       <TextField onChange={eventoStock} error={stockProductoError} inputProps={{ inputMode: 'numeric', pattern: '[0-9]*' }} type="number" label='Stock disponible' variant="outlined"></TextField>
+        <TextField onChange={eventoPrecio} error={precioProductoError} type="number" label='Precio' variant="outlined"></TextField>
+        <TextField onChange={eventoImagen} error={nameProductoError} type="text" label='Url Imagen ' variant="outlined"></TextField>
+
+    </Stack>
+
+
+    <Button onClick={addProduct} color="inherit" variant="contained" className={classes.agregarProducto}>Agregar producto</Button>
+</div>
+<div className={classes.lateralDer}>
+
+    <div className={classes.contenedorImagnen}>
+
+
+
+     <img name="" className={classes.imagenProd} src={urlImagen}></img>
+     <div className={classes.noImage}><p>No Image</p></div> 
+        
+
+    </div>
     
-                    <FormControl fullWidth>
-                        <InputLabel id="label_talla"> Talla</InputLabel>
-                        <Select
-                            labelId="label_talla"
-                            value={tallaProducto}
-                            label="Genero"
-                            onChange={eventoTalla}
-                            error={tallaProductoError}
-                            variant="outlined"
-                        >
-                            <MenuItem value="XS">XS</MenuItem>
-                            <MenuItem value="S">S</MenuItem>
-                            <MenuItem value="M">M</MenuItem>
-                            <MenuItem value="L">L</MenuItem>
-                            <MenuItem value="XL">XL</MenuItem>
-                        </Select>
-                    </FormControl>
 
-                   <TextField onChange={eventoStock} error={stockProductoError} inputProps={{ inputMode: 'numeric', pattern: '[0-9]*' }} type="number" label='Stock disponible' variant="outlined"></TextField>
-                    <TextField onChange={eventoPrecio} error={precioProductoError} type="number" label='Precio' variant="outlined"></TextField>
-                    <TextField onChange={eventoImagen} error={nameProductoError} type="text" label='Url Imagen ' variant="outlined"></TextField>
-
-                </Stack>
+    <textarea onChange={eventoDescripcion} error={descripcionProductoError} name="" placeholder="Descripcion" className={classes.descripcion} ></textarea>
+</div>
 
 
-                <Button onClick={addProduct} color="inherit" variant="contained" className={classes.agregarProducto}>Agregar producto</Button>
-            </div>
-            <div className={classes.lateralDer}>
-
-                <div className={classes.contenedorImagnen}>
-
-
-
-                 <img name="" className={classes.imagenProd} src={urlImagen}></img>
-                 <div className={classes.noImage}><p>No Image</p></div> 
-                    
-
-                </div>
-                
-
-                <textarea onChange={eventoDescripcion} error={descripcionProductoError} name="" placeholder="Descripcion" className={classes.descripcion} ></textarea>
-            </div>
-
-
+</div>
         </div>
+        
     )
 }

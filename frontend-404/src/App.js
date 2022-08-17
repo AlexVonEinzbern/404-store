@@ -70,7 +70,7 @@ function App() {
 			<Route path='hombre/ropainterior/camisetas' element={<PresentacionSubcategoria genero='HOMBRE' subCategoria='camisetas' />} />
 			<Route path='hombre/ropainterior/medias' element={<PresentacionSubcategoria genero='HOMBRE' subCategoria='medias' />} />
 
-			<Route path='hombre/ropaDeportiva' element={<PresentacionCategoria genero='HOMBRE' idCategoria='ropaDeportiva' />} />
+			<Route path='hombre/ropaDeportiva' element={<PresentacionCategoria genero='HOMBRE' idCategoria='RopaDeportiva' />} />
 			<Route path='hombre/ropaDeportiva/prendasSuperiores' element={<PresentacionSubcategoria genero='HOMBRE' subCategoria='prendasSuperiores' />} />
 			<Route path='hombre/ropaDeportiva/prendasInferiores' element={<PresentacionSubcategoria genero='HOMBRE' subCategoria='prendasInferiores' />} />
 			<Route path='hombre/ropaDeportiva/accesorios' element={<PresentacionSubcategoria genero='HOMBRE' subCategoria='accesorios' />} />

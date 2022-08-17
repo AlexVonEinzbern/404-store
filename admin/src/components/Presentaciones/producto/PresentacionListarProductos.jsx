@@ -86,53 +86,52 @@ const useStyles = makeStyles((theme) => ({
     const [talla,setTalla]=useState('');
     const forceUpdate = React.useState()[1].bind(null, {}) // see NOTE above const
 
-    const nameProductos = async () => {
-        const res = await fetch(`${URI}obtenerProductos`);
-        const data = await res.json();
-        setProductosJson(data);
-    }
 
     useEffect(() => {
-        nameProductos();
+        filtrar();
     }, [])
+    
+        
+const filtrar=()=>{
 
+	let filtros=[]
 
-    const cumpleFiltro=(producto,filtro)=>{
-
-
-        if(
-            producto.genero_producto==filtro||
-            producto.categoria_producto==filtro||
-            producto.subcategoria_producto==filtro||
-            producto.talla_producto==filtro ){
-                return true
-            }else{
-                return false
-            }
-
-
-    }
-
-
-    const filtrar=()=>{
-
-        const filtros=JSON.parse(localStorage.getItem('filtros'))
-        const filtroGenero=filtros[0]
-        const filtroClase=filtros[1]
-        const filtroSubClase=filtros[2]
-        const filtroTalla=filtros[3]
-
-        var filtrados=[]
-
-        const productosFiltrados=async ()=>{
-            const {data:info} =await axios.get(URI+"obtenerProductoFiltrado/"+'HOMBRE'+"/"+"ropaInterior"+"/"+"camisetas"+"/"+"L")
-            console.log(info)
-            filtrados=info
+    if (window.localStorage) {
+        if (window.localStorage.getItem('filtros') !== undefined
+          && window.localStorage.getItem('filtros')
+        ) {
+  
+           filtros=JSON.parse(localStorage.getItem('filtros'))
+  
         }
+      }
+      else{
+          filtros=[]
+      }
 
-        productosFiltrados()
-        return filtrados
-    }
+
+	const filtroGenero=filtros[0]
+	const filtroClase=filtros[1]
+	const filtroSubClase=filtros[2]
+	const filtroTalla=filtros[3]
+
+	const productosFiltrados=async ()=>{
+		const {data:info} =await axios.get(URI+`obtenerProductoFiltrado/${filtroGenero}/${filtroClase}/${filtroSubClase}/${filtroTalla}`)
+		setProductosJson(info)
+
+
+        
+	}
+
+	productosFiltrados()
+
+	const productos = localStorage.getItem('productos')
+    const parseProductos = JSON.parse(productos)
+    return parseProductos
+
+}
+    
+
 
     const classes = useStyles();
 	//let productos=axios.get(URI+) 
@@ -146,7 +145,8 @@ const useStyles = makeStyles((theme) => ({
 
         {
         
-        filtrar().map((prod)=>{
+        
+    productosJson.map((prod)=>{
             return(
                 <ItemProducto producto={prod} key={prod.id_producto}></ItemProducto>
             )

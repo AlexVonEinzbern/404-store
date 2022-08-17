@@ -7,7 +7,7 @@ import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import ListSubheader from '@mui/material/ListSubheader';
-
+import { productoCurrent } from "../../../prodductoCurrent.js";
 
 
 const URI = process.env.REACT_APP_URI;  // se conecta con el backend 
@@ -26,7 +26,11 @@ const useStyles = makeStyles((theme) => ({ //estilos
         backgroundColor:'#fff',
 		position:'relative',
 		boxShadow: '0px 0px 50px 10px rgba(0, 0, 0, 0.5)',
-		padding:'40px'
+		padding:'40px',
+        maxWidth:'1440px',
+        minHeight:'680px',
+        maxHeight:'680px',
+        top:'48px'
 
     },
 
@@ -50,7 +54,7 @@ const useStyles = makeStyles((theme) => ({ //estilos
     imagenProd: {
 
         width: 'auto',
-        height: '50%',
+        height: '100%',
         resize: 'none'
     },
 
@@ -62,7 +66,7 @@ const useStyles = makeStyles((theme) => ({ //estilos
     imagen: {
 
    width: 'auto',
-        height: '50vh',
+        height: '100%',
         resize: 'none',
         position: 'relative',
         border: '3px dashed #bbb',
@@ -109,9 +113,17 @@ const useStyles = makeStyles((theme) => ({ //estilos
     barraBusqueda: {
 
         width: 'auto',
-        height: 'auto',
+        height: '40px',
         resize: 'none',
-        borderRadius:'5px'
+        borderRadius:'5px',
+		padding:'0',	
+		paddingLeft:'20px',
+		width:'300px',
+		fontFamily:'roboto',
+		fontSize:'20px',
+		lineHeight:'2',
+		overflow:'hidden'
+
 
     },
     buscar: {
@@ -142,7 +154,16 @@ const useStyles = makeStyles((theme) => ({ //estilos
         display:'flex',
         flexDirection:'column',
         justifyContent:'space-between'
+    },	
+    all:{
+        height:'100vh',
+        display:'flex',
+        alignItems:'center',
+        justifyContent:'center  '
+
     }
+
+
 
 
 
@@ -218,7 +239,7 @@ export const PresentacionEliminarProducto = () => {
 
     return (
 
-        <div>
+        <div className={classes.all}>
             <div className={classes.cont}>
 
 
@@ -233,7 +254,7 @@ export const PresentacionEliminarProducto = () => {
                     <div className={classes.busqueda}>
                         <p className={classes.titulo}>Eliminar Producto</p>
                         <div className={classes.buscar}>
-                            <textarea className={classes.barraBusqueda} onChange={(e)=>{setBusqueda(e.target.value)}} name="" id="" cols="30" ></textarea>
+                            <textarea className={classes.barraBusqueda} onChange={(e)=>{setBusqueda(e.target.value)}  } defaultValue={productoCurrent.name_producto} name="" id="" cols="30" ></textarea>
                             <Button  onClick={()=>actualizarCamposInfoProducto()} color='secondary' variant='outlined'> Buscar  </Button>
                         </div>
                     </div>

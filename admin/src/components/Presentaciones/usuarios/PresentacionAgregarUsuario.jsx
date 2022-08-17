@@ -22,7 +22,8 @@ const useStyles = makeStyles((theme) => ({
 		position:'relative',
 		boxShadow: '0px 0px 20px 1px rgba(0, 0, 0, 0.2)',
 		padding:'40px',
-        justifyContent:'center'
+        justifyContent:'center',
+        top:'48px'
     },
 
     lateralIzq: {
@@ -102,7 +103,7 @@ const useStyles = makeStyles((theme) => ({
     barraBusqueda: {
 
         width: 'auto',
-        height: 'auto',
+        height: '48px',
         resize: 'none'
 
     },
@@ -118,6 +119,12 @@ const useStyles = makeStyles((theme) => ({
         color:'#fff',
         marginTop:'20px'
     },
+    all:{
+        height:'100vh',
+        display:'flex',
+        alignItems:'center',
+        justifyContent:'center  '
+    }
 
 
 
@@ -215,102 +222,107 @@ export const PresentacionAgregarUsuario = () => {
 	}
 
 return (
-        <div className={classes.cont}>
+
+    <div className={classes.all}>
+<div className={classes.cont}>
 
             
             
-            <div className={classes.BarraLateral}>
-            <BarraLateral></BarraLateral>
-            </div>
+<div className={classes.BarraLateral}>
+<BarraLateral></BarraLateral>
+</div>
 
 
-            <div className={classes.lateralIzq}>
-                <p className={classes.titulo}>Agregar Usuario</p>
-                
-                <form onSubmit={formik.handleSubmit} className={classes.formulario}>
-                        <TextField label='Nombre'
-                                    name='nombre'
-                                    id='nombre'
-                                    value={formik.values.nombre}
-                                    onChange={formik.handleChange}
-                                    error={formik.touched.nombre && Boolean(formik.errors.nombre)}
-                                    helperText={formik.touched.nombre && formik.errors.nombre}>   
-                        </TextField>
-                        <TextField label='Cédula'
-                                    name='cedula'
-                                    id='cedula'
-                                    value={formik.values.cedula}
-                                    onChange={formik.handleChange}
-                                    error={formik.touched.cedula && Boolean(formik.errors.cedula)}
-                                    helperText={formik.touched.cedula && formik.errors.cedula}>   
-                        </TextField>
-                        <TextField label='Edad'
-                                    name='edad'
-                                    id='edad'
-                                    value={formik.values.edad}
-                                    onChange={formik.handleChange}
-                                    error={formik.touched.edad && Boolean(formik.errors.edado)}
-                                    helperText={formik.touched.edad && formik.errors.edad}>   
-                        </TextField>
-                        <TextField label='E-mail'
-                                    name='email'
-                                    id='email'
-                                    value={formik.values.email}
-                                    onChange={formik.handleChange}
-                                    error={formik.touched.email && Boolean(formik.errors.email)}
-                                    helperText={formik.touched.email && formik.errors.email}>   
-                        </TextField>
-                        <TextField label='Teléfono'
-                                    name='telefono'
-                                    id='telefono'
-                                    value={formik.values.telefono}
-                                    onChange={formik.handleChange}
-                                    error={formik.touched.telefono && Boolean(formik.errors.telefono)}
-                                    helperText={formik.touched.telefono && formik.errors.telefono}>   
-                        </TextField>
-                        <TextField label='Direccion'
-                                    name='direccion'
-                                    id='direccion'
-                                    value={formik.values.direccion}
-                                    onChange={formik.handleChange}
-                                    error={formik.touched.direccion && Boolean(formik.errors.direccion)}
-                                    helperText={formik.touched.direccion && formik.errors.direccion}>   
-                        </TextField>
-                        <TextField label='Usuario'
-                                    name='nick'
-                                    id='nick'
-                                    value={formik.values.nick}
-                                    onChange={formik.handleChange}
-                                    error={formik.touched.nick && Boolean(formik.errors.nick)}
-                                    helperText={formik.touched.nick && formik.errors.nick}>   
-                        </TextField>
-                        <TextField label='Contraseña'
-                                    name='pass'
-                                    id='pass'
-                                    value={formik.values.pass}
-                                    onChange={formik.handleChange}
-                                    error={formik.touched.pass && Boolean(formik.errors.pass)}
-                                    helperText={formik.touched.pass && formik.errors.pass}>   
-                        </TextField>
-                        <TextField label='Estado'
-                                    name='estado'
-                                    id='estado'
-                                    value={formik.values.estado}
-                                    onChange={formik.handleChange}
-                                    error={formik.touched.estado && Boolean(formik.errors.estado)}
-                                    helperText={formik.touched.estado && formik.errors.estado}>   
-                        </TextField>
-                        
-                        <Button type="submit" color="inherit" variant="contained" className={classes.agregarUsuario}>Agregar Usuario</Button>
+<div className={classes.lateralIzq}>
+    <p className={classes.titulo}>Agregar Usuario</p>
+    
+    <form onSubmit={formik.handleSubmit} className={classes.formulario}>
+            <TextField label='Nombre'
+                        name='nombre'
+                        id='nombre'
+                        value={formik.values.nombre}
+                        onChange={formik.handleChange}
+                        error={formik.touched.nombre && Boolean(formik.errors.nombre)}
+                        helperText={formik.touched.nombre && formik.errors.nombre}>   
+            </TextField>
+            <TextField label='Cédula'
+                        name='cedula'
+                        id='cedula'
+                        value={formik.values.cedula}
+                        onChange={formik.handleChange}
+                        error={formik.touched.cedula && Boolean(formik.errors.cedula)}
+                        helperText={formik.touched.cedula && formik.errors.cedula}>   
+            </TextField>
+            <TextField label='Edad'
+                        name='edad'
+                        id='edad'
+                        value={formik.values.edad}
+                        onChange={formik.handleChange}
+                        error={formik.touched.edad && Boolean(formik.errors.edado)}
+                        helperText={formik.touched.edad && formik.errors.edad}>   
+            </TextField>
+            <TextField label='E-mail'
+                        name='email'
+                        id='email'
+                        value={formik.values.email}
+                        onChange={formik.handleChange}
+                        error={formik.touched.email && Boolean(formik.errors.email)}
+                        helperText={formik.touched.email && formik.errors.email}>   
+            </TextField>
+            <TextField label='Teléfono'
+                        name='telefono'
+                        id='telefono'
+                        value={formik.values.telefono}
+                        onChange={formik.handleChange}
+                        error={formik.touched.telefono && Boolean(formik.errors.telefono)}
+                        helperText={formik.touched.telefono && formik.errors.telefono}>   
+            </TextField>
+            <TextField label='Direccion'
+                        name='direccion'
+                        id='direccion'
+                        value={formik.values.direccion}
+                        onChange={formik.handleChange}
+                        error={formik.touched.direccion && Boolean(formik.errors.direccion)}
+                        helperText={formik.touched.direccion && formik.errors.direccion}>   
+            </TextField>
+            <TextField label='Usuario'
+                        name='nick'
+                        id='nick'
+                        value={formik.values.nick}
+                        onChange={formik.handleChange}
+                        error={formik.touched.nick && Boolean(formik.errors.nick)}
+                        helperText={formik.touched.nick && formik.errors.nick}>   
+            </TextField>
+            <TextField label='Contraseña'
+                        name='pass'
+                        id='pass'
+                        value={formik.values.pass}
+                        onChange={formik.handleChange}
+                        error={formik.touched.pass && Boolean(formik.errors.pass)}
+                        helperText={formik.touched.pass && formik.errors.pass}>   
+            </TextField>
+            <TextField label='Estado'
+                        name='estado'
+                        id='estado'
+                        value={formik.values.estado}
+                        onChange={formik.handleChange}
+                        error={formik.touched.estado && Boolean(formik.errors.estado)}
+                        helperText={formik.touched.estado && formik.errors.estado}>   
+            </TextField>
+            
+            <Button type="submit" color="inherit" variant="contained" className={classes.agregarUsuario}>Agregar Usuario</Button>
 
-                </form>
+    </form>
 
-            </div>
-            <div  className={classes.lateralDer}>
-                
-            </div>
+</div>
+<div  className={classes.lateralDer}>
+    
+</div>
 
-        </div>
+</div>
+
+    </div>
+        
     )
 
 

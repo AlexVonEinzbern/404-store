@@ -3,6 +3,12 @@ import React from "react";
 
 import { makeStyles } from "@material-ui/core";
 import { margin } from "@mui/system";
+import { ContactSupportOutlined } from "@material-ui/icons";
+import { Navigate } from "react-router-dom";
+import { productoCurrent } from "../../../prodductoCurrent";
+
+
+
 
 const useStyles=makeStyles((theme)=> ({
 
@@ -42,6 +48,23 @@ const useStyles=makeStyles((theme)=> ({
     }
 }))
 
+
+const editarUnProducto=(producto)=>{
+
+    const productoCur=producto
+    localStorage.setItem('productoCurrent',JSON.stringify(productoCur))
+    window.location.replace("/Admin/Gestionar-productos/Editar")
+}
+
+
+
+const eliminarUnProducto=(producto)=>{
+
+    const productoCur=producto
+    localStorage.setItem('productoCurrent',JSON.stringify(productoCur))
+    window.location.replace("/Admin/Gestionar-productos/eliminar")
+}
+
 export const ItemProducto = (props)=>{
 
 
@@ -51,7 +74,7 @@ export const ItemProducto = (props)=>{
 
         <div className={classes.cont}>  
             <div >
-            <img src={props.producto.url_imagen_producto} alt="" className={classes.imagen}/>
+            <img src={''} alt="" className={classes.imagen}/>
             </div>         
             
             <div className={classes.element}>{props.producto.name_producto}</div>
@@ -63,8 +86,22 @@ export const ItemProducto = (props)=>{
             <div className={classes.element}>${props.producto.precio_producto}</div>
             <select name="" id="" className={classes.element}>
                 <option value="">Gestionar</option>
-                <option value="">Editar</option>
-                <option value="">Eliminar</option>
+                
+                
+                <option onClick={e=>{
+                    editarUnProducto(props.producto)
+                }} value="">
+                    Editar
+                    </option>
+
+
+               
+
+
+
+                <option value="" onClick={e=>{
+                    eliminarUnProducto(props.producto)
+                }} >Eliminar</option>
             </select>
         </div>
     )

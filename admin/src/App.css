@@ -4,12 +4,16 @@
 
 }
 .cont{
-    background-color:#fff;
+    background-color:rgb(220, 0, 0);
     background-image: url('./img/FONDO.jpg');
-/* 
-    background-size: cover; */
 
-    height: 100vh;
+    background-size:cover;
+    
+    background-position:0 200;
+    background-attachment: fixed;
+
+
+
     top: 0;
     left: 0;
     right: 0;

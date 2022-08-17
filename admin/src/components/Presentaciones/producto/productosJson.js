@@ -17,4 +17,7 @@ let productos=[]
 	
 ProductosJson()
 
+
+
+
 export {productos,ProductosJson}

@@ -1,7 +1,6 @@
 import { makeStyles } from '@material-ui/core'
 import { display, margin } from '@mui/system'
 import React from 'react'
-//import productos from '../ProductosJson.json'
 import {Button} from '@material-ui/core'
 import TajetaItemCarrito from '../Tarjetas/tajetaItemCarrito'
 import { useCart } from 'react-use-cart'
@@ -18,6 +17,7 @@ const usestyles = makeStyles(theme => ({
         width: '90%',
         minWidth: '670px',
         maxWidth:'1024px',
+ 
 
     },
     mensaje: {
@@ -104,7 +104,7 @@ function PresentacionCarrito() {
     return (
         <div className={classes.cont}>
         <div className={classes.mensaje}>
-        envios gratis en compras mayores a una chichigua
+        envios gratis en compras mayores a $150.000
         </div>
 
         <div>
@@ -138,7 +138,8 @@ function PresentacionCarrito() {
         <div className={classes.itemResumen}> <p>Subtotal</p> <p>${cartTotal}</p></div>
         <div className={classes.itemResumen}> <p className={classes.gastos}>Gastos de envío y gestión estimados</p> <p>$0</p></div>
         <div className={classes.itemResumen}> <p>Total</p> <p>${cartTotal}</p></div>
-        <Button className={classes.pagar} color='secondary' variant='contained'>Pagar</Button>
+        <a href="/pago"><Button className={classes.pagar} color='secondary' variant='contained'>Pagar</Button></a>
+        
 
         </div>
 

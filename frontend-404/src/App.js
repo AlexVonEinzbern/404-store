@@ -1,4 +1,5 @@
 
+
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom"
 import { Body } from "./components/Main/Body";
 import { Login, Registro } from "./components/Main/Login";
@@ -14,6 +15,10 @@ import PresentacionCarrito from "./components/Presentaciones/presentacionCarrito
 import {productos,ProductosJson} from "./components/productosJson.js"
 import { useEffect } from "react";
 import "./App.css"
+import { PresentacionPago } from "./components/Presentaciones/PresentacionPago";
+import { ThemeProvider } from "@mui/material";
+import { tema } from "./components/Navegacion/styles/tema";
+
 const URI = process.env.REACT_APP_URI;  
 function App() {
 
@@ -34,7 +39,9 @@ function App() {
 	return (
 		<div className="App">
  
-		<CartProvider>
+ <ThemeProvider theme={tema}>
+
+ <CartProvider>
 		<Navegacion></Navegacion>
 		<Router>
 
@@ -118,6 +125,7 @@ function App() {
 		{/* <Route path="*" element={<Nada />}> </Route> */}
 		<Route path="/" element={<Body />}></Route>
 		<Route path="carrito" element={<PresentacionCarrito />}></Route>
+		<Route path="pago" element={<PresentacionPago />}></Route>
 
 
 
@@ -131,6 +139,9 @@ function App() {
 
 		</CartProvider>
 
+
+ </ThemeProvider>
+		
 
 		</div>
 		);

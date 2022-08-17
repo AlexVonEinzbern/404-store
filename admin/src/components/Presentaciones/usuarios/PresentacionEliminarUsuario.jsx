@@ -221,7 +221,6 @@ export const PresentacionEliminarUsuario = () => {
 
                     <div className={classes.lateralIzq}>
 
-<<<<<<< HEAD
                         <div className={classes.busqueda}>
                             <p className={classes.titulo}>Eliminar Usuario</p>
                             <div className={classes.buscar}>
@@ -244,72 +243,6 @@ export const PresentacionEliminarUsuario = () => {
 
                     </div>
 
-=======
-                    <div className={classes.busqueda}>
-                        <p className={classes.titulo}>Eliminar Administrador</p>
-                        <div className={classes.buscar}>
-                            <textarea className={classes.barraBusqueda} onChange={(e)=>{setBusqueda(e.target.value)}} id="" cols="30" ></textarea>
-                            <Button onClick={actualizarCamposInfoAdmin}> Buscar </Button>
-                        </div>
-                    </div>
-                
-                    <form onSubmit={formik.handleSubmit}>
-                        <TextField label='Nombre'
-                                    name='nombreAdmin'
-                                    id='nombreAdmin'
-                                    disabled
-                                    value={formik.values.nombreAdmin}
-                                    onChange={formik.handleChange}
-                                    error={formik.touched.nombreAdmin && Boolean(formik.errors.nombreAdmin)}
-                                    helperText={formik.touched.nombreAdmin && formik.errors.nombreAdmin}>   
-                        </TextField>
-                        <TextField label='Cédula'
-                                    name='cedulaAdmin'
-                                    id='cedulaAdmin'
-                                    disabled
-                                    value={formik.values.cedulaAdmin}
-                                    onChange={formik.handleChange}
-                                    error={formik.touched.cedulaAdmin && Boolean(formik.errors.cedulaAdmin)}
-                                    helperText={formik.touched.cedulaAdmin && formik.errors.cedulaAdmin}>   
-                        </TextField>
-                        <TextField label='E-mail'
-                                    name='emailAdmin'
-                                    id='emailAdmin'
-                                    disabled
-                                    value={formik.values.emailAdmin}
-                                    onChange={formik.handleChange}
-                                    error={formik.touched.emailAdmin && Boolean(formik.errors.emailAdmin)}
-                                    helperText={formik.touched.emailAdmin && formik.errors.emailAdmin}>   
-                        </TextField>
-                        <TextField label='Telefono'
-                                    name='telefonoAdmin'
-                                    id='telefonoAdmin'
-                                    disabled
-                                    value={formik.values.telefonoAdmin}
-                                    onChange={formik.handleChange}
-                                    error={formik.touched.telefonoAdmin && Boolean(formik.errors.telefonoAdmin)}
-                                    helperText={formik.touched.telefonoAdmin && formik.errors.telefonoAdmin}>   
-                        </TextField>
-                        <TextField label='Username'
-                                    name='userAdmin'
-                                    id='userAdmin'
-                                    disabled
-                                    value={formik.values.userAdmin}
-                                    onChange={formik.handleChange}
-                                    error={formik.touched.userAdmin && Boolean(formik.errors.userAdmin)}
-                                    helperText={formik.touched.userAdmin && formik.errors.userAdmin}>   
-                        </TextField>
-                        
-
-                    <div className={classes.botones}>
-                        <Button color="inherit" variant="contained" className={classes.Descartar}>Descartar</Button>
-                        <Button type='submit' color="inherit"  className={classes.GuargarCambios}>Eliminar Usuario</Button>
-                    </div>
-
-                    </form> 
-
-                </div>
->>>>>>> 7189263a5c0bc507c3f4415cf70a9cb6546e9805
 
 
 

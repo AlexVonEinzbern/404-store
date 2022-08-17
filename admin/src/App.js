@@ -13,7 +13,7 @@ import { PresentacionAgregarUsuario } from './components/Presentaciones/usuarios
 import { PresentacionEditarUsuario } from './components/Presentaciones/usuarios/PresentacionEditarUsuario'
 import { PresentacionEliminarUsuario } from './components/Presentaciones/usuarios/PresentacionEliminarUsuario'
 import { BrowserRouter as Router, Routes, Route, Link, BrowserRouter } from "react-router-dom"
-
+import { Start } from './Start';
 function App() {
   return (
 
@@ -34,6 +34,7 @@ function App() {
             <Route path='Admin/Gestionar-usuarios/Agregar' element={<PresentacionAgregarUsuario></PresentacionAgregarUsuario>}></Route>
             <Route path='Admin/gestionar-usuarios/Editar' element={<PresentacionEditarUsuario></PresentacionEditarUsuario>}></Route>
             <Route path='Admin/Gestionar-usuarios/eliminar' element={<PresentacionEliminarUsuario></PresentacionEliminarUsuario>}></Route>
+            <Route path='/' element={<Start></Start>}></Route>
             
           </Routes>
         </Router>
